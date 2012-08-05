@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Web Workers</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="container">
+
+  <h1>Web Workers</h1>
+  
+  <p><a href="view-source:webworkers" title="View source">View source</a> to see what's happening.</p>
+  
+  <script type="text/javascript">
+  var worker = new Worker('js/task.js');
+  worker.addEventListener('message', function(event) {
+      console.log("Message from the worker: " + event.data);
+  }, false);
+  worker.postMessage(); // start the worker
+  </script>
+
+<a href="view-source:http://simpl.info/webworkers" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

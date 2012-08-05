@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title>simplestpossible: postMessage() index.html</title>
+
+</head>
+
+<body>
+
+<h1>postMessage()</h1>
+
+<p>You will need to enable popups for this to work.</p>
+
+<p id="messageText"></p>
+
+<script>
+window.addEventListener("message", function(event) {    
+  document.querySelector("#messageText").innerText = "Sent a message to " + event.origin + 
+    " and got the following in response:\n\n" + event.data;
+}); 
+var other = window.open("other.html");
+setTimeout(function(){
+  other.postMessage("hi! this is a message from index.html", "*"); 
+}, 1);
+</script>
+
+
+</body>
+
+</html>

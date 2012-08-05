@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>getUserMedia</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="container">
+
+  <h1>getUserMedia</h1>
+  
+  <video autoplay></video>
+  
+  <script>
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  window.URL = window.URL || window.webkitURL;
+  
+  navigator.getUserMedia({video: true}, function(localMediaStream) { 
+    document.querySelector("video").src = window.URL.createObjectURL(localMediaStream);
+  }, function(error) {
+    console.log(error);
+  });
+  </script>
+
+<a href="view-source:http://simpl.info/getusermedia" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

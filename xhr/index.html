@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>XMLHttpRequest (aka Ajax)</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="container">
+
+  <h1>XMLHttpRequest (aka AJAX)</h1>
+  
+  <p>This page gets the following data from <a href="data.json" title="Data file in JSON format">data.json</a>:</p>
+  <p id="data"></p>
+
+  <script type="text/javascript">
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'data.json');
+  xhr.onload = function(event) {
+    var data = JSON.parse(this.response);
+    document.querySelector("#data").innerHTML = JSON.stringify(data);
+  }
+  xhr.send();
+  </script>
+  
+<a href="view-source:http://simpl.info/xhr" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+a {
+color: #77aaff;
+text-decoration: none;
+}
+ 
+a:hover {
+color: #88bbff;
+text-decoration: underline;
+}
+
+a#viewSource {
+display: block;
+margin: 30px 0 0 0; 
+border-top: 1px solid #999;
+padding: 20px 0 0 0;
+}
+ 
+div#links a {
+display: block;
+line-height: 2em; 
+}
+
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 50px;
+}
+ 
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+padding: 20px 30px 20px 30px;
+max-width: 720px;
+}
+ 
+* html div#container {
+width: 540px;
+}
+ 
+h1 {
+border-bottom: 1px solid #aaa;
+color: white;
+font-family: Arial, sans-serif;
+margin: 0 0 30px 0;
+padding: 0 0 10px 0;
+}
+ 
+h2 {
+color: #ccc;
+font-family: Arial, sans-serif;
+margin: 30px 0 0 0;
+}
+ 
+img {
+border: none;
+}
+ 
+p {
+color: #eee;
+font-size: 18px;
+line-height: 1.5em;
+}
+
+p#data {
+font-family: Courier New, monospace;
+}
+
+video {
+width: 720px;
+}
+
+

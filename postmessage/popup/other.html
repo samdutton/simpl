@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title>simplestpossible: postMessage() other.html</title>
+
+
+</head>
+
+<body>
+
+<h1>postMessage() popup.html</h1>
+
+<p></p>
+
+<script>
+window.addEventListener("message", function receiveMessage(event) {  
+  console.log(JSON.stringify(event.origin) + "\n" + JSON.stringify(event.data));
+  document.querySelector("p").innerText = "Got a message from origin " + event.origin + ":\n\n" + event.data;
+  // posting back to message source, i.e. index.html
+  // second parameter is eventOrigin: must match event.origin
+  event.source.postMessage("hi! this is a message from other.html", "*");
+});  
+</script>
+</body>
+
+</html>

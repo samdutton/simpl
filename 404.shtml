@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>simpl.info 404</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div id="container">
+
+  <h1>404 error</h1>
+ 
+  <p>Sorry. Couldn't find what you were looking for.</p> 
+  <p>Could be time to go <a href="index.html" title="simp.info home page">home</a>.</p>
+
+<a href="view-source:http://simpl.info/cssnegativeselector" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

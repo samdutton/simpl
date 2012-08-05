@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>CSS negation pseudo class</title>
+<link rel="stylesheet" href="../css/main.css">
+
+  <style type="text/css">
+  div#container div {
+    background: #005293;
+    height: 100px;
+  }
+  div#container div:not(.foo) {
+    background: #fecb00;
+  }
+  </style>
+
+</head>
+<body>
+<div id="container">
+
+  <h1>CSS negation pseudo class</h1>
+  
+  <div class="foo"></div>
+  <div class="bar"></div>
+  <div class="foo bar"></div>
+  
+<a href="view-source:http://simpl.info/cssnegativeselector" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

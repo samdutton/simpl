@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>CORS</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="container">
+
+<h1>CORS</h1>
+
+<p id="response"></p>
+
+<script type="text/javascript">
+// thanks to Nicholas Zakas
+// http://www.html5rocks.com/en/tutorials/cors/
+function createCORSRequest(method, url){
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr){
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined"){
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
+// cors.php looks like this:
+// <?php
+// header("Access-Control-Allow-Origin: *");
+// echo "This text was retrieved by a CORS request to thehillsarealive.net/cors.php";
+// ?>
+var request = createCORSRequest("get", "http://www.thehillsarealive.net/cors.php");
+if (request){
+    request.onload = function(){
+      document.getElementById("response").innerText = request.responseText;
+    };
+    request.send();
+}
+</script>
+
+<a href="view-source:http://simpl.info/cors" title="View source for this page" id="viewSource">View source</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>History methods</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="container">
+
+  <h1>History pushState() and popState()</h1>
+  
+  <p><a id="link" href=".">Click me</a> a few times, then press the Back button.</p>
+
+  <p id="data"></p>
+  
+  <script>
+  var link = document.getElementById("link");
+  var n = 1;
+  link.addEventListener("click", function(event) {
+      event.preventDefault();
+      window.history.pushState({"n": n}, "n: " + n, "index.html#" + n);
+      n = n + 1;
+  }, false);
+  window.onpopstate = function(event) {
+    document.getElementById("data").innerHTML = "location: " + document.location + "<br />state: " + JSON.stringify(event.state);
+    console.log(event);
+  };    
+  </script>
+  
+<a href="view-source:http://simpl.info/history" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
