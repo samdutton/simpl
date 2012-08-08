@@ -8,6 +8,10 @@ color: #88bbff;
 text-decoration: underline;
 }
 
+h1 a {
+font-weight: normal;
+}
+
 a#viewSource {
 display: block;
 margin: 30px 0 0 0; 
@@ -63,6 +67,11 @@ line-height: 1.5em;
 
 p#data {
 font-family: Courier New, monospace;
+}
+
+p.borderBelow {
+border-bottom: 1px solid #aaa;
+padding: 0 0 20px 0;
 }
 
 video {
