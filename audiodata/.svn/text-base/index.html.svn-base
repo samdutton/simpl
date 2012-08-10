@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>Untitled</title>
+
+<style type="text/css">
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+  // Get element helper function
+  var $ = function( $ ){ return document.getElementById( $ ); }
+
+  // Get the audio input object
+  var input = $('input');
+
+  // Get the display div object
+  var display = $( 'display' );
+          
+  // Add an event listener to the audio input object
+  input.addEventListener( 'MozAudioAvailable', function( e ){
+
+    // Display the first sample of each buffer
+    display.innerHTML += e.frameBuffer[ 0 ] + ', ';
+    
+  }, false );
+
+});
+</script>
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+<!-- An audio element with controls -->
+<audio id="input" src="audio/test-tone.ogg" controls></audio>
+
+<!-- A display element for printing values -->
+<div id="display"></div>
+
+
+</div><!-- container -->
+
+</body>
+
+</html>

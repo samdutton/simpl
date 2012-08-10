@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Big image</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<div id="container">
+
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Audio Data API</h1>
+
+  <p>This example requires <a href="http://www.mozilla.com/firefox/">Firefox</a>.</p>
+
+	<audio id="mediaElement" src="audio/audio.ogg" controls="controls" autoplay="autoplay"></audio>
+
+	<div id="framebufferLength">
+    Framebuffer length:&nbsp;&nbsp;<input id="framebufferLengthInput" type="text" />	
+    <div id="framebufferNote">(Minimum 512, maximum 16384.)</div>
+	</div>	
+
+	<div id="metadataElement"></div>
+
+	<div id="audioData">
+		<div id="eventTimeElement"><p>Time</p></div>
+		<div id="eventDataElement"><p>frameBuffer[0] data</p></div>
+	</div>	
+	
+  <script src="js/main.js" type="text/javascript"></script>
+
+<a href="view-source:http://simpl.info/audiodata" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
+
+	

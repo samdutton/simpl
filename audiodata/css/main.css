@@ -1,0 +1,53 @@
+div#container {
+color: #eee;
+}
+
+#mediaElement {
+height: 60px;
+margin: 0 0 20px 0;
+width: 520px;
+}
+
+div#framebufferLength {
+border-bottom: 1px dotted #444;
+margin: 0 0 30px 0;
+padding: 0 0 30px 0;
+}
+
+input#framebufferLengthInput {
+font-family: Arial, sans-serif;
+margin: 0 0 10px 0;
+}
+
+#framebufferNote {
+color: #999;
+font-size: 12px;
+}
+
+#metadataElement {
+border-bottom: 1px dotted #444;
+font-family: Courier New, monospace;
+margin: 0 0 20px 0;
+padding: 0 0 30px 0;
+}
+
+#audioData {
+background: #111;
+font-family: Courier New, monospace;
+height: 410px;
+overflow-y: auto;
+padding: 0px 10px 20px 30px;
+width: 530px;
+}
+
+#eventTimeElement {
+float: left;
+height: 380px;
+margin: 0 45px 0 0;
+}
+
+#eventDataElement {
+float: left;
+height: 380px;
+text-align: right;
+}
