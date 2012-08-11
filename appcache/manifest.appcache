@@ -1,0 +1,17 @@
+CACHE MANIFEST
+#version 1.0 11-08-2012
+
+CACHE:
+# index.html is cached by default anyway -- this is just to be explicit
+index.html 
+../css/main.css
+../js/lib/ga.js
+
+# / is wildcard for all pages  
+# so, for all pages, offline.html will be displayed if the user is offline
+FALLBACK:
+/ /offline.html
+
+# Resources that require the user to be online
+NETWORK:
+*
