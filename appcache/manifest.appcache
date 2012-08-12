@@ -6,11 +6,13 @@ CACHE:
 index.html 
 ../css/main.css
 ../js/lib/ga.js
+../favicon.ico
 
 # / is wildcard for all pages  
 # so, for all pages, offline.html will be displayed if the user is offline
+# NB path is relative to this file
 FALLBACK:
-/ /offline.html
+/ offline.html
 
 # Resources that require the user to be online
 NETWORK:
