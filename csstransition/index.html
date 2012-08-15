@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>CSS transition</title>
+<link rel="stylesheet" href="../css/main.css">
+
+<style>
+p {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 2.8em;
+  font-weight: bold;
+  transition: background-color, color, width 2s;
+  -moz-transition: background-color, color, width 2s; 
+  -webkit-transition: all 2s;
+  -o-transition: background-color, color, width 2s;
+  padding: 10px 10px 10px 10px;
+  width: 700px;
+}
+
+p:hover {
+  background-color: #222222;
+  color: #ffffff;
+  width: 150px;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> </h1>
+  
+  <p>Please hover over me right now!</p>
+  
+
+<a href="view-source:http://simpl.info/csstransition" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

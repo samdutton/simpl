@@ -2,7 +2,7 @@
 
 window.addEventListener('load', function(e) {
 
-  log("window load event");
+  log("Window <em>load</em> event");
 
   var appCache = window.applicationCache;
 
@@ -35,11 +35,12 @@ window.addEventListener('load', function(e) {
 }, false);
 
 function handleCacheEvent(e) {
-  log(e);
+  log("AppCache <em>" + e.type + "</em> event");
+  console.log(e);
 }
 
 function handleCacheError(e) {
-  log("AppCache error: " + e);
+  log("AppCache error: " + e.data);
 };
 
 var data = document.getElementById("data");

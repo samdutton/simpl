@@ -15,20 +15,6 @@ var fileSystem;
 function handleInitSuccess(fileSystem) {
   window.fileSystem = fileSystem
 	log('Initiated FileSystem: ' + fileSystem.name);
-	fileSystem.root.getFile('log.txt', {create: false}, function(fileEntry) {
-
-    fileEntry.remove(function() {
-      console.log('File removed.');
-    }, handleError);
-
-  }, handleError);
-	fileSystem.root.getFile('foo.txt', {create: false}, function(fileEntry) {
-
-    fileEntry.remove(function() {
-      console.log('File removed.');
-    }, handleError);
-
-  }, handleError);
 	createFile("foo.txt");
 }
 

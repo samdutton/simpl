@@ -1,5 +1,14 @@
+var data = document.getElementById("data");
+function log(message){
+  data.innerHTML += message + "<br />";
+}
+
 var worker = new Worker("js/task.js");
 worker.addEventListener("message", function(event) {
-    document.getElementById("data").innerHTML = "Message from the worker: " + event.data;
+    log("Message from the worker: " + event.data);
 }, false);
-worker.postMessage("Message to worker"); // start the worker
+
+var messageToWorker = "fubar";
+log("Message to the worker: " + messageToWorker);
+worker.postMessage(messageToWorker); // start the worker
+

@@ -28,8 +28,15 @@ padding: 50px;
 
 button {
 margin: 0 10px 0 0;
+/* 
 padding: 5px;
-width: 70px;
+min-width: 70px;
+font-size: 1.2em;
+ */
+}
+
+button[disabled] {
+color: white;
 }
  
 div#container {
@@ -55,6 +62,12 @@ h2 {
 color: #ccc;
 font-family: Arial, sans-serif;
 margin: 30px 0 0 0;
+}
+
+html {
+/* avoid annoying page width change 
+when moving from the home page */
+overflow-y: scroll;
 }
  
 img {
