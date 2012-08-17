@@ -1,12 +1,12 @@
 document.getElementById("storeButton").addEventListener("click", function () {
   var key = document.getElementById("storeKey").value;
   var value = document.getElementById("storeValue").value;
-  localStorage.setItem(key, value); //same as localStorage[key] = value;
+  sessionStorage.setItem(key, value); //same as sessionStorage[key] = value;
 }, false);
 
 document.getElementById("retrieveButton").addEventListener("click", function () {
   var key = document.getElementById("retrieveKey").value;
-  var value = window.localStorage[key];
+  var value = window.sessionStorage[key];
   document.getElementById("retrieveValue").value = value;
 }, false);
 
@@ -15,6 +15,6 @@ document.getElementById("retrieveButton").addEventListener("click", function () 
 //   document.getElementById("data").innerHTML = "window.storage event: " + e.data;
 // });
 
-// var length = window.localStorage.length;
-// localStorage.removeItem(key);
-// localStorage.clear();
+// var length = window.sessionStorage.length;
+// sessionStorage.removeItem(key);
+// sessionStorage.clear();
