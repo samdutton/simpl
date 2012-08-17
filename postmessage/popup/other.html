@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-
 <title>simplestpossible: postMessage() other.html</title>
-
-
+<link rel="stylesheet" href="../../css/main.css">
 </head>
 
 <body>
+<div id="container">
 
-<h1>postMessage() popup.html</h1>
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> postMessage() other.html</h1>
+  <p id="data"></p>
 
-<p></p>
-
-<script>
-window.addEventListener("message", function receiveMessage(event) {  
-  console.log(JSON.stringify(event.origin) + "\n" + JSON.stringify(event.data));
-  document.querySelector("p").innerText = "Got a message from origin " + event.origin + ":\n\n" + event.data;
-  // posting back to message source, i.e. index.html
-  // second parameter is eventOrigin: must match event.origin
-  event.source.postMessage("hi! this is a message from other.html", "*");
-});  
-</script>
+  <script>
+  window.addEventListener("message", function receiveMessage(event) {  
+  console.log(event);
+    log("Got a message from event.origin " + event.origin + ": ");
+    log("<em>" + event.data + "</em>");
+    // posting back to message source, i.e. index.html
+    // second parameter is eventOrigin: must match event.origin
+    event.source.postMessage("hi! this is a message from other.html", "*");
+  });  
+  
+  function log(message){
+    document.getElementById("data").innerHTML += message + "<br /><br />";
+  }
+  </script>
+  
+<a href="view-source:http://simpl.info/postmessage/popup/other.html" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../../js/lib/ga.js"></script>
 </body>
-
 </html>

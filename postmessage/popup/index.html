@@ -1,34 +1,20 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-
-<title>simplestpossible: postMessage() index.html</title>
-
+<title>postMessage() with window.open()</title>
+<link rel="stylesheet" href="../../css/main.css">
 </head>
-
 <body>
+<div id="container">
 
-<h1>postMessage()</h1>
-
-<p>You will need to enable popups for this to work.</p>
-
-<p id="messageText"></p>
-
-<script>
-window.addEventListener("message", function(event) {    
-  document.querySelector("#messageText").innerText = "Sent a message to " + event.origin + 
-    " and got the following in response:\n\n" + event.data;
-}); 
-var other = window.open("other.html");
-setTimeout(function(){
-  other.postMessage("hi! this is a message from index.html", "*"); 
-}, 1);
-</script>
-
-
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> postMessage with window.open()</h1>
+  <p>You will need to enable popups for this to work.</p>
+  <p id="data"></p>
+  <script src="js/index.js"></script>
+  
+<a href="view-source:http://simpl.info/postmessage/popup/index.html" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../../js/lib/ga.js"></script>
 </body>
-
 </html>

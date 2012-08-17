@@ -3,17 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <title>postMessage() child.html</title>
+<style>
+body {
+background-color: #333;
+color: #eee;
+font-family: sans-serif;
+font-size: 24px; 
+}
+</style>
 </head>
 <body>
 
-<p>child.html in iframe</p>
+<p>child.html</p>
 
-<script>
-window.addEventListener("message", function receiveMessage(event) {  
-  alert("child.html (in the iframe) got a message from index.html:\n\n" + event.data + "\n\n...and will now send a message back again.");
-  event.source.postMessage("Hi from child.html!", "*");
-});  
-</script>
+<script src="js/child.js"></script>
 
 </body>
 </html>

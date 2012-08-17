@@ -8,23 +8,16 @@
 <body>
 <div id="container">
 
-<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> postMessage()</h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> postMessage()</h1>
+  
+  <iframe src="child.html" seamless></iframe>  
 
-<iframe src="child.html" seamless></iframe>
-
-<p id="messages"></p>
-
-<script>
-window.addEventListener("message", function(event) {    
-  document.querySelector("#messages").innerHTML = "<p>Sent a message to child.html in the iframe above and got the following in response:</p><p>" + event.data + "</p>";
-}); 
-
-var childWindow = document.querySelector("iframe").contentWindow;
-setTimeout(function(){ // allow construction of iframe
-  childWindow.postMessage("Hi from index.html!", "*"); 
-}, 1);
-</script>
-
+  <p id="data"></p>
+  
+  <p>See also <a href="popup/index.html" title="postMessage() example with popup window">window.open() version</a>.</p>
+  
+  <script src="js/index.js"></script>
+  
 <a href="view-source:http://simpl.info/postmessage" title="View source for this page" id="viewSource">View source</a>
 </div> 
 <script src="../js/lib/ga.js"></script>
