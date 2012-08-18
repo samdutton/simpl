@@ -27,14 +27,65 @@ body {
   margin: 0;
   padding: 0;
 }
-#various div {
-  border-style: solid;
-  border-bottom-color:  #cc0000;
-  border-left-color:  #cc0000;
-  display: inline-block;
+div#various {
   height: 100px;
-  text-align: center;
+  margin: 0 0 20px 0;
+}
+#various div {
+  border-color:  #cc0000;
+  border-top-style: solid;
+  border-right-style: solid;
+  float: left;
+  margin: 0 10px 0 0;
+}
+#various100 {
+  background-color: #cc0000;
+  border-width: 0px;
+  height: 100px;
   width: 100px;
+}
+#various50 {
+  border-width: 50px;
+  height: 50px;
+  width: 50px;
+}
+#various10 {
+  border-width: 10px;
+  height: 90px;
+  width: 90px;
+}
+#various5 {
+  border-width: 5px;
+  height: 95px;
+  width: 95px;
+}
+#various2 {
+  border-width: 2px;
+  height: 98px;
+  width: 98px;
+}
+#various1 {
+  border-width: 1px;
+  height: 99px;
+  width: 99px;
+}
+
+div#mobile div {
+  background-color: #eeeeee;
+  border: 1px solid black;
+  margin: 0 0 20px 0;
+}
+#px640x960 {
+  height: 958px;
+  width: 638px;
+}
+#px768x1024 {
+  height: 1022px;
+  width: 766px;
+}
+#px720x1280 {
+  height: 1278px;
+  width: 718px;
 }
 </style>
 
@@ -43,12 +94,18 @@ body {
 <body>
 
 <div id="various">
-  <div style="border-width: 100px">100</div>
-  <div style="border-width: 50px">50</div>
-  <div style="border-width: 10px">10</div>
-  <div style="border-width: 5px">5</div>
-  <div style="border-width: 2px">2</div>
-  <div style="border-width: 1px">1</div>
+  <div id="various100">100</div>
+  <div id="various50">50</div>
+  <div id="various10">10</div>
+  <div id="various5">5</div>
+  <div id="various2">2</div>
+  <div id="various1">1</div>
+</div>
+
+<div id="mobile">
+  <div id="px640x960">640x960px (iPhone)</div>
+  <div id="px768x1024">768x1024px (iPad)</div>
+  <div id="px720x1280">720x1280px (Galaxy Nexus)</div>
 </div>
 
 <a href="view-source:http://simpl.info/pixelsizes/examples.html" title="View source for this page" id="viewSource">View source</a>
