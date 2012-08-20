@@ -1,23 +1,53 @@
-var db = openDatabase("short name", "1.0", "display name", 2 * 1024 * 1024); // short name, version, display name, max size
+var db = openDatabase("songs", "1.0", "Favourite songs", 2 * 1024 * 1024); // short name, version, display name, max size
+
 db.transaction(function (tx) {
-  tx.executeSql("CREATE TABLE IF NOT EXISTS foo (id unique, text)");
-  tx.executeSql("INSERT INTO foo (id, text) VALUES (1, "blah")");
-});
+//  tx.executeSql('DROP TABLE IF EXISTS songs');
+  tx.executeSql("CREATE TABLE IF NOT EXISTS songs (artist varchar(255), song varchar(255))", [], null, handleError);
+}, null, null); // error handler, success handler
 
-// tx.executeSql("DELETE FROM todo WHERE ID=?", [id],
-//     html5rocks.webdb.onSuccess,
-//     html5rocks.webdb.onError);
-// });
+function addSong(artist, song){
+  db.transaction(function (tx) {  
+    tx.executeSql("INSERT INTO songs (artist, song) VALUES (?, ?)", [artist, song]);
+  }, handleError, function(e){
+    log("Added: <br />" + song + " by " + artist);
+  });
+}
 
-// var statement = 'SELECT poemIndex, poemTitle, lineNumber, lineText FROM poems WHERE lineText like "%' + query + '%"'; 
+function findSong(text) {
+  db.transaction(function (tx) {  // readTransaction() is apparently faster
+    var statement = 'SELECT artist, song FROM songs WHERE artist LIKE "%' + text + '%" OR song like "%' + text + '%"';    
+    tx.executeSql(statement, [], function(tx, results){ // array unused here: ? field values not used in query statement
+      var numRows = results.rows.length;
+      for (var i = 0; i != numRows; ++i) {
+        var row = results.rows.item(i);
+        log("Found: <br />" + row["song"] + " by " + row["artist"]);
+      }
+    }, handleError); 
+  });
+}
 
-tx.executeSql("SELECT * FROM foo", [], function (tx, results) {
-  var len = results.rows.length, i;
-  for (i = 0; i < len; i++) {
-    log(results.rows.item(i).text);
-  }
-});
+// tx.executeSql("DELETE FROM songs WHERE SONG=?", [song], handleError, null);
+
+function handleError(transaction, error) {
+  log("Sorry. Something went wrong: " + error.message + ", code: " + error.code);
+  return false;
+}
 
 function log(message){
-  document.getElementById("data").innerHTML += message + "<br />";
+  document.getElementById("data").innerHTML += message + "<br /><br />";
 }
+
+
+
+var storeButton = document.getElementById("storeButton");
+var artist = document.getElementById("artist");
+var song = document.getElementById("song");
+storeButton.addEventListener("click", function(){
+  addSong(artist.value, song.value);
+});
+
+var query = document.getElementById("query");
+findButton.addEventListener("click", function(){
+  findSong(query.value);
+});
+

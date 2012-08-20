@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Web Fonts</title>
+<link rel="stylesheet" href="../css/main.css">
+
+  <style type="text/css">
+  div.fontExample {
+    color: white;
+    font-size: 2em;
+    margin: 0 0 0.5em 0;
+  }
+  @font-face {
+      font-family: "GraublauWeb";
+      src: url(GraublauWeb.otf) format("opentype");
+  }  
+  div#localFont {
+    font-family: GraublauWeb, serif;
+  }
+  div#remoteFont {
+    font-family: 'Open Sans', serif;
+  }
+  </style>
+  
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Fonts</h1>
+  
+  <div id="localFont" class="fontExample">This is a font called Graublau which is stored locally.</div>
+  <div id="remoteFont" class="fontExample">This is a font called Consolas which is retrieved from fonts.googleapis.com.</div>  
+
+<a href="view-source:http://simpl.info/webfonts" title="View source for this page" id="viewSource">View source</a>
+</div> 
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
