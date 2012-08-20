@@ -1,102 +1,136 @@
-// https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB
+window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+var request = window.indexedDB.open("CandyDB");
+request.onsuccess = function(event) {
+console.log(event);
+  var db = request.result;
+  if (db.version != "1") {
+    // User's first visit, initialize database.
+    var createdObjectStoreCount = 0;
+    var objectStores = [
+      { name: "kids", keyPath: "id", autoIncrement: true },
+      { name: "candy", keyPath: "id", autoIncrement: true },
+      { name: "candySales", keyPath: "", autoIncrement: true }
+    ];
+ 
+    function objectStoreCreated(event) {
+      if (++createdObjectStoreCount == objectStores.length) {
+        db.setVersion("1").onsuccess = function(event) {
+          loadData(db);
+        };
+      }
+    }
+ 
+    for (var index = 0; index < objectStores.length; index++) {
+      var params = objectStores[index];
+      request = db.createObjectStore(params.name, params.keyPath,
+                                     params.autoIncrement);
+      request.onsuccess = objectStoreCreated;
+    }
+  }
+  else {
+    // User has been here before, no initialization required.
+    loadData(db);
+  }
+};
 
-// This will improve our code to be more readable and shorter
+/*
+
+// adapted from https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB and other sources
+
+// to cope with various browser implementations
 window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
 
-const customerData = [
-  { id: "1", artist: "Shel Silverstein", song: "Drop Kick Me Jesus (Through The Goalposts Of Life)" },
-  { id: "2", artist: "Mental As Anything", song: "If You Leave Me, Can I Come Too?" }
+if ('webkitIndexedDB' in window) {
+  window.IDBTransaction = window.webkitIDBTransaction;
+  window.IDBKeyRange = window.webkitIDBKeyRange;
+}
+
+const songs = [
+  {"timeStamp": new Date().getTime(), artist: "Shel Silverstein", song: "Drop Kick Me Jesus (Through The Goalposts Of Life)"},
+  {"timeStamp": new Date().getTime(), artist: "Mental As Anything", song: "If You Leave Me, Can I Come Too?"},
+  {"timeStamp": new Date().getTime(), artist: "The Slits", song: "Typical Girls"}  
 ];
 
 // second parameter is version, used when updating the database schema
-var request = indexedDB.open("My database", 1); 
- 
+var db;
+var request = indexedDB.open("songs");
 request.onerror = function(event) {
   log("Sorry! There was an error: code " + event.target.errorCode);
 };
+request.onsuccess = function(event) {
+  db = request.result;
+  log(db);
+}; 
+
 request.onupgradeneeded = function(event) {
   var db = event.target.result;
  
-  // Create an objectStore to hold information about our customers. We're
-  // going to use "ssn" as our key path because it's guaranteed to be
-  // unique.
-  var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+  // timestamp used as unique key
+  var objectStore = db.createObjectStore("songs", {keyPath: "timestamp"});
  
-  // Create an index to search customers by name. We may have duplicates
-  // so we can't use a unique index.
-  objectStore.createIndex("name", "name", { unique: false });
+  // Create an index to search by artist. 
+  objectStore.createIndex("artist", "artist", {unique: false});
  
-  // Create an index to search customers by email. We want to ensure that
-  // no two customers have the same email, so use a unique index.
-  objectStore.createIndex("email", "email", { unique: true });
+  // Create an index to search by song.
+  objectStore.createIndex("song", "song", {unique: true});
  
-  // Store values in the newly created objectStore.
-  for (var i in customerData) {
-    objectStore.add(customerData[i]);
+  var numSongs = songs.length;
+  for (var i = 0; i != numSongs; ++i) {
+    objectStore.add(songs[i]);
   }
 };
 
-var transaction = db.transaction(["customers"], IDBTransaction.readwrite);
+/*
+
+var transaction = db.transaction(["songs"], "readwrite"); // webkitIDBTransaction.READ_WRITE
 
 // Do something when all the data is added to the database.
 transaction.oncomplete = function(event) {
-  alert("All done!");
+  log("finished");
+  console.log(event);
 };
  
 transaction.onerror = function(event) {
-  // Don't forget to handle errors!
+  log("Sorry! There was an error: code " + event.target.errorCode);
 };
  
-var objectStore = transaction.objectStore("customers");
-for (var i in customerData) {
-  var request = objectStore.add(customerData[i]);
+var objectStore = transaction.objectStore("songs");
+for (var i in songs) {
+  var request = objectStore.add(songs[i]);
   request.onsuccess = function(event) {
-    // event.target.result == customerData[i].ssn
+    console.log("added " + event.target.result);
+    // event.target.result == songs[i].timestamp
   };
 }
 
+var transaction = db.transaction(["songs"]);
+var objectStore = transaction.objectStore("songs");
 
-var transaction = db.transaction(["customers"]);
-var objectStore = transaction.objectStore("customers");
-var request = objectStore.get("444-44-4444");
-request.onerror = function(event) {
-  // Handle errors!
+var cursorRequest = objectStore.openCursor();
+cursorRequest.onsuccess = function(e) {
+  var result = e.target.result;
+  if(!!result == false)
+    return;
+  log(result.value);
+  result.continue();
 };
-request.onsuccess = function(event) {
-  // Do something with the request.result!
-  alert("Name for SSN 444-44-4444 is " + request.result.name);
-};
-
-
-db.transaction("customers").objectStore("customers").get("444-44-4444").onsuccess = function(event) {
-  alert("Name for SSN 444-44-4444 is " + event.target.result.name);
+cursorRequest.onerror = function(error){
+  log("Sorry! There was an error: code " + event.target.errorCode);
 };
 
+//////////////////////////
 
- 
-objectStore.openCursor().onsuccess = function(event) {
-  var cursor = event.target.result;
-  if (cursor) {
-    alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
-    cursor.continue();
-  }
-  else {
-    alert("No more entries!");
-  }
+var index = objectStore.index("artist");
+
+index.get("Mental As Anything").onsuccess = function(event) {
+  alert("Mental As Anything's timestamp is " + event.target.result.timestamp);
 };
-
-
-var index = objectStore.index("name");
-index.get("Donna").onsuccess = function(event) {
-  alert("Donna's SSN is " + event.target.result.ssn);
-};
-
 
 index.openCursor().onsuccess = function(event) {
   var cursor = event.target.result;
   if (cursor) {
     // cursor.key is a name, like "Bill", and cursor.value is the whole object.
-    alert("Name: " + cursor.key + ", SSN: " + cursor.value.ssn + ", email: " + cursor.value.email);
+    alert("Artist: " + cursor.key + ", timestamp: " + cursor.value.timestamp + ", song: " + cursor.value.song);
     cursor.continue();
   }
 };
@@ -104,37 +138,26 @@ index.openCursor().onsuccess = function(event) {
 index.openKeyCursor().onsuccess = function(event) {
   var cursor = event.target.result;
   if (cursor) {
-    // cursor.key is a name, like "Bill", and cursor.value is the SSN.
-    // No way to directly get the rest of the stored object.
-    alert("Name: " + cursor.key + ", "SSN: " + cursor.value);
+    log("Artist: " + cursor.key + ", timestamp: " + cursor.value);
     cursor.continue();
   }
 };
 
-// Only match "Donna"
-var singleKeyRange = IDBKeyRange.only("Donna");
+// Only match "Mental As Anything"
+// there are lots of other types of key range
+var singleKeyRange = IDBKeyRange.only("Mental As Anything");
  
-// Match anything past "Bill", including "Bill"
-var lowerBoundKeyRange = IDBKeyRange.lowerBound("Bill");
- 
-// Match anything past "Bill", but don't include "Bill"
-var lowerBoundOpenKeyRange = IDBKeyRange.lowerBound("Bill", true);
- 
-// Match anything up to, but not including, "Donna"
-var upperBoundOpenKeyRange = IDBKeyRange.upperBound("Donna", true);
- 
-//Match anything between "Bill" and "Donna", but not including "Donna"
-var boundKeyRange = IDBKeyRange.bound("Bill", "Donna", false, true);
- 
-index.openCursor(boundKeyRange).onsuccess = function(event) {
+index.openCursor(singleKeyRange).onsuccess = function(event) {
   var cursor = event.target.result;
   if (cursor) {
-    // Do something with the matches.
+    console.log(cursor.value);   
     cursor.continue();
   }
 };
-
 var data = document.getElementById("data");
 function log(message){
-  data.innerHTML += message + "<br/><br/>";
+  console.log(message);
+//  data.innerHTML += message + "<br/><br/>";
 };
+
+*/
