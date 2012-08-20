@@ -4,15 +4,15 @@
 window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
 
 const customerData = [
-  { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
-  { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
+  { id: "1", artist: "Shel Silverstein", song: "Drop Kick Me Jesus (Through The Goalposts Of Life)" },
+  { id: "2", artist: "Mental As Anything", song: "If You Leave Me, Can I Come Too?" }
 ];
-const dbName = "the_name";
- 
-var request = indexedDB.open(dbName, 2);
+
+// second parameter is version, used when updating the database schema
+var request = indexedDB.open("My database", 1); 
  
 request.onerror = function(event) {
-  // Handle errors.
+  log("Sorry! There was an error: code " + event.target.errorCode);
 };
 request.onupgradeneeded = function(event) {
   var db = event.target.result;
@@ -132,4 +132,9 @@ index.openCursor(boundKeyRange).onsuccess = function(event) {
     // Do something with the matches.
     cursor.continue();
   }
+};
+
+var data = document.getElementById("data");
+function log(message){
+  data.innerHTML += message + "<br/><br/>";
 };

@@ -82,6 +82,9 @@ line-height: 1em;
 
 p#data {
 font-family: monospace;
+line-height: 1.2em;
+max-height: 150px;
+overflow-y: auto;
 }
 
 p.borderBelow {

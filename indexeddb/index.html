@@ -4,11 +4,65 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 <title>IndexedDB</title>
 <link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/main.css">
+  <style>
+  button {
+    width: 60px;
+  }
+  div {
+    margin: 0 0 20px 0;
+  }
+  fieldset {
+    border-color: #333;
+    margin: 0 0 20px 0;
+    padding: 25px;
+  }
+  input {
+    color: #666;
+    font-size: 1em;
+    width: 600px;
+  }
+  label {
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    width: 60px; 
+  }
+  legend {
+    color: #ccc;
+    padding: 0 15px 0 15px;
+  }
+  </style>
 </head>
 <body>
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> IndexedDB</h1>
+  
+  <fieldset>
+    <legend>Store song in database</legend>
+    <div>
+      <label for="artist">Artist: </label><input id="artist" type="text" value = "Mental As Anything" />
+    </div>
+    <div>
+      <label for="song">Song: </label><input id="song" type="text" value = "If You Leave Me Can I Come Too?" />
+    </div>
+    <button id="storeButton">Store</button>
+  </fieldset>
+
+  <fieldset>
+    <legend>Search</legend>
+      <div>
+        <label for="query">Find: </label><input id="query" type="text" value = "Mental" />
+      </div>
+      <button id="findButton">Find</button>
+  </fieldset>
+
+  <p id="data"></p>
+  
+  <p>In Google Chrome, view IndexedDB storage in the Resources tab.</p>
+  
+  <p>For more information see <a href="https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB" title="Mozilla Developer Network: Using IndexedDB">Using IndexedDB</a> on Mozilla Developer Network.</p>
   
   <script src="js/main.js"></script>
 
