@@ -33,8 +33,9 @@ function handleError(transaction, error) {
   return false;
 }
 
+var dataElement = document.getElementById("data");
 function log(message){
-  document.getElementById("data").innerHTML += message + "<br /><br />";
+  dataElement.innerHTML = message + "<br /><br />" + dataElement.innerHTML;
 }
 
 
