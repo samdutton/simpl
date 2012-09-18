@@ -46,10 +46,6 @@ padding: 20px 30px 20px 30px;
 max-width: 720px;
 }
  
-* html div#container {
-width: 540px;
-}
- 
 h1 {
 border-bottom: 1px solid #aaa;
 color: white;

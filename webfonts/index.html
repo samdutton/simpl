@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<base target="_blank">
 <title>Web Fonts</title>
 <link rel="stylesheet" href="../css/main.css">
 
@@ -19,12 +20,15 @@
     font-family: GraublauWeb, serif;
   }
   div#remoteFont {
-    font-family: 'Open Sans', serif;
+    font-family: "Open Sans", serif;
+  }
+  div#remoteSubset {
+    font-family: Inconsolata, cursive;
   }
   </style>
   
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+<link href="http://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
 </head>
 <body>
 <div id="container">
@@ -33,6 +37,7 @@
   
   <div id="localFont" class="fontExample">This is a font called Graublau which is stored locally.</div>
   <div id="remoteFont" class="fontExample">This is a font called Open Sans which is retrieved from fonts.googleapis.com.</div>  
+  <div id="remoteSubset" class="fontExample">This div uses the Inconsolata font, but only a subset is retrieved: the latin characters f, o, n and t. Other text is displayed in the fallback cursive font.</div>  
 
 <a href="https://github.com/samdutton/simpl/blob/master/webfonts" title="View source for this page" id="viewSource">View source</a>
 </div> 
