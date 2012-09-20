@@ -1,207 +1,72 @@
-window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB;
 
-// This is what our customer data looks like.
-const customerData = [
-  { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
-  { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
-];
-const dbName = "the_name";
+var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
 
-var request = window.indexedDB.open(dbName, 2);
+var dbVersion = 1.0;
+
+var request = indexedDB.open("My songs", dbVersion);
+var db;
+
+function createObjectStore(database) {
+  console.log("Creating objectStore");
+  database.createObjectStore("songs");
+}
+
+function getImageFile() {
+  putElephantInDb("blah");
+}
+
+function getTransaction(){
+  try {
+    var transaction = db.transaction(["songs"], "readwrite");
+  } catch(e) {
+    try {
+      var transaction = db.transaction(["songs"], IDBTransaction.READ_WRITE);
+      console.log("transaction: ", transaction);
+    } catch(e) {
+      console.log("Error creating transaction: ", e);    
+    }
+  }
+  return transaction;
+}      
+
+function putElephantInDb(blob) {
+  console.log("Putting elephants in IndexedDB");  
+  var transaction = getTransaction();
+  var put = transaction.objectStore("songs").put(blob, "image");
+  transaction.objectStore("songs").get("image").onsuccess = function (event) {
+    console.log(event.target.result);
+  };
+};
 
 request.onerror = function(event) {
-  // Handle errors.
+  console.log("Request error: ", event);
 };
+
 request.onsuccess = function(event) {
-  console.log("success", event);
-};
-request.onupgradeneeded = function(event) {
-	console.log("event: ", event);
-  // Create an objectStore to hold information about our customers. We're
-  // going to use "ssn" as our key path because it's guaranteed to be
-  // unique.
-  var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
-
-  // Create an index to search customers by name. We may have duplicates
-  // so we can't use a unique index.
-  objectStore.createIndex("name", "name", { unique: false });
-
-  // Create an index to search customers by email. We want to ensure that
-  // no two customers have the same email, so use a unique index.
-  objectStore.createIndex("email", "email", { unique: true });
-
-  // Store values in the newly created objectStore.
-  for (i in customerData) {
-    objectStore.add(customerData[i]);
-  }
-};
-
-
-
-/*
-
-window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
-var request = window.indexedDB.open("CandyDB");
-request.onsuccess = function(event) {
-console.log(event);
-  var db = request.result;
-  if (db.version != "1") {
-    // User's first visit, initialize database.
-    var createdObjectStoreCount = 0;
-    var objectStores = [
-      { name: "kids", keyPath: "id", autoIncrement: true },
-      { name: "candy", keyPath: "id", autoIncrement: true },
-      { name: "candySales", keyPath: "", autoIncrement: true }
-    ];
- 
-    function objectStoreCreated(event) {
-      if (++createdObjectStoreCount == objectStores.length) {
-        db.setVersion("1").onsuccess = function(event) {
-          loadData(db);
-        };
-      }
-    }
- 
-    for (var index = 0; index < objectStores.length; index++) {
-      var params = objectStores[index];
-      request = db.createObjectStore(params.name, params.keyPath,
-                                     params.autoIncrement);
-      request.onsuccess = objectStoreCreated;
+  console.log("Request success: ", event);
+  db = request.result;  
+  db.onerror = function(event) {
+    console.log("Database error:", event);
+  };  
+  // Interim solution for Google Chrome to create an objectStore. Will be deprecated.
+  if (db.setVersion) {
+    if (db.version != dbVersion) {
+      var setVersion = db.setVersion(dbVersion);
+      setVersion.onsuccess = function () {
+        createObjectStore(db);
+        getImageFile();
+      };
+    } else {
+    getImageFile();
     }
   }
   else {
-    // User has been here before, no initialization required.
-    loadData(db);
+    getImageFile();
   }
-};
-
-*/
-
-/*
-
-// adapted from https://developer.mozilla.org/en-US/docs/IndexedDB/Using_IndexedDB and other sources
-
-// to cope with various browser implementations
-window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
-
-if ('webkitIndexedDB' in window) {
-  window.IDBTransaction = window.webkitIDBTransaction;
-  window.IDBKeyRange = window.webkitIDBKeyRange;
 }
 
-const songs = [
-  {"timeStamp": new Date().getTime(), artist: "Shel Silverstein", song: "Drop Kick Me Jesus (Through The Goalposts Of Life)"},
-  {"timeStamp": new Date().getTime(), artist: "Mental As Anything", song: "If You Leave Me, Can I Come Too?"},
-  {"timeStamp": new Date().getTime(), artist: "The Slits", song: "Typical Girls"}  
-];
-
-// second parameter is version, used when updating the database schema
-var db;
-var request = indexedDB.open("songs");
-request.onerror = function(event) {
-  log("Sorry! There was an error: code " + event.target.errorCode);
+// For future use. Currently only in latest Firefox versions.
+request.onupgradeneeded = function (event) {
+  createObjectStore(event.target.result);
 };
-request.onsuccess = function(event) {
-  db = request.result;
-  log(db);
-}; 
-
-request.onupgradeneeded = function(event) {
-  var db = event.target.result;
- 
-  // timestamp used as unique key
-  var objectStore = db.createObjectStore("songs", {keyPath: "timestamp"});
- 
-  // Create an index to search by artist. 
-  objectStore.createIndex("artist", "artist", {unique: false});
- 
-  // Create an index to search by song.
-  objectStore.createIndex("song", "song", {unique: true});
- 
-  var numSongs = songs.length;
-  for (var i = 0; i != numSongs; ++i) {
-    objectStore.add(songs[i]);
-  }
-};
-
-/*
-
-var transaction = db.transaction(["songs"], "readwrite"); // webkitIDBTransaction.READ_WRITE
-
-// Do something when all the data is added to the database.
-transaction.oncomplete = function(event) {
-  log("finished");
-  console.log(event);
-};
- 
-transaction.onerror = function(event) {
-  log("Sorry! There was an error: code " + event.target.errorCode);
-};
- 
-var objectStore = transaction.objectStore("songs");
-for (var i in songs) {
-  var request = objectStore.add(songs[i]);
-  request.onsuccess = function(event) {
-    console.log("added " + event.target.result);
-    // event.target.result == songs[i].timestamp
-  };
-}
-
-var transaction = db.transaction(["songs"]);
-var objectStore = transaction.objectStore("songs");
-
-var cursorRequest = objectStore.openCursor();
-cursorRequest.onsuccess = function(e) {
-  var result = e.target.result;
-  if(!!result == false)
-    return;
-  log(result.value);
-  result.continue();
-};
-cursorRequest.onerror = function(error){
-  log("Sorry! There was an error: code " + event.target.errorCode);
-};
-
-//////////////////////////
-
-var index = objectStore.index("artist");
-
-index.get("Mental As Anything").onsuccess = function(event) {
-  alert("Mental As Anything's timestamp is " + event.target.result.timestamp);
-};
-
-index.openCursor().onsuccess = function(event) {
-  var cursor = event.target.result;
-  if (cursor) {
-    // cursor.key is a name, like "Bill", and cursor.value is the whole object.
-    alert("Artist: " + cursor.key + ", timestamp: " + cursor.value.timestamp + ", song: " + cursor.value.song);
-    cursor.continue();
-  }
-};
- 
-index.openKeyCursor().onsuccess = function(event) {
-  var cursor = event.target.result;
-  if (cursor) {
-    log("Artist: " + cursor.key + ", timestamp: " + cursor.value);
-    cursor.continue();
-  }
-};
-
-// Only match "Mental As Anything"
-// there are lots of other types of key range
-var singleKeyRange = IDBKeyRange.only("Mental As Anything");
- 
-index.openCursor(singleKeyRange).onsuccess = function(event) {
-  var cursor = event.target.result;
-  if (cursor) {
-    console.log(cursor.value);   
-    cursor.continue();
-  }
-};
-var data = document.getElementById("data");
-function log(message){
-  console.log(message);
-//  data.innerHTML += message + "<br/><br/>";
-};
-
-*/
