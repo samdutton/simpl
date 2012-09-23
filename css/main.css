@@ -79,7 +79,7 @@ line-height: 1.2em;
 p#data {
 font-family: monospace;
 line-height: 1.2em;
-max-height: 200px;
+max-height: 300px;
 overflow-y: auto;
 border-top: 1px dotted #666;
 padding: 16px 0 0 0;
