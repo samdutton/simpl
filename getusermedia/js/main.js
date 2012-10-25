@@ -2,7 +2,9 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
     navigator.mozGetUserMedia || navigator.msGetUserMedia;
 window.URL = window.URL || window.webkitURL;
 
-navigator.getUserMedia({video: true}, function(localMediaStream) { 
+var stream;
+navigator.getUserMedia({video: true}, function(localMediaStream) {
+  window.stream = localMediaStream;
   var video = document.querySelector("video");
   try {
     video.src = window.URL.createObjectURL(localMediaStream);

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<title>Video with overlay</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+  div#videoContainer{
+    position: relative;
+  }
+  div#overlay {
+    background: red;
+    font-size: 36px;
+    font-weight: bold;
+    height: 114px;
+    opacity: 0.7;
+    padding: 74px 0 0 0;
+    position: absolute;
+    text-align: center;
+    top: 104px;
+    width: 720px;
+    z-index: 1;
+  }
+  </style>
+
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with &lt;div&gt; overlay</h1>
+
+  <div id="videoContainer">
+    <div id="overlay">This &lt;div&gt; is over the video element.</div>
+    <video autoplay controls>
+      <source src="video/chrome.webm" type="video/webm" />
+      <source src="video/chrome.ogv" type="video/ogg" />
+      <source src="video/chrome.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'" />
+      <p>This browser does not support the video element.</p>
+    </video>
+  </div>
+
+  <p id="videoSrc"></p>
+
+  <script>
+  document.querySelector("video").addEventListener("loadedmetadata", function(){
+  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + this.currentSrc;
+  });
+  </script>
+
+<a href="https://github.com/samdutton/simpl/blob/master/video/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

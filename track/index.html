@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <title>The track element</title>
 <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
 <div id="container">
-  
+
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> The track element</h1>
-  
+
   <video controls autoplay>
+      <source src="video/developerStories-en.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'" />
       <source src="video/developerStories-en.webm" type='video/webm; codecs="vp8, vorbis"' />
+	    <source src="video/developerStories-en.ogv" type="video/ogg" />
       <track label="English subtitles" kind="subtitles" srclang="en" src="tracks/developerStories-subtitles-en.vtt" default />
-  </video>  
-  
+  </video>
+
   <p id="data" style="height: 150px;"></p>
-  
+
   <script src="js/main.js"></script>
-  
+
   <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/track/basics/" title="Track element article on HTML5 Rocks by Sam Dutton">Getting Started With the Track Element</a>.</p>
 
 <a href="https://github.com/samdutton/simpl/blob/master/track/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div> 
+</div>
 <script src="../js/lib/ga.js"></script>
 </body>
 </html>
