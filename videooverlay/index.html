@@ -15,15 +15,10 @@
   }
   div#overlay {
     background: red;
-    font-size: 36px;
     font-weight: bold;
-    height: 114px;
     opacity: 0.7;
-    padding: 74px 0 0 0;
+    padding: 10px;
     position: absolute;
-    text-align: center;
-    top: 104px;
-    width: 720px;
     z-index: 1;
   }
   </style>
@@ -35,7 +30,7 @@
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with &lt;div&gt; overlay</h1>
 
   <div id="videoContainer">
-    <div id="overlay">This &lt;div&gt; is over the video element.</div>
+    <div id="overlay">This 0.7 opacity &lt;div&gt; is over the video element.</div>
     <video autoplay controls>
       <source src="video/chrome.webm" type="video/webm" />
       <source src="video/chrome.ogv" type="video/ogg" />
@@ -48,7 +43,8 @@
 
   <script>
   document.querySelector("video").addEventListener("loadedmetadata", function(){
-  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + this.currentSrc;
+    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+    document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
   });
   </script>
 

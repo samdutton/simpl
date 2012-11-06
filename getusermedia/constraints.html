@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<title>getUserMedia</title>
+<link rel="stylesheet" href="../css/main.css" />
+<style>
+@media screen and (min-width: 1000px) {
+  video {
+    height: 540px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia</h1>
+
+  <video autoplay></video>
+
+  <script>
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.URL = window.URL || window.webkitURL;
+
+var stream;
+navigator.getUserMedia({
+		video: {
+			mandatory: {
+				minWidth: 1024,
+				minHeight: 768
+			}
+		}
+ }, function(localMediaStream) {
+  window.stream = localMediaStream;
+  var video = document.querySelector("video");
+  try {
+    video.src = window.URL.createObjectURL(localMediaStream);
+  } catch(e) {
+    try {
+      video.src = localMediaStream;
+      video.play();
+    } catch(e){
+      console.log("Error setting video src: ", e);
+    }
+  }
+}, function(error) {
+  console.log("navigator.getUserMedia error: ", error);
+});
+  </script>
+
+  <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
+
+<a href="https://github.com/samdutton/simpl/blob/master/getusermedia/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

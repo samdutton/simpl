@@ -25,7 +25,8 @@
 
   <script>
   document.querySelector("video").addEventListener("loadedmetadata", function(){
-  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + this.currentSrc;
+    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
   });
   </script>
 
