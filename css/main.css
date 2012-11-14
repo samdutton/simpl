@@ -2,7 +2,7 @@ a {
 color: #77aaff;
 text-decoration: none;
 }
- 
+
 a:hover {
 color: #88bbff;
 text-decoration: underline;
@@ -11,14 +11,14 @@ text-decoration: underline;
 a#viewSource {
 display: block;
 font-size: 18px;
-margin: 30px 0 0 0; 
+margin: 30px 0 0 0;
 border-top: 1px solid #999;
 padding: 20px 0 0 0;
 }
- 
+
 div#links a {
 display: block;
-line-height: 2em; 
+line-height: 2.5em;
 }
 
 body {
@@ -29,7 +29,7 @@ padding: 20px;
 
 button {
 margin: 0 10px 0 0;
-/* 
+/*
 padding: 5px;
 min-width: 70px;
 font-size: 1.2em;
@@ -39,14 +39,14 @@ font-size: 1.2em;
 button[disabled] {
 color: white;
 }
- 
+
 div#container {
 background: #000;
 margin: 0 auto 0 auto;
 padding: 15px 30px 20px 30px;
 max-width: 720px;
 }
- 
+
 h1 {
 border-bottom: 1px solid #aaa;
 color: white;
@@ -54,7 +54,7 @@ font-family: Arial, sans-serif;
 margin: 0 0 30px 0;
 padding: 0 0 10px 0;
 }
- 
+
 h2 {
 color: #ccc;
 font-family: Arial, sans-serif;
@@ -62,15 +62,15 @@ margin: 30px 0 10px 0;
 }
 
 html {
-/* avoid annoying page width change 
+/* avoid annoying page width change
 when moving from the home page */
 overflow-y: scroll;
 }
- 
+
 img {
 border: none;
 }
- 
+
 p {
 color: #eee;
 font-size: 18px;

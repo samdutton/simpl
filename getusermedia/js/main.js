@@ -10,7 +10,7 @@ navigator.getUserMedia({video: true}, function(localMediaStream) {
     video.src = window.URL.createObjectURL(localMediaStream);
   } catch(e) {
     try {
-      video.src = localMediaStream;
+      video.mozSrcObject = localMediaStream;
       video.play();
     } catch(e){
       console.log("Error setting video src: ", e);

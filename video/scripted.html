@@ -6,25 +6,28 @@
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
-<title>The video element</title>
+<title>The video element: scripted playback</title>
 <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
 <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video </h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with scripted playback</h1>
 
-  <video autoplay controls>
+  <video controls>
     <source src="video/chrome.webm" type="video/webm" />
     <source src="video/chrome.ogv" type="video/ogg" />
     <source src="video/chrome.mp4" type="video/mp4; codecs='avc1.42E01E, mp4a.40.2'" />
     <p>This browser does not support the video element.</p>
   </video>
 
+  <p>Playback of this video is initiated by the <code>play()</code> method, not the autoplay attribute.</p>
+
   <p id="videoSrc"></p>
 
   <script>
   document.querySelector("video").addEventListener("loadedmetadata", function(){
+    this.play();
     var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
   	document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
   });
