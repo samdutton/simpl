@@ -1,7 +1,7 @@
 var battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
 
 function log(message){
-  document.querySelector("#data").innerHTML += message + <br />
+  document.querySelector("#data").innerHTML += message + "<br />";f
 }
 
 log("Battery level: " + battery.level);

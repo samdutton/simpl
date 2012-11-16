@@ -18,13 +18,15 @@ padding: 20px 0 0 0;
 
 div#links a {
 display: block;
-line-height: 2.5em;
+line-height: 1.3em;
+margin: 0 0 1.5em 0;
 }
 
 body {
 background: #666;
 font-family: Arial, sans-serif;
 padding: 20px;
+word-break: break-word;
 }
 
 button {
