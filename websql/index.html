@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" /> 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <title>WebSQL</title>
@@ -24,13 +24,13 @@
   input {
     color: #666;
     font-size: 1em;
-    width: 600px;
+    width: 120px;
   }
   label {
     color: white;
     display: inline-block;
     font-weight: bold;
-    width: 60px; 
+    width: 60px;
   }
   legend {
     color: #ccc;
@@ -40,20 +40,20 @@
     height: 150px;
   }
   </style>
-  
+
 </head>
 <body>
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> WebSQL</h1>
-  
+
   <fieldset>
-    <legend>Store song in database</legend>
+    <legend>Store song</legend>
     <div>
-      <label for="artist">Artist: </label><input id="artist" type="text" value = "Mental As Anything" />
+      <label for="artist">Artist: </label><input id="artist" type="text" value="" />
     </div>
     <div>
-      <label for="song">Song: </label><input id="song" type="text" value = "If You Leave Me Can I Come Too?" />
+      <label for="song">Song: </label><input id="song" type="text" value="" />
     </div>
     <button id="storeButton">Store</button>
   </fieldset>
@@ -61,19 +61,19 @@
   <fieldset>
     <legend>Free text search</legend>
       <div>
-        <label for="query">Find: </label><input id="query" type="text" value = "Mental" />
+        <label for="query">Find: </label><input id="query" type="text" value = "" />
       </div>
       <button id="findButton">Find</button>
   </fieldset>
 
   <p id="data"></p>
-  
+
   <p>In Google Chrome, view WebSQL databases in the Resources tab.</p>
-  
+
   <script src="js/main.js"></script>
 
 <a href="https://github.com/samdutton/simpl/blob/master/websql/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div> 
+</div>
 <script src="../js/lib/ga.js"></script>
 </body>
 </html>

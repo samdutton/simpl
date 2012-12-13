@@ -6,9 +6,11 @@ function log(message){
 }
 
 o = {};
+
 function observer(changes) {
-	log(JSON.stringify(changes));
+	log(JSON.stringify(changes).replace(/{/g, "<br />{").replace(/,/g, "<br />,")); // make it look a bit nicer
 }
+
 Object.observe(o, observer);
 
 o.a = "fred"; // new

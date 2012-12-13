@@ -10,7 +10,6 @@ text-decoration: underline;
 
 a#viewSource {
 display: block;
-font-size: 18px;
 margin: 30px 0 0 0;
 border-top: 1px solid #999;
 padding: 20px 0 0 0;
@@ -31,11 +30,6 @@ word-break: break-word;
 
 button {
 margin: 0 10px 0 0;
-/*
-padding: 5px;
-min-width: 70px;
-font-size: 1.2em;
- */
 }
 
 button[disabled] {
@@ -75,12 +69,11 @@ border: none;
 
 p {
 color: #eee;
-font-size: 18px;
-line-height: 1.2em;
+line-height: 1.6em;
 }
 
 p#data {
-font-family: monospace;
+font-family: Courier New, monospace;
 line-height: 1.2em;
 max-height: 1000px;
 overflow-y: auto;

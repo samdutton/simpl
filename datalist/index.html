@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" /> 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <title>Datalist</title>
@@ -15,12 +15,10 @@
     padding: 20px;
   }
   input {
-    width: 200px;
-  }  
-  input[type=range] {
-    margin: 0 30px 0 30px;
+    display: block;
+    margin: 0 0 2em 0;
+    width: 100%;
   }
-  
   </style>
 
 </head>
@@ -28,45 +26,45 @@
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> datalist</h1>
-  
+
   <p></p>
-  
+
   <div id="inputs">
- 
+
     <input type="text" list="marsupials" placeholder="Start typing a word like 'Wombat'" />
     <datalist id="marsupials">
-      <option value="Bilby" /> 
-      <option value="Koala" /> 
-      <option value="Numbat" /> 
-      <option value="Pig-footed bandicoot" /> 
-      <option value="Potoroo" /> 
-      <option value="Quoll" /> 
-      <option value="Wallaby" /> 
-      <option value="Wombat" /> 
-    </datalist> 
-     
+      <option value="Bilby" />
+      <option value="Koala" />
+      <option value="Numbat" />
+      <option value="Pig-footed bandicoot" />
+      <option value="Potoroo" />
+      <option value="Quoll" />
+      <option value="Wallaby" />
+      <option value="Wombat" />
+    </datalist>
+
     <input type="range" value="0" min="0" max="100" list="numbers" />
     <datalist id="numbers">
-      <option value="10" /> 
-      <option value="15" /> 
-      <option value="30" /> 
-      <option value="50" /> 
-      <option value="90" /> 
+      <option value="10" />
+      <option value="15" />
+      <option value="30" />
+      <option value="50" />
+      <option value="90" />
     </datalist>
-    
+
     <input type="color" value="#000000" list="grays" />
     <datalist id="grays">
-      <option>#eeeeee</option> 
-      <option>#cccccc</option> 
-      <option>#aaaaaa</option> 
-      <option>#999999</option> 
-      <option>#444444</option> 
-    </datalist>  
-  
-  </div> 
+      <option>#eeeeee</option>
+      <option>#cccccc</option>
+      <option>#aaaaaa</option>
+      <option>#999999</option>
+      <option>#444444</option>
+    </datalist>
+
+  </div>
 
 <a href="https://github.com/samdutton/simpl/blob/master/datalist/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div> 
+</div>
 <script src="../js/lib/ga.js"></script>
 </body>
 </html>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <base target="_blank">
 <title>Web Fonts</title>
 <link rel="stylesheet" href="../css/main.css" />
@@ -15,7 +18,7 @@
   @font-face {
       font-family: "GraublauWeb";
       src: url(GraublauWeb.otf) format("opentype");
-  }  
+  }
   div#localFont {
     font-family: GraublauWeb, serif;
   }
@@ -26,7 +29,7 @@
     font-family: Inconsolata, cursive;
   }
   </style>
-  
+
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href="http://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
 </head>
@@ -34,13 +37,13 @@
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Fonts</h1>
-  
+  <p>If Web Fonts are enabled on this browser...</p>
   <div id="localFont" class="fontExample">This is a font called Graublau which is stored locally.</div>
-  <div id="remoteFont" class="fontExample">This is a font called Open Sans which is retrieved from fonts.googleapis.com.</div>  
-  <div id="remoteSubset" class="fontExample">This div uses the Inconsolata font, but only a subset is retrieved: the latin characters f, o, n and t. Other text is displayed in the fallback cursive font.</div>  
+  <div id="remoteFont" class="fontExample">This is a font called Open Sans which is retrieved from fonts.googleapis.com.</div>
+  <div id="remoteSubset" class="fontExample">This div uses the Inconsolata font, but only a subset is retrieved: the latin characters f, o, n and t. Other text is displayed in the fallback cursive font.</div>
 
 <a href="https://github.com/samdutton/simpl/blob/master/webfonts/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div> 
+</div>
 <script src="../js/lib/ga.js"></script>
 </body>
 </html>
