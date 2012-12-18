@@ -94,4 +94,3 @@ function iceCallback2(event){
     trace("Remote ICE candidate: \n " + event.candidate.candidate);
   }
 }
-

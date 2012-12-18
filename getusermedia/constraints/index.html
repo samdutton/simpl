@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<title>getUserMedia constraints</title>
+<link rel="stylesheet" href="../../css/main.css" />
+<style>
+</style>
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> getUserMedia constraints</h1>
+
+  <p></p>
+
+  <p>This example uses <a href="http://tools.ietf.org/html/draft-alvestrand-constraints-resolution-00#page-4" title="IETF constraints draft proposal">constraints</a> to specify video dimensions: in this example, <code>maxWidth:&nbsp;360</code>.</p>
+
+  <p>Currently you'll need <a href="https://tools.google.com/dlpage/chromesxs" title="Download Google Chrome Canary">Google Chrome Canary</a> for this to work.</p>
+
+  <p>Use the Chrome Dev Tools to view the actual dimensions of the video. To try different values, set a breakpoint before the navigator.getUserMedia() call (in <a href="js/main.js" title="JavaScript for this page">js/main.js</a>) then reload the page, change constraints, save, and continue.</p>
+
+  <!-- height set to auto to override main.css -->
+  <video autoplay style="height: auto; width: auto"></video>
+
+  <script src="js/main.js">
+
+  <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
+
+<a href="https://github.com/samdutton/simpl/blob/master/getusermedia/constraints/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../../js/lib/ga.js"></script>
+</body>
+</html>

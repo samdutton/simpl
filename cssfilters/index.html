@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<title>CSS filters</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+<style>
+.blur {
+-webkit-filter: blur(5px)
+}
+.grayscale {
+-webkit-filter: grayscale(1)
+}
+.saturate {
+-webkit-filter: saturate(5)
+}
+.sepia {
+-webkit-filter: sepia(1)
+}
+
+.multi {
+-webkit-filter: blur(4px) invert(1) opacity(0.5)
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS filters</h1>
+
+  <img src="balham.jpg" alt="No filter: Balham High Road and a rainbow" />
+  <img class="blur" src="balham.jpg" alt="Blur filter: Balham High Road and a rainbow" />
+  <img class="grayscale" src="balham.jpg" alt="Grayscale filter: Balham High Road and a rainbow" />
+  <img class="saturate" src="balham.jpg" alt="Saturate filter: Balham High Road and a rainbow" />
+  <img class="sepia" src="balham.jpg" alt="Sepia filter: Balham High Road and a rainbow" />
+  <img class="multi" src="balham.jpg" alt="Blur, invert and opacity filters: Balham High Road and a rainbow" />
+
+<a href="https://github.com/samdutton/simpl/blob/master/cssfilters/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

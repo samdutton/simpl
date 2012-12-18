@@ -1,5 +1,4 @@
 var data = document.querySelector("#data");
-console.log(data);
 
 function log(message){
   data.innerHTML += message + "<br /><br />";

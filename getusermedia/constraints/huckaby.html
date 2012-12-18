@@ -1,0 +1,79 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>getUserMedia Test Page - 720p HD Capture</title>
+	<style type="text/css">
+		body { font-family: Helvetica, sans-serif; background:#ddd; }
+		h2, h3 { margin-top:0; }
+		form { margin-top: 15px; }
+		form > input { margin-right: 15px; }
+		video { background: white; }
+		#results { margin:20px; padding:20px; border:1px solid; background:#ccc; }
+	</style>
+</head>
+<body>
+	<h1>getUserMedia Test Page - 720p HD Capture</h1>
+	<h3>Demonstrates 720p HD capture, if your camera supports it!</h3>
+
+	<video id="my_camera" style="width:1280px; height:720px;" autoplay="autoplay"></video>
+
+	<script language="JavaScript">
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
+		if (navigator.getUserMedia && window.URL) {
+			var video = document.getElementById('my_camera');
+
+			navigator.getUserMedia({
+				"audio": false,
+						video: {
+      mandatory: {
+        minWidth: 1280,
+        minHeight: 720
+      }
+    }
+			},
+			function(stream) {
+				// got access, attach stream to video
+				video.src = window.URL.createObjectURL( stream ) || stream;
+			});
+		}
+		else {
+			alert("getUserMedia not supported on your machine!");
+		}
+	</script>
+
+	<!-- A button for taking snaps -->
+	<form>
+		<input type=button value="Take HD Snapshot" onClick="take_snapshot()">
+	</form>
+
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			var video = document.getElementById('my_camera');
+
+			var canvas = document.createElement('canvas');
+			canvas.width = 1280;
+			canvas.height = 720;
+			var context = canvas.getContext('2d');
+
+			context.drawImage(video, 0, 0, 1280, 720);
+			var data_uri = canvas.toDataURL('image/jpeg', 1.0 );
+
+			// display results in page
+			document.getElementById('results').innerHTML =
+				'<h2>Here is your HD captured image:</h2>' +
+				'<img src="'+data_uri+'"/>';
+		}
+	</script>
+
+	<div id="results">Your captured image will appear here...</div>
+
+</body>
+</html>
+
