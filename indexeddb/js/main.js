@@ -67,6 +67,7 @@ request.onsuccess = function(event) {
 }
 
 // For future use. Currently only in latest Firefox versions.
+// GI: might be good to have the versions for FF,Chrome and IE (10:) here.
 request.onupgradeneeded = function (event) {
   createObjectStore(event.target.result);
 };
