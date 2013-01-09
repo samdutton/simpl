@@ -10,15 +10,22 @@ text-decoration: underline;
 
 a#viewSource {
 display: block;
-margin: 30px 0 0 0;
+margin: 1.3em 0 0 0;
 border-top: 1px solid #999;
-padding: 20px 0 0 0;
+padding: 1em 0 0 0;
 }
 
 div#links a {
 display: block;
 line-height: 1.3em;
 margin: 0 0 1.5em 0;
+}
+
+@media screen and (min-width: 1000px) {
+/* hack! to detect non-touch devices */
+  div#links a {
+		line-height: 0.8em;
+  }
 }
 
 body {
@@ -29,7 +36,8 @@ word-break: break-word;
 }
 
 button {
-margin: 0 10px 0 0;
+margin: 0 1em 0 0;
+width: 6em;
 }
 
 button[disabled] {
@@ -39,16 +47,20 @@ color: white;
 div#container {
 background: #000;
 margin: 0 auto 0 auto;
-padding: 15px 30px 20px 30px;
-max-width: 720px;
+padding: 1em 1.5em 1.3em 1.5em;
+max-width: 721px;
+}
+
+div#links {
+	padding: 0.5em 0 0 0;
 }
 
 h1 {
 border-bottom: 1px solid #aaa;
 color: white;
 font-family: Arial, sans-serif;
-margin: 0 0 30px 0;
-padding: 0 0 10px 0;
+margin: 0 0 0.8em 0;
+padding: 0 0 0.4em 0;
 }
 
 h2 {
@@ -78,7 +90,7 @@ line-height: 1.2em;
 max-height: 1000px;
 overflow-y: auto;
 border-top: 1px dotted #666;
-padding: 16px 0 0 0;
+padding: 0 0 0 0;
 }
 
 p.borderBelow {

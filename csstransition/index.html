@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" /> 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <title>CSS transition</title>
@@ -15,18 +15,19 @@ p {
   color: #000000;
   font-size: 2.8em;
   font-weight: bold;
+  min-height: 20em;
   transition: background-color, color, width 2s;
-  -moz-transition: background-color, color, width 2s; 
+  -moz-transition: background-color, color, width 2s;
   -webkit-transition: all 2s;
   -o-transition: background-color, color, width 2s;
-  padding: 10px 10px 10px 10px;
-  width: 700px;
+  padding: 1em;
+  width: 40em;
 }
 
 p:hover {
   background-color: #222222;
   color: #ffffff;
-  width: 150px;
+  width: 10em;
 }
 </style>
 
@@ -35,12 +36,12 @@ p:hover {
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS transition</h1>
-  
+
   <p>Please hover over me right now!</p>
-  
+
 
 <a href="https://github.com/samdutton/simpl/blob/master/csstransition/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div> 
+</div>
 <script src="../js/lib/ga.js"></script>
 </body>
 </html>
