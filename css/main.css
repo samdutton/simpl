@@ -28,6 +28,10 @@ margin: 0 0 1.5em 0;
   }
 }
 
+audio {
+  max-width: 100%;
+}
+
 body {
 background: #666;
 font-family: Arial, sans-serif;
@@ -77,6 +81,7 @@ overflow-y: scroll;
 
 img {
 border: none;
+max-width: 100%;
 }
 
 p {
@@ -85,12 +90,12 @@ line-height: 1.6em;
 }
 
 p#data {
+border-top: 1px dotted #666;
 font-family: Courier New, monospace;
-line-height: 1.2em;
+line-height: 1.3em;
 max-height: 1000px;
 overflow-y: auto;
-border-top: 1px dotted #666;
-padding: 0 0 0 0;
+padding: 1em 0 0 0;
 }
 
 p.borderBelow {
