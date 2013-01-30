@@ -52,7 +52,6 @@ div#container {
 background: #000;
 margin: 0 auto 0 auto;
 padding: 1em 1.5em 1.3em 1.5em;
-max-width: 721px;
 }
 
 div#links {
@@ -105,17 +104,16 @@ padding: 0 0 20px 0;
 
 video {
 background: #222;
+width: 100%;
 }
 
 @media screen and (min-width: 1000px) {
   video {
-    width: 720px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   video {
-    width: 100%;
   }
 }
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+<title>Web Audio with RTCPeerConnection</title>
+<link rel="stylesheet" href="../css/main.css" />
+<style>
+audio {
+	margin: 0 0 1em 0;
+}
+p#gettingAudio {
+	color: red;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Audio with RTCPeerConnection</h1>
+
+
+<audio id="aud" controls autoplay></audio>
+
+<div>
+	<button id="call" disabled onclick="call()">Call</button>
+	<button id="hangup" disabled onclick="hangup()">Hang Up</button>
+	<p id="gettingAudio">Getting audio...</p>
+</div>
+
+<p>An audio source provided by WebAudio is encoded and transmitted via PeerConnection, then played out via an audio element.</p>
+
+<p>Press Call and listen to the Opus-encoded audio file. Press any key to mix in a short drum sound. </p>
+
+<p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/" title="HTML5 Rocks article about WebRTC by Sam Dutton">Getting Started With WebRTC</a> and <a href="http://www.html5rocks.com/en/tutorials/webaudio/intro/" title="HTML5 Rocks tutorial: Getting started with the Web Audio API">Getting started with the Web Audio API</a>.</p>
+
+<p>The code for this example was adapted from a demo by Henrik Andreasson.</p>
+
+<script src="js/main.js"></script>
+
+<a href="view-source:http://simpl.info/webrtcwebaudio/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

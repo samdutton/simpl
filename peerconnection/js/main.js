@@ -34,10 +34,24 @@ function call() {
   btn2.disabled = true;
   btn3.disabled = false;
   trace("Starting call");
-  if (localstream.videoTracks.length > 0)
-    trace('Using Video device: ' + localstream.videoTracks[0].label);
-  if (localstream.audioTracks.length > 0)
-    trace('Using Audio device: ' + localstream.audioTracks[0].label);
+
+  // temporary hacks to cope with API change
+  if (!!localstream.videoTracks && !localstream.getVideoTracks) {
+    localstream.getVideoTracks = function(){
+      return this.videoTracks;
+    }
+  }
+  if (!!localstream.audioTracks && !localstream.getAudioTracks) {
+    localstream.getAudioTracks = function(){
+      return this.audioTracks;
+    }
+  }
+  ///////////////////////////////////////////
+
+  if (localstream.getVideoTracks().length > 0)
+    trace('Using Video device: ' + localstream.getVideoTracks()[0].label);
+  if (localstream.getAudioTracks().length > 0)
+    trace('Using Audio device: ' + localstream.getAudioTracks()[0].label);
   var servers = null;
   pc1 = new webkitRTCPeerConnection(servers);
   trace("Created local peer connection object pc1");
