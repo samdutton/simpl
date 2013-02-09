@@ -10,24 +10,21 @@
 <link rel="stylesheet" href="../css/main.css" />
 
 <style>
-p {
+div#transition {
   background-color: #ffffff;
   color: #000000;
-  font-size: 2.8em;
+  font-size: 2.0em;
   font-weight: bold;
-  min-height: 20em;
-  transition: background-color, color, width 2s;
-  -moz-transition: background-color, color, width 2s;
+  transition: all 2s;
   -webkit-transition: all 2s;
-  -o-transition: background-color, color, width 2s;
-  padding: 1em;
-  width: 40em;
+  padding: 0.5em;
+  width: 80%;
 }
 
-p:hover {
+div#transition:hover {
   background-color: #222222;
   color: #ffffff;
-  width: 10em;
+  width: 20%;
 }
 </style>
 
@@ -37,7 +34,7 @@ p:hover {
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS transition</h1>
 
-  <p>Please hover over me right now!</p>
+  <div id="transition">Please hover over me right now!</div>
 
 
 <a href="https://github.com/samdutton/simpl/blob/master/csstransition/index.html" title="View source for this page on github" id="viewSource">View source on github</a>

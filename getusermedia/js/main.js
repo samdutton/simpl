@@ -2,9 +2,8 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
     navigator.mozGetUserMedia || navigator.msGetUserMedia;
 window.URL = window.URL || window.webkitURL;
 
-var stream;
-var n = navigator.getUserMedia({audio: true, video: true}, function(localMediaStream) {
-  window.stream = localMediaStream;
+navigator.getUserMedia({audio: true, video: true}, function(localMediaStream) { // remove audio for Firefox stable support
+  window.stream = localMediaStream; // so stream can be inspected from the console.
   var video = document.querySelector("video");
   try {
     video.src = window.URL.createObjectURL(localMediaStream);
@@ -20,6 +19,4 @@ var n = navigator.getUserMedia({audio: true, video: true}, function(localMediaSt
 }, function(error) {
   console.log("navigator.getUserMedia error: ", error);
 });
-
-console.log(n);
 

@@ -1,3 +1,5 @@
+
+
 performance.now = performance.now || performance.webkitNow; // hack added by SD!
 
 //var vid1 = document.getElementById("vid1");
@@ -5,7 +7,6 @@ performance.now = performance.now || performance.webkitNow; // hack added by SD!
 btn1.disabled = false;
 btn2.disabled = true;
 btn3.disabled = true;
-var pc1,pc2;
 var localstream;
 
 function trace(text) {
@@ -53,10 +54,10 @@ function call() {
   if (localstream.getAudioTracks().length > 0)
     trace('Using Audio device: ' + localstream.getAudioTracks()[0].label);
   var servers = null;
-  pc1 = new webkitRTCPeerConnection(servers);
+  window.pc1 = new webkitRTCPeerConnection(servers);
   trace("Created local peer connection object pc1");
   pc1.onicecandidate = iceCallback1;
-  pc2 = new webkitRTCPeerConnection(servers);
+  window.pc2 = new webkitRTCPeerConnection(servers);
   trace("Created remote peer connection object pc2");
   pc2.onicecandidate = iceCallback2;
   pc2.onaddstream = gotRemoteStream;

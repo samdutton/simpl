@@ -7,8 +7,8 @@ var drumSoundBuffer = 0;
 var voiceSoundBuffer = 0;
 var buttonCall = 0;
 var buttonHangUp = 0;
-
 var pauseTime = 0;
+var audioElement = document.querySelector("audio");
 
 function trace(text) {
   if (text[text.length - 1] == '\n') {
@@ -82,12 +82,12 @@ function hangup() {
 }
 
 function gotRemoteStream(e){
-  aud.src = webkitURL.createObjectURL(e.stream);
-  aud.addEventListener("pause", function(){
+  audioElement.src = webkitURL.createObjectURL(e.stream);
+  audioElement.addEventListener("pause", function(){
     voiceSound.stop(0);
     pauseTime += context.currentTime - voiceSound.lastStartTime;
   });
-  aud.addEventListener("play", function(){
+  audioElement.addEventListener("play", function(){
     console.log("play");
     voiceSound = context.createBufferSource();  // creates an AudioBufferSourceNode.
     voiceSound.buffer = voiceSoundBuffer;
@@ -165,4 +165,4 @@ function init() {
   document.addEventListener("keydown", handleKeyDown, false);
 }
 
-document.body.onload = init;
+init();

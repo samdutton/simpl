@@ -45,11 +45,12 @@ width: 5.7em;
 }
 
 button[disabled] {
-color: #aaa;
+color: white;
 }
 
 code {
 font-family: 'Courier New', monospace;
+font-weight: bold;
 letter-spacing: -0.1em;
 }
 
@@ -75,7 +76,7 @@ padding: 0 0 0.4em 0;
 h2 {
 color: #ccc;
 font-family: Arial, sans-serif;
-margin: 1.8em 0 0.6em 0;
+margin: 30px 0 10px 0;
 }
 
 html {
