@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 <title>RTCDataChannel</title>
 <link rel="stylesheet" href="../css/main.css" />
 <style>
 div#buttons {
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
 }
 div#receive {
 }
 div#send {
-  margin: 0 2.9em 0 0;
+  float: left;
+  margin: 0 3em 1em 0;
 }
 div#sendReceive {
-  height: 14.0em;
   margin: 0 0 1em 0;
 }
-div#sendReceive div {
-  float: left;
-  width: 45%;
-}
-h1 {
+\h1 {
   margin: 0 0 1em 0;
 }
 h2 {
@@ -33,9 +30,8 @@ textarea {
   color: #444;
   font-family: 'Courier New', monospace;
   font-size: 1em;
-  height: 10em;
+  height: 7.0em;
   padding: 0.5em;
-  width: 100%;
 }
 </style>
 </head>
@@ -43,6 +39,12 @@ textarea {
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> RTCDataChannel</h1>
+
+  <div id="buttons">
+    <button id="startButton" onclick="createConnection()">Start</button>
+    <button id="sendButton" onclick="sendData()">Send</button>
+    <button id="closeButton" onclick="closeDataChannels()">Stop</button>
+  </div>
 
   <div id="sendReceive">
     <div id="send">
@@ -55,15 +57,8 @@ textarea {
     </div>
   </div>
 
-  <p style="font-weight: bold">Press Start, enter some text, then press Send.</p>
-
-  <div id="buttons">
-    <button id="startButton" onclick="createConnection()">Start</button>
-    <button id="sendButton" onclick="sendData()">Send</button>
-    <button id="closeButton" onclick="closeDataChannels()">Stop</button>
-  </div>
-
-  <p>View the console to see what's happening. The <code>RTCPeerConnection</code> objects <code>pc1</code> and <code>pc2</code> are in global scope, so you can inspect them in the console as well.</p>
+  <p>View the console to see what's happening.</p>
+  <p>The <code>RTCPeerConnection</code> objects <code>pc1</code> and <code>pc2</code> are in global scope, so you can inspect them in the console as well.</p>
   <p>Code in this example used by kind permission of Vikas Marwaha.</p>
   <p>For more information about PeerConnection, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-rtcdatachannel" title="RTCDataChannel section of HTML5 Rocks article about WebRTC">Getting Started With WebRTC</a>.</p>
 

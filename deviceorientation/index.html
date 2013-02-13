@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
-    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
-    <title>Device Orientation</title>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<title>Device Orientation</title>
+
     <link rel="stylesheet" href="../css/main.css" />
     <style>
       #orientee {
@@ -19,16 +18,18 @@
         perspective: 300;
       }
     </style>
-  </head>
-  <body>
-    <div id="container">
-      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Device Orientation</h1>
 
-      <p>Tilting and rotating your laptop or device will transform the following image if Device Orientation is available.</p>
-      <img src="html5-logo-white.svg" alt="The HTML5 logo" id="orientee" />
+</head>
+<body>
+<div id="container">
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Device Orientation</h1>
 
-      <a href="https://github.com/samdutton/simpl/blob/master/deviceorientation/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-    </div>
+  <p>Tilting and rotating your laptop or device will transform the following image if Device Orientation is available.</p>
+  <img src="html5-logo-white.svg" alt="The HTML5 logo" id="orientee" />
+
+<a href="https://github.com/samdutton/simpl/blob/master/deviceorientation/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+
     <script>
       (function() {
         var logoElement = document.getElementById('orientee');
@@ -39,6 +40,7 @@
         }, true);
       })();
     </script>
-    <script src="../js/lib/ga.js"></script>
-  </body>
+
+<script src="../js/lib/ga.js"></script>
+</body>
 </html>
