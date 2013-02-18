@@ -8,7 +8,7 @@
 
 window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
-window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/, 
+window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/,
   handleInitSuccess, handleError);
 
 var fileSystem;
@@ -19,7 +19,7 @@ function handleInitSuccess(fileSystem) {
 }
 
 function createFile(fullPath){
-  fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/}, 
+  fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/},
     function(fileEntry) {
       log("Created file: " + fileEntry.fullPath);
       writeToFile(fileEntry, "Greetings from success callback!");
@@ -32,28 +32,27 @@ function writeToFile(fileEntry, text){
     fileWriter.onwriteend = function(e) {
       // read from file
       log('Wrote text <em>' + text + '</em> to file ' + fileEntry.fullPath);
-      readFromFile(fileEntry.fullPath); 
+      readFromFile(fileEntry.fullPath);
     };
     fileWriter.onerror = function(e) {
       log('Write failed: ' + e.toString());
     };
-    // Create a new Blob and write it to log.txt.
-    var blobBuilder = new WebKitBlobBuilder(); // Note: window.WebKitBlobBuilder in Chrome 12.
-    blobBuilder.append(text);
-    fileWriter.write(blobBuilder.getBlob('text/plain'));
+    // Create a new Blob and write it to file
+    var blob = new Blob([text], {type: "text/plain"}); // WebKitBlobBuilder deprecated
+    fileWriter.write(blob);
   }, handleError);
 }
 
 function readFromFile(fullPath){
-  fileSystem.root.getFile(fullPath, {}, function(fileEntry) {  
+  fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
     // Get a File object representing the file, then use FileReader to read its contents.
     fileEntry.file(function(file) {
-       var reader = new FileReader();  
+       var reader = new FileReader();
        reader.onloadend = function(e) {
          log("Read text <em>" + this.result + "</em> from file " + fullPath);
-       };  
+       };
        reader.readAsText(file);
-    }, handleError);  
+    }, handleError);
 
   }, handleError);
 }
