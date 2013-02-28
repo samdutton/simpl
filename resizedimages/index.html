@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<title>Resized images</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+<style>
+img {
+	display: block;
+	margin: 0 0 1em 0;
+}
+img#unresized {
+	border: 1px solid white;
+	padding: 0 0 1em 0;
+}
+img#widthPercent {
+	width: 50%;
+}
+img#widthEm {
+	width: 10em;
+}
+img#widthHeightPixel {
+	height: 200px;
+	width: 250px;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Resized images</h1>
+
+<p>The images below have been resized: CSS percent, pixel and em units; img element width attribute. The first is unresized.</p>
+
+	<img id="unresized" title="Unresized" src="images/crawleyLuxury500x400.jpg" alt="Photo of Crawley Luxury coach" />
+	<img id="widthPercent" title="50% width" src="images/crawleyLuxury500x400.jpg" alt="Photo of Crawley Luxury coach" />
+	<img id="widthHeightPixel" title="Width and height set with CSS to half original size" src="images/crawleyLuxury500x400.jpg" alt="Photo of Crawley Luxury coach" />
+	<img id="widthEm" title="Width set to 10em" src="images/crawleyLuxury500x400.jpg" alt="Photo of Crawley Luxury coach" />
+	<img title="Resized with height and width attributes" src="images/crawleyLuxury500x400.jpg" width="100px" alt="Photo of Crawley Luxury coach" />
+
+<a href="https://github.com/samdutton/simpl/blob/master/resizedimages/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
