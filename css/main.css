@@ -35,7 +35,8 @@ max-width: 100%;
 body {
 background: #666;
 font-family: Arial, sans-serif;
-padding: 20px;
+margin: 0;
+padding: 1.5em;
 word-break: break-word;
 }
 

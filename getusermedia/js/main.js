@@ -7,14 +7,9 @@ navigator.getUserMedia({audio: true, video: true}, function(localMediaStream) { 
   var video = document.querySelector("video");
   try {
     video.src = window.URL.createObjectURL(localMediaStream);
-    console.log(video.src);
+    video.play();
   } catch(e) {
-    try {
-      video.mozSrcObject = localMediaStream;
-      video.play();
-    } catch(e){
-      console.log("Error setting video src: ", e);
-    }
+    console.log("Error setting video src: ", e);
   }
 }, function(error) {
   console.log("navigator.getUserMedia error: ", error);

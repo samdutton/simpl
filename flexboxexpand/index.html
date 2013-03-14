@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<title>CSS flexbox expand</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+
+    html {
+      height: 100%; /* expand vertically to fit window/viewport */
+    }
+
+    body {
+      height: calc(100% - 3em); /* minus padding */
+      height: -webkit-calc(100% - 3em); /* minus padding */
+    }
+
+    div#container {
+      height: calc(100% - 2.3em);  /* minus padding */
+      height: -webkit-calc(100% - 2.3em);  /* minus padding */
+
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      display: -webkit-flexbox;
+
+      -moz-box-orient: vertical;
+      display: -moz-box;
+
+      -ms-box-orient: vertical;
+      display: -ms-box;
+      display: -ms-flexbox;
+
+      box-orient: vertical;
+      display: box;
+      display: flexbox;
+    }
+
+    div#expand {
+      background-color: #666;
+
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+
+      -moz-box-flex: 1;
+
+      -ms-box-flex: 1;
+      -ms-flex: 1;
+
+      box-flex: 1;
+      flex: 1;
+    }
+  </style>
+
+
+</head>
+<body>
+<div id="container">
+
+  <h1 style="margin: 0;"><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS flexbox expand</h1>
+
+    <p>The container div and div below expand to fit available space.</p>
+
+    <div id="expand"></div>
+
+<a href="https://github.com/samdutton/simpl/blob/master/flexboxexpand/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
