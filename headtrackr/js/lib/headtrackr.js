@@ -2,7 +2,7 @@
  * headtrackr library (https://www.github.com/auduno/headtrackr/)
  *
  * Copyright (c) 2012, Audun Mathias Øygard
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -28,7 +28,7 @@
  * FaceIt library license:
  *
  * Copyright (C)2009 Benjamin Jung
- * 
+ *
  * Licensed under the MIT License
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -52,10 +52,10 @@
  * Wrapper for headtrackr library
  *
  * Usage:
- *	var htracker = new headtrackr.Tracker(); 
- *	htracker.init(videoInput, canvasInput); 
- *	htracker.start(); 
- * 
+ *	var htracker = new headtrackr.Tracker();
+ *	htracker.init(videoInput, canvasInput);
+ *	htracker.start();
+ *
  * Optional parameters can be passed to Tracker like this:
  *	 new headtrackr.Tracker({ ui : false, altVideo : "somevideo.ogv" });
  *
@@ -83,9 +83,9 @@ headtrackr.rev = 2;
  * @constructor
  */
 headtrackr.Tracker = function(params) {
-	
+
 	if (!params) params = {};
-	
+
 	if (params.smoothing === undefined) params.smoothing = true;
 	if (params.retryDetection === undefined) params.retryDetection = true;
 	if (params.ui === undefined) params.ui = true;
@@ -103,7 +103,7 @@ headtrackr.Tracker = function(params) {
 	if (params.cameraOffset === undefined) params.cameraOffset = 11.5;
 	if (params.calcAngles === undefined) params.calcAngles = false;
 	if (params.headPosition === undefined) params.headPosition = true;
-	
+
 	var ui, smoother, facetracker, headposition, canvasContext, videoElement, detector;
 	var detectionTimer;
 	var fov = 0;
@@ -113,18 +113,18 @@ headtrackr.Tracker = function(params) {
 	var firstRun = true;
 	var videoFaded = false;
 	var headDiagonal = [];
-	
+
 	this.status = "";
-	
+
 	var statusEvent = document.createEvent("Event");
 	statusEvent.initEvent("headtrackrStatus", true, true);
-	
+
 	var headtrackerStatus = function(message) {
 		statusEvent.status = message;
 		document.dispatchEvent(statusEvent);
 		this.status = message;
 	}.bind(this);
-	
+
 	var insertAltVideo = function(video) {
 		if (params.altVideo !== undefined) {
 			if (supports_video()) {
@@ -144,14 +144,14 @@ headtrackr.Tracker = function(params) {
 			return false;
 		}
 	}
-	
+
 	this.init = function(video, canvas) {
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 		window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
 		// check for camerasupport
 		if (navigator.getUserMedia) {
 			headtrackerStatus("getUserMedia");
-			
+
 			// chrome 19 shim
 			var videoSelector = {video : true};
 			if (window.navigator.appVersion.match(/Chrome\/(.*?) /)) {
@@ -160,13 +160,13 @@ headtrackr.Tracker = function(params) {
 					videoSelector = "video";
 				}
 			};
-			
+
 			// opera shim
 			if (window.opera) {
 				window.URL = window.URL || {};
 				if (!window.URL.createObjectURL) window.URL.createObjectURL = function(obj) {return obj;};
 			}
-			
+
 			// set up stream
 			navigator.getUserMedia(videoSelector, function( stream ) {
 				headtrackerStatus("camera found");
@@ -186,11 +186,11 @@ headtrackr.Tracker = function(params) {
 				return false;
 			}
 		}
-		
+
 		videoElement = video;
 		canvasElement = canvas;
 		canvasContext = canvas.getContext("2d");
-		
+
 		// resize video when it is playing
 		video.addEventListener('playing', function() {
 			if(video.width > video.height) {
@@ -199,35 +199,35 @@ headtrackr.Tracker = function(params) {
 				video.height = 240;
 			}
 		}, false);
-		
+
 		// create ui if needed
 		if (params.ui) {
 			ui = new headtrackr.Ui();
 		}
-		
+
 		// create smoother if enabled
 		smoother = new headtrackr.Smoother(0.35, params.detectionInterval+15);
-		
+
 		this.initialized = true;
 	}
-	
+
 	track = function() {
 		// Copy video to canvas
 		canvasContext.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-		
+
 		// if facetracking hasn't started, initialize facetrackr
 		if (facetracker === undefined) {
 			facetracker = new headtrackr.facetrackr.Tracker({debug : params.debug, calcAngles : params.calcAngles});
 			facetracker.init(canvasElement);
 		}
-		
+
 		// track face
 		facetracker.track()
 		var faceObj = facetracker.getTrackingObject({debug : params.debug});
-		
+
 		if (faceObj.detection == "WB") headtrackerStatus("whitebalance");
 		if (firstRun && faceObj.detection == "VJ") headtrackerStatus("detecting");
-		
+
 		// check if we have a detection first
 		if (!(faceObj.confidence == 0)) {
 			if (faceObj.detection == "VJ") {
@@ -238,10 +238,10 @@ headtrackr.Tracker = function(params) {
 				if (((new Date).getTime() - detectionTimer) > 5000) {
 					headtrackerStatus("hints");
 				}
-				
+
 				var x = (faceObj.x + faceObj.width/2); //midpoint
 				var y = (faceObj.y + faceObj.height/2); //midpoint
-				
+
 				if (params.debug) {
 					// draw detected face on debuggercanvas
 					debugContext.strokeStyle = "#0000CC";
@@ -251,9 +251,9 @@ headtrackr.Tracker = function(params) {
 			if (faceObj.detection == "CS") {
 				var x = faceObj.x; //midpoint
 				var y = faceObj.y; //midpoint
-				
+
 				if (detectionTimer !== undefined) detectionTimer = undefined;
-				
+
 				if (params.debug) {
 					// draw tracked face on debuggercanvas
 					debugContext.translate(faceObj.x, faceObj.y)
@@ -263,26 +263,26 @@ headtrackr.Tracker = function(params) {
 					debugContext.rotate((Math.PI/2)-faceObj.angle);
 					debugContext.translate(-faceObj.x, -faceObj.y);
 				}
-				
+
 				// fade out video if it's showing
 				if (!videoFaded && params.fadeVideo) {
 					fadeVideo();
 					videoFaded = true;
 				}
-				
+
 				this.status = 'tracking';
-				
+
 				//check if we've lost tracking of face
 				if (faceObj.width == 0 || faceObj.height == 0) {
 					if (params.retryDetection) {
 						// retry facedetection
 						headtrackerStatus("redetecting");
-						
+
 						facetracker = new headtrackr.facetrackr.Tracker({whitebalancing : false, debug: params.debug, calcAngles : params.calcAngles});
 						facetracker.init(canvasElement);
 						faceFound = false;
 						headposition = undefined;
-						
+
 						// show video again if it's not already showing
 						if (videoFaded) {
 							videoElement.style.opacity = 1;
@@ -297,7 +297,7 @@ headtrackr.Tracker = function(params) {
 						headtrackerStatus("found");
 						faceFound = true;
 					}
-					
+
 					if (params.smoothing) {
 						// smooth values
 						if (!smoother.initialized) {
@@ -305,15 +305,15 @@ headtrackr.Tracker = function(params) {
 						}
 						faceObj = smoother.smooth(faceObj);
 					}
-					
+
 					// get headposition
 					if (headposition === undefined && params.headPosition) {
 						// wait until headdiagonal is stable before initializing headposition
 						var stable = false;
-						
+
 						// calculate headdiagonal
 						var headdiag = Math.sqrt(faceObj.width*faceObj.width + faceObj.height*faceObj.height);
-						
+
 						if (headDiagonal.length < 6) {
 							headDiagonal.push(headdiag);
 						} else {
@@ -323,7 +323,7 @@ headtrackr.Tracker = function(params) {
 								stable = true;
 							}
 						}
-						
+
 						if (stable) {
 							if (firstRun) {
 								if (params.fov === undefined) {
@@ -344,19 +344,19 @@ headtrackr.Tracker = function(params) {
 				}
 			}
 		}
-	 
+
 		if (run) {
 			detector = window.setTimeout(track, params.detectionInterval);
 		}
 	}.bind(this);
-	
+
 	var starter = function() {
 		// does some safety checks before starting
-		
+
 		// sometimes canvasContext is not available yet, so try and catch if it's not there...
 		try {
       canvasContext.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
-      
+
       // in some cases, the video sends events before starting to draw
       // so check that we have something on video before starting to track
       var canvasContent = headtrackr.getWhitebalance(canvasElement);
@@ -370,40 +370,40 @@ headtrackr.Tracker = function(params) {
       window.setTimeout(starter, 100);
     }
 	}
-	
+
 	this.start = function() {
 		// check if initialized
 		if (!this.initialized) return false;
-		
+
 		// check if video is playing, if not, return false
 		if (!(videoElement.currentTime > 0 && !videoElement.paused && !videoElement.ended)) {
-			
+
 			run = true;
 			//set event
 			videoElement.addEventListener('playing', starter, false);
-			
+
 			return true;
-		} else {			
+		} else {
 			starter();
 		}
-		
+
 		return true;
 	}
-	
+
 	this.stop = function() {
 		window.clearTimeout(detector);
 		run = false;
 		headtrackerStatus("stopped");
 		facetracker = undefined;
 		faceFound = false;
-		
+
 		return true;
 	}
-	
+
 	this.getFOV = function() {
 		return fov;
 	}
-	
+
 	// fade out videoElement
 	var fadeVideo = function() {
 		if (videoElement.style.opacity == "") {
@@ -421,29 +421,29 @@ headtrackr.Tracker = function(params) {
 // bind shim
 // from https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind
 
-if (!Function.prototype.bind) {	 
-	Function.prototype.bind = function (oThis) {	
-		if (typeof this !== "function") {	 
-			// closest thing possible to the ECMAScript 5 internal IsCallable function	
-			throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");	
-		}	 
-	
-		var aArgs = Array.prototype.slice.call(arguments, 1),		
-				fToBind = this,		
-				fNOP = function () {},	
-				fBound = function () {	
-					return fToBind.apply(this instanceof fNOP	 
-																 ? this	 
-																 : oThis || window,	 
-															 aArgs.concat(Array.prototype.slice.call(arguments)));	
-				};	
-	
-		fNOP.prototype = this.prototype;	
-		fBound.prototype = new fNOP();	
-	
-		return fBound;	
-	};	
-}	 
+if (!Function.prototype.bind) {
+	Function.prototype.bind = function (oThis) {
+		if (typeof this !== "function") {
+			// closest thing possible to the ECMAScript 5 internal IsCallable function
+			throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+		}
+
+		var aArgs = Array.prototype.slice.call(arguments, 1),
+				fToBind = this,
+				fNOP = function () {},
+				fBound = function () {
+					return fToBind.apply(this instanceof fNOP
+																 ? this
+																 : oThis || window,
+															 aArgs.concat(Array.prototype.slice.call(arguments)));
+				};
+
+		fNOP.prototype = this.prototype;
+		fBound.prototype = new fNOP();
+
+		return fBound;
+	};
+}
 
 // video support utility functions
 
@@ -827,30 +827,30 @@ headtrackr.cascade = {"count" : 16, "width" : 24, "height" : 24, "stage_classifi
  */
 
 headtrackr.getWhitebalance = function(canvas) {
-	
+
 	// returns average gray value in canvas
-	
+
 	var avggray,avgr,avgb,avgg;
-	
+
 	var canvasContext = canvas.getContext('2d');
 	var image = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
 	var id = image.data;
 	var imagesize = image.width * image.height;
 	var r = g = b = 0;
-	
+
 	for (var i = 0;i < imagesize;i++) {
 		r += id[4*i];
 		g += id[(4*i)+1];
 		b += id[(4*i)+2];
 	}
-	
+
 	avgr = r/imagesize;
 	avgg = g/imagesize;
 	avgb = b/imagesize;
 	avggray = (avgr+avgg+avgb)/3;
-	
+
 	return avggray;
-	
+
 }
 /**
  * Smoother for smoothing tracked positions of face
@@ -865,66 +865,66 @@ headtrackr.getWhitebalance = function(canvas) {
  * @constructor
  */
 headtrackr.Smoother = function(alpha, interval) {
-	
+
 	// alpha = 0.35 smoothes ok while not introducing too much lag
-	
+
 	var sp, sp2, sl, newPositions, positions;
 	var updateTime = new Date();
-	
+
 	this.initialized = false;
-	
+
 	// whether to use linear interpolation for times in intervals
 	this.interpolate = false;
-	
+
 	this.init = function(initPos) {
 		this.initialized = true;
 		sp = [initPos.x, initPos.y, initPos.z, initPos.width, initPos.height];
 		sp2 = sp;
 		sl = sp.length;
 	}
-	
+
 	this.smooth = function(pos) {
-		
+
 		positions = [pos.x, pos.y, pos.z, pos.width, pos.height];
-		
+
 		if (this.initialized) {
 			// update
 			for (var i = 0;i < sl;i++) {
 				sp[i] = alpha*positions[i]+(1-alpha)*sp[i];
 				sp2[i] = alpha*sp[i]+(1-alpha)*sp2[i];
 			}
-			
+
 			// set time
 			updateTime = new Date();
-			
+
 			var msDiff = (new Date())-updateTime;
 			var newPositions = predict(msDiff);
-			
+
 			pos.x = newPositions[0];
 			pos.y = newPositions[1];
 			pos.z = newPositions[2];
 			pos.width = newPositions[3];
 			pos.height = newPositions[4];
-			
+
 			return pos;
 		} else {
 			return false;
 		}
 	}
-	
+
 	function predict(time) {
-		
+
 		var retPos = [];
-		
+
 		if (this.interpolate) {
 			var step = time/interval;
 			var stepLo = step >> 0;
 			var ratio = alpha/(1-alpha);
-			
+
 			var a = (step-stepLo)*ratio;
 			var b = (2 + stepLo*ratio);
 			var c = (1 + stepLo*ratio);
-			
+
 			for (var i = 0;i < sl;i++) {
 				retPos[i] = a*(sp[i]-sp2[i]) + b*sp[i] - c*sp2[i];
 			}
@@ -937,7 +937,7 @@ headtrackr.Smoother = function(alpha, interval) {
 				retPos[i] = a*sp[i] - b*sp2[i];
 			}
 		}
-		
+
 		return retPos;
 	}
 }
@@ -947,7 +947,7 @@ headtrackr.Smoother = function(alpha, interval) {
  * ported with some optimizations from actionscript3 library FaceIt:
  *	 http://www.mukimuki.fr/flashblog/2009/06/18/camshift-going-to-the-source/
  *	 http://www.libspark.org/browser/as3/FaceIt
- * some explanation of algorithm here : 
+ * some explanation of algorithm here :
  *	 http://www.cognotics.com/opencv/servo_2007_series/part_3/sidebar.html
  *
  * usage:
@@ -959,8 +959,8 @@ headtrackr.Smoother = function(alpha, interval) {
  *	 cstracker.track(some_canvas);
  *	 // get position of found object
  *	 var currentPos = cstracker.getTrackObj();
- *	 currentPos.x // x-coordinate of center of object on canvas 
- *	 currentPos.y // y-coordinate of center of object on canvas 
+ *	 currentPos.x // x-coordinate of center of object on canvas
+ *	 currentPos.y // y-coordinate of center of object on canvas
  *	 currentPos.width // width of object
  *	 currentPos.height // heigh of object
  *	 currentPos.angle // angle of object in radians
@@ -971,7 +971,7 @@ headtrackr.Smoother = function(alpha, interval) {
  * License of original actionscript code:
  *
  * Copyright (C)2009 Benjamin Jung
- * 
+ *
  * Licensed under the MIT License
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -992,15 +992,15 @@ headtrackr.camshift = {};
 headtrackr.camshift.Histogram = function(imgdata) {
 
   this.size = 4096;
-  
+
   var bins = [];
   var i, x, r, g, b, il;
-  
+
   //initialize bins
   for (i = 0; i < this.size; i++) {
     bins.push(0);
   }
-  
+
   //add histogram data
   for (x = 0, il = imgdata.length;x < il; x += 4) {
     r = imgdata[x+0] >> 4; // round down to bins of 16
@@ -1008,7 +1008,7 @@ headtrackr.camshift.Histogram = function(imgdata) {
     b = imgdata[x+2] >> 4;
     bins[256 * r + 16 * g + b] += 1;
   }
-  
+
   this.getBin = function( index ) {
     return bins[index];
   }
@@ -1020,23 +1020,23 @@ headtrackr.camshift.Histogram = function(imgdata) {
  * @constructor
  */
 headtrackr.camshift.Moments = function(data, x, y, w, h, second) {
-  
+
   this.m00 = 0;
   this.m01 = 0;
   this.m10 = 0;
   this.m11 = 0;
   this.m02 = 0;
   this.m20 = 0;
-  
+
   var i, j, val, vx, vy;
   var a = [];
   for (i = x; i < w; i++) {
     a = data[i];
     vx = i-x;
-    
+
     for (j = y; j < h; j++) {
       val = a[j];
-      
+
       vy = j-y;
       this.m00 += val;
       this.m01 += vy * val;
@@ -1048,7 +1048,7 @@ headtrackr.camshift.Moments = function(data, x, y, w, h, second) {
       }
     }
   }
-  
+
   this.invM00 = 1 / this.m00;
   this.xc = this.m10 * this.invM00;
   this.yc = this.m01 * this.invM00;
@@ -1072,7 +1072,7 @@ headtrackr.camshift.Rectangle = function(x,y,w,h) {
   this.y = y;
   this.width = w;
   this.height = h;
-  
+
   this.clone = function() {
     var c = new headtrackr.camshift.Rectangle();
     c.height = this.height;
@@ -1089,10 +1089,10 @@ headtrackr.camshift.Rectangle = function(x,y,w,h) {
  * @constructor
  */
 headtrackr.camshift.Tracker = function(params) {
-  
+
   if (params === undefined) params = {};
   if (params.calcAngles === undefined) params.calcAngles = true;
-  
+
   var _modelHist,
     _curHist, //current histogram
     _pdf, // pixel probability data for current searchwindow
@@ -1101,22 +1101,22 @@ headtrackr.camshift.Tracker = function(params) {
     _canvasCtx, // canvas context for initial canvas
     _canvasw, // canvas width for tracking canvas
     _canvash; // canvas height for tracking canvas
-  
+
   this.getSearchWindow = function() {
     // return the search window used by the camshift algorithm in the current analysed image
     return _searchWindow.clone();
   }
-  
+
   this.getTrackObj = function() {
     // return a trackobj with the size and orientation of the tracked object in the current analysed image
     return _trackObj.clone();
   }
-  
+
   this.getPdf = function() {
     // returns a nested array representing color
     return _pdf;
   }
-  
+
   this.getBackProjectionImg = function() {
     // return imgData representing pixel color probabilities, which can then be put into canvas
     var weights = _pdf;
@@ -1137,22 +1137,22 @@ headtrackr.camshift.Tracker = function(params) {
     }
     return img;
   }
-  
+
   this.initTracker = function(canvas, trackedArea) {
     // initialize the tracker with canvas and the area of interest as a rectangle
-    
+
     _canvasCtx = canvas.getContext("2d");
     var taw = trackedArea.width;
     var tah = trackedArea.height;
     var tax = trackedArea.x;
     var tay = trackedArea.y;
     var trackedImg = _canvasCtx.getImageData(tax, tay, taw, tah);
-    
+
     _modelHist = new headtrackr.camshift.Histogram(trackedImg.data);
     _searchWindow = trackedArea.clone();
     _trackObj = new headtrackr.camshift.TrackObj();
   }
-  
+
   this.track = function(canvas) {
     // search the tracked object by camshift
     var canvasCtx = canvas.getContext("2d");
@@ -1161,29 +1161,29 @@ headtrackr.camshift.Tracker = function(params) {
     var imgData = canvasCtx.getImageData(0, 0, canvas.width, canvas.height);
     if (imgData.width != 0 && imgData.height != 0) camShift(imgData);
   }
-  
+
   function camShift(frame) {
 
     var w = frame.width;
     var h = frame.height;
-    
+
     // search location
     var m = meanShift(frame);
-    
+
     var a = m.mu20 * m.invM00;
     var c = m.mu02 * m.invM00;
-    
+
     if (params.calcAngles) {
       // use moments to find size and orientation
       var b = m.mu11 * m.invM00;
       var d = a + c;
       var e = Math.sqrt((4*b * b) + ((a - c) * (a - c)));
-      
+
       // update object position
       _trackObj.width = Math.sqrt((d - e)*0.5) << 2;
       _trackObj.height = Math.sqrt((d + e)*0.5) << 2;
       _trackObj.angle = Math.atan2(2 * b, a - c + e);
-      
+
       // to have a positive counter clockwise angle
       if (_trackObj.angle < 0) _trackObj.angle = _trackObj.angle + Math.PI;
     } else {
@@ -1191,38 +1191,38 @@ headtrackr.camshift.Tracker = function(params) {
       _trackObj.height = Math.sqrt(c) << 2;
       _trackObj.angle = Math.PI/2;
     }
-    
+
     // check if tracked object is into the limit
     _trackObj.x = Math.floor(Math.max(0, Math.min(_searchWindow.x + _searchWindow.width/2, w)));
     _trackObj.y = Math.floor(Math.max(0, Math.min(_searchWindow.y + _searchWindow.height/2, h)));
-    
+
     // new search window size
     _searchWindow.width = Math.floor(1.1 * _trackObj.width);
     _searchWindow.height = Math.floor(1.1 * _trackObj.height);
   }
-  
+
   function meanShift(frame) {
     // mean-shift algorithm on frame
-    
+
     var w = frame.width;
     var h = frame.height;
     var imgData = frame.data;
-    
+
     var curHist = new headtrackr.camshift.Histogram(imgData);
-    
+
     var weights = getWeights(_modelHist, curHist);
-    
+
     // Color probabilities distributions
     _pdf = getBackProjectionData(imgData, frame.width, frame.height, weights);
-    
+
     var m, x, y, i, wadx, wady, wadw, wadh;
-    
+
     var meanShiftIterations = 10; // maximum number of iterations
-    
+
     // store initial searchwindow
     var prevx = _searchWindow.x;
     var prevy = _searchWindow.y;
-    
+
     // Locate by iteration the maximum of density into the probability distributions
     for (i = 0;i < meanShiftIterations; i++) {
       // get searchwindow from _pdf:
@@ -1230,14 +1230,14 @@ headtrackr.camshift.Tracker = function(params) {
       wady = Math.max(_searchWindow.y,0);
       wadw = Math.min(wadx + _searchWindow.width,w);
       wadh = Math.min(wady + _searchWindow.height,h);
-      
+
       m = new headtrackr.camshift.Moments(_pdf, wadx, wady, wadw, wadh, (i == meanShiftIterations -1));
       x = m.xc;
       y = m.yc;
-      
+
       _searchWindow.x += ((x - _searchWindow.width/2) >> 0);
       _searchWindow.y += ((y - _searchWindow.height/2) >> 0);
-      
+
       // if we have reached maximum density, get second moments and stop iterations
       if (_searchWindow.x == prevx && _searchWindow.y == prevy) {
         m = new headtrackr.camshift.Moments(_pdf, wadx, wady, wadw, wadh, true);
@@ -1247,18 +1247,18 @@ headtrackr.camshift.Tracker = function(params) {
         prevy = _searchWindow.y;
       }
     }
-    
+
     _searchWindow.x = Math.max(0, Math.min(_searchWindow.x, w));
     _searchWindow.y = Math.max(0, Math.min(_searchWindow.y, h));
-    
+
     return m;
   }
-  
+
   function getWeights(mh, ch) {
     // Return an array of the probabilities of each histogram color bins
     var weights = [];
     var p;
-    
+
     // iterate over the entire histogram and compare
     for (var i = 0; i < 4096; i++) {
       if (ch.getBin(i) != 0) {
@@ -1268,19 +1268,19 @@ headtrackr.camshift.Tracker = function(params) {
       }
       weights.push(p);
     }
-    
+
     return weights;
   }
-  
+
   function getBackProjectionData(imgData, idw, idh, weights, hsMap) {
     // Return a matrix representing pixel color probabilities
     var data = [];
     var x,y,r,g,b,pos;
     var a = [];
-    
+
     // TODO : we could use typed arrays here
     // but we should then do a compatibilitycheck
-    
+
     for (x = 0; x < idw; x++) {
       a = [];
       for (y = 0; y < idh; y++) {
@@ -1306,9 +1306,9 @@ headtrackr.camshift.TrackObj = function() {
   this.height = 0;
   this.width = 0;
   this.angle = 0;
-  this.x = 0; 
+  this.x = 0;
   this.y = 0;
-  
+
   this.clone = function() {
     var c = new headtrackr.camshift.TrackObj();
     c.height = this.height;
@@ -1331,15 +1331,15 @@ headtrackr.camshift.TrackObj = function() {
  *	 ft.track();
  *	 // get position of found object
  *	 var currentPos = ft.getTrackObj();
- *	 currentPos.x // x-coordinate of center of object on canvas 
- *	 currentPos.y // y-coordinate of center of object on canvas 
+ *	 currentPos.x // x-coordinate of center of object on canvas
+ *	 currentPos.y // y-coordinate of center of object on canvas
  *	 currentPos.width // width of object
  *	 currentPos.height // height of object
  *	 currentPos.angle // angle of object in radians
  *	 currentPos.confidence // returns confidence (doesn't work for CS yet)
  *	 currentPos.detection // current detectionmethod (VJ or CS)
  *	 currentPos.time // time spent
- * 
+ *
  * @author auduno / github.com/auduno
  */
 
@@ -1356,9 +1356,9 @@ headtrackr.facetrackr = {};
  * @constructor
  */
 headtrackr.facetrackr.Tracker = function(params) {
-  
+
   if (!params) params = {};
-  
+
   if (params.sendEvents === undefined) params.sendEvents = true;
   if (params.whitebalancing === undefined) params.whitebalancing = true;
   if (params.debug === undefined) {
@@ -1372,19 +1372,19 @@ headtrackr.facetrackr.Tracker = function(params) {
     var _currentDetection = "VJ";
   }
   if (params.calcAngles == undefined) params.calcAngles = false;
-  
+
   var _inputcanvas, _curtracked, _cstracker;
-  
+
   var _confidenceThreshold = -10; // needed confidence before switching to Camshift
   var previousWhitebalances = []; // array of previous 10 whitebalance values
   var pwbLength = 15;
-  
+
   this.init = function(inputcanvas) {
     _inputcanvas = inputcanvas
     // initialize cs tracker
     _cstracker = new headtrackr.camshift.Tracker({calcAngles : params.calcAngles});
   }
-  
+
   this.track = function() {
     var result;
     // do detection
@@ -1395,7 +1395,7 @@ headtrackr.facetrackr.Tracker = function(params) {
     } else if (_currentDetection == "CS") {
       result = doCSDetection();
     }
-    
+
     // check whether whitebalance is stable before starting detection
     if (result.detection == "WB") {
       if (previousWhitebalances.length >= pwbLength) previousWhitebalances.pop();
@@ -1405,7 +1405,7 @@ headtrackr.facetrackr.Tracker = function(params) {
         var max = Math.max.apply(null, previousWhitebalances);
         //get min
         var min = Math.min.apply(null, previousWhitebalances);
-        
+
         // if difference between the last ten whitebalances is less than 2,
         //   we assume whitebalance is stable
         if ((max-min) < 2) {
@@ -1420,16 +1420,16 @@ headtrackr.facetrackr.Tracker = function(params) {
       _currentDetection = "CS";
       // when switching, we initalize camshift with current found face
       var cRectangle = new headtrackr.camshift.Rectangle(
-        Math.floor(result.x), 
-        Math.floor(result.y), 
-        Math.floor(result.width), 
+        Math.floor(result.x),
+        Math.floor(result.y),
+        Math.floor(result.width),
         Math.floor(result.height)
       );
       _cstracker.initTracker(_inputcanvas, cRectangle);
     }
-    
+
     _curtracked = result;
-    
+
     if (result.detection == "CS" && params.sendEvents) {
       // send events
       var evt = document.createEvent("Event");
@@ -1445,16 +1445,16 @@ headtrackr.facetrackr.Tracker = function(params) {
       document.dispatchEvent(evt);
     }
   }
-  
+
   this.getTrackingObject = function() {
     return _curtracked.clone();
   }
-  
+
   // Viola-Jones detection
   function doVJDetection() {
     // start timing
     var start = (new Date).getTime();
-    
+
     // we seem to have to copy canvas to avoid interference with camshift
     // not entirely sure why
     // TODO: ways to avoid having to copy canvas every time
@@ -1464,14 +1464,14 @@ headtrackr.facetrackr.Tracker = function(params) {
     ccvCanvas.getContext("2d").drawImage(
       _inputcanvas, 0, 0, ccvCanvas.width, ccvCanvas.height
     );
-    
+
     var comp = headtrackr.ccv.detect_objects(
         headtrackr.ccv.grayscale(ccvCanvas), headtrackr.cascade, 5, 1
     );
-    
+
     // end timing
     var diff = (new Date).getTime() - start;
-    
+
     // loop through found faces and pick the most likely one
     // TODO: check amount of neighbors and size as well?
     // TODO: choose the face that is most in the center of canvas?
@@ -1484,7 +1484,7 @@ headtrackr.facetrackr.Tracker = function(params) {
         candidate = comp[i];
       }
     }
-    
+
     // copy information from ccv object to a new trackObj
     var result = new headtrackr.facetrackr.TrackObj();
     if (!(candidate === undefined)) {
@@ -1494,31 +1494,31 @@ headtrackr.facetrackr.Tracker = function(params) {
       result.y = candidate.y;
       result.confidence = candidate.confidence;
     }
-    
+
     // copy timing to object
     result.time = diff;
     result.detection = "VJ";
-    
+
     return result;
   }
-  
+
   // Camshift detection
   function doCSDetection() {
-    
+
     // start timing
     var start = (new Date).getTime();
     // detect
     _cstracker.track(_inputcanvas);
     var csresult = _cstracker.getTrackObj();
-    
+
     // if debugging, draw backprojection image on debuggingcanvas
     if (params.debug) {
       params.debug.getContext('2d').putImageData(_cstracker.getBackProjectionImg(),0,0);
     }
-    
+
     // end timing
     var diff = (new Date).getTime() - start;
-    
+
     // copy information from CS object to a new trackObj
     var result = new headtrackr.facetrackr.TrackObj();
     result.width = csresult.width;
@@ -1529,14 +1529,14 @@ headtrackr.facetrackr.Tracker = function(params) {
     result.angle = csresult.angle;
     // TODO: camshift should pass along some sort of confidence?
     result.confidence = 1;
-    
+
     // copy timing to object
     result.time = diff;
     result.detection = "CS";
-    
+
     return result;
   }
-  
+
   // Whitebalancing
   function checkWhitebalance() {
     var result = new headtrackr.facetrackr.TrackObj();
@@ -1560,7 +1560,7 @@ headtrackr.facetrackr.TrackObj = function() {
   this.confidence = -10000;
   this.detection = '';
   this.time = 0;
-  
+
   this.clone = function() {
     var c = new headtrackr.facetrackr.TrackObj();
     c.height = this.height;
@@ -1579,7 +1579,7 @@ headtrackr.facetrackr.TrackObj = function() {
  * @author auduno / github.com/auduno
  * @constructor
  */
- 
+
 headtrackr.Ui = function() {
 
 	var timeout;
@@ -1589,7 +1589,7 @@ headtrackr.Ui = function() {
         d2 = document.createElement('div'),
         p = document.createElement('p');
 	d.setAttribute('id', 'headtrackerMessageDiv');
-	
+
 	d.style.left = "20%";
 	d.style.right = "20%";
 	d.style.top = "30%";
@@ -1598,7 +1598,7 @@ headtrackr.Ui = function() {
 	d.style.position = "absolute";
 	d.style.fontFamily = "Helvetica, Arial, sans-serif";
 	d.style.zIndex = '100002';
-	
+
 	d2.style.marginLeft = "auto";
 	d2.style.marginRight = "auto";
 	d2.style.width = "100%";
@@ -1606,17 +1606,17 @@ headtrackr.Ui = function() {
 	d2.style.color = "#fff";
 	d2.style.backgroundColor = "#444";
 	d2.style.opacity = "0.5";
-	
+
 	p.setAttribute('id', 'headtrackerMessage');
 	d2.appendChild(p);
 	d.appendChild(d2);
 	document.body.appendChild(d);
-  
+
   var supportMessages = {
     "no getUserMedia" : "getUserMedia is not supported in your browser :(",
     "no camera" : "no camera found :("
   };
-  
+
   var statusMessages = {
     "whitebalance" : "Waiting for camera whitebalancing",
     "detecting" : "Please wait while camera is detecting your face...",
@@ -1625,9 +1625,9 @@ headtrackr.Ui = function() {
     "lost" : "Lost track of face :(",
     "found" : "Face found! Move your head!"
   };
-  
+
   var override = false;
-  
+
 	// function to call messages (and to fade them out after a time)
   document.addEventListener("headtrackrStatus", function(event) {
     if (event.status in statusMessages) {
@@ -1646,7 +1646,7 @@ headtrackr.Ui = function() {
 		  window.setTimeout(function() {messagep.innerHTML = '';override = false;}, 4000);
 		}
   }, true);
-	
+
 }
 /**
  * Calculates an estimate of the position of the head of the user in relation to screen or camera
@@ -1683,35 +1683,35 @@ headtrackr.headposition = {};
  * @constructor
  */
 headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, params) {
-	
+
 	// some assumptions that are used when calculating distances and estimating horizontal fov
 	//	 head width = 16 cm
 	//	 head height = 19 cm
 	//	 when initialized, user is approximately 60 cm from camera
-	
+
 	if (!params) params = {};
-	
+
 	if (params.edgecorrection === undefined) {
 		var edgecorrection = true;
 	} else {
 		var edgecorrection = params.edgecorrection;
 	}
-	
+
 	this.camheight_cam = camheight;
 	this.camwidth_cam = camwidth;
-	
+
 	var head_width_cm = 16;
 	var head_height_cm = 19;
-	
+
 	// angle between side of face and diagonal across
 	var head_small_angle = Math.atan(head_width_cm/head_height_cm);
-	
+
 	var head_diag_cm = Math.sqrt((head_width_cm*head_width_cm)+(head_height_cm*head_height_cm)); // diagonal of face in real space
-	
+
 	var sin_hsa = Math.sin(head_small_angle); //precalculated sine
 	var cos_hsa = Math.cos(head_small_angle); //precalculated cosine
 	var tan_hsa = Math.tan(head_small_angle); //precalculated tan
-	
+
 	// estimate horizontal field of view of camera
 	var init_width_cam = facetrackrObj.width;
 	var init_height_cam = facetrackrObj.height;
@@ -1732,50 +1732,50 @@ headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, p
 	} else {
 		var fov_width = params.fov * Math.PI/180;
 	}
-	
+
 	// precalculate ratio between camwidth and distance
 	var tan_fov_width = 2 * Math.tan(fov_width/2);
-	
+
 	var x, y, z; // holds current position of head (in cms from center of screen)
-	
+
 	this.track = function(facetrackrObj) {
-		
+
 		var w = facetrackrObj.width;
 		var h = facetrackrObj.height;
-		var fx = facetrackrObj.x; 
-		var fy = facetrackrObj.y; 
-		
+		var fx = facetrackrObj.x;
+		var fy = facetrackrObj.y;
+
 		if (edgecorrection) {
 			// recalculate head_diag_cam, fx, fy
-			
+
 			var margin = 11;
-			
+
 			var leftDistance = fx-(w/2);
 			var rightDistance = this.camwidth_cam-(fx+(w/2));
 			var topDistance = fy-(h/2);
 			var bottomDistance = this.camheight_cam-(fy+(h/2));
-			
+
 			var onVerticalEdge = (leftDistance < margin || rightDistance < margin);
 			var onHorizontalEdge = (topDistance < margin || bottomDistance < margin);
-			
+
 			if (onHorizontalEdge) {
 				if (onVerticalEdge) {
 					// we are in a corner, use previous diagonal as estimate, i.e. don't change head_diag_cam
 					var onLeftEdge = (leftDistance < margin);
 					var onTopEdge = (topDistance < margin);
-					
+
 					if (onLeftEdge) {
 						fx = w-(head_diag_cam * sin_hsa/2);
 					} else {
 						fx = fx-(w/2)+(head_diag_cam * sin_hsa/2);
 					}
-					
+
 					if (onTopEdge) {
 						fy = h-(head_diag_cam * cos_hsa/2);
 					} else {
 						fy = fy-(h/2)+(head_diag_cam*cos_hsa/2);
 					}
-					
+
 				} else {
 					// we are on top or bottom edge of camera, use width instead of diagonal and correct y-position
 					// fix fy
@@ -1810,17 +1810,17 @@ headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, p
 		} else {
 			head_diag_cam = Math.sqrt((w*w)+(h*h));
 		}
-		
+
 		// calculate cm-distance from screen
 		z = (head_diag_cm*this.camwidth_cam)/(tan_fov_width*head_diag_cam);
 		// to transform to z_3ds : z_3ds = (head_diag_3ds/head_diag_cm)*z
 		// i.e. just use ratio
-		
+
 		// calculate cm-position relative to center of screen
 		x = -((fx/this.camwidth_cam) - 0.5) * z * tan_fov_width;
 		y = -((fy/this.camheight_cam) - 0.5) * z * tan_fov_width * (this.camheight_cam/this.camwidth_cam);
-		
-		
+
+
 		// Transformation from position relative to camera, to position relative to center of screen
 		if (params.distance_from_camera_to_screen === undefined) {
 			// default is 11.5 cm approximately
@@ -1828,7 +1828,7 @@ headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, p
 		} else {
 			y = y + params.distance_from_camera_to_screen;
 		}
-					
+
 		// send off event
 		var evt = document.createEvent("Event");
 		evt.initEvent("headtrackingEvent", true, true);
@@ -1836,19 +1836,19 @@ headtrackr.headposition.Tracker = function(facetrackrObj, camwidth, camheight, p
 		evt.y = y;
 		evt.z = z;
 		document.dispatchEvent(evt);
-		
+
 		return new headtrackr.headposition.TrackObj(x,y,z);
 	}
-	
-	
+
+
 	this.getTrackerObj = function() {
 		return new headtrackr.headposition.TrackObj(x,y,z);
 	}
-	
+
 	this.getFOV = function() {
 		return fov_width * 180/Math.PI;
 	}
-}; 
+};
 
 /**
  * @constructor
@@ -1857,7 +1857,7 @@ headtrackr.headposition.TrackObj = function(x,y,z) {
 	this.x = x;
 	this.y = y;
 	this.z = z;
-	
+
 	this.clone = function() {
 		var c = new headtrackr.headposition.TrackObj();
 		c.x = this.x;
@@ -1884,7 +1884,7 @@ headtrackr.controllers.three = {};
  * Needs the position of "screen" in 3d-model to be given up front, and to be static (i.e. absolute) during headtracking
  *
  * @param {THREE.PerspectiveCamera} camera
- * @param {number} scaling The scaling of the "screen" in the 3d model. 
+ * @param {number} scaling The scaling of the "screen" in the 3d model.
  *   This is the vertical size of screen in 3d-model relative to vertical size of computerscreen in real life
  * @param {array} fixedPosition array with attributes x,y,z, position of "screen" in 3d-model
  * @param {THREE.Vector3} lookAt the object/position the camera should be pointed towards
@@ -1894,7 +1894,7 @@ headtrackr.controllers.three = {};
  *   screenHeight : vertical size of computer screen (default is 20 cm, i.e. typical laptop size)
  */
 headtrackr.controllers.three.realisticAbsoluteCameraControl = function(camera, scaling, fixedPosition, lookAt, params) {
-	
+
 	if (params === undefined) params = {};
 	if (params.screenHeight === undefined) {
 		var screenHeight_cms = 20;
@@ -1904,34 +1904,34 @@ headtrackr.controllers.three.realisticAbsoluteCameraControl = function(camera, s
 	if (params.damping === undefined) {
 	  params.damping = 1;
 	}
-	
+
 	camera.position.x = fixedPosition[0];
 	camera.position.y = fixedPosition[1];
 	camera.position.z = fixedPosition[2];
 	camera.lookAt(lookAt);
-	
+
 	var wh = screenHeight_cms * scaling;
 	var ww = wh * camera.aspect;
-	
+
 	document.addEventListener('headtrackingEvent', function(event) {
-		
+
 		// update camera
 		var xOffset = event.x > 0 ? 0 : -event.x * 2 * params.damping * scaling;
 		var yOffset = event.y < 0 ? 0 : event.y * 2 * params.damping * scaling;
 		camera.setViewOffset(ww + Math.abs(event.x * 2 * params.damping * scaling), wh + Math.abs(event.y * params.damping * 2 * scaling), xOffset, yOffset, ww, wh);
-		
+
 		camera.position.x = fixedPosition[0] + (event.x * scaling * params.damping );
 		camera.position.y = fixedPosition[1] + (event.y * scaling * params.damping );
 		camera.position.z = fixedPosition[2] + (event.z * scaling);
-		
+
 		// update lookAt?
-		
+
 		// when changing height of window, we need to change field of view
 		camera.fov = Math.atan((wh/2 + Math.abs(event.y * scaling * params.damping ))/(Math.abs(event.z*scaling)))*360/Math.PI;
 		//debugger;
-		
+
 		camera.updateProjectionMatrix();
-		
+
 	}, false);
 };
 
@@ -1942,7 +1942,7 @@ headtrackr.controllers.three.realisticAbsoluteCameraControl = function(camera, s
  * Currently not sure if this works properly, or at all
  *
  * @param {THREE.PerspectiveCamera} camera
- * @param {number} scaling The scaling of the "screen" in the 3d model. 
+ * @param {number} scaling The scaling of the "screen" in the 3d model.
  *   This is the vertical size of screen in 3d-model relative to vertical size of computerscreen in real life
  * @param {array} relativeFixedDistance how long in front of (or behind) original cameraposition the fixed frame will be
  * @param {object} params optional object with optional parameters
@@ -1951,40 +1951,40 @@ headtrackr.controllers.three.realisticAbsoluteCameraControl = function(camera, s
  *   screenHeight : vertical size of computer screen (default is 20 cm, i.e. typical laptop size)
  */
 headtrackr.controllers.threerealisticRelativeCameraControl = function(camera, scaling, relativeFixedDistance, params) {
-	
+
 	// we assume that the parent of camera is the scene
-	
+
 	if (params === undefined) params = {};
 	if (params.screenHeight === undefined) {
 		var screenHeight_cms = 20;
 	} else {
 		var screenHeight_cms = params.screenHeight;
 	}
-	
+
 	var scene = camera.parent;
-	
+
 	var init = true;
-	
+
 	// create an object to offset camera without affecting existing camera interaction
 	var offset = new THREE.Object3D();
 	offset.position.set(0,0,0);
 	offset.add(camera);
 	scene.add(offset);
-	
+
 	// TODO : we maybe need to offset functions like lookAt as well
 	//	use prototype function replacement for this?
-	
+
 	var wh = screenHeight_cms * scaling;
 	var ww = wh * camera.aspect;
-	
+
 	// set fov
 	document.addEventListener('headtrackingEvent', function(event) {
-		
+
 		// update camera
 		var xOffset = event.x > 0 ? 0 : -event.x * 2 * scaling;
 		var yOffset = event.y > 0 ? 0 : -event.y * 2 * scaling;
 		camera.setViewOffset(ww + Math.abs(event.x * 2 * scaling), wh + Math.abs(event.y * 2 * scaling), xOffset, yOffset, ww, wh);
-		
+
 		offset.rotation = camera.rotation;
 		offset.position.x = 0;
 		offset.position.y = 0;
@@ -1992,16 +1992,16 @@ headtrackr.controllers.threerealisticRelativeCameraControl = function(camera, sc
 		offset.translateX(event.x * scaling);
 		offset.translateY(event.y * scaling);
 		offset.translateZ((event.z * scaling)+relativeFixedDistance);
-		
+
 		//offset.position.x = (event.x * scaling);
 		//offset.position.y = (event.y * scaling);
 		//offset.position.z = (event.z * scaling)+relativeFixedDistance;
-		
+
 		// when changing height of window, we need to change field of view
 		camera.fov = Math.atan((wh/2 + Math.abs(event.y * scaling))/(Math.abs(event.z*scaling)))*360/Math.PI;
-		
+
 		camera.updateProjectionMatrix();
-		
+
 	}, false);
 }
 

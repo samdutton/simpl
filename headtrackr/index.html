@@ -8,10 +8,16 @@
 <title>getUserMedia face tracking</title>
 <link rel="stylesheet" href="../css/main.css" />
 <style>
-@media screen and (min-width: 1000px) {
-  video {
-    height: 540px;
-  }
+canvas#overlay {
+	position: absolute;
+}
+div#videoContainer {
+	height: 480px;
+	position: relative;
+}
+video {
+  height: 480px;
+  position: absolute;
 }
 </style>
 </head>
@@ -19,9 +25,12 @@
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia face tracking</h1>
+	<div id="videoContainer">
+		<video id="inputVideo" autoplay></video>
+		<canvas id="overlay"></canvas>
+	</div>
 
-  <video id="inputVideo" autoplay></video>
-	<canvas id="overlay" width="320" height="240"></canvas>
+	<p id="data">You need to move your face :^}!</p>
 
 	<p>This demo uses <a href="https://github.com/auduno/headtrackr/" title="headtrackr github repository">headtrackr.js</a>.</p>
 

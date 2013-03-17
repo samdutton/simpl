@@ -2,25 +2,38 @@
 // github.com/auduno/headtrackr
 
 var videoInput = document.getElementById('inputVideo');
-var canvasInput = document.createElement('canvas');
-var canvasOverlay = document.getElementById('overlay')
-canvasOverlay.style.position = 'absolute';
-canvasOverlay.style.top = '0px';
-canvasOverlay.style.zIndex = '100001';
-canvasOverlay.style.display = 'block';
+var canvasInput = document.createElement('canvas'); // not displayed
+var canvasOverlay = document.getElementById('overlay');
+
+var videoWidth = videoInput.offsetWidth;
+var videoHeight = videoInput.offsetHeight;
+window.onresize = function(){
+  videoWidth = videoInput.offsetWidth;
+  videoHeight = videoInput.offsetHeight;
+  canvasInput.width = videoWidth;
+  canvasInput.height = videoHeight;
+  canvasOverlay.width = videoWidth;
+  canvasOverlay.height = videoHeight;
+};
+
+canvasInput.width = videoWidth;
+canvasInput.height = videoHeight;
+canvasOverlay.width = videoWidth;
+canvasOverlay.height = videoHeight;
 var overlayContext = canvasOverlay.getContext('2d');
 
+var dataDiv = document.getElementById("data");
 function log(message){
-  console.log(message);
+  dataDiv.innerHTML = message;
 }
 
 var statusMessages = {
-  'whitebalance': 'checking for stability of camera whitebalance',
-  'detecting': 'Detecting face',
-  'hints': 'Hmmm... Detecting the face is taking a long time',
-  'redetecting': 'Lost track of face, redetecting',
-  'lost': 'Lost track of face',
-  'found': 'Tracking face'
+  'whitebalance': 'Checking for stability of camera whitebalance...',
+  'detecting': 'Detecting face...',
+  'hints': 'Hmmm... Detecting the face is taking a long time.',
+  'redetecting': 'Lost track of face, redetecting...',
+  'lost': 'Lost track of face :^{.',
+  'found': 'Tracking face!'
 };
 
 var supportMessages = {
@@ -37,7 +50,7 @@ function handleheadtrackrStatusEvent(event) {
 }
 
 function handleFaceTrackingEvent(e){
-  overlayContext.clearRect(0,0,320,240);
+  overlayContext.clearRect(0, 0, videoWidth, videoHeight);
   // once we have stable tracking, draw rectangle
   if (event.detection == 'CS') {
     overlayContext.translate(event.x, event.y)
@@ -45,7 +58,7 @@ function handleFaceTrackingEvent(e){
     overlayContext.strokeStyle = '#00CC00';
     overlayContext.strokeRect((-(event.width/2)) >> 0,
       (-(event.height/2)) >> 0, event.width, event.height);
-    overlayContext.rotate((Math.PI/2)-event.angle);
+    overlayContext.rotate((Math.PI/2) - event.angle);
     overlayContext.translate(-event.x, -event.y);
   }
 }
@@ -59,12 +72,8 @@ var htracker = new headtrackr.Tracker({
   ui : false,
   headPosition : false
 });
-htracker.init(videoInput, canvasInput);
-htracker.start();
-
 document.addEventListener('facetrackingEvent', handleFaceTrackingEvent);
 // document.addEventListener('headtrackingEvent', handleHeadTrackingEvent);
 document.addEventListener('headtrackrStatus', handleheadtrackrStatusEvent, true);
-
 htracker.init(videoInput, canvasInput);
 htracker.start();
