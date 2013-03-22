@@ -1,17 +1,17 @@
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia || navigator.msGetUserMedia;
-window.URL = window.URL || window.webkitURL;
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-navigator.getUserMedia({audio: true, video: true}, function(localMediaStream) { // remove audio for Firefox stable support
-  window.stream = localMediaStream; // so stream can be inspected from the console.
+var constraints = {video: true};
+
+function successCallback(localMediaStream) {
+  window.stream = localMediaStream; // stream available to console
   var video = document.querySelector("video");
-  try {
-    video.src = window.URL.createObjectURL(localMediaStream);
-    video.play();
-  } catch(e) {
-    console.log("Error setting video src: ", e);
-  }
-}, function(error) {
+  video.src = window.URL.createObjectURL(localMediaStream);
+  video.play();
+}
+
+function errorCallback(error){
   console.log("navigator.getUserMedia error: ", error);
-});
+}
+
+navigator.getUserMedia(constraints, successCallback, errorCallback);
 
