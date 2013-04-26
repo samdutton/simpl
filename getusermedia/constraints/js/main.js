@@ -3,7 +3,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 var constraints = {
   video: {
     mandatory: {
-      maxWidth: 360
+      maxWidth: 320
     }
   }
 };

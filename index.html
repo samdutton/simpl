@@ -57,8 +57,9 @@
   <a href="filesystem" title="FileSystem example">FileSystem</a>
   <a href="filesystem/blob" title="FileSystem example using the Blob API">FileSystem using Blob</a>
   <a href="geolocation" title="Geolocation example">Geolocation</a>
-  <a href="getusermedia" title="getUserMedia() example">getUserMedia()</a>
-  <a href="getusermedia/constraints" title="getUserMedia() example with constraints">getUserMedia() with constraints</a>
+  <a href="getusermedia" title="getUserMedia() example">getUserMedia</a>
+  <a href="getusermedia/constraints" title="getUserMedia() example with constraints">getUserMedia with constraints</a>
+  <a href="screencapture" title="Screen capture example">getUserMedia: screen capture</a>
   <a href="history" title="History method example">History pushState() and popState()</a>
   <a href="softhyphen" title="Soft hyphen (&amp;shy;) example">Hyphenation (soft hyphen)</a>
   <a href="iframe" title="iframe element example">&lt;iframe&gt;</a>
@@ -76,6 +77,7 @@
   <a href="queryselector" title="querySelector() and querySelectorAll() examples">querySelector() and querySelectorAll()</a>
   <a href="rtcdatachannel" title="RTCDataChannel">RTCDataChannel (WebRTC)</a>
   <a href="rtcpeerconnection" title="RTCPeerConnection">RTCPeerConnection (WebRTC)</a>
+  <a href="screencapture" title="Screen capture example">Screen capture (getUserMedia + RTCPeerConnection)</a>
   <a href="sessionstorage" title="sessionStorage example">sessionStorage</a>
   <a href="svg" title="SVG example">SVG</a>
   <a href="track" title="Track element">&lt;track&gt; with &lt;video&gt;</a>
@@ -91,6 +93,7 @@
   <a href="stnetnibew" title="Web Intents example">Web Intents</a>
   <a href="webp" title="WebP">WebP</a>
   <a href="webrtc" title="WebRTC home">WebRTC (getUserMedia, RTCPeerConnection, RTCDataChannel)</a>
+  <a href="screencapture" title="Screencapture example">getUserMedia screen capture</a>
   <a href="websql" title="WebRTC">WebSQL</a>
   <a href="webworkers" title="Web Workers example">Web Workers</a>
   <a href="xhr" title="XMLHttpRequest (aka Ajax) example">XMLHttpRequest (aka Ajax)</a>
@@ -98,6 +101,16 @@
 
 </div>  <!-- container -->
 
-<script src="js/lib/ga.js"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-33848682-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 </body>
 </html>

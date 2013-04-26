@@ -63,17 +63,19 @@ function handleFaceTrackingEvent(e){
   }
 }
 
-// function handleHeadTrackingEvent(e){
-//   console.log('headtrackingEvent: ', e.x, e.y, e.z);
-// }
+// requires headPosition : true in Tracker constructor
+function handleHeadTrackingEvent(e){
+  console.log('headtrackingEvent: ', e.x, e.y, e.z);
+}
 
 var htracker = new headtrackr.Tracker({
   calcAngles : true,
   ui : false,
-  headPosition : false
+  headPosition : true // whether to calculate the head position
 });
 document.addEventListener('facetrackingEvent', handleFaceTrackingEvent);
-// document.addEventListener('headtrackingEvent', handleHeadTrackingEvent);
+// requires headPosition : true in Tracker constructor
+document.addEventListener('headtrackingEvent', handleHeadTrackingEvent);
 document.addEventListener('headtrackrStatus', handleheadtrackrStatusEvent, true);
 htracker.init(videoInput, canvasInput);
 htracker.start();
