@@ -1,51 +1,47 @@
-
-
-performance.now = performance.now || performance.webkitNow; // hack added by SD!
-
-
 var sendChannel, receiveChannel;
+
+var startButton = document.getElementById("startButton");
+var sendButton = document.getElementById("sendButton");
+var closeButton = document.getElementById("closeButton");
 startButton.disabled = false;
 sendButton.disabled = true;
 closeButton.disabled = true;
+startButton.onclick = createConnection;
+sendButton.onclick = sendData;
+closeButton.onclick = closeDataChannels;
 
 function trace(text) {
-  // This function is used for logging.
-  if (text[text.length - 1] == '\n') {
-    text = text.substring(0, text.length - 1);
-  }
   console.log((performance.now() / 1000).toFixed(3) + ": " + text);
 }
 
 function createConnection() {
   var servers = null;
-  window.pc1 = new webkitRTCPeerConnection(servers,
-                                    {optional: [{RtpDataChannels: true}]});
-  trace('Created local peer connection object pc1');
+  window.localPeerConnection = new webkitRTCPeerConnection(servers,
+    {optional: [{RtpDataChannels: true}]});
+  trace('Created local peer connection object localPeerConnection');
 
   try {
     // Reliable Data Channels not yet supported in Chrome
-    // Data Channel api supported from Chrome M25.
-    // You need to start chrome with  --enable-data-channels flag.
-    sendChannel = pc1.createDataChannel("sendDataChannel",
-                                         {reliable: false});
+    sendChannel = localPeerConnection.createDataChannel("sendDataChannel",
+      {reliable: false});
     trace('Created send data channel');
   } catch (e) {
     alert('Failed to create data channel. ' +
-          'You need Chrome M25 or later with --enable-data-channels flag');
-    trace('Create Data channel failed with exception: ' + e.message);
+          'You need Chrome M25 or later with RtpDataChannel enabled');
+    trace('createDataChannel() failed with exception: ' + e.message);
   }
-  pc1.onicecandidate = iceCallback1;
-  sendChannel.onopen = onSendChannelStateChange;
-  sendChannel.onclose = onSendChannelStateChange;
+  localPeerConnection.onicecandidate = gotLocalCandidate;
+  sendChannel.onopen = handleSendChannelStateChange;
+  sendChannel.onclose = handleSendChannelStateChange;
 
-  window.pc2 = new webkitRTCPeerConnection(servers,
-                                    {optional: [{RtpDataChannels: true}]});
-  trace('Created remote peer connection object pc2');
+  window.remotePeerConnection = new webkitRTCPeerConnection(servers,
+    {optional: [{RtpDataChannels: true}]});
+  trace('Created remote peer connection object remotePeerConnection');
 
-  pc2.onicecandidate = iceCallback2;
-  pc2.ondatachannel = receiveChannelCallback;
+  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+  remotePeerConnection.ondatachannel = gotReceiveChannel;
 
-  pc1.createOffer(gotDescription1);
+  localPeerConnection.createOffer(gotLocalDescription);
   startButton.disabled = true;
   closeButton.disabled = false;
 }
@@ -53,19 +49,19 @@ function createConnection() {
 function sendData() {
   var data = document.getElementById("dataChannelSend").value;
   sendChannel.send(data);
-  trace('Sent Data: ' + data);
+  trace('Sent data: ' + data);
 }
 
 function closeDataChannels() {
-  trace('Closing data Channels');
+  trace('Closing data channels');
   sendChannel.close();
   trace('Closed data channel with label: ' + sendChannel.label);
   receiveChannel.close();
   trace('Closed data channel with label: ' + receiveChannel.label);
-  pc1.close();
-  pc2.close();
-  pc1 = null;
-  pc2 = null;
+  localPeerConnection.close();
+  remotePeerConnection.close();
+  localPeerConnection = null;
+  remotePeerConnection = null;
   trace('Closed peer connections');
   startButton.disabled = false;
   sendButton.disabled = true;
@@ -76,49 +72,49 @@ function closeDataChannels() {
   dataChannelSend.placeholder = "Press Start, enter some text, then press Send.";
 }
 
-function gotDescription1(desc) {
-  pc1.setLocalDescription(desc);
-  trace('Offer from pc1 \n' + desc.sdp);
-  pc2.setRemoteDescription(desc);
-  pc2.createAnswer(gotDescription2);
+function gotLocalDescription(desc) {
+  localPeerConnection.setLocalDescription(desc);
+  trace('Offer from localPeerConnection \n' + desc.sdp);
+  remotePeerConnection.setRemoteDescription(desc);
+  remotePeerConnection.createAnswer(gotRemoteDescription);
 }
 
-function gotDescription2(desc) {
-  pc2.setLocalDescription(desc);
-  trace('Answer from pc2 \n' + desc.sdp);
-  pc1.setRemoteDescription(desc);
+function gotRemoteDescription(desc) {
+  remotePeerConnection.setLocalDescription(desc);
+  trace('Answer from remotePeerConnection \n' + desc.sdp);
+  localPeerConnection.setRemoteDescription(desc);
 }
 
-function iceCallback1(event) {
+function gotLocalCandidate(event) {
   trace('local ice callback');
   if (event.candidate) {
-    pc2.addIceCandidate(event.candidate);
+    remotePeerConnection.addIceCandidate(event.candidate);
     trace('Local ICE candidate: \n' + event.candidate.candidate);
   }
 }
 
-function iceCallback2(event) {
+function gotRemoteIceCandidate(event) {
   trace('remote ice callback');
   if (event.candidate) {
-    pc1.addIceCandidate(event.candidate);
+    localPeerConnection.addIceCandidate(event.candidate);
     trace('Remote ICE candidate: \n ' + event.candidate.candidate);
   }
 }
 
-function receiveChannelCallback(event) {
+function gotReceiveChannel(event) {
   trace('Receive Channel Callback');
   receiveChannel = event.channel;
-  receiveChannel.onmessage = onReceiveMessageCallback;
-  receiveChannel.onopen = onReceiveChannelStateChange;
-  receiveChannel.onclose = onReceiveChannelStateChange;
+  receiveChannel.onmessage = handleMessage;
+  receiveChannel.onopen = handleReceiveChannelStateChange;
+  receiveChannel.onclose = handleReceiveChannelStateChange;
 }
 
-function onReceiveMessageCallback(event) {
-  trace('Received Message');
+function handleMessage(event) {
+  trace('Received message: ' + event.data);
   document.getElementById("dataChannelReceive").value = event.data;
 }
 
-function onSendChannelStateChange() {
+function handleSendChannelStateChange() {
   var readyState = sendChannel.readyState;
   trace('Send channel state is: ' + readyState);
   if (readyState == "open") {
@@ -134,7 +130,7 @@ function onSendChannelStateChange() {
   }
 }
 
-function onReceiveChannelStateChange() {
+function handleReceiveChannelStateChange() {
   var readyState = receiveChannel.readyState;
   trace('Receive channel state is: ' + readyState);
 }

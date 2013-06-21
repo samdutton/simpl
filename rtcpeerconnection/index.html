@@ -28,16 +28,16 @@ video {
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> RTCPeerConnection</h1>
 
 
-  <video id="vid1" autoplay></video>
-  <video id="vid2" autoplay></video>
+  <video id="localVideo" autoplay></video>
+  <video id="remoteVideo" autoplay></video>
 
   <div>
-    <button id="btn1" onclick="start()">Start</button>
-    <button id="btn2" onclick="call()">Call</button>
-    <button id="btn3" onclick="hangup()">Hang Up</button>
+    <button id="startButton">Start</button>
+    <button id="callButton">Call</button>
+    <button id="hangupButton">Hang Up</button>
   </div>
 
-  <p>View the console to see what's happening. The <code>RTCPeerConnection</code> objects <code>pc1</code> and <code>pc2</code> are in global scope, so you can inspect them in the console as well.</p>
+  <p>View the console to see logging. The <code>MediaStream</code> object <code>localStream</code>, and the <code>RTCPeerConnection</code> objects <code>localPeerConnection</code> and <code>remotePeerConnection</code> are in global scope, so you can inspect them in the console as well.</p>
   <p>Code in this example used by kind permission of Vikas Marwaha and Justin Uberti.</p>
   <p>For more information about RTCPeerConnection, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/" title="HTML5 Rocks article about WebRTC by Sam Dutton">Getting Started With WebRTC</a>.</p>
 

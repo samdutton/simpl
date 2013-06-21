@@ -8,8 +8,37 @@
 <base target="_blank">
 <title>getUserMedia constraints</title>
 <link rel="stylesheet" href="../../css/main.css" />
-<style>
-</style>
+
+	<style>
+	body, html {
+		height: 100%;
+	}
+
+	button {
+		margin: 0 1em 0 0;
+		width: 100px;
+	}
+
+	div#buttons {
+		margin: 0 0 1em 0;
+	}
+
+	div#container {
+		max-width: 100%;
+	}
+
+	p#dimensions {
+		height: 1em;
+		margin: 0 0 1.5em 0;
+	}
+
+	video {
+		background: none;
+		height: auto;
+		width: auto;
+	}
+	</style>
+
 </head>
 <body>
 <div id="container">
@@ -18,16 +47,21 @@
 
   <p></p>
 
-  <p>This example uses <a href="http://tools.ietf.org/html/draft-alvestrand-constraints-resolution-00#page-4" title="IETF constraints draft proposal">constraints</a> to specify video dimensions: in this example, <code>maxWidth:&nbsp;360</code>.</p>
+  <p>This example uses <a href="http://tools.ietf.org/html/draft-alvestrand-constraints-resolution-00#page-4" title="IETF constraints draft proposal">constraints</a>.</p>
 
-  <p>Currently you'll need <a href="https://tools.google.com/dlpage/chromesxs" title="Download Google Chrome Canary">Google Chrome Canary</a> for this to work.</p>
+  <p>Click a button to call <code>getUserMedia()</code> with appropriate resolution.</p>
 
-  <p>Use the Chrome Dev Tools to view the actual dimensions of the video. To try different values, set a breakpoint before the navigator.getUserMedia() call (in <a href="js/main.js" title="JavaScript for this page">js/main.js</a>) then reload the page, change constraints, save, and continue.</p>
+	<div id="buttons">
+	  <button id="qvga">QVGA</button>
+	  <button id="vga">VGA</button>
+	  <button id="hd">HD</button>
+	</div>
 
-  <!-- height set to auto to override main.css -->
-  <video autoplay style="height: auto; width: auto"></video>
+  <p id="dimensions"></p>
 
-  <script src="js/main.js">
+  <video autoplay></video>
+
+  <script src="js/main.js"></script>
 
   <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
 

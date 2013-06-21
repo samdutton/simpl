@@ -1,11 +1,15 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-var constraints = {video: true};
+var constraints = {audio: false, video: true};
+var video = document.querySelector("video");
 
-function successCallback(localMediaStream) {
-  window.stream = localMediaStream; // stream available to console
-  var video = document.querySelector("video");
-  video.src = window.URL.createObjectURL(localMediaStream);
+function successCallback(stream) {
+  window.stream = stream; // stream available to console
+  if (window.URL) {
+    video.src = window.URL.createObjectURL(stream);
+  } else {
+    video.src = stream;
+  }
   video.play();
 }
 
