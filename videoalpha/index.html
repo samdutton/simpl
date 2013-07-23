@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<title>Video alpha channel</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+	<link rel="stylesheet" href="css/main.css" />
+
+</head>
+<body>
+
+  <video id="video1" autoplay src="video/dancer1.webm" loop></video>
+  <video id="video2" autoplay src="video/soccer1.webm" loop></video>
+  <video id="chrome" class="transparent" src="video/chrome.webm" loop></video>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video alpha channel</h1>
+
+    <p>Requires Chrome Canary with VP8 Alpha playback enabled from the chrome:flags page.</p>
+    <p>Click and drag videos to show CSS filters; double click to trigger CSS animation. Resize page to resize videos.</p>
+    <p>Double click background to swap between image and video.</p>
+    <p>Select video background colour: <input id="colorInput" type="color"> (<span id='clearSpan'>clear</span>)</p>
+
+
+    <script src="js/lib/pointer.js"></script>
+    <script src="js/main.js"></script>
+
+  </div>
+
+  <a id="viewSource" href="https://github.com/samdutton/simpl/blob/master/videoalpha/index.html" title="View source for this page on github">View source on github</a>
+
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

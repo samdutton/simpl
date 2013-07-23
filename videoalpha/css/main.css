@@ -1,0 +1,123 @@
+a#viewSource {
+border: none;
+bottom: 1em;
+color: #3366ff;
+padding: 0 0 0 1.5em;
+position: absolute;
+width: 200px;
+z-index: 10;
+}
+
+body, html {
+height: 100%;
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+}
+
+body {
+background-color: #114411;
+background-image: url(../images/crissyField.jpg);
+background-repeat:  no-repeat;
+background-size: 100%;
+position: relative;
+}
+
+div#container {
+background: none;
+max-width: 100%;
+position: relative;
+}
+
+p {
+color: black;
+}
+
+span#clearSpan {
+color: #77aaff;
+cursor: pointer;
+}
+
+span#clearSpan:hover {
+text-decoration: underline;
+}
+
+video#chrome {
+bottom: 0;
+position: absolute;
+transition: opacity 1s;
+-webkit-transition: opacity 1.5s ease-in-out;
+width: 150%;
+}
+
+video#chrome.transparent {
+opacity: 0;
+}
+
+video#video1, video#video2  {
+animation-duration: 3s;
+-webkit-animation-duration: 3s;
+background: transparent;
+position: absolute;
+}
+
+video#video1 {
+bottom: 0px;
+left: 10%;
+width: 50%;
+z-index: 1;
+}
+
+video#video2 {
+bottom: 50px;
+right: 10%;
+width: 25%;
+z-index: 1;
+}
+
+.rotateOut {
+-webkit-animation-name: rotateOut;
+animation-name: rotateOut;
+}
+
+@-webkit-keyframes rotateOut {
+0% {
+-webkit-transform-origin: center center;
+-webkit-transform: rotate(0) scale(1);
+opacity: 1;
+-webkit-animation-timing-function: ease-in;
+}
+
+50% {
+-webkit-transform-origin: center center;
+-webkit-transform: rotate(-2000deg) scale(0);
+opacity: 0;
+}
+100% {
+-webkit-transform-origin: center center;
+-webkit-transform: rotate(2000deg) scale(1);
+opacity: 1;
+-webkit-animation-timing-function: ease-out;
+}
+}
+
+@keyframes rotateOut {
+0% {
+transform-origin: center center;
+transform: rotate(0) scale(1);
+opacity: 1;
+animation-timing-function: ease-in;
+}
+
+50% {
+transform-origin: center center;
+transform: rotate(-2000deg) scale(0);
+opacity: 0;
+}
+100% {
+transform-origin: center center;
+transform: rotate(2000deg) scale(1);
+opacity: 1;
+animation-timing-function: ease-out;
+}
+}
+

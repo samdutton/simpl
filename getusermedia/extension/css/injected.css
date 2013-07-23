@@ -1,0 +1,31 @@
+﻿div.framegrabberControls {
+opacity: 0.8;
+position: absolute;
+left: 0px;
+padding: 10px 10px 10px 10px;
+z-index: 2000; // youtube video-blocker is 1010
+}
+
+div.framegrabberControls:hover {
+opacity: 1;
+}
+
+div.framegrabberControls img {
+display: block;
+cursor: pointer !important;;
+float: left;
+height: 15px;
+margin: 0 10px 0 0;
+opacity: 0.8;
+width: 15px;
+}
+
+div.framegrabberControls img:hover {
+opacity: 1;
+}
+
+div.framegrabberControls img.grab {
+}
+
+div.framegrabberControls img.openFramegrabInNewTab {
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<title>MediaStream Recording</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+<style>
+a#downloadLink {
+  display: block;
+  margin: 0 0 1em 0;
+  min-height: 1.2em;
+}
+p#data {
+  min-height: 6em;
+}
+</style>
+
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStream Recording</h1>
+
+  <p>This demo requires <a href="http://nightly.mozilla.org/" title="Download Firefox Nightly">Firefox Nightly</a>. It's based on <a href="https://github.com/PinZhang/sample-codes/blob/master/html5/media_recording.html" title="GitHub repository for Media Recording example">PinZhang's MediaRecorder example</a>.</p>
+
+  <p>How does it work? A <code>MediaRecorder</code> is created which takes an audio stream from <code>navigator.getUserMedia()</code>. When a blob of recorded data becomes available (set to occur after two seconds) this is used to set the <code>src</code> of the audio element, using <code>window.URL.createObjectURL()</code>.</p>
+
+  <p>For more information see the MediaStream Recording API <a href="https://dvcs.w3.org/hg/dap/raw-file/default/media-stream-capture/MediaRecorder.html" title="W3C MediaStream Recording API Editor's Draft">Editor's Draft</a>.</p>
+
+  <audio controls autoplay></audio>
+
+  <a id="downloadLink" download="mediarecorder.ogg" name="mediarecorder.ogg" href></a>
+
+  <p id="data"></p>
+
+  <script src="js/main.js"></script>
+
+
+<a href="https://github.com/samdutton/simpl/blob/master/mediarecorder/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

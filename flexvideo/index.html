@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<title>Flex video</title>
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+
+    html {
+      height: 100%; /* expand vertically to fit window/viewport */
+    }
+
+    body {
+      height: calc(100% - 3em); /* minus padding */
+      height: -webkit-calc(100% - 3em); /* minus padding */
+    }
+
+    div#container {
+      box-orient: vertical;
+      display: box;
+      display: flexbox;
+      -moz-box-orient: vertical;
+      display: -moz-box;
+      -ms-box-orient: vertical;
+      display: -ms-box;
+      display: -ms-flexbox;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      display: -webkit-flexbox;
+      height: calc(100% - 9em);  /* minus padding */
+      height: -webkit-calc(100% - 9em);  /* minus padding */
+      max-width: 100%;
+    }
+
+    video {
+      background: #ccc;
+      box-flex: 1;
+      display: box;
+      flex: 1;
+      -moz-box-flex: 1;
+      display:  -moz-box;
+      -ms-box-flex: 1;
+      -ms-flex: 1;
+      display:  -ms-box;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      display:  -webkit-box;
+    }
+  </style>
+
+
+</head>
+<body>
+<div id="container">
+
+  <h1 style="margin: 0;"><a href="../index.html" title="simpl.info home page">simpl.info</a> flex video</h1>
+
+    <p>The container div and video below expand to fit available space.</p>
+
+    <video class="expand" autoplay controls poster="images/poster.jpg" preload="metadata">
+      <source src="video/chrome.webm" type="video/webm" />
+      <source src="video/chrome.mp4" type="video/mp4" />
+      <p>This browser does not support the video element.</p>
+    </video>
+
+<a href="https://github.com/samdutton/simpl/blob/master/flexvideo/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
