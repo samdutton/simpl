@@ -25,22 +25,13 @@
 <div id="container">
 <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Device Orientation</h1>
 
+  <p id='isAvailable'></p>
   <p>Tilting and rotating your laptop or device will transform the following image if Device Orientation is available.</p>
   <img src="html5-logo-white.svg" alt="The HTML5 logo" id="orientee" />
+  <script src="js/main.js"></script>
 
 <a href="https://github.com/samdutton/simpl/blob/master/deviceorientation/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
 </div>
-
-    <script>
-      (function() {
-        var logoElement = document.getElementById('orientee');
-        window.addEventListener('deviceorientation', function(event) {
-          var transform = 'rotate(' + event.gamma + 'deg) rotate3d(1, 0, 0, ' + event.beta + 'deg)'
-          logoElement.style.webkitTransform = transform;
-          logoElement.style.transform = transform;
-        }, true);
-      })();
-    </script>
 
 <script src="../js/lib/ga.js"></script>
 </body>
