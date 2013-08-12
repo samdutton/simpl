@@ -4,6 +4,10 @@ function log(message){
 }
 
 window.onload = function(){
+  if (!window.performance.getEntriesByType) {
+    log('This browser does not support the Resource Timing API :^\.');
+    return;
+  }
   var resources = window.performance.getEntriesByType('resource');
   for (i = 0; i != resources.length; ++i) {
     var resource = resources[i];
