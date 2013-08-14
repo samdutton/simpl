@@ -5,7 +5,7 @@ function log(message){
 
 window.onload = function(){
   if (!window.performance.getEntriesByType) {
-    log('This browser does not support the Resource Timing API :^\.');
+    log('This browser does not support the Resource Timing API :^\\.');
     return;
   }
   var resources = window.performance.getEntriesByType('resource');
