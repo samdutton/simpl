@@ -12,4 +12,5 @@ u.onend = function(event) {
 }
 speechSynthesis.speak(u);
 
+// simple version
 speechSynthesis.speak(new SpeechSynthesisUtterance('Hello another world'));

@@ -1,44 +1,45 @@
-var data = document.querySelector("p#data");
+var data = document.querySelector('p#data');
 function log(message){
-  data.innerHTML += message + "<br />";
+  data.innerHTML = message + '<br><br>' + data.innerHTML;
 }
 
 
-var recognizing;
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 recognition.continuous = true;
-recognition.interim = true;
-reset();
-recognition.onend = reset;
+recognition.interimResults = true;
+// recognition.lang = 'en-AU';
 
-recognition.onresult = function (event) {
-  var final = "";
-  var interim = "";
-  for (var i = 0; i < event.results.length; ++i) {
-    if (event.results[i].final) {
-      final += event.results[i][0].transcript;
+recognition.onresult = function(event) {
+  var results = event.results;
+  // results is an array of SpeechRecognitionResults
+  // each of which is an array of SpeechRecognitionAlternatives
+  // in this demo, we only use the first alternative
+  var interimTranscript = '';
+  for (var i = event.resultIndex; i != results.length; ++i) {
+    var result = results[i];
+    // once speaking/recognition stops, a SpeechRecognitionEvent
+    // is fired with a single result, for which isFinal is true
+    if (result.isFinal) {
+      log('Final transcript: ' + results[0][0].transcript);
+      recognition.stop();
+      return;
     } else {
-      interim += event.results[i][0].transcript;
+      interimTranscript += result[0].transcript;
     }
   }
-  final_span.innerHTML = final;
-  interim_span.innerHTML = interim;
+  log('Interim transcript: ' + interimTranscript);
 }
 
-function reset() {
-  recognizing = false;
-  button.innerHTML = "Click to Speak";
+recognition.onend = function(event) {
+  log('Recognition ended.');
+}
+recognition.onerror = function(event) {
+  log('Error: ' + event.error);
 }
 
-function toggleStartStop() {
-  if (recognizing) {
-    recognition.stop();
-    reset();
-  } else {
-    recognition.start();
-    recognizing = true;
-    button.innerHTML = "Click to Stop";
-    final_span.innerHTML = "";
-    interim_span.innerHTML = "";
-  }
+var startButton = document.querySelector('button#startButton');
+startButton.onclick = function(){
+  recognition.start();
 }
+
