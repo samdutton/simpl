@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PeerConnection Demo 2</title>
+<!-- Load the polyfill to switch-hit between Chrome and Firefox -->
+<script src="adapter.js"></script>
+<style>
+video {
+border:5px solid black;
+width:480px;
+height:360px;
+}
+button {
+font: 18px sans-serif;
+padding: 8px;
+}
+textarea {
+font-family: monospace;
+margin: 2px;
+width:480px;
+height:640px;
+}
+</style>
+</head>
+<body>
+<table border="0">
+<tr>
+<td>Local Preview</td>
+<td>Remote Stream for Connection 1</td>
+<td>Remote Stream for Connection 4</td>
+</tr>
+<tr>
+<td>
+<video id="vid1" autoplay="true" muted></video>
+</td>
+<td>
+<video id="vid2" autoplay muted></video>
+</td>
+<td>
+<video id="vid4" autoplay muted></video>
+</td>
+</tr>
+</table>
+
+<br>
+<button id="btn1" onclick="start()">Start</button>
+<button id="btn2" onclick="call()">Call</button>
+<button id="btn3" onclick="hangup()">Hang Up</button>
+<button id="btn4" onclick="call2()">Call 2</button>
+<button id="btn5" onclick="hangup2()">Hang Up 2</button>
+<br>
+<xtextarea id="ta1"></textarea>
+<xtextarea id="ta2"></textarea>
+<script>
+btn1.disabled = false;
+btn2.disabled = true;
+btn3.disabled = true;
+btn4.disabled = true;
+btn5.disabled = true;
+var pc1,pc2,pc3,pc4;
+var localstream;
+var gRemoteStreams = {};
+var sdpConstraints = {'mandatory': {
+'OfferToReceiveAudio':true,
+'OfferToReceiveVideo':true }};
+
+function gotStream(stream){
+trace("Received local stream");
+// Call the polyfill wrapper to attach the media stream to this element.
+attachMediaStream(vid1, stream);
+localstream = stream;
+btn2.disabled = false;
+}
+
+function start() {
+trace("Requesting local stream");
+btn1.disabled = true;
+// Call into getUserMedia via the polyfill (adapter.js).
+getUserMedia({audio:true, video:true},
+gotStream, function() {});
+}
+
+function createConnection(servers, remoteView, extraOnAddStream) {
+var pc = new RTCPeerConnection(servers);
+pc.onaddstream = function(e) {
+if (remoteView) {
+attachMediaStream(remoteView, e.stream);
+trace("Received remote stream");
+gRemoteStreams[remoteView.id] = e.stream;
+}
+
+if (extraOnAddStream) {
+extraOnAddStream();
+}
+}
+return pc;
+}
+
+function negotiateBetween(caller, callee) {
+connectOnIceCandidate(caller, callee);
+
+caller.createOffer(
+function (offer) {
+trace("Offer: \n" + offer.sdp);
+caller.setLocalDescription(offer);
+receiveOffer(offer, caller, callee);
+});
+}
+
+function connectOnIceCandidate(caller, callee) {
+caller.onicecandidate =
+function(event) { onIceCandidate(event, "Caller", callee); }
+callee.onicecandidate =
+function(event) { onIceCandidate(event, "Callee", caller); }
+}
+
+function onIceCandidate(event, source, target) {
+if (event.candidate) {
+var candidate = new RTCIceCandidate(event.candidate);
+target.addIceCandidate(candidate);
+trace(source + " ICE candidate: \n " + event.candidate.candidate);
+}
+}
+
+function receiveOffer(offer, caller, callee) {
+callee.setRemoteDescription(offer);
+// Since the "remote" side has no media stream we need
+// to pass in the right constraints in order for it to
+// accept the incoming offer of audio and video.
+callee.createAnswer(function (answer) {
+trace("Answer: \n" + answer.sdp);
+callee.setLocalDescription(answer);
+caller.setRemoteDescription(answer);
+}, null, sdpConstraints);
+}
+
+function call() {
+btn2.disabled = true;
+btn3.disabled = false;
+trace("Starting call");
+
+videoTracks = localstream.getVideoTracks();
+audioTracks = localstream.getAudioTracks();
+if (videoTracks.length > 0)
+trace('Using Video device: ' + videoTracks[0].label);
+if (audioTracks.length > 0)
+trace('Using Audio device: ' + audioTracks[0].label);
+
+var servers = null;
+pc1 = createConnection(servers, null, null);
+trace("Created local peer connection object pc1");
+pc1.addStream(localstream);
+trace("Adding Local Stream to peer connection");
+
+pc2 = createConnection(servers, vid2, function() { btn4.disabled = false; });
+trace("Created remote peer connection object pc2");
+
+negotiateBetween(pc1, pc2);
+}
+
+function call2() {
+btn4.disabled = true;
+btn5.disabled = false;
+trace("Starting call2");
+
+
+var servers = null;
+pc3 = createConnection(servers, null, null);
+trace("Created local peer connection object pc3");
+var streamToForward = gRemoteStreams[vid2.id];
+pc3.addStream(streamToForward);
+trace("Adding Remote Stream of pc2 to pc3");
+
+pc4 = createConnection(servers, vid4, null);
+trace("Created remote peer connection object pc4");
+
+negotiateBetween(pc3, pc4);
+}
+
+function doHangup(caller, callee, callButton, hangupButton) {
+caller.close();
+callee.close();
+caller = null;
+callee = null;
+hangupButton.disabled = true;
+callButton.disabled = false;
+}
+
+function hangup() {
+trace("Ending call");
+doHangup(pc1, pc2, btn2, btn3);
+}
+
+function hangup2() {
+trace("Ending call 2");
+doHangup(pc3, pc4, btn4, btn5);
+}
+
+</script>
+</body>
+</html>
+
