@@ -1,3 +1,6 @@
+// http://shawarma.kir/alcatraz/eme_fps.html
+
+
 var KEY = new Uint8Array([0xeb, 0xdd, 0x62, 0xf1, 0x68, 0x14, 0xd2, 0x7b,
                           0x68, 0xef, 0x12, 0x2a, 0xfc, 0xe4, 0xae, 0x3c]);
 // Key ID used for init data.
@@ -5,15 +8,22 @@ var keyID = "0123456789012345";
 // Stores a failure message that is read by the browser test when it fails.
 var failMessage = '';
 
-var video = document.getElementById("video");
+var mediaFile = '../video/Chrome_44-enc_av.webm';
+var keySystem = 'webkit-org.w3.clearkey';
+var mediaType = 'video/webm; codecs="vorbis, vp8"';
+
+var videoElement = document.getElementById("video");
+
+loadEncryptedMedia(videoElement, mediaFile, keySystem, mediaType, true);
 
  function startTest() {
-  mediaFile = document.querySelector('input').value;
-  keySystem = keySystemList.value;
-  mediaType = mediaTypeList.value;
+//  mediaFile = videoURL;
+//  mediaFile = document.querySelector('input').value;
+  // keySystem = keySystemList.value;
+  // mediaType = mediaTypeList.value;
 
-  loadEncryptedMediaFromURL(video, useSRC.checked);
-  video.play();
+//  loadEncryptedMediaFromURL(videoElement, useSRC.checked);
+//  videoElement.play();
 }
 
 function loadEncryptedMediaFromURL(video, useSRC) {
