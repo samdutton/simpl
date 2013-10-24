@@ -10,6 +10,11 @@ module.exports = function(grunt){
 
 	});
 
-	grunt.config.set('feature.new',grunt.option('feature')||".");
-	grunt.registerTask('default', 'index');
+  grunt.registerTask('default', 'index');
+
+  if(!grunt.option('feature')){
+    grunt.fail.fatal("Please check the usage [ --feature is mandatory ]");
+  }
+
+	grunt.config.set('feature.new',grunt.option('feature'));
 }
