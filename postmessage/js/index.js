@@ -4,9 +4,10 @@ window.addEventListener("message", function(event) {
 });
 
 var childWindow = document.querySelector("iframe").contentWindow;
-setTimeout(function(){ // allow construction of iframe
+
+childWindow.onload = function(){
   childWindow.postMessage("Hi from index.html!", "*");
-}, 1);
+}
 
 function log(message){
   document.getElementById("data").innerHTML += message + "<br /><br />";

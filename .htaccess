@@ -11,19 +11,27 @@ RedirectMatch 301 /do$ /deviceorientation
 RedirectMatch 301 /es$ /eventsource
 RedirectMatch 301 /fieldset /localstorage
 RedirectMatch 301 /fs$ /fullscreen
-RedirectMatch 301 /geolocation /geo
+RedirectMatch 301 /geo$ /geolocation
 RedirectMatch 301 /gum$ /getusermedia
+RedirectMatch 301 /input$ /inputtypes
+RedirectMatch 301 /location$ /geolocation
+RedirectMatch 301 /mf$ /mediafragments
+RedirectMatch 301 /mo$ /mutationobserver
 RedirectMatch 301 /mr$ /mediarecorder
+RedirectMatch 301 /multi$ /rtcpeerconnection/multi/index.html
 RedirectMatch 301 /n$ /notification
 RedirectMatch 301 /nt$ /navigationtiming
 RedirectMatch 301 /ol$ /online
 RedirectMatch 301 /pc$ /rtcpeerconnection
 RedirectMatch 301 /peerconnection /rtcpeerconnection
 RedirectMatch 301 /performance /navigationtiming
+RedirectMatch 301 /pm$ /postmessage
 RedirectMatch 301 /sse$ /eventsource
 RedirectMatch 301 /rt$ /resourcetiming
+RedirectMatch 301 /summary$ /details
 RedirectMatch 301 /ua$ /useragent
 RedirectMatch 301 /webintents /stnetnibew
+RedirectMatch 301 /ws /webaudio
 RedirectMatch 301 /ww$ /webworkers
 
 

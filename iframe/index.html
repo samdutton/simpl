@@ -4,27 +4,593 @@
 <meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 <base target="_blank">
 <title>The iframe element</title>
-<link rel="stylesheet" href="../css/main.css" />
-<style>
-iframe {
-width: 100%;
-}
-</style>
 </head>
 <body>
-<div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> iframe</h1>
+<blockquote class="commentary talkinghead">
 
-  <p>This document has a seamless iframe:</p>
+  <p>WebRTC enables peer to peer communication.</p>
 
-  <iframe src="child.html" seamless="seamless"></iframe>
+  <p>BUT...</p>
 
-<a href="https://github.com/samdutton/simpl/blob/master/iframe/index.html" title="View source for this page on github" id="viewSource">View source on github</a>
-</div>
-<script src="../js/lib/ga.js"></script>
+  <p>WebRTC still needs servers:</p>
+
+  <ul>
+    <li>For clients to exchange metadata to coordinate communication: this is called signaling.</li>
+    <li>To cope with network address translators (NATs) and firewalls.</li>
+  </ul>
+
+<p>In this article we show you how to build a signaling service, and how to deal with the quirks of real-world connectivity by using STUN and TURN servers. We also explain how WebRTC apps can handle multi-party calls and interact with services such as VoIP and PSTN (aka telephones).</p>
+
+<p>If you're not familiar with the basics of WebRTC, we strongly recommend you take a look at <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">Getting Started With WebRTC</a> before reading this article.</p>
+
+</blockquote>
+
+<h2 id="what-is-signaling">What is signaling?</h2>
+
+<p>Signaling is the process of coordinating communication. In order for a WebRTC application to set up a 'call', its clients need to exchange information:</p>
+
+<ul>
+  <li>Session control messages used to open or close communication.</li>
+  <li>Error messages.</li>
+  <li>Media metadata such as codecs and codec settings, bandwidth and media types.</li>
+  <li>Key data, used to establish secure connections.</li>
+  <li>Network data, such as a host's IP address and port as seen by the outside world.</li>
+</ul>
+
+<p>This signaling process needs a way for clients to pass messages back and forth. That mechanism is not implemented by the WebRTC APIs: you need to build it yourself. We describe below some ways to build a signaling service. First, however, a little context...</p>
+
+<h3 id="jsep">Why is signaling not defined by WebRTC?</h3>
+
+<p>To avoid redundancy and to maximize compatibility with established technologies, signaling methods and protocols are not specified by WebRTC standards. This approach is outlined by JSEP, the <a href="http://tools.ietf.org/html/draft-ietf-rtcweb-jsep-03#section-1.1">JavaScript Session Establishment Protocol</a>:</p>
+
+<blockquote class="commentary">The thinking behind WebRTC call setup has been to fully specify and control the media plane, but to leave the signaling plane up to the application as much as possible. The rationale is that different applications may prefer to use different protocols, such as the existing SIP or Jingle call signaling protocols, or something custom to the particular application, perhaps for a novel use case. In this approach, the key information that needs to be exchanged is the multimedia session description, which specifies the necessary transport and media configuration information necessary to establish the media plane.</blockquote>
+
+<p>JSEP's architecture also avoids a browser having to save state: that is, to function as a signaling state machine. This would be problematic if, for example, signaling data was lost each time a page was reloaded. Instead, signaling state can be saved on a server.</p>
+
+<figure>
+  <img src="jsep.png" alt="JSEP architecture diagram" />
+  <figcaption>JSEP architecture</figcaption>
+</figure>
+
+<p>JSEP requires the exchange between peers of <em>offer</em> and <em>answer</em>: the media metadata mentioned above. Offers and answers are communicated in Session Description Protocol format (SDP), which look like this:</p>
+
+<pre class="prettyprint">v=0
+o=- 7614219274584779017 2 IN IP4 127.0.0.1
+s=-
+t=0 0
+a=group:BUNDLE audio video
+a=msid-semantic: WMS
+m=audio 1 RTP/SAVPF 111 103 104 0 8 107 106 105 13 126
+c=IN IP4 0.0.0.0
+a=rtcp:1 IN IP4 0.0.0.0
+a=ice-ufrag:W2TGCZw2NZHuwlnf
+a=ice-pwd:xdQEccP40E+P0L5qTyzDgfmW
+a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=mid:audio
+a=rtcp-mux
+a=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:9c1AHz27dZ9xPI91YNfSlI67/EMkjHHIHORiClQe
+a=rtpmap:111 opus/48000/2
+…</pre>
+
+<p>Want to know what all this SDP gobbledygook actually means? Take a look at the <a href="http://datatracker.ietf.org/doc/draft-nandakumar-rtcweb-sdp/?include_text=1">IETF examples</a>.</p>
+
+<p>Bear in mind that WebRTC is designed so that the offer or answer can be tweaked before being set as the local or remote description, by editing the values in the SDP text. For example, the <em>preferAudioCodec() </em>function in <a href="https://apprtc.appspot.com/js/main.js">apprtc.appspot.com</a> can be used to set the default codec and bitrate. SDP is somewhat painful to manipulate with JavaScript, and there is discussion about whether future versions of WebRTC should use JSON instead, but there are <a href="http://tools.ietf.org/html/draft-ietf-rtcweb-jsep-03#section-3.3">some advantages</a> to sticking with SDP.</p>
+
+<h3 id="rtcpeerconnection-signaling-offer-answer-and-candidate">RTCPeerConnection + signaling: offer, answer and candidate</h3>
+
+<p>RTCPeerConnection is the API used by WebRTC applications to create a connection between peers and communicate audio and video.</p>
+
+<p>To initialise this process RTCPeerConnection has two tasks:</p>
+
+<ul>
+  <li>Ascertain local media conditions, such as resolution and codec capabilities. This is the metadata used for the offer and answer mechanism.</li>
+  <li>Get potential network addresses for the application's host, known as <em>candidates</em>.</li>
+
+</ul>
+
+<p>Once this local data has been ascertained, it must be exchanged via a signaling mechanism with the remote peer.</p>
+
+<p>Imagine <a href="http://xkcd.com/177/">Alice is trying to call Eve</a>. Here's the full offer/answer mechanism in all its gory detail:</p>
+
+<ol style="list-style-type: decimal">
+  <li>Alice creates an RTCPeerConnection object.</li>
+  <li>Alice creates an <strong>offer</strong> (an SDP session description) with the RTCPeerConnection <em>createOffer() </em>method.</li>
+  <li>Alice calls <em>setLocalDescription() </em>with his offer.</li>
+  <li><p>Alice stringifies the offer and uses a signaling mechanism to send it to Eve.</p></li>
+  <li>Eve calls <em>setRemoteDescription()</em> with Alice's offer, so that her RTCPeerConnection knows about Alice's setup.</li>
+  <li>Eve calls <em>createAnswer()</em>, and the success callback for this is passed a local session description: Eve's <strong>answer</strong>.</li>
+  <li>Eve sets her answer as the local description by calling <em>setLocalDescription()</em>.</li>
+  <li>Eve then uses the signaling mechanism to send her stringified answer back to Alice.</li>
+  <li><p>Alice sets Eve's answer as the remote session description using <em>setRemoteDescription()</em>.</p></li>
+</ol>
+
+<!-- flow diagram -->
+
+<blockquote class="commentary talkinghead">
+  <p><a href="http://www.urbandictionary.com/define.php?term=strewth">Strewth!</a></p>
+</blockquote>
+
+<p>Alice and Eve also need to exchange network information. The expression 'finding candidates' refers to the process of finding network interfaces and ports using the <a href="http://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE framework</a>.</p>
+
+<ol style="list-style-type: decimal">
+  <li>Alice creates an RTCPeerConnection object with an <em>onicecandidate</em> handler.</li>
+  <li>The handler is called when network candidates become available.</li>
+  <li>In the handler, Alice sends stringified candidate data to Eve, via their signaling channel.</li>
+  <li>When Eve gets a candidate message from Alice, she calls <em>addIceCandidate()</em>, to add the candidate to the remote peer description.</li>
+</ol>
+
+<p>JSEP supports <a href="http://tools.ietf.org/html/draft-ietf-rtcweb-jsep-03#section-3.4.1">ICE Candidate Trickling</a>, which allows the caller to incrementally provide candidates to the callee after the initial offer, and for the callee to begin acting on the call and setting up a connection without waiting for all candidates to arrive.</p>
+
+<h3 id="coding-webrtc-for-signaling">Coding WebRTC for signaling</h3>
+
+<p>Below is a <a href="http://www.w3.org/TR/webrtc/#simple-peer-to-peer-example">W3C code example</a> that summarises the complete signaling process. The code assumes the existence of some signaling mechanism, <em>SignalingChannel</em>. Signaling is discussed in greater detail below.</p>
+
+<pre class="prettyprint">var signalingChannel = new SignalingChannel();
+var configuration = {
+  'iceServers': [{
+    'url': 'stun:stun.example.org'
+  }]
+};
+var pc;
+
+// call start() to initiate
+
+function start() {
+  pc = new RTCPeerConnection(configuration);
+
+  // send any ice candidates to the other peer
+  pc.onicecandidate = function (evt) {
+    if (evt.candidate)
+      signalingChannel.send(JSON.stringify({
+        'candidate': evt.candidate
+      }));
+  };
+
+  // let the 'negotiationneeded' event trigger offer generation
+  pc.onnegotiationneeded = function () {
+    pc.createOffer(localDescCreated, logError);
+  }
+
+  // once remote stream arrives, show it in the remote video element
+  pc.onaddstream = function (evt) {
+    remoteView.src = URL.createObjectURL(evt.stream);
+  };
+
+  // get a local stream, show it in a self-view and add it to be sent
+  navigator.getUserMedia({
+    'audio': true,
+    'video': true
+  }, function (stream) {
+    selfView.src = URL.createObjectURL(stream);
+    pc.addStream(stream);
+  }, logError);
+}
+
+function localDescCreated(desc) {
+  pc.setLocalDescription(desc, function () {
+    signalingChannel.send(JSON.stringify({
+      'sdp': pc.localDescription
+    }));
+  }, logError);
+}
+
+signalingChannel.onmessage = function (evt) {
+  if (!pc)
+    start();
+
+  var message = JSON.parse(evt.data);
+  if (message.sdp)
+    pc.setRemoteDescription(new RTCSessionDescription(message.sdp), function () {
+      // if we received an offer, we need to answer
+      if (pc.remoteDescription.type == 'offer')
+        pc.createAnswer(localDescCreated, logError);
+    }, logError);
+  else
+    pc.addIceCandidate(new RTCIceCandidate(message.candidate));
+};
+
+function logError(error) {
+  log(error.name + ': ' + error.message);
+}</pre>
+
+<p>To see the offer/answer and candidate exchange processes in action, take a look at the console log for the 'single-page' video chat example at <a href="http://simpl.info/rtcpeerconnection/">simpl.info/pc</a>. If you want more, download a complete dump of WebRTC signaling and stats from the chrome://webrtc-internals page.</p>
+
+<h3 id="peer-discovery">Peer discovery</h3>
+
+<p>This is fancy way of saying &mdash; how do I find someone to talk to?</p>
+
+<p>For telephone calls we have telephone numbers and directories. For online video chat and messaging, we need identity and presence management systems, and a means for users to initiate sessions. WebRTC apps need a way for clients to signal to each other that they want to start or join a call.</p>
+
+<p>Peer discovery mechanisms are not defined by WebRTC and we won't go into the options here. The process can be as simple as emailing or messaging a URL: for video chat applications such as <a href="http://talky.io">talky.io</a>, <a href="http://tawk.com">tawk.com</a> and <a href="http://browsermeeting.com">browsermeeting.com</a> you invite people to a call by sharing a custom link. Developer Chris Ball has built an intriguing <a href="http://blog.printf.net/articles/2013/05/17/webrtc-without-a-signaling-server/">serverless-webrtc</a> experiment that enables WebRTC call participants to exchange metadata by any messaging service they like, such as IM, email or homing pigeon.</p>
+
+<h2 id="how-can-i-build-a-signaling-service">How can I build a signaling service?</h2>
+
+<p>To reiterate: signaling protocols and mechanisms are not defined by WebRTC standards. Whatever you choose, you'll need an intermediary server to exchange signaling messages and application data between clients. Sadly, a web app cannot simply shout into the internet 'Connect me to my friend!' <br/> <br/> Thankfully signaling messages are small, and mostly exchanged at the start of a call. In testing with <a href="http://apprtc.appspot.com">apprtc.appspot.com</a> and <a href="http://samdutton-nodertc.jit.su/">samdutton-nodertc.jit.su</a> we found that, for a video chat session, a total of around 30&ndash;45 messages were handled by the signaling service, with a total size for all messages of around 10kB.</p>
+
+<p>As well as being relatively undemanding in terms of bandwidth, WebRTC signaling services don't consume much processing or memory, since they only need to relay messages and retain a small amount of session state data (such as which clients are connected).</p>
+
+<blockquote class="commentary talkinghead">
+<strong>Note</strong>: the signaling mechanism used to exchange session metadata can also be used to communicate application data, such as messages between the app and users. It's just a messaging service!
+</blockquote>
+
+<h3 id="pushing-messages-from-the-server-to-the-client">Pushing messages from the server to the client</h3>
+
+<p>A message service for signaling needs to be bidirectional: client to server and server to client. Bidirectional communication goes against the HTTP client/server request/response model, but various hacks such as <a href="https://en.wikipedia.org/wiki/Comet_(programming)">long polling</a> have been developed over many years in order to push data from a service running on a web server to a web app running in a browser.</p>
+
+<p>More recently, the <a href="http://www.html5rocks.com/en/tutorials/eventsource/basics/">EventSource API</a> has been <a href="http://caniuse.com/#feat=eventsource">widely implemented</a>. This enables 'server-sent events': data sent from a web server to a browser client via HTTP. There's a simple demo at <a href="http://simpl.info/es">simpl.info/es</a>. EventSource is designed for one way messaging, but it can be used in combination with XHR to build a service for exchanging signaling messages: a signaling service passes on a message from a caller, delivered by XHR request, by pushing it via EventSource to the callee.</p>
+
+<p><a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSocket</a> is a more natural solution, designed for full duplex client–server communication (messages can flow in both directions at the same time). One advantage of a signaling service built with pure WebSocket or Server-Sent Events (EventSource) is that the back-end for these APIs can be implemented on a variety of web frameworks common to most web hosting packages, for languages such as PHP, Python and Ruby.</p>
+
+<p>About three quarters of browsers <a href="http://caniuse.com/#search=websocket">support WebSocket</a> and, more importantly, all browsers that support WebRTC also support WebSocket, both on desktop and mobile. <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> should be used for all connections, to ensure messages cannot be intercepted unencrypted, and also to <a href="http://www.infoq.com/articles/Web-Sockets-Proxy-Servers">reduce problems with proxy traversal</a>. (For more information about WebSocket and proxy traversal see Ilya Grigorik's <a href="http://hpbn.co/webrtc">WebRTC chapter</a> in O'Reilly's <em>High Performance Browser Networking</em>. Peter Lubber's <a href="http://refcardz.dzone.com/refcardz/html5-websocket">WebSocket Cheat Sheet</a> has more information about WebSocket clients and servers.)</p>
+
+<p>Signaling for the canonical <a href="http://apprtc.appspot.com">apprtc.appspot.com</a> WebRTC video chat application is accomplished via the <a href="https://developers.google.com/appengine/docs/java/channel/">Google App Engine Channel API</a>, which uses <a href="http://en.wikipedia.org/wiki/Comet_(programming)">Comet</a> techniques (long polling) to enable signaling with push communication between the App Engine backend and the web client. (There's a <a href="https://code.google.com/p/googleappengine/issues/detail?id=2535">long-standing bug</a> for App Engine to support WebSocket. <strong>Star the bug to vote it up!</strong>) There is a <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-simple">detailed code walkthrough</a> of this app in the <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">HTML5 Rocks WebRTC article</a>.</p>
+
+<figure>
+  <img src="apprtc.jpg" alt="The apprtc.appspot.com video chat application" />
+  <figcaption><a href="http://apprtc.appspot.com">apprtc</a> in action</figcaption>
+</figure>
+
+<p>It is also possible to handle signaling by getting WebRTC clients to poll a messaging server repeatedly via Ajax, but that leads to a lot of redundant network requests, which is especially problematic for mobile devices. Even after a session has been established, peers need to poll for signaling messages in case of changes or session termination by other peers. The <a href="http://webrtcbook.com">WebRTC Book</a> app example takes this option, with some optimizations for polling frequency.</p>
+
+<h3 id="scaling-signaling">Scaling signaling</h3>
+
+<p>Although a signaling service consumes relatively little bandwidth and CPU per client, signaling servers for a popular application may have to handle a lot of messages, with high levels of concurrency. WebRTC apps that get a lot of traffic need signaling servers able to handle considerable load. We won't discuss them here, but for high volume messaging there are a variety of high performance realtime messaging options available that can be used for signaling, such as the commercial services offered by <a href="https://vline.com/" title="vLine WebRTC platform">vLine</a>, or <a href="http://zeromq.org/">ZeroMQ</a> (used by TokBox for their <a href="http://www.tokbox.com/blog/tokbox-builds-it%E2%80%99s-own-internal-messaging-infrastructure/">Rumour</a> service).</p>
+
+<h3 id="building-a-signaling-service-with-socket.io-on-node">Building a signaling service with Socket.io on Node</h3>
+
+<p>Below is code for a simple web application that uses a signaling service built with <a href="http://socket.io">Socket.io</a> on <a href="http://nodejs.org/">Node</a>. The design of Socket.io makes it simple to build a service to exchange messages, and Socket.io is particularly suited to WebRTC signaling because of its built-in concept of 'rooms'.  This example is not designed to scale as a production-grade signaling service, but works well for a relatively small number of users.</p>
+
+<p>Socket.io uses WebSocket with the following fallbacks: Adobe Flash Socket, AJAX long polling, AJAX multipart streaming, Forever Iframe and JSONP polling. It has been ported to various backends, but is perhaps best known for its Node version, which we use in the example below. </p>
+
+<p>There's no WebRTC in this example: it's designed only to show how to build signaling into a web app. View the console log to see what's happening as clients join a room and exchange messages. Our <a href="https://bitbucket.org/webrtc/codelab">WebRTC codelab</a> gives step-by-step instructions how to integrate this example into a complete WebRTC video chat application. You can download the code from <a href="https://bitbucket.org/webrtc/codelab/src/master/complete/step5">step 5 of the codelab repo</a> or try it out live at <a href="http://samdutton-nodertc.jit.su/">samdutton-nodertc.jit.su</a>: open the URL in two browsers for video chat.</p>
+
+<p>Here is the client, <em>index.html</em>:</p>
+
+<pre class="prettyprint">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;WebRTC client&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src='/socket.io/socket.io.js'&gt;&lt;/script&gt;
+    &lt;script src='js/main.js'&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>...and the JavaScript file <em>main.js </em>referenced in the client:</p>
+
+<pre class="prettyprint">
+var isInitiator;
+
+room = prompt('Enter room name:');
+
+var socket = io.connect();
+
+if (room !== '') {
+  console.log('Joining room ' + room);
+  socket.emit('create or join', room);
+}
+
+socket.on('full', function (room){
+  console.log('Room ' + room + ' is full');
+});
+
+socket.on('empty', function (room){
+  isInitiator = true;
+  console.log('Room ' + room + ' is empty');
+});
+
+socket.on('join', function (room){
+  console.log('Making request to join room ' + room);
+  console.log('You are the initiator!');
+});
+
+socket.on('log', function (array){
+  console.log.apply(console, array);
+});
+</pre>
+
+<p>The complete server app:</p>
+
+<pre class="prettyprint">var static = require('node-static');
+var http = require('http');
+var file = new(static.Server)();
+var app = http.createServer(function (req, res) {
+  file.serve(req, res);
+}).listen(2013);
+
+var io = require('socket.io').listen(app);
+
+io.sockets.on('connection', function (socket){
+
+  // convenience function to log server messages to the client
+  function log(){
+    var array = ['&gt;&gt;&gt; Message from server: '];
+    for (var i = 0; i &lt; arguments.length; i++) {
+      array.push(arguments[i]);
+    }
+      socket.emit('log', array);
+  }
+
+  socket.on('message', function (message) {
+    log('Got message:', message);
+    // for a real app, would be room only (not broadcast)
+    socket.broadcast.emit('message', message);
+  });
+
+  socket.on('create or join', function (room) {
+    var numClients = io.sockets.clients(room).length;
+
+    log('Room ' + room + ' has ' + numClients + ' client(s)');
+    log('Request to create or join room ' + room);
+
+    if (numClients === 0){
+      socket.join(room);
+      socket.emit('created', room);
+    } else if (numClients === 1) {
+      io.sockets.in(room).emit('join', room);
+      socket.join(room);
+      socket.emit('joined', room);
+    } else { // max two clients
+      socket.emit('full', room);
+    }
+    socket.emit('emit(): client ' + socket.id + ' joined room ' + room);
+    socket.broadcast.emit('broadcast(): client ' + socket.id + ' joined room ' + room);
+
+  });
+
+});</pre>
+
+<p>(You don't need to learn about node-static for this: it just makes the server simpler.)</p>
+
+<p>To run this app on localhost, you need to have Node, socket.io and <a href="https://github.com/cloudhead/node-static">node-static</a> installed. Node can be downloaded from <a href="http://nodejs.org/">nodejs.org</a> (installation is straightforward and quick). To install socket.io and node-static, run Node Package Manager from a terminal in your application directory:</p>
+
+
+<pre class="prettyprint">
+npm install socket.io
+npm install node-static
+</pre>
+
+<p>To start the server, run the following command from a terminal in your application directory:</p>
+
+
+<pre class="prettyprint">
+node server.js
+</pre>
+
+<p>From your browser, open <em>localhost:2013</em>. Open a new tab page or window in any browser and open <em>localhost:2013</em> again. To see what's happening, check the console: in Chrome, you can access this via the Chrome DevTools with Command-Option-J or Ctrl-Shift-J.</p>
+
+<p>Whatever approach you choose for signaling, your backend and client app will &mdash; at the very least &mdash; need to provide services similar to this example.</p>
+
+<h3 id="using-rtcdatachannel-for-signaling">Using RTCDataChannel for signaling</h3>
+
+<p>A signaling service is required to initiate a WebRTC session.</p>
+
+<p>However, once a connection has been established between two peers, RTCDataChannel could, in theory, take over as the signaling channel. This might reduce latency for signaling &mdash; since messages fly direct &mdash; and help reduce signaling server bandwidth and processing costs. We don't have a demo, but watch this space!</p>
+
+<h3 id="signaling-gotchas">Signaling gotchas</h3>
+
+<ul>
+  <li>RTCPeerConnection won't start gathering candidates until <em>setLocalDescription()</em> is called: this is mandated in the <a href="http://tools.ietf.org/html/draft-ietf-rtcweb-jsep-03#section-4.2.4">JSEP IETF draft</a>.</li>
+  <li>Take advantage of Trickle ICE (see above): call <em>addIceCandidate() </em>as soon as candidates arrive.</li>
+
+</ul>
+
+<h3 id="readymade-signaling-servers">Readymade signaling servers</h3>
+
+<p>If you don't want to roll your own, there are several WebRTC signaling servers available, which use Socket.io like the example above, and are integrated with WebRTC client JavaScript libraries:<br/></p>
+
+<ul>
+  <li><a href="https://github.com/webRTC/webRTC.io">webRTC.io</a>: one of the first abstraction libraries for WebRTC.</li>
+  <li><a href="https://github.com/priologic/easyrtc">easyRTC</a>: a full-stack WebRTC package.</li>
+  <li><a href="https://github.com/andyet/signalmaster">Signalmaster</a>: a signaling server created for use with the <a href="https://github.com/HenrikJoreteg/SimpleWebRTC">SimpleWebRTC</a> JavaScript client library.</li>
+
+</ul>
+
+<p>...and if you don't want to write any code at all, complete commercial WebRTC platforms are available from companies such as <a href="http://www.vline.com/">vLine</a>, <a href="http://tokbox.com/opentok">OpenTok</a> and <a href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+WebRTC+Support">Asterisk</a>.</p>
+
+<p>For the record, Ericsson built a <a href="https://labs.ericsson.com/blog/a-web-rtc-tutorial">signaling server using PHP on Apache</a> in the early days of WebRTC. This is now somewhat obsolete, but it's worth looking at the code if you're considering something similar.</p>
+
+<h3 id="signaling-security">Signaling security</h3>
+
+<blockquote class="commentary">
+  <p>Security is the art of making nothing happen.</p>
+  <p>&mdash; <a href="http://t.co/S9cUM7bVfd" title="Salman Rushdie reading and discussing Donald Barthelme's story, The Bodyguard">Salman Rushdie</a></p>
+</blockquote>
+
+<p>Encryption is <a href="http://www.ietf.org/proceedings/82/slides/rtcweb-13.pdf">mandatory</a> for all WebRTC components.</p>
+
+<p>However, signaling mechanisms aren't defined by WebRTC standards, so it's up to you make signaling secure. If an attacker manages to hijack signaling, they can stop sessions, redirect connections and record, alter or inject content.</p>
+
+<p>The most important factor in securing signaling is to use secure protocols, HTTPS and WSS (i.e TLS), which ensure that messages cannot be intercepted unencrypted. Also be careful not to broadcast signaling messages in a way that they can be accessed by other callers using the same signaling server.</p>
+
+<p class="notice fact">To secure a WebRTC app it is <strong>absolutely imperative</strong> that signaling uses <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>.</p>
+
+<h2 id="after-signaling-using-ice-to-cope-with-nats-and-firewalls">After signaling: using ICE to cope with NATs and firewalls</h2>
+
+<p>For metadata signaling, WebRTC apps use an intermediary server, but for actual media and data streaming once a session is established, RTCPeerConnection attempts to connect clients directly: peer to peer.</p>
+
+<p>In a simpler world, every WebRTC endpoint would have a unique address that it could exchange with other peers in order to communicate directly.</p>
+
+<figure>
+  <img src="p2p.png" alt="Simple peer to peer connection" />
+  <figcaption>A world without NATs and firewalls</figcaption>
+</figure>
+
+<p>In reality most devices live behind one or more layers of <a href="http://www.howstuffworks.com/nat.htm">NAT</a>, some have anti-virus software that blocks certain ports and protocols, and many are behind proxies and corporate firewalls. A firewall and NAT may in fact be implemented by the same device, such as a home wifi router.</p>
+
+<figure>
+  <img src="nat.png" alt="Peers behind NATs and firewalls" />
+  <figcaption>The real world</figcaption>
+</figure>
+
+<p>WebRTC apps can use the <a href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a> framework to overcome the complexities of real-world networking. To enable this to happen, your application must pass ICE server URLs to RTCPeerConnection, as described below.</p>
+
+<p>ICE tries to find the best path to connect peers. It tries all possibilities in parallel and chooses the most efficient option that works. ICE first tries to make a connection using the host address obtained from a device's operating system and network card; if that fails (which it will for devices behind NATs) ICE obtains an external address using a STUN server, and if that fails, traffic is routed via a TURN relay server.</p>
+
+<p>In other words:</p>
+
+<ul>
+  <li>A STUN server is used to get an external network address.</li>
+  <li>TURN servers are used to relay traffic if direct (peer to peer) connection fails.</li>
+
+</ul>
+
+<p>Every TURN server supports STUN: a TURN server is a STUN server with added relaying functionality built in. ICE also copes with the complexities of NAT setups: in reality, NAT 'hole punching' may require more than just a public IP:port address.</p>
+
+<p>URLs for STUN and/or TURN servers are (optionally) specified by a WebRTC app in the <em>iceServers</em> configuration object that is the first argument to the RTCPeerConnection constructor. For <a href="http://apprtc.appspot.com">apprtc.appspot.com</a> that value looks like this:</p>
+
+<pre class="prettyprint">{
+  'iceServers': [
+    {
+      'url': 'stun:stun.l.google.com:19302'
+    },
+    {
+      'url': 'turn:192.158.29.39:3478?transport=udp',
+      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      'username': '28224511:1379330808'
+    },
+    {
+      'url': 'turn:192.158.29.39:3478?transport=tcp',
+      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      'username': '28224511:1379330808'
+    }
+  ]
+}</pre>
+
+<p>Once RTCPeerConnection has that information, the ICE magic happens automatically: RTCPeerConnection uses the ICE framework to work out the best path between peers, working with STUN and TURN servers as necessary.</p>
+
+<h3 id="more-about-stun">STUN</h3>
+
+<p><a href="http://www.howstuffworks.com/nat.htm">NAT</a>s provide a device with an IP address for use within a private local network, but this address can't be used externally. Without a public address, there's no way for WebRTC peers to communicate. To get around this problem WebRTC uses <a href="https://en.wikipedia.org/wiki/STUN">STUN</a>.</p>
+
+<p>STUN servers live on the public internet and have one simple task: check the IP:port address of an incoming request (from an application running behind a NAT) and send that address back as a response. In other words, the application uses a STUN server to discover its IP:port from a public perspective. This process enables a WebRTC peer to get a publicly accessible address for itself, and then pass that on to another peer via a signaling mechanism, in order to set up a direct link. (In practice, different NATs work in different ways, and there may be multiple NAT layers, but the principle is still the same.)</p>
+
+<p>STUN servers don't have to do much or remember much, so relatively low-spec STUN servers can handle a large number of requests.</p>
+
+<p>Most WebRTC calls successfully make a connection using STUN: 86%, according to <a href="http://webrtcstats.com/">webrtcstats.com</a>, though this can be less for calls between peers behind firewalls and complex NAT configurations.</p>
+
+<figure>
+  <img src="stun.png" alt="Peer to peer connection using a STUN server" />
+  <figcaption>Using STUN servers to get public IP:port addresses</figcaption>
+</figure>
+
+<h3 id="turn">TURN</h3>
+
+<p>RTCPeerConnection tries to set up direct communication between peers over UDP. If that fails, RTCPeerConnection resorts to TCP. If that fails, TURN servers can be used as a fallback, relaying data between endpoints.</p>
+
+<p><strong>Just to reiterate: TURN is used to relay audio/video/data streaming between peers, not signaling data!</strong></p>
+
+<p>TURN servers have public addresses, so they can be contacted by peers even if the peers are behind firewalls or proxies. TURN servers have a conceptually simple task &mdash; to relay a stream &mdash; but, unlike STUN servers, they inherently consume a lot of bandwidth. In other words, TURN servers need to be beefier.</p>
+
+<figure>
+  <img src="turn.png" alt="Peer to peer connection using a STUN server" />
+  <figcaption>The full Monty: STUN, TURN and signaling</figcaption>
+</figure>
+
+<p>This diagram shows TURN in action: pure STUN didn't succeed, so each peer resorts to using a TURN server.</p>
+
+<h3 id="deploying-stun-and-turn-servers">Deploying STUN and TURN servers</h3>
+
+<p>For testing, Google runs a public STUN server, stun.l.google.com:19302, as used by <a href="http://apprtc.appspot.com">apprtc.appspot.com</a>. For a production STUN/TURN service, we recommend using the rfc5766-turn-server; source code for STUN and TURN servers is available from <a href="https://code.google.com/p/rfc5766-turn-server/">code.google.com/p/rfc5766-turn-server</a>, which also provides links to several sources of information about server installation. A <a href="https://groups.google.com/forum/#!msg/discuss-webrtc/X-OeIUC0efs/XW5Wf7Tt1vMJ">VM image for Amazon Web Services</a> is also available.</p>
+
+<p>An alternative TURN server is restund, available as <a href="http://www.creytiv.com/restund.html">source code</a> and also for AWS. Below are instructions how to set up restund on Google Compute Engine.</p>
+<ol>
+  <li>Open firewall as necessary, for tcp=443, udp/tcp=3478</li>
+  <li>Create four instances, one for each public IP, Standard Ubuntu 12.06 image</li>
+  <li>Set up local firewall config (allow ANY from ANY)</li>
+
+  <li style="line-height: 1.8em;">Install tools:<br />
+    <code>sudo apt-get install make<br />
+    sudo apt-get install gcc</code>
+  </li>
+  <li style="line-height: 1.8em;">Download and build restund:<br />
+      libre: <a href="http://creytiv.com/re.html" title="libre">creytiv.com/re.html</a><br />
+      restund: <a href="http://creytiv.com/restund.html" title="">creytiv.com/restund.html</a>
+  </li>
+  <li>Update <em>restund/mk</em> to disable IPv6 due to build error (HAVE_INET6)</li>
+  <li>Run <code>sudo make install</code> for libre and restund</li>
+  <li style="line-height: 1.8em;">Configure restund:<br />
+    Set <em>LD_LIBRARY_PATH</em><br />
+    Copy <em>restund.conf</em> to <em>/etc/restund.conf</em><br />
+    Set <em>restund.conf</em> to use the right 10. IP address
+  </li>
+  <li>Run restund</li>
+  <li>Test using stund client from remote machine: <code>./client <em>IP:port</em></code></li>
+</ol>
+<h2 id="beyond-one-to-one-multi-party-webrtc">Beyond one-to-one: multi-party WebRTC</h2>
+
+<p>You may also want to take a look at Justin Uberti's proposed IETF standard for a <a href="http://tools.ietf.org/html/draft-uberti-rtcweb-turn-rest-00" title="IETF draft: A REST API For Access To TURN Services">REST API for access to TURN Services</a>.</p>
+
+<p>It's easy to imagine use cases for media streaming that go beyond a simple one-to-one call: for example, video conferencing between a group of colleagues, or a public event with one speaker and hundreds (or millions) of viewers.</p>
+
+<p>A WebRTC app can use multiple RTCPeerConnections so to that every endpoint connects to every other endpoint in a mesh configuration. This is the approach taken by apps such as <a href="http://talky.io">talky.io</a>, and works remarkably well for a small handful of peers. Beyond that, processing and bandwidth consumption becomes excessive, especially for mobile clients.</p>
+
+<figure>
+  <img src="mesh.png" alt="Mesh: small N-way call" />
+  <figcaption>Full mesh topology: everyone connected to everyone</figcaption>
+</figure>
+
+<p>Alternatively, a WebRTC app could choose one endpoint to distribute streams to all others, in a star configuration. It would also be possible to run a WebRTC endpoint on a server and construct your own redistribution mechanism (a <a href="https://code.google.com/p/webrtc/source/browse/#svn%2Ftrunk%2Ftalk">sample client application</a> is provided by webrtc.org).</p>
+
+<p>In Chrome 31 and above, a MediaStream from one RTCPeerConnection can be used as the input for another: there's a demo at <a href="http://simpl.info/rtcpeerconnection/multi">simpl.info/multi</a>. This can enable more flexible architectures, since it enables a web app to handle call routing by choosing which other peer to connect to.</p>
+
+<h3 id="multipoint-control-unit">Multipoint Control Unit</h3>
+
+<p>A better option for a large number of endpoints is to use a <a href="https://en.wikipedia.org/wiki/Multipoint_control_unit">Multipoint Control Unit</a> (MCU). This is a server that works as a bridge to distribute media between a large numbers of participants. MCUs can cope with different resolutions, codecs and frame rates within a video conference, handle transcoding, do selective stream forwarding, and mix or record audio and video. For multi-party calls, there are a number of issues to consider: in particular, how to display multiple video inputs and mix audio from multiple sources. Cloud platforms such as <a href="http://www.vline.com/">vLine</a> also attempt to optimize traffic routing.</p>
+
+<p>It's possible to buy a complete MCU hardware package, or build your own.</p>
+
+<figure>
+  <a href="http://cisco.com/en/US/products/ps12283"><img src="mcu.jpg" alt="Rear view of Cisco MCU5300" /></a>
+  <figcaption>The back of a <a href="http://cisco.com/en/US/products/ps12283">Cisco MCU</a></figcaption>
+</figure>
+
+<p>Several open source MCU software options are available. For example, <a href="http://lynckia.com/">Licode</a> (previously know as Lynckia) produces an open source MCU for WebRTC; OpenTok has <a href="http://www.tokbox.com/blog/mantis-next-generation-cloud-technology-for-webrtc/">Mantis</a>.</p>
+
+<h2 id="beyond-browsers-voip-telephones-and-messaging">Beyond browsers: VoIP, telephones and messaging</h2>
+
+<p>The standardized nature of WebRTC makes it possible to establish communication between a WebRTC app running in a browser and a device or platform running on another communication platform, such as a telephone or a video conferencing systems.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Session_Initiation_Protocol">SIP</a> is a signaling protocol used by VoIP and video conferencing systems. To enable communication between a WebRTC web app and a SIP client such as a video conferencing system, WebRTC needs a proxy server to mediate signaling. Signaling must flow via the gateway but, once communication has been established, SRTP traffic (video and audio) can flow directly peer to peer.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Public_switched_telephone_network">PSTN</a>, the Public Switched Telephone Network, is the <a href="http://en.wikipedia.org/wiki/Circuit_switching">circuit switched</a> network of all 'plain old' analogue telephones. For calls between WebRTC web apps and telephones, traffic must go through a PSTN gateway. Likewise, WebRTC web apps need an intermediary XMPP server to communicate with <a href="http://en.wikipedia.org/wiki/Jingle_(protocol)">Jingle</a> endpoints such as IM clients. Jingle was developed by Google as an extension to XMPP to enable voice and video for messaging services: current WebRTC implementations are based on the C++ <a href="https://developers.google.com/talk/libjingle/">libjingle</a> library, an implementation of Jingle initially developed for Google Talk.</p>
+
+<p>A number of apps, libraries and platforms make use of WebRTC's ability to communicate with the outside world:</p>
+
+<ul>
+  <li><a href="https://code.google.com/p/sipml5/">sipML5</a>: an open source JavaScript SIP client</li>
+  <li><a href="http://www.jssip.net/">jsSIP</a>: JavaScript SIP library</li>
+  <li><a href="http://phono.com/">Phono</a>: open source JavaScript phone API, built as a plugin</li>
+  <li><a href="http://zingaya.com/product/">Zingaya</a>: an embeddable phone widget</li>
+  <li><a href="http://www.twilio.com/">Twilio</a>: voice and messaging</li>
+  <li><a href="http://www.uberconference.com/">Uberconference</a>: conferencing</li>
+
+</ul>
+
+<p>The sipML5 developers have also built the <a href="https://code.google.com/p/webrtc2sip/">webrtc2sip</a> gateway. Tethr and Tropo have demonstrated <a href="http://tethr.tumblr.com/post/25513708436/tethr-and-tropo-in-the-google-i-o-sandbox">a framework for disaster communications</a> 'in a briefcase', using an <a href="http://en.wikipedia.org/wiki/OpenBTS">OpenBTS cell</a> to enable communications between feature phones and computers via WebRTC. Telephone communication without a carrier!</p>
+
+<!-- <h2 id="and-finally">...and finally</h2>
+
+<p>The infrastructure requirements for WebRTC applications are inherently more complex than for simpler web apps.</p>
+
+<p>Signaling and peer discovery services are not part of the WebRTC specs, and that might seem to make WebRTC applications more difficult to develop, but this approach gives you considerable power to tailor an application to meet your needs. Likewise, the ICE framework provides well-established techniques to get around real-world problems.</p> -->
+
+<h2 id="find-out-more">Find out more</h2>
+
+<p>WebRTC <a href="https://bitbucket.org/webrtc/codelab">codelab</a>: step-by-step instructions how to build a video and text chat application, using a Socket.io signaling service running on Node.</p>
+
+<p><a href="http://www.youtube.com/watch?v=p2HzZkd2A40">2013 Google I/O WebRTC presentation</a> with WebRTC tech lead, Justin Uberti.</p>
+
+<p>The <a href="http://webrtcbook.com">WebRTC Book</a> gives a lot of detail about data and signaling pathways, and includes a number of detailed network topology diagrams.</p>
+
+<p><a href="http://www.tokbox.com/blog/webrtc-and-signaling-what-two-years-has-taught-us/">WebRTC and Signaling: What Two Years Has Taught Us</a>: TokBox blog post about why leaving signaling out of the spec was a good idea. <a href="http://www.linkedin.com/in/strongben" title="Ben Strong on LinkedIn">Ben Strong</a>'s presentation <a href="https://thenewcircle.com/s/post/1548/a_practical_guide_to_building_webrtc_apps_ben_strong_video" title="A Practical Guide to Building WebRTC Apps: presentation slides and video">A Practical Guide to Building WebRTC Apps</a> includes a lot of information about WebRTC topologies and infrastructure.</p>
+
+<p>Ilya Grigorik's <a href="http://chimera.labs.oreilly.com/books/1230000000545/ch18.html">WebRTC chapter</a> in O'Reilly's forthcoming <em>High Performance Browser Networking</em>.</p>
+
 </body>
 </html>

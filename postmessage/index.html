@@ -8,17 +8,22 @@
 <base target="_blank">
 <title>postMessage()</title>
 <link rel="stylesheet" href="../css/main.css" />
+<style>
+iframe {
+  width: 100%;
+}
+</style>
 </head>
 <body>
 <div id="container">
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> postMessage()</h1>
 
-  <iframe src="child.html" seamless style="width: 240px"></iframe>
+  <iframe src="child.html" seamless></iframe>
 
   <p id="data"></p>
 
-  <p>See also <a href="popup/index.html" title="postMessage() example with popup window">window.open() version</a>.</p>
+  <p>The <a href="popup/index.html" title="postMessage() example with popup window">window.open() version</a> shows communication between windows, but you'll need to enable popups for simpl.info.</p>
 
   <script src="js/index.js"></script>
 
