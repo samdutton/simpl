@@ -15,6 +15,7 @@ RedirectMatch 301 /geo$ /geolocation
 RedirectMatch 301 /gum$ /getusermedia
 RedirectMatch 301 /input$ /inputtypes
 RedirectMatch 301 /location$ /geolocation
+RedirectMatch 301 /map$ /track/map
 RedirectMatch 301 /mf$ /mediafragments
 RedirectMatch 301 /mo$ /mutationobserver
 RedirectMatch 301 /mr$ /mediarecorder
