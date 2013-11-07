@@ -13,31 +13,30 @@ var videoElement = document.querySelector('video');
 
 videoElement.addEventListener('webkitneedkey', onNeedKey);
 videoElement.addEventListener('webkitkeymessage', onKeyMessage);
-videoElement.addEventListener('webkitkeyerror',
-  function(e){console.log('Error: ', e)});
+videoElement.addEventListener('webkitkeyerror', onKeyError);
 videoElement.addEventListener('webkitkeyadded', onKeyAdded);
 
-videoElement.src="../../video/Chrome_44-enc_av.webm"
-
 function onNeedKey(e) {
-  log('needkey event');
-  console.log('keymessage event', e);
-  log('Generate key request with initData');
+  logEvent(e);
   console.log('Generate key request with initData', e.initData);
   e.target.webkitGenerateKeyRequest(keySystem, e.initData);
 }
 
 function onKeyAdded(e) {
-  e.target.hasKeyAdded = true;
+  logEvent(e);
 }
 
 function onKeyMessage(e) {
-  log('keymessage event');
-  console.log('keymessage event', e);
+  logEvent(e);
   var initData = e.message;
   e.target.webkitAddKey(keySystem, KEY, initData);
 }
 
-function log(message){
-  dataElement.innerHTML += message + '<br />';
+function onKeyError(e){
+  console.log('Error: ', e)
+}
+
+function logEvent(e){
+  dataElement.innerHTML +=  e.type + ' event' + '<br />';
+  console.log(e);
 }
