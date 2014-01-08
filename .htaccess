@@ -4,6 +4,7 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 
 RedirectMatch 301 /ajax /xhr
 RedirectMatch 301 /alpha /videoalpha
+RedirectMatch 301 /cds$ /chrome/index.html
 RedirectMatch 301 /ck$ /eme/clearkey/src
 RedirectMatch 301 /clearkey$ /eme/clearkey/src
 RedirectMatch 301 /cpt$ /canplaytype
@@ -29,6 +30,7 @@ RedirectMatch 301 /ol$ /online
 RedirectMatch 301 /pc$ /rtcpeerconnection
 RedirectMatch 301 /peerconnection /rtcpeerconnection
 RedirectMatch 301 /performance /navigationtiming
+RedirectMatch 301 /rate$ /video/playbackRate.html
 RedirectMatch 301 /pm$ /postmessage
 RedirectMatch 301 /res$ /getusermedia/constraints
 RedirectMatch 301 /search$ /chromesearch
@@ -37,6 +39,7 @@ RedirectMatch 301 /sse$ /eventsource
 RedirectMatch 301 /rt$ /resourcetiming
 RedirectMatch 301 /summary$ /details
 RedirectMatch 301 /ua$ /useragent
+RedirectMatch 301 /v$ /vibrate
 RedirectMatch 301 /wa$ /webaudio
 RedirectMatch 301 /webintents /stnetnibew
 RedirectMatch 301 /ws /webaudio
