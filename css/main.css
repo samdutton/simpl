@@ -41,12 +41,16 @@ word-break: break-word;
 }
 
 button {
-margin: 0 0.5em 0 0;
+margin: 0 0.5em 1em 0;
 width: 5.7em;
 }
 
 button[disabled] {
 color: #aaa;
+}
+
+canvas {
+max-width: 100%;
 }
 
 code {
@@ -114,13 +118,21 @@ background: #222;
 width: 100%;
 }
 
-@media screen and (min-width: 1000px) {
-  video {
+@media screen and (max-width: 650px) {
+  h1 {
+    font-size: 24px;
   }
 }
 
-@media screen and (max-width: 1000px) {
-  video {
+@media screen and (max-width: 550px) {
+  h1 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 20px;
   }
 }
 

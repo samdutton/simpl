@@ -8,26 +8,49 @@
 <base target="_blank">
 <title>Fullscreen video</title>
 <link rel="stylesheet" href="../../css/main.css" />
-<style>
-:-webkit-full-screen body {
-  border: 2px solid red;
-}
-</style>
+
+  <style>
+  div.videoContainer{
+    margin: 0 0 20px 0;
+  }
+  video {
+    display: none;
+    max-width: 100%;
+  }
+/*  img:-webkit-full-screen {
+    display: none !important;
+  }
+  video:-webkit-full-screen {
+    display: block !important;
+    width: 100% !important;
+  }*/
+  </style>
+
 </head>
 <body>
 <div id="container">
 
-  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> Fullscreen</h1>
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> Fullscreen video</h1>
 
-  <video controls poster='images/poster.jpg' preload='none'>
-    <source src="video/chrome.webm" type="video/webm" />
-    <source src="video/chrome.mp4" type="video/mp4" />
-    <p>This browser does not support the video element.</p>
-  </video>
+  <div class='videoContainer'>
+    <img src="images/thumbnail0.jpg" alt="Thumbnail image 0" />
+    <video controls poster="images/thumbnail0.jpg">
+      <source src="video/chrome.webm" type="video/webm" />
+      <source src="video/chrome.mp4" type="video/mp4" />
+      <p>This browser does not support the video element.</p>
+    </video>
+  </div>
 
-  <p>Tap or click the video to display it in full screen mode.</p>
+  <div class='videoContainer' id='videoContainer1'>
+    <img src="images/thumbnail1.jpg" alt="Thumbnail image 1" />
+    <video controls poster="images/thumbnail1.jpg">
+      <source src="video/chrome.webm" type="video/webm" />
+      <source src="video/chrome.mp4" type="video/mp4" />
+      <p>This browser does not support the video element.</p>
+    </video>
+  </div>
 
-  <p>Tap or click elsewhere to toggle full screen mode for the whole page.</p>
+  <p>Click or tap a thumbnail image to display video fullscreen.</p>
 
   <p id="status"></p>
 

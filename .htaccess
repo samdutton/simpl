@@ -1,22 +1,21 @@
-AddType text/cache-manifest .appcache
-AddCharset UTF-8 .html
-AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
-
 RedirectMatch 301 /ajax /xhr
 RedirectMatch 301 /alpha /videoalpha
+RedirectMatch 301 /br$ /vibrate
 RedirectMatch 301 /cds$ /chrome/index.html
 RedirectMatch 301 /ck$ /eme/clearkey/src
 RedirectMatch 301 /clearkey$ /eme/clearkey/src
 RedirectMatch 301 /cpt$ /canplaytype
-RedirectMatch 301 /datachannel /rtcdatachannel
-RedirectMatch 301 /dc$ /rtcdatachannel
+RedirectMatch 301 /d$ /rtcdatachannel/
+RedirectMatch 301 /datachannel /rtcdatachannel/
+RedirectMatch 301 /dc$ /rtcdatachannel/
 RedirectMatch 301 /dm$ /devicemotion
 RedirectMatch 301 /do$ /deviceorientation
 RedirectMatch 301 /es$ /eventsource
 RedirectMatch 301 /fieldset /localstorage
 RedirectMatch 301 /fs$ /fullscreen
+RedirectMatch 301 /g$ /getusermedia/
 RedirectMatch 301 /geo$ /geolocation
-RedirectMatch 301 /gum$ /getusermedia
+RedirectMatch 301 /gum$ /getusermedia/
 RedirectMatch 301 /input$ /inputtypes
 RedirectMatch 301 /location$ /geolocation
 RedirectMatch 301 /map$ /track/map/index.html
@@ -27,23 +26,35 @@ RedirectMatch 301 /multi$ /rtcpeerconnection/multi/index.html
 RedirectMatch 301 /n$ /notification
 RedirectMatch 301 /nt$ /navigationtiming
 RedirectMatch 301 /ol$ /online
-RedirectMatch 301 /pc$ /rtcpeerconnection
-RedirectMatch 301 /peerconnection /rtcpeerconnection
+RedirectMatch 301 /p$ /rtcpeerconnection/
+RedirectMatch 301 /pc$ /rtcpeerconnection/
+RedirectMatch 301 /peerconnection /rtcpeerconnection/
 RedirectMatch 301 /performance /navigationtiming
 RedirectMatch 301 /rate$ /video/playbackRate.html
 RedirectMatch 301 /pm$ /postmessage
 RedirectMatch 301 /res$ /getusermedia/constraints
-RedirectMatch 301 /search$ /chromesearch
+RedirectMatch 301 /s$ /chromesearch/
+RedirectMatch 301 /search$ /chromesearch/
 RedirectMatch 301 /sources$ /getusermedia/sources/index.html
 RedirectMatch 301 /sse$ /eventsource
 RedirectMatch 301 /rt$ /resourcetiming
 RedirectMatch 301 /scripted$ /video/scripted.html
 RedirectMatch 301 /summary$ /details
+RedirectMatch 301 /t$ /track/
 RedirectMatch 301 /ua$ /useragent
-RedirectMatch 301 /v$ /vibrate
+RedirectMatch 301 /v$ /video
+RedirectMatch 301 /vc$ /video/center
 RedirectMatch 301 /wa$ /webaudio
 RedirectMatch 301 /webintents /stnetnibew
 RedirectMatch 301 /ws /webaudio
 RedirectMatch 301 /ww$ /webworkers
 
+AddType text/cache-manifest .appcache
+AddCharset UTF-8 .html
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+
+<ifModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 12 months"
+</ifModule>
 

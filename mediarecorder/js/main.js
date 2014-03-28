@@ -5,8 +5,8 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 // video not implemented yet
-var constraints = {audio: true};
-var audioElement = document.querySelector('audio');
+var constraints = {audio: true, video: true};
+var videoElement = document.querySelector('video');
 var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
 
@@ -27,13 +27,14 @@ function startRecording(stream) {
       return;
     }
     console.log(e);
-    audioElement.src = window.URL.createObjectURL(e.data);
-    downloadLink.href = window.URL.createObjectURL(e.data);
-    downloadLink.innerHTML = "Download ogg audio file";
+    videoElement.src = window.URL.createObjectURL(e.data);
+    // downloadLink.href = window.URL.createObjectURL(e.data);
+    // downloadLink.innerHTML = "Download Ogg video file";
   };
 
   mediaRecorder.onerror = function(e){
     log('Error: ' + e);
+    console.log('Error: ', e);
   };
 
   // not implemented yet

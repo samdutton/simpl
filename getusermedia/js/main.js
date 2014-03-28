@@ -10,7 +10,6 @@ function successCallback(stream) {
   } else {
     video.src = stream;
   }
-  video.play();
 }
 
 function errorCallback(error){
