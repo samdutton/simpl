@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript, track element" /> 
+<meta name="description" content="This demo shows how the track element can be used to synchronise video playback, map display and DOM changes." /> 
+
+<title>XML map track demo</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/appleItouchIcon.jpg"/>
+
+<link rel="stylesheet" href="css/mapTrack.css">
+
+<script src="js/lib/jquery-1.7.1.min.js"></script>
+<script>jQuery.noConflict();</script>
+        
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAey8Y9zVKV0F7S3CKIUXoyCP-T-N-2NCk&amp;v=2&amp;sensor=false" type="text/javascript" lang="javascript"></script>
+
+<script src="js/mapTrack.js"></script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript" lang="javascript"></script> 
+<script> 
+_uacct = "UA-2630780-1";
+urchinTracker();
+</script> 
+
+</head>
+
+<body>
+<div id="container">
+
+<h1>XML map track demo</h1>
+
+<div class="warningMessage trackNotSupported">This demo requires a browser such as <a href="http://tools.google.com/dlpage/chromesxs" title="Google Chrome Canary download">Google&nbsp;Chrome&nbsp;Canary</a> that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
+
+<div id="map" class="trackSupported"></div>
+
+<div id="videoContainer">
+	<div id="timeOfDay"></div>
+	<video id="gbikeVideo" autoplay controls>
+		<source src="video/gbike.webm" type="video/webm" />
+	</video>
+</div>
+
+<div id="panorama" class="trackSupported"></div>
+
+<p class="thanks">This is an implementation using the HTML track element of a demo originally built by Jeff Faust. Thanks to Jeff for the idea and data!</p>
+
+<p>Please note you will currently need the <a href="https://www.google.com/landing/chrome/beta/" title="Download Google Chrome Beta">Beta</a> or <a href="https://tools.google.com/dlpage/chromesxs" title="Download Google Chrome Canary">Canary</a> version of Chrome to run this demo.</p>
+
+<p>This demo shows how the track element can be used to synchronise video playback with the position of a map marker, and make synchronised changes to DOM elements.</p>
+
+<p>Click anywhere on the map to move the video and StreetView to the point in the journey closest to the clicked location. Move the video slider to change the StreetView panorama and the position of the marker on the map.</p>
+
+<p>The position of the marker changes, corresponding to the current time of the video. Time of day is overlaid on the video. </p>
+
+<p>A metadata track for the video on this page is built by parsing the original <a href="data/gbike.xml" title="bike.xml document listing points in the journey by location and time" target="_blank">Google Maps track</a>, which is in XML format:</p>
+
+<pre>
+&lt;track name="track 0"&gt;
+    &lt;p t="1331363000" a="37.4219276" b="-122.0882180"/&gt;
+    &lt;p t="1331363001" a="37.4219297" b="-122.0882154"/&gt;
+    ...
+&lt;/track&gt;
+</pre>
+
+<p>The text for each cue in the track is in JSON format. Each cue corresponds to a p element in the XML:</p>
+
+<pre>
+{"lat":37.4219276, "lng":-122.088218, "t":1331363000}
+{"lat":37.4219297, "lng":-122.0882154, "t":1331363001}
+...
+</pre>
+
+<p>The track cuechange event handler parses the cue JSON to set the position of the map marker.</p>
+
+<p>For more information about the track element, take a look at <a href="http://www.html5rocks.com/en/tutorials/track/basics/" title="HTML5 Rocks article: Getting started with the track element">Getting started with the track element</a> on HTML5 Rocks.</p>
+
+<p>For a 'bare-bones' example of the track element, see <a href="http://www.simpl.info/track" title="Simple track example">simpl.info/track</a>.</p>
+
+</div> <!-- container -->
+
+</body>
+
+</html>

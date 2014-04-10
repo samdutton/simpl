@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="verify-v1" content="MDVa8XeTfpT5QHmJLKLK21bwYX/BsyLcyFfmQykCSx0=" />  <!-- Google verification --> 
+
+<title>Map WebVTT track demo</title>
+
+<link rel="stylesheet" href="css/mapTrack.css">
+
+<script src="js/lib/jquery-1.7.1.min.js"></script>
+<script>jQuery.noConflict();</script>
+        
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAey8Y9zVKV0F7S3CKIUXoyCP-T-N-2NCk&amp;v=2&amp;sensor=false" type="text/javascript" lang="javascript"></script>
+
+<script src="js/mapTrackWebVTT.js"></script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript" lang="javascript"></script> 
+<script> 
+_uacct = "UA-2630780-1";
+urchinTracker();
+</script> 
+
+</head>
+
+<body>
+<div id="container">
+
+<h1>Map WebVTT track demo</h1>
+
+<div class="warningMessage trackNotSupported">This demo requires a browser such as <a href="http://tools.google.com/dlpage/chromesxs" title="Google Chrome Canary download">Google&nbsp;Chrome&nbsp;Canary</a> that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
+
+<div id="map" class="trackSupported"></div>
+
+<div id="videoContainer">
+	<div id="timeOfDay"></div>
+	<video id="gbikeVideo" autoplay controls>
+		<source src="video/gbike.webm" type="video/webm" />
+		<track label="GBike track" kind="metadata" srclang="en" src="tracks/gbike.vtt" default />
+	</video>
+</div>
+
+<div id="panorama" class="trackSupported"></div>
+
+<p class="thanks">Thanks to Jeff Faust for the original idea and data.</p>
+
+<p>This demo shows how a HTML track element can be used to synchronise video playback with the position of a map marker, and to make synchronised changes to DOM elements.</p>
+
+<p>(The functionality of this demo is the same as the <a href="index.html" title="Same demo, but parsing XML point data to create a track element">Map XML track demo</a>, but it uses a <a href="tracks/gbike.vtt" title="WebVTT track file" target="_blank">WebVTT file</a> as the src of a track element, rather than parsing an XML file to dynamically create track cues.)</p>
+
+<p>The position of the marker changes, corresponding to the current time of the video. Time of day is overlaid on the video. Click anywhere on the map to move the video to the closest point in the journey to the clicked location.</p>
+
+<p>The HTML metadata track for the video on this page is built by parsing a <a href="data/gbike.xml" title="bike.xml document listing points in the journey by location and time">Google Maps track</a> in XML format:</p>
+
+<pre>
+&lt;track name="track 0"&gt;
+    &lt;p t="1331363000" a="37.4219276" b="-122.0882180"/&gt;
+    &lt;p t="1331363001" a="37.4219297" b="-122.0882154"/&gt;
+    ...
+&lt;/track&gt;
+</pre>
+
+<p>The text for each cue in the HTML track consists of JSON corresponding to a p element in the XML:</p>
+
+<pre>
+{"lat":37.4219276, "lng":-122.088218, "t":1331363000}
+{"lat":37.4219297, "lng":-122.0882154, "t":1331363001}
+...
+</pre>
+
+<p>The track cuechange event handler then parses the cue JSON to set the position of the map marker.</p>
+
+<p>For more information about the track element, please see <a href="http://www.html5rocks.com/en/tutorials/track/basics/" title="HTML5 Rocks article: Getting started with the track element">Getting started with the track element</a> on HTML5 Rocks.</p>
+
+</div> <!-- container -->
+
+</body>
+
+</html>
