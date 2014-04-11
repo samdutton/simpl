@@ -8,9 +8,8 @@ module.exports = function( grunt ) {
         grunt.file.mkdir(conf.js);
         grunt.file.write(mainjs,'//Replace with main logic')
         grunt.file.write(conf.dest.app, grunt.template.process(appTmpl));
+        grunt.log.writeln('Generated \'' + conf.dest.app + '\' from \'' + conf.src.app + '\'');
         grunt.file.write(conf.dest.main, grunt.template.process(mainTmpl));
-
-
-        grunt.log.writeln('Generated \'' + conf.dest + '\' from \'' + conf.src + '\'');
+        grunt.log.writeln('Generated \'' + conf.dest.main + '\' from \'' + conf.src.main + '\'');
     });
 }
