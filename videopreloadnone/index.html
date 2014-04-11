@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 <base target="_blank">
-<title>The video element</title>
+<title>Video, preload none</title>
 <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
 <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video </h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Video, preload none</h1>
 
-  <video autoplay controls poster="images/poster.jpg" preload="metadata">
+  <video controls preload="none">
     <source src="video/chrome.webm" type="video/webm" />
     <source src="video/chrome.mp4" type="video/mp4" />
     <p>This browser does not support the video element.</p>
@@ -25,8 +25,7 @@
   <script>
   document.querySelector("video").addEventListener("loadedmetadata", function(){
     var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-  	document.querySelector("#videoSrc").innerHTML = "currentSrc: " + fileName +
-      "<br /> videoWidth: " + this.videoWidth + "px<br /> videoHeight: " + this.videoHeight + "px";
+  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
   });
   </script>
 

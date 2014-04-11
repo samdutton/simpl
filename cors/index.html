@@ -40,7 +40,7 @@ function createCORSRequest(method, url){
 var request = createCORSRequest("get", "http://www.thehillsarealive.net/cors.php");
 if (request){
     request.onload = function(){
-      document.getElementById("response").innerText = request.responseText;
+      document.getElementById("response").textContent = request.responseText;
     };
     request.send();
 }

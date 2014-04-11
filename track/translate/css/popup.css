@@ -1,0 +1,37 @@
+body {
+font-family: Lucida Grande, Open Sans, Arial, sans-serif;
+padding: 10px 10px 10px 10px;
+width: 270px;
+}
+
+label{
+font-size: 14px;
+margin: 0 6px 0 0;
+}
+
+input[type=checkbox]{
+}
+
+fieldset{
+border: 1px solid #ddd;
+color: #999;
+border-radius: 3px;
+padding: 15px 15px 15px 15px;
+}
+
+fieldset div{
+color: #666;
+}
+
+legend{
+border: 1px solid #ddd;
+border-radius: 3px;
+font-family: Lucida Grande, Open Sans, Arial, sans-serif;
+font-size: 13px;
+padding: 2px 4px 2px 4px;
+}
+
+
+div#languageSelectContainer {
+margin: 0 0 30px 0;
+}

@@ -1,0 +1,84 @@
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 50px;
+}
+
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+padding: 20px 20px 20px 20px;
+width: 530px;
+}
+
+
+#videoCanvasImageContainer {
+margin: 0 0 20px 0;
+}
+
+#video {
+height: 96px;
+margin: 0 20px 0 0;
+width: 160px;
+}
+
+#canvas {
+display: none;
+height: 96px;
+margin: 0 20px 0 0;
+width: 160px;
+}
+
+#img {
+border: none;
+height: 96px;
+width: 160px;
+}
+
+
+#framegrabs {
+background: #666;
+height: 115px;
+margin: 0 0 20px 0;
+overflow-y: scroll;
+padding: 20px 0 0 20px;
+width: 200px;
+}
+
+#framegrabs > div {
+height: 96px;
+margin: 0 20px 20px 0;
+position: relative;
+width: 160px;
+}
+
+#framegrabs div.framegrabTimecode {
+background: #aaa;
+color: black;
+font-size: 70%;
+height: 15px;
+opacity: 0.6;
+padding: 2px 5px 1px 5px;
+right: 0px;
+position: absolute;
+text-align: right;
+top: 10px;
+z-index: 1;
+}
+
+#framegrabs img {
+cursor: pointer;
+float: left;
+position: absolute;
+}
+
+
+div#scrubBarContainer {
+border: 1px solid green;
+margin: 0 0 20px 0;
+}
+
+div#buttons input {
+margin: 0 11px 0 0;
+width: 90px;
+}

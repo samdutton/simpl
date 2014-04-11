@@ -1,0 +1,38 @@
+{
+	"name" : "Track translator",
+	"version" : "2.1",
+	"manifest_version": 2,
+	"description" : "Automatically translates subtitles and captions for video and audio using the track element.",
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+	"browser_action" : {
+		"default_icon" : "images/trackTranslator22.png",
+		"default_popup" : "popup.html",
+		"default_title" : "Click to translate subtitles or captions for video or audio on this page"
+	},
+	"content_scripts" : [
+		{
+			"matches" : [
+				"http://*/*",
+				"https://*/*"
+			],
+
+		"css" : ["css/injected.css"],
+		"js" : ["js/lib/jquery-1.7.1.min.js", "js/contentscript.js"],
+		"run_at" : "document_start",
+		"all_frames" : false
+		}
+	],
+	"icons" : {
+		"16" : "images/trackTranslator16.png",
+		"22" : "images/trackTranslator22.png",
+		"32" : "images/trackTranslator32.png",
+		"48" : "images/trackTranslator48.png",
+		"128": "images/trackTranslator128.png"
+	},
+	"permissions": [
+		"tabs",
+		"tts"
+	]
+  }

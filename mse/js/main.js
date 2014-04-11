@@ -19,7 +19,6 @@ mediaSource.addEventListener('sourceopen', function(e) {
   var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
   console.log(sourceBuffer);
 
-
   log('MediaSource readyState: ' + this.readyState);
 
   GET(FILE, function(uInt8Array) {

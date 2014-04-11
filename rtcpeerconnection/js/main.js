@@ -4,6 +4,18 @@ var localStream, localPeerConnection, remotePeerConnection;
 var localVideo = document.getElementById("localVideo");
 var remoteVideo = document.getElementById("remoteVideo");
 
+localVideo.addEventListener("loadedmetadata", function(){
+trace("Local video currentSrc: " + this.currentSrc +
+        ", videoWidth: " + this.videoWidth +
+        "px,  videoHeight: " + this.videoHeight + "px");
+});
+
+remoteVideo.addEventListener("loadedmetadata", function(){
+trace("Remote video currentSrc: " + this.currentSrc +
+        ", videoWidth: " + this.videoWidth +
+        "px,  videoHeight: " + this.videoHeight + "px");
+});
+
 var startButton = document.getElementById("startButton");
 var callButton = document.getElementById("callButton");
 var hangupButton = document.getElementById("hangupButton");
