@@ -13,6 +13,7 @@ RedirectMatch 301 /do$ /deviceorientation
 RedirectMatch 301 /es$ /eventsource
 RedirectMatch 301 /fieldset /localstorage
 RedirectMatch 301 /fs$ /fullscreen
+RedirectMatch 301 /fsv$ /fullscreen/video
 RedirectMatch 301 /g$ /getusermedia/
 RedirectMatch 301 /geo$ /geolocation
 RedirectMatch 301 /gum$ /getusermedia/
@@ -37,7 +38,7 @@ RedirectMatch 301 /search$ /chromesearch/
 RedirectMatch 301 /sources$ /getusermedia/sources/index.html
 RedirectMatch 301 /sse$ /eventsource
 RedirectMatch 301 /rt$ /resourcetiming
-RedirectMatch 301 /scripted$ /video/scripted.html
+RedirectMatch 301 /scripted$ /video/scripted/
 RedirectMatch 301 /summary$ /details
 RedirectMatch 301 /t$ /track/
 RedirectMatch 301 /ua$ /useragent
@@ -72,4 +73,3 @@ ExpiresByType text/css "access 1 month”
 # Javascript
 ExpiresByType application/javascript "access plus 1 month”
 </ifModule>
-
