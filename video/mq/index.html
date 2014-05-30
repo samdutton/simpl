@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<style>
+video {
+  width: 100%;
+}
+</style>
+<title>Video + media queries</title>
+<link rel="stylesheet" href="../../css/main.css" />
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> video </h1>
+
+    <video controls poster="poster.jpg"></video>
+
+  <p id="videoSrc"></p>
+
+  <script>
+  var video = document.querySelector('video');
+  document.querySelector("video").addEventListener("loadedmetadata", function(){
+    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+    document.querySelector("#videoSrc").innerHTML = "currentSrc: " + fileName +
+      "<br /> videoWidth: " + this.videoWidth + "px<br /> videoHeight: " + this.videoHeight + "px";
+  });
+  var mq = window.matchMedia('(min-width: 480px) and (min-height: 480px)');
+  if (mq.matches) {
+    video.src = '../video/large.webm';
+  }
+  else {
+    video.src = '../video/small.webm';
+  }
+  </script>
+
+<a href="https://github.com/samdutton/simpl/blob/master/video/index.html" title="View source for this page on GitHub" id="viewSource">View source on github</a>
+</div>
+<script src="../../js/lib/ga.js"></script>
+</body>
+</html>

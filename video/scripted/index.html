@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<title>The video element: scripted playback</title>
+<link rel="stylesheet" href="../../css/main.css" />
+<style>
+video {
+
+  margin: 0 0 20px 0;
+}
+</style>
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with scripted playback</h1>
+
+  <video controls>
+    <source src="../video/chrome.mp4" type="video/mp4" />
+    <source src="../video/chrome.webm" type="video/webm" />
+    <p>This browser does not support the video element.</p>
+  </video>
+
+  <button>Play</button>
+
+  <p>Playback of this video is initiated by the <code>play()</code> method, not the autoplay attribute.</p>
+
+  <p>Playback can also be initiated by pressing the Play button.</p>
+
+  <p id="videoSrc"></p>
+
+  <script src="js/main.js"></script>
+
+<a href="https://github.com/samdutton/simpl/blob/master/video/scripted.html" title="View source for this page on GitHub" id="viewSource">View source on github</a>
+</div>
+<script src="../../js/lib/ga.js"></script>
+</body>
+</html>
