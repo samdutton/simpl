@@ -1,4 +1,5 @@
 // The code for this example was adapted from a demo by Henrik Andreasson.
+// tweaks incorporated from rtoy
 
 var pc1, pc2;
 var context = 0;
@@ -7,19 +8,38 @@ var drumSoundBuffer = 0;
 var voiceSoundBuffer = 0;
 var buttonCall = 0;
 var buttonHangUp = 0;
+var buttonDrum = 0;
+
 var pauseTime = 0;
-var audioElement = document.querySelector("audio");
+
+// Support for both prefixed and unprefixed AudioContext and OfflineAudioContext.
+// We don't support other legacy names.
+if (!((typeof webkitAudioContext === "function")
+      || (typeof AudioContext === "function")
+      || (typeof webkitAudioContext === "object")
+      || (typeof AudioContext === "object"))) {
+  alert("Sorry! Web Audio not supported by this browser");
+}
+if (window.hasOwnProperty('webkitAudioContext') &&
+    !window.hasOwnProperty('AudioContext')) {
+    window.AudioContext = webkitAudioContext;
+    window.OfflineAudioContext = webkitOfflineAudioContext;
+}
 
 function trace(text) {
   if (text[text.length - 1] == '\n') {
     text = text.substring(0, text.length - 1);
   }
-  console.log((performance.now() / 1000).toFixed(3) + ": " + text);
+  if (typeof performance === "object") {
+    console.log((performance.now() / 1000).toFixed(3) + ": " + text);
+  }
 }
 
 function call() {
   buttonCall.disabled = true;
   buttonHangUp.disabled = false;
+  buttonDrum.disabled = false;
+
   trace("Starting call");
 
   var servers = null;
@@ -72,6 +92,7 @@ function hangup() {
   pc2 = null;
   buttonCall.disabled = true;
   buttonHangUp.disabled = true; // enabled when XHR completes
+  buttonDrum.disabled = true;
 
   voiceSound.stop(0);
   document.location.reload(); // hack, but it works!
@@ -82,12 +103,12 @@ function hangup() {
 }
 
 function gotRemoteStream(e){
-  audioElement.src = webkitURL.createObjectURL(e.stream);
-  audioElement.addEventListener("pause", function(){
+  aud.src = webkitURL.createObjectURL(e.stream);
+  aud.addEventListener("pause", function(){
     voiceSound.stop(0);
     pauseTime += context.currentTime - voiceSound.lastStartTime;
   });
-  audioElement.addEventListener("play", function(){
+  aud.addEventListener("play", function(){
     console.log("play");
     voiceSound = context.createBufferSource();  // creates an AudioBufferSourceNode.
     voiceSound.buffer = voiceSoundBuffer;
@@ -112,16 +133,20 @@ function iceCallback2(event){
   }
 }
 
-function handleKeyDown(event) {
-  var keyCode = event.keyCode;
-  trace('handleKeyDown()');
-  // Play the drum sound to the remote peer.
+function drum() {
   var drumSound = context.createBufferSource();  // creates an AudioBufferSourceNode.
   drumSound.buffer = drumSoundBuffer;
   if (mediaStreamDestination) {
     drumSound.connect(mediaStreamDestination);
     drumSound.start(0);
   }
+}
+
+function handleKeyDown(event) {
+  var keyCode = event.keyCode;
+  trace('handleKeyDown()');
+  // Play the drum sound to the remote peer.
+  drum();
 }
 
 function loadAudioBuffer(url) {
@@ -132,7 +157,13 @@ function loadAudioBuffer(url) {
 
   request.onload = function() {
     // source = context.createBufferSource();  // creates an AudioBufferSourceNode.
-    voiceSoundBuffer = context.createBuffer(request.response, false);
+    context.decodeAudioData(request.response,
+                            function (decodedAudio) {
+                                voiceSoundBuffer = decodedAudio;
+                            },
+                            function () {
+                                alert('error decoding file data: ' + url);
+                            });
     buttonCall.disabled = false;
     document.querySelector("#gettingAudio").innerHTML = "";
   }
@@ -149,7 +180,13 @@ function loadDrumSound(url) {
     request.responseType = "arraybuffer";
 
     request.onload = function() {
-      drumSoundBuffer = context.createBuffer(request.response, true);
+    context.decodeAudioData(request.response,
+                            function (decodedAudio) {
+                                drumSoundBuffer = decodedAudio;
+                            },
+                            function () {
+                                alert('error decoding file data: ' + url);
+                            });
     }
 
     request.send();
@@ -158,11 +195,12 @@ function loadDrumSound(url) {
 function init() {
   buttonCall = document.getElementById("call");
   buttonHangUp = document.getElementById("hangup");
+  buttonDrum = document.getElementById("drum");
 
-  context = new webkitAudioContext();
+  context = new AudioContext();
   loadAudioBuffer("audio/human-voice.wav");
   loadDrumSound("audio/snare.wav");
   document.addEventListener("keydown", handleKeyDown, false);
 }
 
-init();
+document.body.onload = init;
