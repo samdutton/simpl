@@ -1,42 +1,125 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<base target="_blank">
-<title>getUserMedia</title>
-<link rel="stylesheet" href="../css/main.css" />
+<title>Britecam</title>
+
 <style>
-@media screen and (min-width: 1000px) {
-  video {
-    height: 540px;
-    -webkit-transform: scaleX(-1);
-    -moz-transform: scaleX(-1);
-    -ms-transform:  scaleX(-1);
-    -o-transform:  scaleX(-1);
-    transform: scaleX(-1);
-  }
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
+
+.flex-item {
+  background: black;
+  padding: 5px;
+  width: 350px;
+  height: 250px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 0.8em;
+}
+
+video {
+	width: 350px;
+	height: 220px;
+}
+
 </style>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
 </head>
+
 <body>
-<div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia</h1>
-
-  <video autoplay></video>
-
-  <p>The <code>MediaStream</code> object <code>stream</code> passed to the <code>getUserMedia()</code> callback in this demo is in global scope, so you can inspect it from the console.</p>
-
-  <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
-
-<a href="https://github.com/samdutton/simpl/blob/master/getusermedia/index.html" title="View source for this page on GitHub" id="viewSource">View source on github</a>
+<div id="controls">
 </div>
 
-<script src="js/main.js"></script>
+<div id="camera-list">
+	<ul class="flex-container">
+    </ul>
+</div>
 
-<script src="../js/lib/ga.js"></script>
+<script>
+
+function showHideCam(element, id) {
+	if(element.checked)
+		$("#camera-li-" + id).show();
+	else
+		$("#camera-li-" + id).hide();
+}
+
+$(document).ready(function() {
+	
+	function gotSources(sourceInfos) {
+    	var i = 0; 
+    	while(i != sourceInfos.length) {
+		    var sourceInfo = sourceInfos[i];
+		    var mediaConstraints = {
+		    	video: {
+	    			optional: [{sourceId: sourceInfo.id}]
+	    		}
+	        };
+		    
+		    if (sourceInfo.kind === "video") {
+		    	$(".flex-container").append("<li id='camera-li-" + sourceInfo.id + "' class='flex-item camera'><span id='camera-name-" + sourceInfo.id + "' style='color: white; padding-left: 30px;'></span><video id=\"" + sourceInfo.id + "\" controls muted autoplay></video></li>");
+		    	
+		        getVideoFeed(mediaConstraints, sourceInfo.id);
+		        console.log(sourceInfo.id);
+		       
+		    } 
+		    else
+		      console.log("Some other kind of source: ", sourceInfo);
+		    i++;
+		}
+	}
+	
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+	
+	if (typeof MediaStreamTrack === "undefined") 
+    	alert("This browser does not support MediaStreamTrack");
+	else {
+		MediaStreamTrack.getSources(gotSources);
+		
+	}
+	
+	function onMediaError(error) {
+        console.error("Media error", error);
+    }
+	
+	
+	function getVideoFeed(mediaConstraints, id) {
+		navigator.getUserMedia(mediaConstraints, 
+				   function onMediaSuccess(stream) {
+				      window.stream = stream;
+				      console.log(stream.getVideoTracks());
+                      
+				      $("#" + id).attr("src", window.URL.createObjectURL(stream));
+                      
+                      var cameraName = window.stream.getVideoTracks()[0].label;
+                      $("#camera-name-" + id).text(cameraName);
+                      
+                      $("#controls").append("<input type='checkbox' checked onclick='showHideCam(this, \"" + id + "\")'>" + cameraName + " ");
+                }, 
+                onMediaError);
+		
+		
+	}
+	
+	
+});
+</script>
+
 </body>
+
 </html>
