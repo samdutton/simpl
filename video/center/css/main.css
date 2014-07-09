@@ -1,0 +1,46 @@
+body {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+}
+
+div#container {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  position: relative;
+  transition: all 0.5s;
+}
+
+div#container.hidden {
+  opacity: 0;
+}
+
+header {
+  background: black;
+  height: 50px;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+html {
+  height: 100%;
+}
+
+video {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+video#small {
+  bottom: 20px;
+  max-height: 25%;
+  position: absolute;
+  right: 20px;
+  width: 25%;
+  z-index: 1;
+}

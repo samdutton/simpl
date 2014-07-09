@@ -1,0 +1,97 @@
+a {
+color: #6699ff;
+text-decoration: none;
+}
+ 
+a:hover {
+color: #88aaff;
+text-decoration: underline;
+}
+ 
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 50px;
+}
+
+#soundButtons button {
+color: green;
+font-size: 20px;
+height: 67px;
+margin: 0 9px 0 0;
+padding: 6px 4px 6px 3px;
+width: 67px;
+}
+
+code {
+font-family: Consolas, Courier New, monospace;
+font-weight: bold;
+font-size: 20px;
+}
+ 
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+max-width: 685px;
+padding: 20px 30px 30px 30px;
+}
+
+div#soundButtons {
+border-bottom: 1px solid green;
+height: 67px;
+padding: 0 0 30px 0;
+}
+
+div#warningMessage {
+background: #333;
+border: 1px dashed #ffff00;
+padding: 10px 10px 10px 20px;
+}
+ 
+h1 {
+border-bottom: 1px solid green;
+color: white;
+font-family: Arial, sans-serif;
+margin: 0 0 30px 0;
+padding: 0 0 10px 0;
+}
+ 
+h2 {
+color: #ccc;
+font-family: Arial, sans-serif;
+margin: 30px 0 0 0;
+}
+ 
+img {
+border: none;
+}
+ 
+p {
+color: #ddd;
+font-size: 18px;
+line-height: 1.5em;
+}
+
+div#warningMessage p {
+color: #dddd00;
+font-size: 14px;
+font-weight: bold;
+}
+
+pre {
+color: white;  
+}
+
+.hidden {
+display: none;
+margin: 0 !important;
+max-height: 0;
+opacity: 0;
+padding: 0 !important;
+}
+
+.visible {
+display: block;
+max-height: inherit;
+opacity: 1;
+}
