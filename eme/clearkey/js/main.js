@@ -102,7 +102,7 @@ function onKeyMessage(e) {
     var initData = e.message;
     if (keySystem.indexOf('clearkey') != -1 && mediaTypes[0].indexOf('mp4') != -1)
       initData = initDataFromKeyId(); // Temporary hack for Clear Key in v0.1.
-    e.target.webkitAddKey(keySystem, KEY, initData);
+    e.target.webkitAddKey(keySystem, KEY, initData, e.sessionId);
   }
 }
 
