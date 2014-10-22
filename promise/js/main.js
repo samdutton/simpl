@@ -32,7 +32,6 @@
  
     var newsEndPointUrl = 'js/feed.json';
     getUrl(newsEndPointUrl).then(function(response) {
-      
       console.log('Success! We got the feed.', JSON.parse(response));
 
       var feed = JSON.parse(response);
@@ -41,7 +40,8 @@
       for (var i = 0; i < stories.length; i++) {
         var title = stories[i].title;
         var link  = stories[i].link;
-         ul += '<li><h3><a class=\"story\" href=\"+ link +\">' + title + '</a></h3> ';
+         ul += '<li><h3><a href=\"' + link + '\" class=\"story\">' + 
+               title + '</a></h3>';
       }
       ul += '</ul>';
 
