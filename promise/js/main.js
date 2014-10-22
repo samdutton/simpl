@@ -9,7 +9,7 @@
         req.onload = function() {
           // This is called even on 404 etc
           // so check the status
-          if (req.status == 200) {
+          if (req.status === 200) {
             // Resolve the promise with the response text
             resolve(req.response);
           }
@@ -22,7 +22,7 @@
  
         // Handle network errors
         req.onerror = function() {
-          reject(Error("Network Error"));
+          reject(Error('Network Error'));
         };
  
         // Make the request
@@ -33,19 +33,19 @@
     var newsEndPointUrl = 'js/feed.json';
     getUrl(newsEndPointUrl).then(function(response) {
       
-      console.log("Success! We got the feed.", response);
+      console.log('Success! We got the feed.', JSON.parse(response));
 
       var feed = JSON.parse(response);
       var stories = feed.value.items;
-      var ul = "<ul>";
+      var ul = '<ul>';
       for (var i = 0; i < stories.length; i++) {
         var title = stories[i].title;
         //var desc  = stories[i].description;
         var link  = stories[i].link;
-         ul += '<li><h3><a class="story" href="'+ link +'">' + title + '</a></h3> ';
+         ul += '<li><h3><a class='story' href="+ link +'"">' + title + '</a></h3> ';
           //+ '<p>'+ desc +'</p> </li>';
       }
-      ul += "</ul>";
+      ul += '</ul>';
 
       var mainFeed = document.querySelector('.main-feed');
 
@@ -57,7 +57,7 @@
       addHtmlToPage(ul);
       
     }, function(error) {
-      console.error("Failed! No feed for you", error);
+      console.error('Failed! No feed for you', error);
     });
 
 })();
