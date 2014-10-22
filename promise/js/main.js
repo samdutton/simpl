@@ -1,4 +1,6 @@
 (function() {
+
+    // Helper function to fetch a url
     function getUrl(url) {
       // Return a new promise.
       return new Promise(function(resolve, reject) {
@@ -30,10 +32,12 @@
       });
     }
  
+    // Fetching 'our' feed - better be save than sorry, right? :)
     var newsEndPointUrl = 'js/feed.json';
     getUrl(newsEndPointUrl).then(function(response) {
       console.log('Success! We got the feed.', JSON.parse(response));
 
+      // Parse the feed and build a nice list of items
       var feed = JSON.parse(response);
       var stories = feed.value.items;
       var ul = '<ul>';
@@ -47,15 +51,18 @@
 
       var mainFeed = document.querySelector('.main-feed');
 
+      // Helper function to append content to the new div
       function addHtmlToPage(content) {
         var div = document.createElement('div');
         div.innerHTML = content;
         mainFeed.appendChild(div);
       }
+      
+      // Now let's add our nice list to the page
       addHtmlToPage(ul);
       
     }, function(error) {
-      console.error('Failed! No feed for you', error);
+      console.error('Failed! No feed for you :(', error);
     });
 
 })();
