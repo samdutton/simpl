@@ -40,10 +40,8 @@
       var ul = '<ul>';
       for (var i = 0; i < stories.length; i++) {
         var title = stories[i].title;
-        //var desc  = stories[i].description;
         var link  = stories[i].link;
-         ul += '<li><h3><a class='story' href="+ link +'"">' + title + '</a></h3> ';
-          //+ '<p>'+ desc +'</p> </li>';
+         ul += '<li><h3><a class=\"story\" href=\"+ link +\">' + title + '</a></h3> ';
       }
       ul += '</ul>';
 
