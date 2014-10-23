@@ -1,3 +1,9 @@
+.borderBottom {
+border-bottom: 1px solid #444;
+margin: 0 0 1em 0;
+padding: 0 0 1em 0;
+}
+
 a {
 color: #77aaff;
 text-decoration: none;
@@ -78,6 +84,12 @@ padding: 0 0 0.4em 0;
 }
 
 h2 {
+color: #ccc;
+font-family: Arial, sans-serif;
+margin: 1.8em 0 0.6em 0;
+}
+
+h3 {
 color: #ccc;
 font-family: Arial, sans-serif;
 margin: 1.8em 0 0.6em 0;
