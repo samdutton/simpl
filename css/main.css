@@ -106,6 +106,12 @@ border: none;
 max-width: 100%;
 }
 
+li {
+list-style: square;
+color: white;
+margin: 0 0 0.8em 0;
+}
+
 p {
 color: #eee;
 line-height: 1.6em;
@@ -123,6 +129,11 @@ padding: 1em 0 0 0;
 p.borderBelow {
 border-bottom: 1px solid #aaa;
 padding: 0 0 20px 0;
+}
+
+ul {
+margin: 0 0 2em 0;
+padding: 0 0 0 14px;
 }
 
 video {

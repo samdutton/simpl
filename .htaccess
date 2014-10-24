@@ -37,13 +37,14 @@ RedirectMatch 301 /performance /navigationtiming
 RedirectMatch 301 /rate$ /video/playbackRate.html
 RedirectMatch 301 /pm$ /postmessage
 RedirectMatch 301 /res$ /getusermedia/constraints
+RedirectMatch 301 /rt$ /resourcetiming
 RedirectMatch 301 /s$ /chromesearch/
+RedirectMatch 301 /scripted$ /video/scripted/
 RedirectMatch 301 /search$ /chromesearch/
 RedirectMatch 301 /sources$ /getusermedia/sources/index.html
 RedirectMatch 301 /sse$ /eventsource
-RedirectMatch 301 /rt$ /resourcetiming
-RedirectMatch 301 /scripted$ /video/scripted/
 RedirectMatch 301 /summary$ /details
+RedirectMatch 301 /sw$ /serviceworker
 RedirectMatch 301 /t$ /track/
 RedirectMatch 301 /ua$ /useragent
 RedirectMatch 301 /unyt$ /video/youtube/unresponsive/
@@ -55,8 +56,9 @@ RedirectMatch 301 /ww$ /web-workers
 RedirectMatch 301 /yt$ /video/youtube/
 RedirectMatch 301 /ytun$ /video/youtube/unresponsive/
 
-# RewriteCond %{HTTPS} off
-# RewriteRule ^screencapture|constraints|sources|stt$ https://%{HTTP_HOST}%{REQUEST_URI} [L]
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 AddType text/cache-manifest .appcache
 AddCharset UTF-8 .html
