@@ -9,7 +9,7 @@
   <base target="_blank">
   <title>Promises</title>
   <link rel="stylesheet" href="../css/main.css" />
-  <style>
+    <style>
     ol {
      color: #eee;
      line-height: 1.5em;
@@ -28,19 +28,17 @@
   <div id="container">
     <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Promises</h1>
 
-    <p>The Promise object is used for deferred and asynchronous computations. A Promise is in one of the four states:</p>
+    <p>The Promise object is used for deferred and asynchronous computations. A Promise is in one of the three states:</p>
     <ol>
       <li><b>pending:</b> initial state, not fulfilled or rejected.</li>
       <li><b>fulfilled:</b> successful operation.</li>
       <li><b>rejected:</b> failed operation.</li>
-      <li><b>settled:</b> fulfilled or rejected.</li>
+      <li><b>settled:</b> fulfilled or rejected</li>
     </ol>
 
     <p>This demo gets a 'news feed' from <a href="data/feed.json" title="News feed data feed in JSON format">data/feed.json</a> using <a href="../xhr" title="Ajax (XHR) example">XHR</a>.</p>
 
-    <p>There's more information about JavaScript Promises in <a href="http://www.html5rocks.com/en/tutorials/es6/promises/" title="JavaScript Promises article">Jake Archibald's article on HTML5 Rocks</a>.</p>
-
-    <h3>News</h3>
+    <p class="borderBottom">There's more information about JavaScript Promises in <a href="http://www.html5rocks.com/en/tutorials/es6/promises/" title="JavaScript Promises article">Jake Archibald's article on HTML5&nbsp;Rocks</a>.</p>
 
     <!-- populated by XHR -->
     <div class="main-feed"></div>

@@ -49,6 +49,7 @@ RedirectMatch 301 /ua$ /useragent
 RedirectMatch 301 /unyt$ /video/youtube/unresponsive/
 RedirectMatch 301 /v$ /video
 RedirectMatch 301 /vc$ /video/center
+RedirectMatch 301 /ve$ /video/events
 RedirectMatch 301 /wa$ /webaudio
 RedirectMatch 301 /webintents /stnetnibew
 RedirectMatch 301 /ww$ /web-workers
