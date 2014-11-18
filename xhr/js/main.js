@@ -4,7 +4,7 @@ xhr.open("GET", "data.json");
 xhr.onreadystatechange = function() {
   if (xhr.readyState === 4 && xhr.status === 200) {
     var data = JSON.parse(xhr.responseText);
-    document.querySelector("#data").innerHTML = JSON.stringify(data);
+    document.getElementById("data").innerHTML = JSON.stringify(data);
   }
 }
 
