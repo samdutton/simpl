@@ -56,9 +56,9 @@ RedirectMatch 301 /ww$ /web-workers
 RedirectMatch 301 /yt$ /video/youtube/
 RedirectMatch 301 /ytun$ /video/youtube/unresponsive/
 
-RewriteEngine On
-RewriteCond %{HTTPS} !on
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+# RewriteEngine On
+# RewriteCond %{HTTPS} !on
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 AddType text/cache-manifest .appcache
 AddCharset UTF-8 .html

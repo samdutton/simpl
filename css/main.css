@@ -103,7 +103,7 @@ overflow-y: scroll;
 
 img {
 border: none;
-max-width: 100%;
+max-width: 20px;
 }
 
 li {
