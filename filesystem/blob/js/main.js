@@ -31,7 +31,7 @@ function writeToFile(fileEntry, text){
   fileEntry.createWriter(function(fileWriter) {
     fileWriter.onwriteend = function(e) {
       // read from file
-      log('Wrote text <em>' + text + '</em> to file ' + fileEntry.fullPath);
+      log('Wrote text \'' + text + '\' to file ' + fileEntry.fullPath);
       readFromFile(fileEntry.fullPath);
     };
     fileWriter.onerror = function(e) {
@@ -49,7 +49,7 @@ function readFromFile(fullPath){
     fileEntry.file(function(file) {
        var reader = new FileReader();
        reader.onloadend = function(e) {
-         log("Read text <em>" + this.result + "</em> from file " + fullPath);
+         log("Read text \'" + this.result + "\' from file " + fullPath);
        };
        reader.readAsText(file);
     }, handleError);

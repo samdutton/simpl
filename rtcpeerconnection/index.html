@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<base target="_blank">
-<title>RTCPeerConnection</title>
-<link rel="stylesheet" href="../css/main.css" />
-<style>
-div#container {
-  max-width: 100%;
-}
-video {
-  margin: 0 0.5em 1.5em 0;
-  -webkit-transform: scaleX(-1);
-  -moz-transform: scaleX(-1);
-  -ms-transform:  scaleX(-1);
-  -o-transform:  scaleX(-1);
-  transform: scaleX(-1);
-}
-@media screen and (min-width: 1000px) {
-  video {
-  width: 49%;
-  }
-}
-</style>
+  <meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+  <base target="_blank">
+  <title>RTCPeerConnection</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    button {
+      margin: 0 20px 0 0;
+      width: 83px;
+    }
+
+    button#hangupButton {
+      margin: 0;
+    }
+
+    p.borderBelow {
+      margin: 0 0 1.5em 0;
+      padding: 0 0 1.5em 0;
+    }
+
+    video {
+      height: 225px;
+      margin: 0 0 20px 0;
+      vertical-align: top;
+      width: calc(50% - 12px);
+    }
+
+    video#localVideo {
+      margin: 0 20px 20px 0;
+    }
+
+    @media screen and (max-width: 400px) {
+
+      button {
+        width: 83px;
+      }
+
+      button {
+        margin: 0 11px 10px 0;
+      }
+
+      video {
+        height: 90px;
+        margin: 0 0 10px 0;
+        width: calc(50% - 7px);
+      }
+
+      video#localVideo {
+        margin: 0 10px 20px 0;
+      }
+
+    }
+  </style>
 </head>
 <body>
-<div id="container">
+  <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> RTCPeerConnection</h1>
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> RTCPeerConnection</h1>
 
-<p class="borderBelow" style="color: white; font-weight: bold">Check out the new WebRTC demos at <a href="https://github.com/GoogleChrome/webrtc" title="WebRTC demo repo">github.com/GoogleChrome/webrtc</a>.</p>
+    <p class="borderBelow">Check out the complete set of WebRTC demos at <a href="https://github.com/GoogleChrome/webrtc" title="WebRTC demo repo">github.com/GoogleChrome/webrtc</a>.</p>
+
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+
+    <div>
+      <button id="startButton">Start</button>
+      <button id="callButton">Call</button>
+      <button id="hangupButton">Hang Up</button>
+    </div>
+
+    <p>View the console to see logging. The <code>MediaStream</code> object <code>localStream</code>, and the <code>RTCPeerConnection</code> objects <code>localPeerConnection</code> and <code>remotePeerConnection</code> are in global scope, so you can inspect them in the console as well.</p>
+
+    <p>For more information about RTCPeerConnection, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/" title="HTML5 Rocks article about WebRTC by Sam Dutton">Getting Started With WebRTC</a>.</p>
 
 
-  <video id="localVideo" autoplay></video>
-  <video id="remoteVideo" autoplay></video>
+    <script src="js/main.js"></script>
 
-  <div>
-    <button id="startButton">Start</button>
-    <button id="callButton">Call</button>
-    <button id="hangupButton">Hang Up</button>
+    <a href="https://github.com/samdutton/simpl/blob/master/rtcpeerconnection/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
   </div>
-
-  <p>View the console to see logging. The <code>MediaStream</code> object <code>localStream</code>, and the <code>RTCPeerConnection</code> objects <code>localPeerConnection</code> and <code>remotePeerConnection</code> are in global scope, so you can inspect them in the console as well.</p>
-  <p>Code in this example used by kind permission of Vikas Marwaha and Justin Uberti.</p>
-  <p>For more information about RTCPeerConnection, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/" title="HTML5 Rocks article about WebRTC by Sam Dutton">Getting Started With WebRTC</a>.</p>
-
-  <script src="js/main.js"></script>
-
-<a href="https://github.com/samdutton/simpl/blob/master/rtcpeerconnection/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-</div>
-<script src="../js/lib/ga.js"></script>
+  <script src="../js/lib/ga.js"></script>
 </body>
 </html>

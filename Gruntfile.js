@@ -13,7 +13,7 @@ module.exports = function(grunt) {
       options: {
         csslintrc: '.csslintrc'
       },
-      strict: {
+      default: {
         options: {
           import: 2
         },
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     },
 
     htmlhint: {
-      html1: {
+      default: {
         src: [
         '/**/*.html'
         ]
