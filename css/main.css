@@ -1,16 +1,27 @@
-.borderBottom {
-border-bottom: 1px solid #444;
-margin: 0 0 1em 0;
-padding: 0 0 1em 0;
+/*
+ *  Copyright (c) 2014 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+ */
+.hidden {
+  display: none;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 a {
-color: #77aaff;
+color: #6fa8dc;
+font-weight: 300;
 text-decoration: none;
 }
 
 a:hover {
-color: #88bbff;
+color: #3d85c6;
 text-decoration: underline;
 }
 
@@ -30,8 +41,14 @@ margin: 0 0 1.5em 0;
 @media screen and (min-width: 1000px) {
 /* hack! to detect non-touch devices */
   div#links a {
-		line-height: 0.8em;
+    line-height: 0.8em;
   }
+}
+
+h1 a {
+font-weight: 300;
+margin: 0 10px 0 0;
+white-space: nowrap;
 }
 
 audio {
@@ -39,60 +56,84 @@ max-width: 100%;
 }
 
 body {
-background: #666;
-font-family: Arial, sans-serif;
+font-family: 'Roboto', sans-serif;
 margin: 0;
-padding: 1.5em;
+padding: 1em;
 word-break: break-word;
 }
 
 button {
-margin: 0 0.5em 1em 0;
-width: 5.7em;
+background-color: #d84a38;
+border: none;
+border-radius: 2px;
+color: white;
+font-family: 'Roboto', sans-serif;
+font-size: 0.8em;
+margin: 0 0 1em 0;
+padding: 0.5em 0.7em 0.6em 0.7em;
+}
+
+button:active {
+background-color: #cf402f;
+}
+
+button:hover {
+background-color: #cf402f;
 }
 
 button[disabled] {
-color: #aaa;
+color: #ccc;
+}
+
+button[disabled]:hover {
+background-color: #d84a38;
 }
 
 canvas {
-max-width: 100%;
+  background-color: #ccc;
+  max-width: 100%;
+  width: 100%;
 }
 
 code {
-font-family: 'Courier New', monospace;
-letter-spacing: -0.1em;
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
 }
 
 div#container {
-background: #000;
 margin: 0 auto 0 auto;
 max-width: 40em;
 padding: 1em 1.5em 1.3em 1.5em;
 }
 
 div#links {
-	padding: 0.5em 0 0 0;
+  padding: 0.5em 0 0 0;
 }
 
 h1 {
-border-bottom: 1px solid #aaa;
-color: white;
-font-family: Arial, sans-serif;
+border-bottom: 1px solid #ccc;
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
 margin: 0 0 0.8em 0;
-padding: 0 0 0.4em 0;
+padding: 0 0 0.2em 0;
 }
 
 h2 {
-color: #ccc;
-font-family: Arial, sans-serif;
-margin: 1.8em 0 0.6em 0;
+color: #444;
+font-size: 1em;
+font-weight: 500;
+line-height: 1.2em;
+margin: 0 0 0.8em 0;
 }
 
 h3 {
-color: #ccc;
-font-family: Arial, sans-serif;
-margin: 1.8em 0 0.6em 0;
+border-top: 1px solid #eee;
+color: #666;
+font-size: 0.9em;
+font-weight: 500;
+margin: 20px 0 10px 0;
+padding: 10px 0 0 0;
+white-space: nowrap;
 }
 
 html {
@@ -103,17 +144,17 @@ overflow-y: scroll;
 
 img {
 border: none;
-max-width: 20px;
+max-width: 100%;
 }
 
-li {
-list-style: square;
-color: white;
-margin: 0 0 0.8em 0;
+input[type=radio] {
+position: relative;
+top: -1px;
 }
 
 p {
-color: #eee;
+color: #444;
+font-weight: 300;
 line-height: 1.6em;
 }
 
@@ -131,14 +172,39 @@ border-bottom: 1px solid #aaa;
 padding: 0 0 20px 0;
 }
 
-ul {
-margin: 0 0 2em 0;
-padding: 0 0 0 14px;
+section p:last-of-type {
+margin: 0;
+}
+
+section {
+  border-bottom: 1px solid #eee;
+  margin: 0 0 30px 0;
+  padding: 0 0 20px 0;
+}
+
+section:last-of-type {
+  border-bottom: none;
+  padding: 0 0 1em 0;
+}
+
+select {
+  margin: 0 1em 1em 0;
+  position: relative;
+  top: -1px;
+}
+
+h1 span {
+  white-space: nowrap;
+}
+
+strong {
+  font-weight: 500;
 }
 
 video {
-background: #222;
-width: 100%;
+  background: #222;
+  margin: 0 0 20px 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 650px) {
@@ -148,6 +214,9 @@ width: 100%;
 }
 
 @media screen and (max-width: 550px) {
+  button:active {
+    background-color: darkRed;
+  }
   h1 {
     font-size: 22px;
   }

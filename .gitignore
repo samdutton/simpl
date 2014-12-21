@@ -1,4 +1,10 @@
 .DS_Store
 .swp
 *~
+bower_components
+node_modules
+validation-report.json
+validation-status.json
 video/video/gbikeLarge.m4v
+
+
