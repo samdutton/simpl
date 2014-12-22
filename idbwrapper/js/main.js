@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals IDBStore */
+
 var customers = new IDBStore({
   dbVersion: 1,
   storeName: 'customer',
@@ -20,9 +24,10 @@ var dude = {
 
 var onsuccess = function(id){
   console.log('Yeah, dude inserted! insertId is: ' + id);
-}
+};
+
 var onerror = function(error){
   console.log('Oh noes, sth went wrong!', error);
-}
+};
 
 customers.put(dude, onsuccess, onerror);

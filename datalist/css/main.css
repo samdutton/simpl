@@ -114,14 +114,4 @@ background: #222;
 width: 100%;
 }
 
-@media screen and (min-width: 1000px) {
-  video {
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  video {
-  }
-}
-
 

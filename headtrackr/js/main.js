@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals headtrackr */
+
 // This code is adapted from the headtrackr.js example:
 // github.com/auduno/headtrackr
 
@@ -22,7 +26,7 @@ canvasOverlay.width = videoWidth;
 canvasOverlay.height = videoHeight;
 var overlayContext = canvasOverlay.getContext('2d');
 
-var dataDiv = document.getElementById("data");
+var dataDiv = document.getElementById('data');
 function log(message){
   dataDiv.innerHTML = message;
 }
@@ -49,11 +53,11 @@ function handleheadtrackrStatusEvent(event) {
   }
 }
 
-function handleFaceTrackingEvent(e){
+function handleFaceTrackingEvent(){
   overlayContext.clearRect(0, 0, videoWidth, videoHeight);
   // once we have stable tracking, draw rectangle
-  if (event.detection == 'CS') {
-    overlayContext.translate(event.x, event.y)
+  if (event.detection === 'CS') {
+    overlayContext.translate(event.x, event.y);
     overlayContext.rotate(event.angle-(Math.PI/2));
     overlayContext.strokeStyle = '#00CC00';
     overlayContext.strokeRect((-(event.width/2)) >> 0,

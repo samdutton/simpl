@@ -44,8 +44,11 @@ text-decoration: underline;
 video#chrome {
 bottom: 0;
 position: absolute;
-transition: opacity 1s;
+-moz-transition: opacity 1.5s ease-in-out;
+-ms-transition: opacity 1.5s ease-in-out;
+-o-transition: opacity 1.5s ease-in-out;
 -webkit-transition: opacity 1.5s ease-in-out;
+transition: opacity 1s;
 width: 150%;
 }
 
@@ -54,14 +57,17 @@ opacity: 0;
 }
 
 video#video1, video#video2  {
-animation-duration: 3s;
+-moz-animation-duration: 3s;
+-ms-animation-duration: 3s;
+-o-animation-duration: 3s;
 -webkit-animation-duration: 3s;
+animation-duration: 3s;
 background: transparent;
 position: absolute;
 }
 
 video#video1 {
-bottom: 0px;
+bottom: 0;
 left: 10%;
 width: 50%;
 z-index: 1;
@@ -75,6 +81,9 @@ z-index: 1;
 }
 
 .rotateOut {
+-moz-animation-name: rotateOut;
+-ms-animation-name: rotateOut;
+-o-animation-name: rotateOut;
 -webkit-animation-name: rotateOut;
 animation-name: rotateOut;
 }
@@ -82,21 +91,29 @@ animation-name: rotateOut;
 @-webkit-keyframes rotateOut {
 0% {
 -webkit-transform-origin: center center;
+transform-origin: center center;
 -webkit-transform: rotate(0) scale(1);
+transform: rotate(0) scale(1);
 opacity: 1;
 -webkit-animation-timing-function: ease-in;
+animation-timing-function: ease-in;
 }
 
 50% {
 -webkit-transform-origin: center center;
+transform-origin: center center;
 -webkit-transform: rotate(-2000deg) scale(0);
+transform: rotate(-2000deg) scale(0);
 opacity: 0;
 }
 100% {
 -webkit-transform-origin: center center;
+transform-origin: center center;
 -webkit-transform: rotate(2000deg) scale(1);
+transform: rotate(2000deg) scale(1);
 opacity: 1;
 -webkit-animation-timing-function: ease-out;
+animation-timing-function: ease-out;
 }
 }
 

@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals MediaRecorder */
+
 // Spec is at http://dvcs.w3.org/hg/dap/raw-file/tip/media-stream-capture/RecordingProposal.html
 
 // This demo is based on https://github.com/PinZhang/sample-codes/blob/master/html5/media_recording.html
@@ -12,13 +16,13 @@ var downloadLink = document.querySelector('a#downloadLink');
 
 
 function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
+  console.log('navigator.getUserMedia error: ', error);
 }
 
 var count = 0;
 function startRecording(stream) {
   log('Starting...');
-  mediaRecorder = new MediaRecorder(stream);
+  var mediaRecorder = new MediaRecorder(stream);
 
   mediaRecorder.ondataavailable = function(e) {
     log('Data available...');
@@ -28,8 +32,8 @@ function startRecording(stream) {
     }
     console.log(e);
     videoElement.src = window.URL.createObjectURL(e.data);
-    // downloadLink.href = window.URL.createObjectURL(e.data);
-    // downloadLink.innerHTML = "Download Ogg video file";
+    downloadLink.href = window.URL.createObjectURL(e.data);
+    downloadLink.innerHTML = 'Download Ogg video file';
   };
 
   mediaRecorder.onerror = function(e){
@@ -38,11 +42,11 @@ function startRecording(stream) {
   };
 
   // not implemented yet
-  mediaRecorder.onstart = function(e){
+  mediaRecorder.onstart = function(){
     log('Started');
   };
 
-  mediaRecorder.onstop = function(e){
+  mediaRecorder.onstop = function(){
     log('Stopped');
   };
 

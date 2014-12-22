@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals FileError */
+
 // get video file via XHR
 // store with File API
 // read Blob from File API and set as video src using createObjectUrl()
@@ -18,9 +22,9 @@ function GET(url, callback) {
   xhr.responseType = 'arraybuffer';
   xhr.send();
 
-  xhr.onload = function(e) {
-    if (xhr.status != 200) {
-      alert("Unexpected status code " + xhr.status + " for " + url);
+  xhr.onload = function() {
+    if (xhr.status !== 200) {
+      alert('Unexpected status code ' + xhr.status + ' for ' + url);
       return false;
     }
     callback(new Uint8Array(xhr.response));
@@ -51,7 +55,7 @@ function handleInitSuccess(fileSystem) {
 function createFile(fullPath){
   fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/},
     function(fileEntry) {
-      log("Created file: " + fileEntry.fullPath);
+      log('Created file: ' + fileEntry.fullPath);
       getVideo(fileEntry);
   }, handleError);
 }
@@ -59,7 +63,7 @@ function createFile(fullPath){
 function writeToFile(fileEntry, blob){
   // Create a FileWriter object for fileEntry
   fileEntry.createWriter(function(fileWriter) {
-    fileWriter.onwriteend = function(e) {
+    fileWriter.onwriteend = function() {
       // read from file
       log('Wrote to file ' + fileEntry.fullPath);
       readFromFile(fileEntry.fullPath);
@@ -77,7 +81,7 @@ function readFromFile(fullPath){
     // Get a File object representing the file, then use FileReader to read its contents.
     fileEntry.file(function(file) {
       var reader = new FileReader();
-      reader.onloadend = function(e) {
+      reader.onloadend = function() {
         // video.src = this.result;
         video.src = URL.createObjectURL(new Blob([this.result]));
       };
@@ -108,17 +112,17 @@ function handleError(e) {
     default:
       log('Unknown error');
       break;
-  };
+  }
 }
 
-var data = document.getElementById("data");
+var data = document.getElementById('data');
 function log(text){
-  data.innerHTML += text + "<br />";
+  data.innerHTML += text + '<br />';
 }
 
-document.querySelector("video").addEventListener("loadedmetadata", function(){
+document.querySelector('video').addEventListener('loadedmetadata', function(){
   var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-  document.querySelector("#videoSrc").innerHTML = "currentSrc: " + fileName +
-    "<br /> videoWidth: " + this.videoWidth + "px<br /> videoHeight: " + this.videoHeight + "px";
+  document.querySelector('#videoSrc').innerHTML = 'currentSrc: ' + fileName +
+    '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this.videoHeight + 'px';
 });
 

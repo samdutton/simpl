@@ -1,1 +1,1 @@
-document.querySelector("#data").innerHTML = navigator.userAgent;
+document.querySelector('#data').innerHTML = navigator.userAgent;

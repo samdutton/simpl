@@ -1,6 +1,8 @@
-var data = document.querySelector("p#data");
+'use strict';
+
+var data = document.querySelector('p#data');
 function log(message){
-  data.innerHTML += message + "<br />";
+  data.innerHTML += message + '<br />';
 }
 
 window.onload = function(){
@@ -9,7 +11,7 @@ window.onload = function(){
     return;
   }
   var resources = window.performance.getEntriesByType('resource');
-  for (i = 0; i != resources.length; ++i) {
+  for (var i = 0; i !== resources.length; ++i) {
     var resource = resources[i];
     if (resource.initiatorType === 'img') {
       var nameParts = resource.name.split('/');
@@ -23,4 +25,4 @@ window.onload = function(){
       }
     }
   }
-}
+};

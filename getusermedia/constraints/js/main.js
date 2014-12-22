@@ -1,8 +1,10 @@
-var vgaButton = document.querySelector("button#vga");
-var qvgaButton = document.querySelector("button#qvga");
-var hdButton = document.querySelector("button#hd");
-var dimensions = document.querySelector("p#dimensions");
-var video = document.querySelector("video");
+'use strict';
+
+var vgaButton = document.querySelector('button#vga');
+var qvgaButton = document.querySelector('button#qvga');
+var hdButton = document.querySelector('button#hd');
+var dimensions = document.querySelector('p#dimensions');
+var video = document.querySelector('video');
 var stream;
 
 navigator.getUserMedia = navigator.getUserMedia ||
@@ -14,12 +16,12 @@ function successCallback(stream) {
 }
 
 function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
+  console.log('navigator.getUserMedia error: ', error);
 }
 
 function displayVideoDimensions() {
-  dimensions.innerHTML = "Actual video dimensions: " + video.videoWidth +
-    "x" + video.videoHeight + 'px.';
+  dimensions.innerHTML = 'Actual video dimensions: ' + video.videoWidth +
+    'x' + video.videoHeight + 'px.';
 }
 
 video.addEventListener('play', function(){
@@ -55,9 +57,9 @@ var hdConstraints  = {
   }
 };
 
-qvgaButton.onclick = function(){getMedia(qvgaConstraints)};
-vgaButton.onclick = function(){getMedia(vgaConstraints)};
-hdButton.onclick = function(){getMedia(hdConstraints)};
+qvgaButton.onclick = function(){getMedia(qvgaConstraints);};
+vgaButton.onclick = function(){getMedia(vgaConstraints);};
+hdButton.onclick = function(){getMedia(hdConstraints);};
 
 function getMedia(constraints){
   if (!!stream) {

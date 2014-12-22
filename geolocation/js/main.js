@@ -1,7 +1,9 @@
+'use strict';
+
 var data = document.querySelector('#data');
 
 function log(message){
-	data.innerHTML += message + "<br />" + data.innerHTML;
+	data.innerHTML += message + '<br />' + data.innerHTML;
 }
 
 navigator.geolocation.watchPosition(logPosition);

@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<base target="_blank">
-<title>Web Fonts</title>
-<link rel="stylesheet" href="../css/main.css" />
+
+  <meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="/icon_192x192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <base target="_blank">
+
+  <title>Web Fonts</title>
+
+  <link rel="stylesheet" href="../css/main.css" />
 
   <style type="text/css">
-  div.fontExample {
-    color: white;
-    font-size: 2em;
-    margin: 0 0 0.5em 0;
-  }
-  @font-face {
+    div.fontExample {
+      font-size: 2em;
+      margin: 0 0 0.5em 0;
+    }
+    @font-face {
       font-family: "GraublauWeb";
       src: url(GraublauWeb.otf) format("opentype");
-  }
-  div#localFont {
-    font-family: GraublauWeb, serif;
-  }
-  div#remoteFont {
-    font-family: "Open Sans", serif;
-  }
-  div#remoteSubset {
-    font-family: Inconsolata, cursive;
-  }
+    }
+    div#localFont {
+      font-family: GraublauWeb, serif;
+    }
+    div#remoteFont {
+      font-family: "Open Sans", serif;
+    }
+    div#remoteSubset {
+      font-family: Inconsolata, cursive;
+    }
   </style>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href="http://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
+
 </head>
+
 <body>
-<div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Fonts</h1>
-  <p>If Web Fonts are enabled on this browser...</p>
-  <div id="localFont" class="fontExample">This is a font called Graublau which is stored locally.</div>
-  <div id="remoteFont" class="fontExample">This is a font called Open Sans which is retrieved from fonts.googleapis.com.</div>
-  <div id="remoteSubset" class="fontExample">This div uses the Inconsolata font, but only a subset is retrieved: the latin characters f, o, n and t. Other text is displayed in the fallback cursive font.</div>
+  <div id="container">
 
-<a href="https://github.com/samdutton/simpl/blob/master/webfonts/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-</div>
-<script src="../js/lib/ga.js"></script>
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Fonts</h1>
+    <p>If Web Fonts are enabled on this browser...</p>
+    <div id="localFont" class="fontExample">This is a font called Graublau which is stored locally.</div>
+    <div id="remoteFont" class="fontExample">This is a font called Open Sans which is retrieved from fonts.googleapis.com.</div>
+    <div id="remoteSubset" class="fontExample">This div uses the Inconsolata font, but only a subset is retrieved: the latin characters f, o, n and t. Other text should displayed in the fallback cursive font.</div>
+
+    <a href="//github.com/samdutton/simpl/blob/master/webfonts/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="../js/lib/ga.js"></script>
+
 </body>
 </html>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="keywords" content="WebRTC, HTML5, JavaScript" />
 <meta name="description" content="WebRTC code samples." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="chrome=1" />
 <base target="_blank">
 <title>Fullscreen video</title>
+
 <link rel="stylesheet" href="../../css/main.css" />
 
   <style>
@@ -24,22 +26,17 @@
     display: none;
     max-width: 100%;
   }
-/*  img:-webkit-full-screen {
-    display: none !important;
-  }
-  video:-webkit-full-screen {
-    display: block !important;
-    width: 100% !important;
-  }*/
   </style>
 
 </head>
+
 <body>
+
 <div id="container">
 
   <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> Fullscreen video</h1>
 
-  <div class='videoContainer'>
+  <div class="videoContainer" id="videoContainer0">
     <img src="images/thumbnail0.jpg" alt="Thumbnail image 0" />
     <video controls poster="images/thumbnail0.jpg">
       <source src="video/chrome.webm" type="video/webm" />
@@ -48,7 +45,7 @@
     </video>
   </div>
 
-  <div class='videoContainer' id='videoContainer1'>
+  <div class="videoContainer" id="videoContainer1">
     <img src="images/thumbnail1.jpg" alt="Thumbnail image 1" />
     <video controls poster="images/thumbnail1.jpg">
       <source src="video/stories.webm" type="video/webm" />
@@ -63,7 +60,8 @@
 
   <script src="js/main.js"></script>
 
-<a href="https://github.com/samdutton/simpl/blob/master/fullscreen/video/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+  <a href="//github.com/samdutton/simpl/blob/master/fullscreen/video/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
 </div>
 <script src="../../js/lib/ga.js"></script>
 </body>

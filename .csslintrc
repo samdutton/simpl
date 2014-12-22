@@ -1,4 +1,5 @@
 {
+  "adjoining-classes": false,
   "box-model": false,
   "ids": false,
   "known-properties": false,

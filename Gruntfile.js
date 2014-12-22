@@ -17,38 +17,35 @@ module.exports = function(grunt) {
         options: {
           import: 2
         },
-        src: ['/**/main.css'
-        ]
+        src: ['**/*.css','!node_modules/**/*']
       }
     },
 
     htmlhint: {
       default: {
-        src: [
-        '/**/*.html'
-        ]
+        src: ['**/*.html', '!node_modules/**/*']
       }
     },
 
     jscs: {
-      src: '/**/*.js',
+      src: ['**/main.js'],
       options: {
         config: 'google', // as per Google style guide – could use '.jscsrc' instead
-        'excludeFiles': [],
+        'excludeFiles': ['node_modules/**/*'],
         requireCurlyBraces: ['if']
       }
     },
 
     jshint: {
       options: {
-        ignores: [],
+        ignores: ['node_modules/**/*'],
         // use default .jshintrc files
         jshintrc: true
       },
       // files to validate
       // can choose more than one name + array of paths
       // usage with this name: grunt jshint:files
-      files: ['/**/*.js']
+      files: ['**/main.js']
     }
 
 });
