@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 'use strict';
 
+=======
+>>>>>>> adfb168ab1cd303a9a773a63ba61bb1f8ba0a3ad
 (function() {
 
     // Helper function to fetch a url

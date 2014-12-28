@@ -149,6 +149,11 @@ ol {
   padding: 0 0 0 20px;
 }
 
+input[type=radio] {
+position: relative;
+top: -1px;
+}
+
 p {
   color: #444;
   font-weight: 300;
@@ -200,6 +205,35 @@ strong {
 
 ul {
   padding: 0 0 0 20px;
+}
+
+section p:last-of-type {
+margin: 0;
+}
+
+section {
+  border-bottom: 1px solid #eee;
+  margin: 0 0 30px 0;
+  padding: 0 0 20px 0;
+}
+
+section:last-of-type {
+  border-bottom: none;
+  padding: 0 0 1em 0;
+}
+
+select {
+  margin: 0 1em 1em 0;
+  position: relative;
+  top: -1px;
+}
+
+h1 span {
+  white-space: nowrap;
+}
+
+strong {
+  font-weight: 500;
 }
 
 video {
