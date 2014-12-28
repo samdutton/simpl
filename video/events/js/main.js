@@ -89,7 +89,7 @@ var events = [
 'webkitneedkey'
 ];
 
-for (var i = 0; i != events.length; ++i) {
+for (var i = 0; i !== events.length; ++i) {
   video.addEventListener(events[i], handleEvent);
 }
 
