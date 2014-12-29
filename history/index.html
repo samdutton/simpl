@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>History methods</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> History pushState() and popState()</h1>
+
+  <p><a id="link" href=".">Click me</a> a few times, then press the Back button.</p>
+
+  <p id="data"></p>
+
+  <script>
+  var link = document.getElementById("link");
+  var n = 1;
+  link.addEventListener("click", function(event) {
+      event.preventDefault();
+      window.history.pushState({"n": n}, "n: " + n, "index.html#" + n);
+      n = n + 1;
+  }, false);
+  window.onpopstate = function(event) {
+    document.getElementById("data").innerHTML = "location: " + document.location + "<br />state: " + JSON.stringify(event.state);
+    console.log(event);
+  };
+  </script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/history/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

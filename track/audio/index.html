@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>The track element for audio</title>
+
+<link rel="stylesheet" href="../../css/main.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> track element for audio</h1>
+
+  <audio autoplay controls>
+    <source src="audio/animalSounds.mp3" />
+    <source src="audio/animalSounds.ogv" />
+    <track label="English subtitles" kind="subtitles" srclang="en" src="tracks/developerStories-subtitles-en.vtt" default />
+    <p>This browser does not support the video element.</p>
+  </audio>
+
+  <p id="data" style="height: 150px;"></p>
+
+  <script src="js/main.js"></script>
+
+  <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/track/basics/" title="Track element article on HTML5 Rocks by Sam Dutton">Getting Started With the Track Element</a>.</p>
+
+  <a href="//github.com/samdutton/simpl/blob/master/track/audio/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+<script src="../../js/lib/ga.js"></script>
+</body>
+</html>

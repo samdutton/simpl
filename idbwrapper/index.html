@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>IDBWrapper</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+  div {
+    margin: 0 0 1.2em 0;
+  }
+  fieldset {
+    border-color: #444;
+    margin: 0 0 1.2em 0;
+    padding: 1.5em;
+  }
+  input {
+    color: #666;
+    font-size: 1em;
+    width: 15em;
+  }
+  label {
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    width: 3.8em;
+  }
+  legend {
+    color: #ccc;
+    padding: 0 1em 0 1em;
+  }
+  p#data {
+    height: 9em;
+  }
+  </style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> IDBWrapper</h1>
+
+  <fieldset>
+    <legend>Store song</legend>
+    <div>
+      <label for="artist">Artist: </label><input id="artist" type="text" value="" />
+    </div>
+    <div>
+      <label for="song">Song: </label><input id="song" type="text" value="" />
+    </div>
+    <button id="storeButton">Store</button>
+  </fieldset>
+
+  <fieldset>
+    <legend>Free text search</legend>
+      <div>
+        <label for="query">Find: </label><input id="query" type="text" value = "" />
+      </div>
+      <button id="findButton">Find</button>
+  </fieldset>
+
+  <p id="data"></p>
+
+  <p>In Google Chrome, view IndexedDB databases in the Resources tab.</p>
+
+  <script src="js/lib/idbstore.js"></script>
+  <script src="js/main.js"></script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/idbwrapper/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

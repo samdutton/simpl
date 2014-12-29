@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>The Framegrabber Chrome extension</title>
+
+<style type="text/css">
+a {
+color: #6699ff;
+text-decoration: none;
+}
+
+a:hover {
+color: #99aaff;
+text-decoration: underline;
+}
+
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 50px;
+}
+
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+padding: 20px 30px 30px 30px;
+width: 600px;
+}
+
+* html div#container {
+width: 540px;
+}
+
+h1 {
+border-bottom: 1px solid #aaa;
+color: white;
+font-family: Arial, sans-serif;
+margin: 0 0 30px 0;
+padding: 0 0 10px 0;
+}
+
+h2 {
+color: white;
+font-family: Arial, sans-serif;
+margin: 30px 0 0 0;
+}
+
+img {
+border: none;
+}
+
+p {
+color: #eee;
+font-size: 14px;
+line-height: 1.5em;
+}
+
+p.borderBottom {
+border-bottom: 1px dotted #666;
+padding: 0 0 30px 0;
+}
+
+ul {
+color: #eee;
+font-size: 14px;
+line-height: 1.5em;
+margin: 20px;
+padding: 0;
+}
+
+li {
+list-style: square;
+margin: 0 0 5px 0;
+}
+
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+});
+</script>
+
+<script type="text/javascript">
+
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<h1>Framegrabber</h1>
+
+<p>Framegrabber is a simple extension for bookmarking video timecodes and taking framegrabs.</p>
+
+<p>Framegrabs are still images of individual film frames.</p>
+
+<p>The Framegrabber extension makes it possible to take framegrabs from HTML5 video. Framegrabs can be stored in a local database or opened in a tab so they can be saved as JPEG files. </p>
+
+<p>Framegrabber is also useful for bookmarking video timecodes.</p>
+
+<p>Framegrabber works for any page that uses the HTML video element. </p>
+
+<p>One major caveat: to take framegrabs, video must be from the same host as the page it's on, so Framegrabber can't take framegrabs on sites like YouTube and Vimeo. If Framegrabber cannot take a framegrab, it stores only the current timecode.</p>
+
+<p class="borderBottom">Videos from which framegrabs can taken can be found on many sites, including <a href="http://diveintohtml5.org/video.html#example">Dive&nbsp;Into&nbsp;HTML5</a>, <a href="http://people.mozilla.com/~prouget/demos/mashup/video.xhtml" title="Mozilla examples">Mozilla</a> and my own website <a href="http://www.samdutton.com/chrome/" title="Sample videos using the HTML video element">samdutton.com</a>.</p>
+
+<h2>How to use Framegrabber</h2>
+
+<p>To save framegrabs, use the icons that the extension displays at the top left of video(s) using the HTML video element:</p>
+<ul>
+    <li>click on the green plus icon to open a framegrab in a new tab</li>
+    <li>click on the red circle icon to save a framegrab in local database storage.</li>
+</ul>
+
+<p>Note that on some pages, you may need to start playing the video before an HTML video element is actually added to the page.</p>
+
+<p>Click the extension icon (to the right of the address bar) to display stored framegrabs in a popup. Click a framegrab image in the popup to navigate to the video and timecode from which the framegrab was taken.</p>
+
+
+<h2>How does it work?</h2> 
+
+<p>Framegrabber uses several relatively new web technologies, including Canvas, HTMLMediaElement and Web SQL Database.</p>
+
+<p>Below are some technical details of how the extension works.</p>
+
+<p>Framegrabber creates a canvas element (but doesn't add it to the DOM) then uses the drawImage() canvas context method to draw a video frame on it. The canvas toDataURL() method is then used to create a data URL string representing the image. The image data URL can then either be opened in a new tab, or stored locally along with the URL of the page containing the video and the timecode of the framegrab. Except in order to view pages containing framegrabs, no server or internet access is required.</p> 
+
+<p>Local storage is accomplished using the Chrome Web SQL Data
+base implementation, which is fast and reliable enough to store strings such as image data URLs, which can be 200KB or more in size (i.e. 200,000+ characters in length). </p>
+
+<p>When the extension icon is clicked, data URLs are retrieved from the local database and set as the src value for framegrabs displayed in the popup. </p>
+
+
+
+<h2 id="feedback">Feedback</h2>
+
+<p>Please send bug reports, comments or feature requests to <a href="mailto:samdutton@gmail.com">samdutton@gmail.com</a>.</p>
+
+<p>For more information, please visit my website <a href="mailto:samdutton@gmail.com">samdutton.com</a> or my blog at <a href="http://samdutton.wordpress.com">samdutton.wordpress.com</a>.</p>
+
+
+
+</div><!-- container -->
+
+</body>
+
+</html>

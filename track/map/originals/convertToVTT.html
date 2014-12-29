@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title></title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+<script src="gbike.js"></script>
+
+<script type="text/javascript">
+console.log(points);
+
+// Convert decimal time to mm:ss, e.g. convert 123.3 to 2:03
+function toMinSec(decimalSeconds){
+	var mins = Math.floor(decimalSeconds/60);
+	var secs = Math.floor(decimalSeconds % 60);
+	if (secs < 10) {
+		secs = "0" + secs
+	};
+	return mins + ":" + secs;
+}
+</script>
+
+<style type="text/css">
+
+</style>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

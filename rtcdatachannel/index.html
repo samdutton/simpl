@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>RTCDataChannel</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+<style>
+button {
+  margin: 0 1em 0 0;
+  width: 5.2em;
+}
+div#buttons {
+  margin: 0 0 1.7em 0;
+}
+div#send {
+  float: left;
+  margin: 0 3em 1em 0;
+}
+div#sendReceive {
+  margin: 0 0 1em 0;
+}
+h1 {
+  margin: 0 0 1em 0;
+}
+h2 {
+  margin: 0 0 0.5em 0;
+}
+textarea {
+  color: #444;
+  font-family: 'Courier New', monospace;
+  font-size: 1em;
+  height: 7.0em;
+  padding: 0.5em;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> RTCDataChannel</h1>
+
+  <div id="buttons">
+    <button id="startButton">Start</button>
+    <button id="sendButton">Send</button>
+    <button id="closeButton">Stop</button>
+  </div>
+
+  <div id="sendReceive">
+    <div id="send">
+      <h2>Send</h2>
+      <textarea id="dataChannelSend" disabled placeholder="Press Start, enter some text, then press Send."></textarea>
+    </div>
+    <div id="receive">
+      <h2>Receive</h2>
+      <textarea id="dataChannelReceive" disabled></textarea>
+    </div>
+  </div>
+
+  <p>View the console to see logging.</p>
+
+  <p>The <code>RTCPeerConnection</code> objects <code>localPeerConnection</code> and <code>remotePeerConnection</code> are in global scope, so you can inspect them in the console as well.</p>
+  <p>Code in this example used by kind permission of Vikas Marwaha.</p>
+  <p>For more information about PeerConnection, see <a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-rtcdatachannel" title="RTCDataChannel section of HTML5 Rocks article about WebRTC">Getting Started With WebRTC</a>.</p>
+
+  <script src="js/main.js"></script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/rtcdatachannel/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

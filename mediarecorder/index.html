@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>MediaStream Recording</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+<style>
+a#downloadLink {
+  display: block;
+  margin: 0 0 1em 0;
+  min-height: 1.2em;
+}
+p#data {
+  min-height: 6em;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStream Recording</h1>
+
+  <p>This demo requires <a href="http://nightly.mozilla.org/" title="Download Firefox Nightly">Firefox Nightly</a>. It's based on <a href="https://github.com/PinZhang/sample-codes/blob/master/html5/media_recording.html" title="GitHub repository for Media Recording example">PinZhang's MediaRecorder example</a>.</p>
+
+  <p>How does it work? A <code>MediaRecorder</code> is created which takes a video stream from <code>navigator.getUserMedia()</code>. When a blob of recorded data becomes available (set to occur after two seconds) this is used to set the <code>src</code> of the video element, using <code>window.URL.createObjectURL()</code>.</p>
+
+  <p>For more information see the MediaStream Recording API <a href="https://dvcs.w3.org/hg/dap/raw-file/default/media-stream-capture/MediaRecorder.html" title="W3C MediaStream Recording API Editor's Draft">Editor's Draft</a>.</p>
+
+  <video controls autoplay></video>
+
+  <a id="downloadLink" download="mediarecorder.ogv" name="mediarecorder.ogv" href></a>
+
+  <p id="data"></p>
+
+  <script src="js/main.js"></script>
+
+
+  <a href="//github.com/samdutton/simpl/blob/master/mediarecorder/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

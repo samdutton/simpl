@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>postMessage() other.html</title>
+
+<link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+<div id="container">
+
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> postMessage() other.html</h1>
+  <p id="data"></p>
+
+  <script>
+  window.addEventListener("message", function receiveMessage(event) {
+  console.log(event);
+    log("Got a message from event.origin " + event.origin + ": ");
+    log("<em>" + event.data + "</em>");
+    // posting back to message source, i.e. index.html
+    // second parameter is eventOrigin: must match event.origin
+    event.source.postMessage("Hi! this is a message from other.html.", "*");
+  });
+
+  function log(message){
+    document.getElementById("data").innerHTML += message + "<br /><br />";
+  }
+  </script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/postmessage/popup/other.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+<script src="../../js/lib/ga.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript, audio sprite, track element" /> 
+<meta name="description" content="How to create audio sprites with the track element." /> 
+
+<base target="_blank"> 
+
+<title>Audio sprites with the track element</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/appleItouchIcon.jpg" />
+
+<link rel="stylesheet" href="css/main.css">
+
+<script src="js/lib/jquery-1.7.1.min.js"></script>
+<script src="js/main.js"></script>
+
+<script src="http://www.google-analytics.com/urchin.js"></script> 
+<script> 
+_uacct = "UA-2630780-1";
+urchinTracker();
+</script> 
+
+<script type="text/javascript">
+
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<h1>Playing audio sprites with the track element</h1>
+
+<div class="isNotSupported" id="warningMessage">
+  <p>This demo requires a browser such as <a href="http://tools.google.com/dlpage/chromesxs" title="Google Chrome Canary download">Google&nbsp;Chrome&nbsp;Canary</a> that supports the track element.</p> 
+  <p>In Chrome you must enable track element support on the chrome://flags page.</p>
+</div>
+
+<div id="soundButtons" class="isSupported"></div>
+
+<h2>How it works</h2>
+
+<p>An Audio object is created for <a href="audio/animalSounds.mp3">animalSounds.mp3</a>, which is made up of multiple different sounds: <em>purr</em>, <em>woof</em>, and so on.</p>
+
+<p>A <code>TextTrack</code> is then constructed with a TextTrackCue added for each sound. Each cue has a startTime, an endTime and an ID.</p>
+
+<p>When a button is clicked, a cue with the same ID as the button is found using the <code>TextTrack</code> <code>getCueById()</code> method. The Audio object <code>currentTime</code> is set to the startTime of the cue. A <code>timeupdate</code> event listener stops play at the <code>endTime</code> of the cue.</p>
+
+<p>This demo is based on a code example in the <a href="http://dev.w3.org/html5/spec/media-elements.html#text-track-api" title="W3C TextTrack API documentation">W3C TextTrack API documentation</a>.</p>
+
+<p>For more information about the track element, take a look at <a href="http://www.html5rocks.com/en/tutorials/track/basics/" title="HTML5 Rocks article: Getting started with the track element">Getting started with the track element</a> on HTML5 Rocks.</p>
+
+</div>  <!-- container -->
+
+</body>
+
+
+</html>

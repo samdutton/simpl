@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Picture element: art direction</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> picture element: art&nbsp;direction</h1>
+
+  <picture>
+    <source media="(min-width: 750px)" srcset="horses_large.jpg" />
+    <source media="(min-width: 500px)" srcset="horses_medium.jpg" />
+    <img src="horses_small.jpg" alt="Horses in Hawaii">
+  </picture>
+
+  <p>Resize the viewport: a different crop of the image is displayed at different viewport widths.</p>
+
+<a href="//github.com/samdutton/simpl/blob/master/pictureartdirection/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

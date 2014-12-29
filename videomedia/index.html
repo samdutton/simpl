@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Video with media attribute</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+  div#container {
+    max-width: 570px;
+  }
+  video {
+    /* in main.css set (for other examples) to 720px or 100% */
+    width: auto;
+  }
+  </style>
+
+
+</head>
+
+<body>
+
+<div id="container">
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with media attribute</h1>
+  <p>The video element on this page has source elements with <br /><code>media="(min-width: 700px)"</code> attributes.</p>
+  <p>The <code>media</code> attribute makes it possible for a video element to use a different <code>src</code>, depending on a media query.</p>
+  <p>To see this in action, change the browser window width to larger or smaller than 700px, refresh, and view the video src.</p>
+
+  <p id="videoSrc"></p>
+
+  <video controls autoplay>
+    <source src="video/smaller.mp4" type="video/mp4" />
+    <source src="video/smaller.webm" type="video/webm" />
+    <source src="video/larger.mp4" type="video/mp4" media="(min-width: 700px)" />
+    <source src="video/larger.webm" type="video/webm" media="(min-width: 700px)" />
+</video>
+
+
+
+  <script>
+  document.querySelector("video").addEventListener("loadedmetadata", function(){
+    var fileName = this.currentSrc.replace(/^.*[\\\/]/, ''); // remove everything but the file name
+    document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
+  });
+  </script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/videomedia/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

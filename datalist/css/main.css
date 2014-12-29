@@ -1,0 +1,117 @@
+a {
+color: #77aaff;
+text-decoration: none;
+}
+
+a:hover {
+color: #88bbff;
+text-decoration: underline;
+}
+
+a#viewSource {
+display: block;
+margin: 1.3em 0 0 0;
+border-top: 1px solid #999;
+padding: 1em 0 0 0;
+}
+
+div#links a {
+display: block;
+line-height: 1.3em;
+margin: 0 0 1.5em 0;
+}
+
+@media screen and (min-width: 1000px) {
+/* hack! to detect non-touch devices */
+  div#links a {
+		line-height: 0.8em;
+  }
+}
+
+audio {
+max-width: 100%;
+}
+
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 20px;
+word-break: break-word;
+}
+
+button {
+margin: 0 0.5em 0 0;
+width: 5.7em;
+}
+
+button[disabled] {
+color: white;
+}
+
+code {
+font-family: 'Courier New', monospace;
+font-weight: bold;
+letter-spacing: -0.1em;
+}
+
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+max-width: 40em;
+padding: 1em 1.5em 1.3em 1.5em;
+}
+
+div#links {
+	padding: 0.5em 0 0 0;
+}
+
+h1 {
+border-bottom: 1px solid #aaa;
+color: white;
+font-family: Arial, sans-serif;
+margin: 0 0 0.8em 0;
+padding: 0 0 0.4em 0;
+}
+
+h2 {
+color: #ccc;
+font-family: Arial, sans-serif;
+margin: 30px 0 10px 0;
+}
+
+html {
+/* avoid annoying page width change
+when moving from the home page */
+overflow-y: scroll;
+}
+
+img {
+border: none;
+max-width: 100%;
+}
+
+p {
+color: #eee;
+line-height: 1.6em;
+}
+
+p#data {
+border-top: 1px dotted #666;
+font-family: Courier New, monospace;
+line-height: 1.3em;
+max-height: 1000px;
+overflow-y: auto;
+padding: 1em 0 0 0;
+}
+
+p.borderBelow {
+border-bottom: 1px solid #aaa;
+padding: 0 0 20px 0;
+}
+
+video {
+background: #222;
+width: 100%;
+}
+
+

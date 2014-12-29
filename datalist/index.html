@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Datalist</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+  <style>
+  div#inputs {
+    background-color: white;
+    padding: 20px;
+  }
+  input {
+    display: block;
+    margin: 0 0 2em 0;
+    width: 100%;
+  }
+  </style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> datalist</h1>
+
+  <p></p>
+
+  <div id="inputs">
+
+    <input type="text" list="marsupials" placeholder="Start typing a word like 'Wombat'" />
+    <datalist id="marsupials">
+      <option value="Bilby" />
+      <option value="Koala" />
+      <option value="Numbat" />
+      <option value="Pig-footed bandicoot" />
+      <option value="Potoroo" />
+      <option value="Quoll" />
+      <option value="Wallaby" />
+      <option value="Wombat" />
+    </datalist>
+
+    <input type="range" value="0" min="0" max="100" list="numbers" />
+    <datalist id="numbers">
+      <option value="10" />
+      <option value="15" />
+      <option value="30" />
+      <option value="50" />
+      <option value="90" />
+    </datalist>
+
+    <input type="color" value="#000000" list="grays" />
+    <datalist id="grays">
+      <option>#eeeeee</option>
+      <option>#cccccc</option>
+      <option>#aaaaaa</option>
+      <option>#999999</option>
+      <option>#444444</option>
+    </datalist>
+
+  </div>
+
+  <a href="//github.com/samdutton/simpl/blob/master/datalist/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>

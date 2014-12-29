@@ -1,0 +1,115 @@
+a {
+color: #6699ff;
+text-decoration: none;
+}
+ 
+a:hover {
+color: #99aaff;
+text-decoration: underline;
+}
+ 
+body {
+background: #666;
+font-family: Arial, sans-serif;
+padding: 50px;
+}
+ 
+div#container {
+background: #000;
+margin: 0 auto 0 auto;
+padding: 20px 30px 10px 30px;
+width: 980px;
+}
+ 
+* html div#container {
+width: 540px;
+}
+ 
+h1 {
+border-bottom: 1px solid #aaa;
+color: white;
+font-family: Arial, sans-serif;
+margin: 0 0 30px 0;
+padding: 0 0 10px 0;
+}
+ 
+/*
+h2 {
+color: white;
+font-family: Arial, sans-serif;
+margin: 30px 0 0 0;
+}
+*/
+ 
+img {
+border: none;
+}
+ 
+p {
+color: #eee;
+font-size: 14px;
+line-height: 1.5em;
+}
+
+
+
+.warningMessage {
+background: #333;
+border: 1px dashed #ffff00;
+color: #dddd00;
+font-size: 125%;
+font-weight: bold;
+padding: 10px;
+margin: 0 0 30px 0;
+}
+
+.trackNotSupported {
+display: none;
+}
+
+div#map  {
+height: 540px;
+margin: 0 0 20px 0;
+width: 980px;
+}
+
+div#panorama  {
+height: 270px;
+margin: 0 0 20px 0;
+width: 480px;
+}
+
+div#videoContainer{
+position: relative;
+float: left;
+margin: 0 20px 0 0;
+}
+
+div#videoContainer #timeOfDay {
+background: #444; 
+color: white;
+font-family: Verdana, sans-serif;
+opacity: 0.5;
+padding: 1px 2px 1px 2px;
+position: absolute;
+right: 10px;
+top: 10px;
+}
+
+video {
+height: 270px;
+margin: 0 0 0 0;
+width: 480px;
+}
+
+pre {
+color: #ACC874;
+}
+
+p.thanks {
+font-weight: bold;
+border-bottom: 1px solid #444;
+padding: 0 0 10px 0;
+margin: 20px 0 0 0;
+}
+

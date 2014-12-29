@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>Track Translator</title>
+
+<link rel="stylesheet" type="text/css" href="css/popup.css" />
+
+<script src="js/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/popup.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="languageSelectContainer">
+	<label for="languageSelect">Select language: </label>
+	<select id="languageSelect"></select>
+</div>
+
+
+<fieldset>
+	<legend>Preferences</legend>
+	<div>
+		<input type="checkbox" id="showSubtitles" title="Show subtitle text" checked>
+		<label for="showSubtitles">Show subtitles</label>
+	</div>
+	<div>
+		<input type="checkbox" id="translateSubtitles" title="Show translated subtitle text - disabled if no language selected" disabled="true">
+		<label for="translateSubtitles" title="Show translated subtitle text - disabled if no language selected">Translate subtitles</label>
+	</div>
+	<div>
+		<input type="checkbox" id="speakSubtitles" title="Speak translated subtitles - disabled if no language selected" disabled="true">
+		<label for="speakSubtitles" title="Speak translated subtitles - disabled if no language selected">Speak subtitles</label>
+	</div>
+</fieldset>
+
+
+
+</div> <!-- container -->
+
+</body>
+
+</html>

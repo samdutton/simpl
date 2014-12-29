@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Video alpha channel</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+
+	<link rel="stylesheet" href="css/main.css" />
+
+</head>
+<body>
+
+  <video id="video1" autoplay src="video/dancer1.webm" loop></video>
+  <video id="video2" autoplay src="video/soccer1.webm" loop></video>
+  <video id="chrome" class="transparent" src="video/chrome.webm" loop></video>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video alpha channel</h1>
+
+    <p style="color: red; font-weight: bold">Requires <a href="https://www.google.co.uk/intl/en/chrome/browser/canary.html" title="Download Chrome Canary">Chrome Canary</a> with VP8 Alpha playback enabled from the chrome://flags page.</p>
+    <p>Click and drag videos to show CSS filters; double click to trigger CSS animation. Resize page to resize videos.</p>
+    <p>Double click background to swap between image and video.</p>
+    <p>Select video background colour: <input id="colorInput" type="color"> (<span id="clearSpan">clear</span>)</p>
+
+
+    <script src="js/lib/pointer.js"></script>
+    <script src="js/main.js"></script>
+
+  </div>
+
+  <a id="viewSource" href="https://github.com/samdutton/simpl/blob/master/videoalpha/index.html" title="View source for this page on GitHub">View source on GitHub</a>
+
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>

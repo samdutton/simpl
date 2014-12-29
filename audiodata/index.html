@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Audio data API</title>
+
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Audio Data API</h1>
+
+  <p>This example requires <a href="http://www.mozilla.com/firefox/">Firefox</a>.</p>
+
+	<audio id="mediaElement" src="audio/audio.ogg" controls="controls" autoplay="autoplay"></audio>
+
+	<div id="framebufferLength">
+    Framebuffer length:&nbsp;&nbsp;<input id="framebufferLengthInput" type="text" />
+    <div id="framebufferNote">(Minimum 512, maximum 16384.)</div>
+	</div>
+
+	<div id="metadataElement"></div>
+
+	<div id="audioData">
+		<div id="eventTimeElement"><p>Time</p></div>
+		<div id="eventDataElement"><p>frameBuffer[0] data</p></div>
+	</div>
+
+  <script src="js/main.js"></script>
+
+  <a href="//github.com/samdutton/simpl/blob/master/audiodata/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../js/lib/ga.js"></script>
+
+</body>
+</html>
+
+
