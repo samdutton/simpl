@@ -9,5 +9,7 @@ function log(message){
 navigator.geolocation.watchPosition(logPosition);
 
 function logPosition(position){
-	log('(' + position.coords.latitude + ', ' + position.coords.longitude +')');
+  console.log(position);
+  log('latitude: ' + position.coords.latitude +
+      ', longitude: ' + position.coords.longitude);
 }
