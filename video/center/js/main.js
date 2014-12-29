@@ -1,3 +1,6 @@
+'use strict';
+
+var container = document.querySelector('div#container');
 var smallVideo = document.querySelector('video#small');
 var largeVideo = document.querySelector('video#large');
 
@@ -11,9 +14,7 @@ var constraints = {
       minHeight: 720
     }
   }
-}
-
-var video = document.querySelector("video");
+};
 
 function successCallback(stream) {
   window.stream = stream; // stream available to console
@@ -27,7 +28,7 @@ function successCallback(stream) {
 }
 
 function errorCallback(error) {
-  console.log("navigator.getUserMedia error: ", error);
+  console.log('navigator.getUserMedia error: ', error);
 }
 
 navigator.getUserMedia(constraints, successCallback, errorCallback);

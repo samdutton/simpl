@@ -1,8 +1,14 @@
+'use strict';
+
+/* globals webkitRTCPeerConnection */
+
+
+var localPeerConnection, remotePeerConnection;
 var sendChannel, receiveChannel;
 
-var startButton = document.getElementById("startButton");
-var sendButton = document.getElementById("sendButton");
-var closeButton = document.getElementById("closeButton");
+var startButton = document.getElementById('startButton');
+var sendButton = document.getElementById('sendButton');
+var closeButton = document.getElementById('closeButton');
 startButton.disabled = false;
 sendButton.disabled = true;
 closeButton.disabled = true;
@@ -10,19 +16,24 @@ startButton.onclick = createConnection;
 sendButton.onclick = sendData;
 closeButton.onclick = closeDataChannels;
 
+var dataChannelSend = document.getElementById('#dataChannelSend');
+var dataChannelReceive = document.getElementById('#dataChannelReceive');
+
+
 function trace(text) {
-  console.log((performance.now() / 1000).toFixed(3) + ": " + text);
+  console.log((window.performance.now() / 1000).toFixed(3) + ': ' + text);
 }
 
 function createConnection() {
   var servers = null;
-  window.localPeerConnection = new webkitRTCPeerConnection(servers,
+  localPeerConnection = window.localPeerConnection =
+    new webkitRTCPeerConnection(servers,
     {optional: [{RtpDataChannels: true}]});
   trace('Created local peer connection object localPeerConnection');
 
   try {
     // Reliable Data Channels not yet supported in Chrome
-    sendChannel = localPeerConnection.createDataChannel("sendDataChannel",
+    sendChannel = localPeerConnection.createDataChannel('sendDataChannel',
       {reliable: false});
     trace('Created send data channel');
   } catch (e) {
@@ -34,7 +45,7 @@ function createConnection() {
   sendChannel.onopen = handleSendChannelStateChange;
   sendChannel.onclose = handleSendChannelStateChange;
 
-  window.remotePeerConnection = new webkitRTCPeerConnection(servers,
+  remotePeerConnection = window.remotePeerConnection = new webkitRTCPeerConnection(servers,
     {optional: [{RtpDataChannels: true}]});
   trace('Created remote peer connection object remotePeerConnection');
 
@@ -47,7 +58,7 @@ function createConnection() {
 }
 
 function sendData() {
-  var data = document.getElementById("dataChannelSend").value;
+  var data = dataChannelSend.value;
   sendChannel.send(data);
   trace('Sent data: ' + data);
 }
@@ -66,10 +77,10 @@ function closeDataChannels() {
   startButton.disabled = false;
   sendButton.disabled = true;
   closeButton.disabled = true;
-  dataChannelSend.value = "";
-  dataChannelReceive.value = "";
+  dataChannelSend.value = '';
+  dataChannelReceive.value = '';
   dataChannelSend.disabled = true;
-  dataChannelSend.placeholder = "Press Start, enter some text, then press Send.";
+  dataChannelSend.placeholder = 'Press Start, enter some text, then press Send.';
 }
 
 function gotLocalDescription(desc) {
@@ -111,16 +122,16 @@ function gotReceiveChannel(event) {
 
 function handleMessage(event) {
   trace('Received message: ' + event.data);
-  document.getElementById("dataChannelReceive").value = event.data;
+  dataChannelReceive.value = event.data;
 }
 
 function handleSendChannelStateChange() {
   var readyState = sendChannel.readyState;
   trace('Send channel state is: ' + readyState);
-  if (readyState == "open") {
+  if (readyState === 'open') {
     dataChannelSend.disabled = false;
     dataChannelSend.focus();
-    dataChannelSend.placeholder = "";
+    dataChannelSend.placeholder = '';
     sendButton.disabled = false;
     closeButton.disabled = false;
   } else {

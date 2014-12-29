@@ -1,5 +1,7 @@
-var qvgaVideo = document.querySelector("video#qvga");
-var hdVideo = document.querySelector("video#hd");
+'use strict';
+
+var qvgaVideo = document.querySelector('video#qvga');
+var hdVideo = document.querySelector('video#hd');
 
 navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -32,7 +34,7 @@ var hdConstraints  = {
 };
 
 function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
+  console.log('navigator.getUserMedia error: ', error);
 }
 
 navigator.getUserMedia(qvgaConstraints, function(stream){

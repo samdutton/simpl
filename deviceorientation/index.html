@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
 <base target="_blank">
+
 <title>Device Orientation</title>
 
     <link rel="stylesheet" href="../css/main.css" />
@@ -13,7 +19,7 @@
       #orientee {
         width: 256px;
         display: block;
-        margin: 0px auto;
+        margin: 0 auto;
 
         -webkit-perspective: 300;
         perspective: 300;
@@ -21,16 +27,19 @@
     </style>
 
 </head>
+
 <body>
+
 <div id="container">
 <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Device Orientation</h1>
 
-  <p id='isAvailable'></p>
+  <p id="isAvailable"></p>
   <p>Tilting and rotating your laptop or device will transform the following image if Device Orientation is available.</p>
   <img src="html5-logo-white.svg" alt="The HTML5 logo" id="orientee" />
   <script src="js/main.js"></script>
 
-<a href="https://github.com/samdutton/simpl/blob/master/deviceorientation/index.html" title="View source for this page on GitHub" id="viewSource">View source on github</a>
+  <a href="//github.com/samdutton/simpl/blob/master/deviceorientation/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
 </div>
 
 <script src="../js/lib/ga.js"></script>

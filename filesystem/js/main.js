@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals FileError */
+
 // code adapted from HTML5 Rocks article by Eric Bidelman
 // http://www.html5rocks.com/en/tutorials/file/filesystem/
 
@@ -13,32 +17,32 @@ window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/,
 
 var fileSystem;
 function handleInitSuccess(fileSystem) {
-  window.fileSystem = fileSystem
+  window.fileSystem = fileSystem;
 	log('Initiated FileSystem: ' + fileSystem.name);
-	createFile("foo.txt");
+	createFile('foo.txt');
 }
 
 function createFile(fullPath){
   fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/},
     function(fileEntry) {
-      log("Created file: " + fileEntry.fullPath);
-      writeToFile(fileEntry, "Greetings from success callback!");
+      log('Created file: ' + fileEntry.fullPath);
+      writeToFile(fileEntry, 'Greetings from success callback!');
   }, handleError);
 }
 
 function writeToFile(fileEntry, text){
   // Create a FileWriter object for fileEntry
   fileEntry.createWriter(function(fileWriter) {
-    fileWriter.onwriteend = function(e) {
+    fileWriter.onwriteend = function() {
       // read from file
-      log('Wrote text <em>' + text + '</em> to file ' + fileEntry.fullPath);
+      log('Wrote text \'' + text + '\' to file ' + fileEntry.fullPath);
       readFromFile(fileEntry.fullPath);
     };
     fileWriter.onerror = function(e) {
       log('Write failed: ' + e.toString());
     };
     // Create a new Blob and write it to file
-    var blob = new Blob([text], {type: "text/plain"}); // WebKitBlobBuilder deprecated
+    var blob = new Blob([text], {type: 'text/plain'}); // WebKitBlobBuilder deprecated
     fileWriter.write(blob);
   }, handleError);
 }
@@ -48,8 +52,8 @@ function readFromFile(fullPath){
     // Get a File object representing the file, then use FileReader to read its contents.
     fileEntry.file(function(file) {
        var reader = new FileReader();
-       reader.onloadend = function(e) {
-         log("Read text <em>" + this.result + "</em> from file " + fullPath);
+       reader.onloadend = function() {
+         log('Read text \'' + this.result + '\' from file ' + fullPath);
        };
        reader.readAsText(file);
     }, handleError);
@@ -77,10 +81,10 @@ function handleError(e) {
     default:
       log('Unknown error');
       break;
-  };
+  }
 }
 
-var data = document.getElementById("data");
+var data = document.getElementById('data');
 function log(text){
-  data.innerHTML += text + "<br />";
+  data.innerHTML += text + '<br />';
 }

@@ -1,15 +1,16 @@
-var videoElement = document.querySelector("video");
-var audioSelect = document.querySelector("select#audioSource");
-var videoSelect = document.querySelector("select#videoSource");
-var startButton = document.querySelector("button#start");
+'use strict';
+
+var videoElement = document.querySelector('video');
+var audioSelect = document.querySelector('select#audioSource');
+var videoSelect = document.querySelector('select#videoSource');
 
 navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 function gotSources(sourceInfos) {
-  for (var i = 0; i != sourceInfos.length; ++i) {
+  for (var i = 0; i !== sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
-    var option = document.createElement("option");
+    var option = document.createElement('option');
     option.value = sourceInfo.id;
     if (sourceInfo.kind === 'audio') {
       option.text = sourceInfo.label || 'microphone ' + (audioSelect.length + 1);
@@ -37,7 +38,7 @@ function successCallback(stream) {
 }
 
 function errorCallback(error){
-  console.log("navigator.getUserMedia error: ", error);
+  console.log('navigator.getUserMedia error: ', error);
 }
 
 function start(){

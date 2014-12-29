@@ -1,3 +1,5 @@
+'use strict';
+
 var logoElement = document.getElementById('orientee');
 function handleDeviceOrientation(e) {
   var transform = 'rotate(' + e.gamma + 'deg) rotate3d(1, 0, 0, ' + e.beta + 'deg)';

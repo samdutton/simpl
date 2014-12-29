@@ -1,3 +1,5 @@
+'use strict';
+
 var chromeVideo = document.getElementById('chrome');
 var containerDiv = document.getElementById('container');
 var colorInput = document.getElementById('colorInput');
@@ -9,12 +11,12 @@ var video2 = document.getElementById('video2');
 colorInput.onchange = function(){
   video1.style.backgroundColor = this.value;
   video2.style.backgroundColor = this.value;
-}
+};
 
 clearSpan.onclick = function(){
   video1.style.backgroundColor = 'transparent';
   video2.style.backgroundColor = 'transparent';
-}
+};
 
 function toggleChromeVideo(){
   if (chromeVideo.classList.contains('transparent')) {
@@ -42,7 +44,7 @@ addEventListeners(video2);
 function handleDoubleTap(event){
   var video = event.srcElement;
   video.classList.remove('rotateOut');
-  setTimeout(function(){video.classList.add('rotateOut')}, 5);
+  setTimeout(function(){video.classList.add('rotateOut');}, 5);
   event.preventDefault();
 }
 
@@ -75,7 +77,7 @@ function handlePointerMove(event){
   var pointer = event.getPointerList()[0];
 
   video.style.left = (pointer.clientX - videoWidth / 2) + 'px';
-  video.style.top = (pointer.clientY - videoWidth / 2) + 'px';
+  video.style.top = (pointer.clientY - videoHeight / 2) + 'px';
 
   event.preventDefault();
 }

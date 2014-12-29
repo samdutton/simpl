@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="images/icon_192x192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
 
 <title>simpl.info</title>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="/favicon.ico" type="image/png" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" sizes="192x192" href="icon_192x192.png">
 <link rel="apple-touch-icon" href="/touch-icon-ipad.png" />
 
 <link rel="stylesheet" href="css/main.css" />
+
+<base target="_blank">
 
 </head>
 
@@ -32,9 +40,7 @@
 
 <p>I also maintain a <a href="https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I" title="HTML, CSS and JavaScript resources">list of resources</a> for tutorials, documentation and reference material.</p>
 
-<p>Submit bug reports, requests and comments at <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
-
-<p class="borderBelow">Thanks!</p>
+<p class="borderBelow">Submit bug reports, requests and comments at <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
 
 <div id="links">
   <a href="xhr" title="Ajax (aka XMLHttpRequest) example">Ajax (aka XMLHttpRequest)</a>
@@ -65,9 +71,8 @@
   <a href="fullscreen" title="Fullscren">Fullscreen</a>
   <a href="geolocation" title="Geolocation example">Geolocation</a>
   <a href="getusermedia" title="getUserMedia() example">getUserMedia</a>
-  <a href="https://simpl.info/getusermedia/constraints" title="getUserMedia() example with constraints">getUserMedia with constraints</a>
-  <a href="https://simpl.info/getusermedia/sources" title="getUserMedia() example using MediaStreamTrack.getSources()">getUserMedia: select camera and microphone</a>
-  <a href="https://simpl.info/screencapture" title="Screen capture example">getUserMedia: screen capture</a>
+  <a href="getusermedia/constraints" title="getUserMedia() example with constraints">getUserMedia: choose resolution</a>
+  <a href="getusermedia/sources" title="getUserMedia() example using MediaStreamTrack.getSources()">getUserMedia: select camera and microphone</a>
   <a href="history" title="History method example">History pushState() and popState()</a>
   <a href="softhyphen" title="Soft hyphen (&amp;shy;) example">Hyphenation (soft hyphen)</a>
   <a href="iframe" title="iframe element example">&lt;iframe&gt;</a>
@@ -78,7 +83,7 @@
   <a href="mediacapture" title="Media Capture API">Media Capture (using &lt;input&gt;)</a>
   <a href="mediafragments" title="Media Fragments API">Media Fragments</a>
   <a href="mse" title="Media Source Extensions example">Media Source Extensions (MSE)</a>
-  <a href="https://simpl.info/getusermedia/sources" title="getUserMedia() example using MediaStreamTrack.getSources()">MediaStreamTrack.getSources()</a>
+  <a href="getusermedia/sources" title="getUserMedia() example using MediaStreamTrack.getSources()">MediaStreamTrack.getSources()</a>
   <a href="mediarecorder" title="MediaStream Recording API">MediaStream Recording API</a>
   <a href="mutationobserver" title="MutationObserver example">MutationObserver</a>
   <a href="observe" title="Object.observe() example">Object.observe()</a>
@@ -86,28 +91,34 @@
   <a href="useragent" title="navigator.userAgent">navigator.userAgent</a>
   <a href="notification" title="Notification API example">Notification</a>
   <a href="pagevisibility" title="Page Visibility API example">Page Visibility API</a>
+  <a href="pictureartdirection" title="Picture element art direction example">&lt;picture&gt; for art direction</a>
+  <a href="picturesources" title="Picture element alternative sources example">&lt;picture&gt; with alternative sources</a>
+
   <a href="postmessage" title="postMessage() example">postMessage()</a>
   <a href="promises" title="Promises example">promises</a>
   <a href="queryselector" title="querySelector() and querySelectorAll() examples">querySelector() and querySelectorAll()</a>
   <a href="resourcetiming" title="Resource Timing demo">Resource Timing</a>
   <a href="rtcdatachannel" title="RTCDataChannel">RTCDataChannel (WebRTC)</a>
   <a href="rtcpeerconnection" title="RTCPeerConnection">RTCPeerConnection (WebRTC)</a>
-  <a href="screencapture" title="Screen capture example">Screen capture (getUserMedia + RTCPeerConnection)</a>
   <a href="eventsource" title="EventSource (Server-Sent Events) example">Server-Sent Events (aka EventSource)</a>
-  <a href="https://simpl.info/serviceworker" title="sessionStorage example">ServiceWorker</a>
+  <a href="serviceworker" title="sessionStorage example">ServiceWorker</a>
+  <a href="sizeswvalues" title="sizes element with srcset using w values">&lt;sizes&gt; with srcset using w values</a>
   <a href="sessionstorage" title="sessionStorage example">sessionStorage</a>
-  <a href="https://simpl.info/stt" title="Web Speech API: speech to text">speech recognition</a>
+  <a href="srcsetwvalues" title="img element with srcset attribute using w values">srcset: using w values with &lt;img&gt;</a>
+  <a href="srcsetxvalues" title="img element with srcset attribute using x values">srcset: using x values with &lt;img&gt;</a>
+  <a href="stt" title="Web Speech API: speech to text">speech recognition</a>
   <a href="tts" title="Web Speech API: text to speech">speech synthesis</a>
   <a href="svg" title="SVG example">SVG</a>
   <a href="track" title="Track element">&lt;track&gt; with &lt;video&gt;</a>
   <a href="track/audio" title="Track element">&lt;track&gt; with &lt;audio&gt;</a>
   <a href="useragent" title="User agent example">user agent</a>
   <a href="vibrate" title="navigator.vibrate() example">Vibrate</a>
-  <a href="video" title="Video element">&lt;video&gt; (with autoplay)</a>
-  <a href="videoalpha" title="Video with alpha transparency">&lt;video&gt; (with alpha transparency)</a>
+  <a href="video" title="Video element">&lt;video&gt; with autoplay</a>
+  <a href="videoalpha" title="Video with alpha transparency">&lt;video&gt; with alpha transparency</a>
   <a href="video/events" title="All video element events">&lt;video&gt; events</a>
-  <a href="video/scripted" title="Video with scripted playback">&lt;video&gt; (with scripted playback)</a>
+  <a href="video/scripted" title="Video with scripted playback">&lt;video&gt; with scripted playback</a>
   <a href="longvideo" title="Long video example (~380MB)">long video (~380MB)</a>
+  <a href="video/multi" title="20+ video elements">multiple video elements</a>
   <a href="videomedia" title="Video media query attribute">video with src media query</a>
   <a href="videooverlay" title="Long video example (~380MB)">video with &lt;div&gt; overlay</a>
   <a href="webaudio" title="Web Audio">Web Audio</a>
@@ -115,13 +126,14 @@
   <a href="webgl" title="Fullscren">WebGL</a>
   <a href="webp" title="WebP">WebP</a>
   <a href="webrtc" title="WebRTC home">WebRTC (getUserMedia, RTCPeerConnection, RTCDataChannel)</a>
-  <a href="screencapture" title="Screencapture example">getUserMedia screen capture</a>
-  <a href="https://simpl.info/stt" title="Web Speech API: speech to text">Web Speech: speech recognition</a>
+  <a href="stt" title="Web Speech API: speech to text">Web Speech: speech recognition</a>
   <a href="tts" title="Web Speech API: text to speech">Web Speech: speech synthesis</a>
   <a href="websql" title="WebSQL">WebSQL</a>
   <a href="webworkers" title="Web Workers example">Web Workers</a>
   <a href="xhr" title="XMLHttpRequest (aka Ajax) example">XMLHttpRequest (aka Ajax)</a>
 </div>
+
+<a href="//github.com/samdutton/simpl/blob/master/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>  <!-- container -->
 

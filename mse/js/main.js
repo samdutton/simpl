@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals MediaSource */
+
 // This code adapted from Eric Bidelman's demo at
 // http://html5-demos.appspot.com/static/media-source.html
 
@@ -15,7 +19,7 @@ document.querySelector('[data-num-chunks]').textContent = NUM_CHUNKS;
 
 video.src = window.URL.createObjectURL(mediaSource);
 
-mediaSource.addEventListener('sourceopen', function(e) {
+mediaSource.addEventListener('sourceopen', function() {
   var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
   console.log(sourceBuffer);
 
@@ -40,7 +44,7 @@ mediaSource.addEventListener('sourceopen', function(e) {
       reader.onload = function(e) {
         sourceBuffer.appendBuffer(new Uint8Array(e.target.result));
         log('Appending chunk: ' + i);
-        if (i == NUM_CHUNKS - 1) {
+        if (i === NUM_CHUNKS - 1) {
           mediaSource.endOfStream();
         } else {
           if (video.paused) {
@@ -59,7 +63,7 @@ mediaSource.addEventListener('sourceopen', function(e) {
 
 }, false);
 
-mediaSource.addEventListener('sourceended', function(e) {
+mediaSource.addEventListener('sourceended', function() {
   log('MediaSource readyState: ' + this.readyState);
 }, false);
 
@@ -69,9 +73,9 @@ function GET(url, callback) {
   xhr.responseType = 'arraybuffer';
   xhr.send();
 
-  xhr.onload = function(e) {
-    if (xhr.status != 200) {
-      alert("Unexpected status code " + xhr.status + " for " + url);
+  xhr.onload = function() {
+    if (xhr.status !== 200) {
+      alert('Unexpected status code ' + xhr.status + ' for ' + url);
       return false;
     }
     callback(new Uint8Array(xhr.response));
@@ -79,5 +83,5 @@ function GET(url, callback) {
 }
 
 function log(message){
-  document.getElementById("data").innerHTML += message + "<br /><br />";
+  document.getElementById('data').innerHTML += message + '<br /><br />';
 }
