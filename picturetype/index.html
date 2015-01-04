@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="author" content="//samdutton.com">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="/icon_192x192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <base target="_blank">
+
+  <title>Picture element: file type</title>
+
+  <link rel="stylesheet" href="../css/main.css" />
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> picture element: file&nbsp;type</h1>
+
+    <picture>
+      <source srcset="kittens.webp" type="image/webp"/>
+      <img src="kittens.jpg" alt="Lias and Little Puss: two ten-week-old grey tabby kittens">
+    </picture>
+
+    <p>A WebP image will be displayed if WebP is supported, otherwise a JPEG.</p>
+    <p>Image used: <span id="imgSrc"></span></p>
+
+    <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction example</a> shows how to use the picture element to enable the browser to choose an appropriate image based on viewport width. The <a href="../sizeswvalues" title="Using the srcset and sizes">sizes example</a> shows how to enable image choice using the srcset and sizes attributes.</p>
+
+    <a href="//github.com/samdutton/simpl/blob/master/picturetype/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="../js/lib/ga.js"></script>
+
+</body>
+</html>
