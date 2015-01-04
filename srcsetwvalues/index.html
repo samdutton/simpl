@@ -1,27 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>Udacity RI: srcset w values</title>
+  <!DOCTYPE html>
+  <html>
+  <head>
 
-  <style>
-    body {
-      align-items: center;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-    }
-    img {
-      width: 100vw;
-    }
-  </style>
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="author" content="//samdutton.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+    <meta itemprop="image" content="/icon_192x192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
 
-</head>
+    <base target="_blank">
 
-<body>
+    <title>img with srcset using w values</title>
 
-  <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" alt="Wallaby" />
+    <link rel="stylesheet" href="../css/main.css" />
 
-</body>
+    <style>
+      img {
+        width: 50vw;
+      }
+    </style>
 
-</html>
+  </head>
+
+  <body>
+
+    <div id="container">
+
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> &lt;img&gt; with srcset using w&nbsp;values</h1>
+
+      <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" alt="Lias and Little Puss: two ten week old grey tabby kittens" />
+
+      <p>A browser that supports the srcset attribute will choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the viewport width and the screen resolution.</p>
+
+      <p>Only the <strong>viewport</strong> width is taken into account by the browser when choosing which image file to request. The <a href="../sizeswvalues" title="img element with srcset and sizes attributes">sizes example</a> enables the browser to choose the appropriate file given the <strong>display</strong> width of the image.</p>
+
+      <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction</a> and <a href="../picturetype" title="Using the picture element with alternative sources">file types</a> examples show ways to use the picture element.</p>
+
+      <a href="//github.com/samdutton/simpl/blob/master/srcsetwvalues/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+    </div>
+
+    <script src="../js/lib/ga.js"></script>
+
+  </body>
+  </html>

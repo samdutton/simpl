@@ -16,8 +16,8 @@ startButton.onclick = createConnection;
 sendButton.onclick = sendData;
 closeButton.onclick = closeDataChannels;
 
-var dataChannelSend = document.getElementById('#dataChannelSend');
-var dataChannelReceive = document.getElementById('#dataChannelReceive');
+var dataChannelSend = document.getElementById('dataChannelSend');
+var dataChannelReceive = document.getElementById('dataChannelReceive');
 
 
 function trace(text) {
