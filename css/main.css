@@ -14,6 +14,11 @@ a:hover {
   text-decoration: underline;
 }
 
+a.twitter-follow-button {
+  display: block;
+  height: 32px;
+}
+
 a#viewSource {
   display: block;
   margin: 1.3em 0 0 0;
@@ -145,13 +150,13 @@ input[type=radio] {
   top: -1px;
 }
 
-ol {
-  padding: 0 0 0 20px;
-}
-
 input[type=radio] {
 position: relative;
 top: -1px;
+}
+
+ol {
+  padding: 0 0 0 20px;
 }
 
 p {
