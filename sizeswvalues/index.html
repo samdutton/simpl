@@ -32,9 +32,21 @@
 
       <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" sizes="50vw" alt="Lias and Little Puss: two ten week old grey tabby kittens" />
 
-      <p>The sizes attribute enables the browser to choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the image display width (set to be 50% of viewport width) and screen resolution.</p>
+      <p>Try changing the viewport size.</p>
 
-      <p><a href="../srcsetwvalues" title="img element with srcset using w values, but no sizes attribute">Without the sizes attribute</a> the browser can only take into account <strong>viewport</strong> width, not image <strong>display</strong> width.</p>
+      <p>The sizes attribute enables the browser to choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the screen resolution and image display width (set to be 50% of viewport width).</p>
+
+      <p>
+        Image used: <span id="imgSrc"></span><br>
+        Image natural width: <span id="imgNaturalWidth"></span>px<br>
+        Image display width: <span id="imgWidth"></span>px<br>
+        Device pixel ratio: <span id="devicePixelRatio"></span><br>
+        Minimum acceptable image width: <span id="minimumWidth"></span>px<br>
+        Viewport width: <span id="viewportWidth"></span>px<br>
+        Available screen width: <span id="availableWidth"></span>px<br>
+      </p>
+
+      <p class="borderBelow"><a href="../srcsetwvalues" title="img element with srcset using w values, but no sizes attribute">Without the sizes attribute</a> the browser can only take into account <strong>viewport</strong> width, not image <strong>display</strong> width.</p>
 
       <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction</a> and <a href="../picturetype" title="Using the picture element with alternative sources">file types</a> examples show ways to use the picture element.</p>
 
@@ -42,6 +54,7 @@
 
     </div>
 
+    <script src="js/main.js"></script>
     <script src="../js/lib/ga.js"></script>
 
   </body>

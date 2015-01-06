@@ -32,9 +32,21 @@
 
       <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" alt="Lias and Little Puss: two ten week old grey tabby kittens" />
 
+      <p>Try changing the viewport size.</p>
+
       <p>A browser that supports the srcset attribute will choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the viewport width and the screen resolution.</p>
 
-      <p>Only the <strong>viewport</strong> width is taken into account by the browser when choosing which image file to request. The <a href="../sizeswvalues" title="img element with srcset and sizes attributes">sizes example</a> enables the browser to choose the appropriate file given the <strong>display</strong> width of the image.</p>
+      <p>
+        Image used: <span id="imgSrc"></span><br>
+        Image natural width: <span id="imgNaturalWidth"></span>px<br>
+        Image display width: <span id="imgWidth"></span>px<br>
+        Device pixel ratio: <span id="devicePixelRatio"></span><br>
+        Minimum acceptable image width: <span id="minimumWidth"></span>px<br>
+        Viewport width: <span id="viewportWidth"></span>px<br>
+        Available screen width: <span id="availableWidth"></span>px<br>
+      </p>
+
+      <p class="borderBelow">In this example, only the <strong>viewport</strong> width is taken into account by the browser when choosing which image file to request. The <a href="../sizeswvalues" title="img element with srcset and sizes attributes">sizes example</a> enables the browser to choose the appropriate file given the <strong>display</strong> width of the image.</p>
 
       <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction</a> and <a href="../picturetype" title="Using the picture element with alternative sources">file types</a> examples show ways to use the picture element.</p>
 
@@ -42,6 +54,7 @@
 
     </div>
 
+    <script src="js/main.js"></script>
     <script src="../js/lib/ga.js"></script>
 
   </body>

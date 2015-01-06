@@ -25,12 +25,21 @@
     <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> picture element: art&nbsp;direction</h1>
 
     <picture>
-      <source media="(min-width: 750px)" srcset="horses_large.jpg" />
-      <source media="(min-width: 500px)" srcset="horses_medium.jpg" />
-      <img src="horses_small.jpg" alt="Horses in Hawaii">
+      <source media="(min-width: 750px)" srcset="large.jpg" />
+      <source media="(min-width: 500px)" srcset="medium.jpg" />
+      <img src="small.jpg" alt="Horses in Hawaii">
     </picture>
 
-    <p>Resize the viewport: a different crop of the image is displayed at different viewport widths.</p>
+    <p>Resize the viewport: a different crop of the image is displayed at different widths, using a picture element with media queries.</p>
+
+    <p class="borderBelow">
+      Image used: <span id="imgSrc"></span><br>
+      Image natural width: <span id="imgNaturalWidth"></span>px<br>
+      Image display width: <span id="imgWidth"></span>px<br>
+      Device pixel ratio: <span id="devicePixelRatio"></span><br>
+      Viewport width: <span id="viewportWidth"></span>px<br>
+      Available screen width: <span id="availableWidth">px</span><br>
+    </p>
 
     <p>The <a href="../picturetype" title="Using the picture element with different image types">file types example</a> uses the picture element to enable the browser to choose an image depending on what file formats are supported. The <a href="../sizeswvalues" title="Using the srcset and sizes">sizes example</a> shows how to enable image choice using the srcset and sizes attributes.</p>
 
@@ -38,6 +47,7 @@
 
   </div>
 
+  <script src="js/main.js"></script>
   <script src="../js/lib/ga.js"></script>
 
 </body>

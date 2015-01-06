@@ -41,7 +41,6 @@ div#links a {
 
 h1 a {
   font-weight: 300;
-  margin: 0 10px 0 0;
   white-space: nowrap;
 }
 
@@ -175,7 +174,7 @@ p#data {
 }
 
 p.borderBelow {
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
   padding: 0 0 20px 0;
 }
 
