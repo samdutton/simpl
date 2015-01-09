@@ -1,6 +1,6 @@
 'use strict';
 
-/* globals webkitAudioContext, webkitOfflineAudioContext, webkitRTCPeerConnection */
+/* globals webkitRTCPeerConnection */
 
 // The code for this example was adapted from a demo by Henrik Andreasson.
 // tweaks incorporated from rtoy
@@ -13,28 +13,18 @@ var pc1, pc2;
 var voiceSound;
 var voiceSoundBuffer = 0;
 
-var callButton = document.getElementById('#call');
-var hangupButton =  document.getElementById('#hangup');
-var drumButton =  document.getElementById('#drum');
-callButton.onclick = call();
-hangupButton.onclick = hangup();
-drumButton.onclick = drum();
+var callButton = document.getElementById('call');
+var hangupButton =  document.getElementById('hangup');
+var drumButton =  document.getElementById('drum');
+callButton.onclick = call;
+hangupButton.onclick = hangup;
+drumButton.onclick = drum;
 
 var pauseTime = 0;
 
-// Support for both prefixed and unprefixed AudioContext and OfflineAudioContext.
-// We don't support other legacy names.
-if (!(typeof webkitAudioContext === 'function' ||
-    typeof AudioContext === 'function' ||
-    typeof webkitAudioContext === 'object' ||
-    typeof AudioContext === 'object')) {
-  alert('Sorry! Web Audio not supported by this browser');
-}
-if (window.hasOwnProperty('webkitAudioContext') &&
-    !window.hasOwnProperty('AudioContext')) {
-  window.AudioContext = webkitAudioContext;
-window.OfflineAudioContext = webkitOfflineAudioContext;
-}
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
+
 
 function trace(text) {
   if (text[text.length - 1] === '\n') {
