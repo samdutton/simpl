@@ -30,9 +30,8 @@ module.exports = function(grunt) {
     jscs: {
       src: ['**/main.js'],
       options: {
-        config: 'google', // as per Google style guide – could use '.jscsrc' instead
+        config: '.jscsrc',
         'excludeFiles': ['node_modules/**/*'],
-        requireCurlyBraces: ['if']
       }
     },
 
