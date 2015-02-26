@@ -1,0 +1,4 @@
+{
+  "requireCurlyBraces": ["if"],
+  "preset": "google"
+}
