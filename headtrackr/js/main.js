@@ -11,7 +11,7 @@ var canvasOverlay = document.getElementById('overlay');
 
 var videoWidth = videoInput.offsetWidth;
 var videoHeight = videoInput.offsetHeight;
-window.onresize = function(){
+window.onresize = function() {
   videoWidth = videoInput.offsetWidth;
   videoHeight = videoInput.offsetHeight;
   canvasInput.width = videoWidth;
@@ -27,7 +27,8 @@ canvasOverlay.height = videoHeight;
 var overlayContext = canvasOverlay.getContext('2d');
 
 var dataDiv = document.getElementById('data');
-function log(message){
+
+function log(message) {
   dataDiv.innerHTML = message;
 }
 
@@ -53,33 +54,34 @@ function handleheadtrackrStatusEvent(event) {
   }
 }
 
-function handleFaceTrackingEvent(){
+function handleFaceTrackingEvent() {
   overlayContext.clearRect(0, 0, videoWidth, videoHeight);
   // once we have stable tracking, draw rectangle
   if (event.detection === 'CS') {
     overlayContext.translate(event.x, event.y);
-    overlayContext.rotate(event.angle-(Math.PI/2));
+    overlayContext.rotate(event.angle - (Math.PI / 2));
     overlayContext.strokeStyle = '#00CC00';
-    overlayContext.strokeRect((-(event.width/2)) >> 0,
-      (-(event.height/2)) >> 0, event.width, event.height);
-    overlayContext.rotate((Math.PI/2) - event.angle);
+    overlayContext.strokeRect((-(event.width / 2)) >> 0,
+        (-(event.height / 2)) >> 0, event.width, event.height);
+    overlayContext.rotate((Math.PI / 2) - event.angle);
     overlayContext.translate(-event.x, -event.y);
   }
 }
 
 // requires headPosition : true in Tracker constructor
-function handleHeadTrackingEvent(e){
+function handleHeadTrackingEvent(e) {
   console.log('headtrackingEvent: ', e.x, e.y, e.z);
 }
 
 var htracker = new headtrackr.Tracker({
-  calcAngles : true,
-  ui : false,
-  headPosition : true // whether to calculate the head position
+  calcAngles: true,
+  ui: false,
+  headPosition: true // whether to calculate the head position
 });
 document.addEventListener('facetrackingEvent', handleFaceTrackingEvent);
 // requires headPosition : true in Tracker constructor
 document.addEventListener('headtrackingEvent', handleHeadTrackingEvent);
-document.addEventListener('headtrackrStatus', handleheadtrackrStatusEvent, true);
+document.addEventListener('headtrackrStatus', handleheadtrackrStatusEvent,
+    true);
 htracker.init(videoInput, canvasInput);
 htracker.start();

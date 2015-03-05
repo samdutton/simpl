@@ -6,7 +6,7 @@ var hdVideo = document.querySelector('video#hd');
 navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-var qvgaConstraints  = {
+var qvgaConstraints = {
   video: {
     mandatory: {
       maxWidth: 320,
@@ -24,7 +24,7 @@ var qvgaConstraints  = {
 //   }
 // };
 
-var hdConstraints  = {
+var hdConstraints = {
   video: {
     mandatory: {
       minWidth: 1280,
@@ -33,17 +33,16 @@ var hdConstraints  = {
   }
 };
 
-function errorCallback(error){
+function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(qvgaConstraints, function(stream){
+navigator.getUserMedia(qvgaConstraints, function(stream) {
   qvgaVideo.src = window.URL.createObjectURL(stream);
   qvgaVideo.play();
 }, errorCallback);
 
-navigator.getUserMedia(hdConstraints, function(stream){
+navigator.getUserMedia(hdConstraints, function(stream) {
   hdVideo.src = window.URL.createObjectURL(stream);
   hdVideo.play();
 }, errorCallback);
-

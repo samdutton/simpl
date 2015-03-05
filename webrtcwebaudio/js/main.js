@@ -9,13 +9,14 @@ var aud;
 var context = 0;
 var drumSoundBuffer = 0;
 var mediaStreamDestination = 0;
-var pc1, pc2;
+var pc1;
+var pc2;
 var voiceSound;
 var voiceSoundBuffer = 0;
 
 var callButton = document.getElementById('call');
-var hangupButton =  document.getElementById('hangup');
-var drumButton =  document.getElementById('drum');
+var hangupButton = document.getElementById('hangup');
+var drumButton = document.getElementById('drum');
 callButton.onclick = call;
 hangupButton.onclick = hangup;
 drumButton.onclick = drum;
@@ -24,7 +25,6 @@ var pauseTime = 0;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
-
 
 function trace(text) {
   if (text[text.length - 1] === '\n') {
@@ -61,36 +61,38 @@ function call() {
 }
 
 function transform(sdp) {
-    // Remove all other codecs (not the video codecs though).
-    sdp = sdp.replace(/m=audio (\d+) RTP\/SAVPF.*\r\n/g,
-                      'm=audio $1 RTP/SAVPF 111\r\n');
-    sdp = sdp.replace(/a=rtpmap:(?!111)\d{1,3} (?!VP8|red|ulpfec).*\r\n/g, '');
-    return sdp;
-  }
+  // Remove all other codecs (not the video codecs though).
+  sdp = sdp.replace(/m=audio (\d+) RTP\/SAVPF.*\r\n/g,
+    'm=audio $1 RTP/SAVPF 111\r\n');
+  sdp = sdp.replace(/a=rtpmap:(?!111)\d{1,3} (?!VP8|red|ulpfec).*\r\n/g, '');
+  return sdp;
+}
 
-  function gotDescription1(desc){
-    trace('Offer from pc1 \n' + desc.sdp);
-    var modifiedOffer = new RTCSessionDescription( {type: 'offer',
-                                                  sdp: transform(desc.sdp)});
-    pc1.setLocalDescription(modifiedOffer);
-    trace('Offer from pc1 \n' + modifiedOffer.sdp);
-    pc2.setRemoteDescription(modifiedOffer);
-    pc2.createAnswer(gotDescription2);
-  }
+function gotDescription1(desc) {
+  trace('Offer from pc1 \n' + desc.sdp);
+  var modifiedOffer = new RTCSessionDescription({
+    type: 'offer',
+    sdp: transform(desc.sdp)
+  });
+  pc1.setLocalDescription(modifiedOffer);
+  trace('Offer from pc1 \n' + modifiedOffer.sdp);
+  pc2.setRemoteDescription(modifiedOffer);
+  pc2.createAnswer(gotDescription2);
+}
 
-  function gotDescription2(desc){
-    pc2.setLocalDescription(desc);
-    trace('Answer from pc2 \n' + desc.sdp);
-    pc1.setRemoteDescription(desc);
-  }
+function gotDescription2(desc) {
+  pc2.setLocalDescription(desc);
+  trace('Answer from pc2 \n' + desc.sdp);
+  pc1.setRemoteDescription(desc);
+}
 
-  function hangup() {
-    trace('Ending call');
-    pc1.close();
-    pc2.close();
-    pc1 = null;
-    pc2 = null;
-    callButton.disabled = true;
+function hangup() {
+  trace('Ending call');
+  pc1.close();
+  pc2.close();
+  pc1 = null;
+  pc2 = null;
+  callButton.disabled = true;
   hangupButton.disabled = true; // enabled when XHR completes
   drumButton.disabled = true;
 
@@ -102,15 +104,15 @@ function transform(sdp) {
   // mediaStreamDestination = 0;
 }
 
-function gotRemoteStream(e){
+function gotRemoteStream(e) {
   aud.src = URL.createObjectURL(e.stream);
-  aud.addEventListener('pause', function(){
+  aud.addEventListener('pause', function() {
     voiceSound.stop(0);
     pauseTime += context.currentTime - voiceSound.lastStartTime;
   });
-  aud.addEventListener('play', function(){
+  aud.addEventListener('play', function() {
     console.log('play');
-    voiceSound = context.createBufferSource();  // creates an AudioBufferSourceNode.
+    voiceSound = context.createBufferSource(); // creates an AudioBufferSourceNode.
     voiceSound.buffer = voiceSoundBuffer;
     voiceSound.connect(mediaStreamDestination);
     voiceSound.start(context.currentTime, pauseTime);
@@ -119,14 +121,14 @@ function gotRemoteStream(e){
   trace('Received remote stream');
 }
 
-function iceCallback1(event){
+function iceCallback1(event) {
   if (event.candidate) {
     pc2.addIceCandidate(new RTCIceCandidate(event.candidate));
     trace('Local ICE candidate: \n' + event.candidate.candidate);
   }
 }
 
-function iceCallback2(event){
+function iceCallback2(event) {
   if (event.candidate) {
     pc1.addIceCandidate(new RTCIceCandidate(event.candidate));
     trace('Remote ICE candidate: \n ' + event.candidate.candidate);
@@ -134,7 +136,7 @@ function iceCallback2(event){
 }
 
 function drum() {
-  var drumSound = context.createBufferSource();  // creates an AudioBufferSourceNode.
+  var drumSound = context.createBufferSource(); // creates an AudioBufferSourceNode.
   drumSound.buffer = drumSoundBuffer;
   if (mediaStreamDestination) {
     drumSound.connect(mediaStreamDestination);
@@ -143,8 +145,8 @@ function drum() {
 }
 
 function handleKeyDown() {
-//  var keyCode = event.keyCode;
-trace('handleKeyDown()');
+  //  var keyCode = event.keyCode;
+  trace('handleKeyDown()');
   // Play the drum sound to the remote peer.
   drum();
 }
@@ -158,10 +160,10 @@ function loadAudioBuffer(url) {
   request.onload = function() {
     // source = context.createBufferSource();  // creates an AudioBufferSourceNode.
     context.decodeAudioData(request.response,
-      function (decodedAudio) {
+      function(decodedAudio) {
         voiceSoundBuffer = decodedAudio;
       },
-      function () {
+      function() {
         alert('error decoding file data: ' + url);
       });
     callButton.disabled = false;
@@ -172,35 +174,35 @@ function loadAudioBuffer(url) {
 }
 
 function loadDrumSound(url) {
-    // Load asynchronously
-    trace('loadDrumSound()');
+  // Load asynchronously
+  trace('loadDrumSound()');
 
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.responseType = 'arraybuffer';
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.responseType = 'arraybuffer';
 
-    request.onload = function() {
-      context.decodeAudioData(request.response,
-        function (decodedAudio) {
-          drumSoundBuffer = decodedAudio;
-        },
-        function () {
-          alert('error decoding file data: ' + url);
-        });
-    };
+  request.onload = function() {
+    context.decodeAudioData(request.response,
+      function(decodedAudio) {
+        drumSoundBuffer = decodedAudio;
+      },
+      function() {
+        alert('error decoding file data: ' + url);
+      });
+  };
 
-    request.send();
-  }
+  request.send();
+}
 
-  function init() {
-    callButton = document.getElementById('call');
-    hangupButton = document.getElementById('hangup');
-    drumButton = document.getElementById('drum');
+function init() {
+  callButton = document.getElementById('call');
+  hangupButton = document.getElementById('hangup');
+  drumButton = document.getElementById('drum');
 
-    context = new AudioContext();
-    loadAudioBuffer('audio/human-voice.wav');
-    loadDrumSound('audio/snare.wav');
-    document.addEventListener('keydown', handleKeyDown, false);
-  }
+  context = new AudioContext();
+  loadAudioBuffer('audio/human-voice.wav');
+  loadDrumSound('audio/snare.wav');
+  document.addEventListener('keydown', handleKeyDown, false);
+}
 
-  document.body.onload = init;
+document.body.onload = init;

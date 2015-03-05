@@ -2,14 +2,11 @@
  * Build: http://www.modernizr.com/download/#-touch-teststyles-prefixes
  */
 
+window.Modernizr = (function(window, document, undefined) {
 
-
-window.Modernizr = (function( window, document, undefined ) {
-
-    var version = '2.5.3',
+  var version = '2.5.3',
 
     Modernizr = {},
-
 
     docElement = document.documentElement,
 
@@ -17,14 +14,11 @@ window.Modernizr = (function( window, document, undefined ) {
     modElem = document.createElement(mod),
     mStyle = modElem.style,
 
-    inputElem  ,
-
+    inputElem,
 
     toString = {}.toString,
 
     prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
-
-
 
     tests = {},
     inputs = {},
@@ -36,179 +30,168 @@ window.Modernizr = (function( window, document, undefined ) {
 
     featureName,
 
-
-    injectElementWithStyles = function( rule, callback, nodes, testnames ) {
+    injectElementWithStyles = function(rule, callback, nodes, testnames) {
 
       var style, ret, node,
-          div = document.createElement('div'),
-                body = document.body,
-                fakeBody = body ? body : document.createElement('body');
+        div = document.createElement('div'),
+        body = document.body,
+        fakeBody = body ? body : document.createElement('body');
 
-      if ( parseInt(nodes, 10) ) {
-                      while ( nodes-- ) {
-              node = document.createElement('div');
-              node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
-              div.appendChild(node);
-          }
+      if (parseInt(nodes, 10)) {
+        while (nodes--) {
+          node = document.createElement('div');
+          node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+          div.appendChild(node);
+        }
       }
 
-                style = ['&#173;','<style>', rule, '</style>'].join('');
+      style = ['&#173;', '<style>', rule, '</style>'].join('');
       div.id = mod;
-          (body ? div : fakeBody).innerHTML += style;
+      (body ? div : fakeBody).innerHTML += style;
       fakeBody.appendChild(div);
-      if(!body){
-                fakeBody.style.background = "";
-          docElement.appendChild(fakeBody);
+      if (!body) {
+        fakeBody.style.background = "";
+        docElement.appendChild(fakeBody);
       }
 
       ret = callback(div, rule);
-        !body ? fakeBody.parentNode.removeChild(fakeBody) : div.parentNode.removeChild(div);
+      !body ? fakeBody.parentNode.removeChild(fakeBody) : div.parentNode.removeChild(div);
 
       return !!ret;
 
     },
-    _hasOwnProperty = ({}).hasOwnProperty, hasOwnProperty;
+    _hasOwnProperty = ({}).hasOwnProperty,
+    hasOwnProperty;
 
-    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
-      hasOwnProperty = function (object, property) {
-        return _hasOwnProperty.call(object, property);
-      };
-    }
-    else {
-      hasOwnProperty = function (object, property) {
-        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
-      };
-    }
+  if (!is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined')) {
+    hasOwnProperty = function(object, property) {
+      return _hasOwnProperty.call(object, property);
+    };
+  } else {
+    hasOwnProperty = function(object, property) {
+      return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+    };
+  }
 
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function bind(that) {
 
-    if (!Function.prototype.bind) {
-      Function.prototype.bind = function bind(that) {
+      var target = this;
 
-        var target = this;
+      if (typeof target != "function") {
+        throw new TypeError();
+      }
 
-        if (typeof target != "function") {
-            throw new TypeError();
-        }
+      var args = slice.call(arguments, 1),
+        bound = function() {
 
-        var args = slice.call(arguments, 1),
-            bound = function () {
+          if (this instanceof bound) {
 
-            if (this instanceof bound) {
+            var F = function() {};
+            F.prototype = target.prototype;
+            var self = new F;
 
-              var F = function(){};
-              F.prototype = target.prototype;
-              var self = new F;
-
-              var result = target.apply(
-                  self,
-                  args.concat(slice.call(arguments))
-              );
-              if (Object(result) === result) {
-                  return result;
-              }
-              return self;
-
-            } else {
-
-              return target.apply(
-                  that,
-                  args.concat(slice.call(arguments))
-              );
-
+            var result = target.apply(
+              self,
+              args.concat(slice.call(arguments))
+            );
+            if (Object(result) === result) {
+              return result;
             }
+            return self;
+
+          } else {
+
+            return target.apply(
+              that,
+              args.concat(slice.call(arguments))
+            );
+
+          }
 
         };
 
-        return bound;
-      };
-    }
-
-    function setCss( str ) {
-        mStyle.cssText = str;
-    }
-
-    function setCssAll( str1, str2 ) {
-        return setCss(prefixes.join(str1 + ';') + ( str2 || '' ));
-    }
-
-    function is( obj, type ) {
-        return typeof obj === type;
-    }
-
-    function contains( str, substr ) {
-        return !!~('' + str).indexOf(substr);
-    }
-
-
-    function testDOMProps( props, obj, elem ) {
-        for ( var i in props ) {
-            var item = obj[props[i]];
-            if ( item !== undefined) {
-
-                            if (elem === false) return props[i];
-
-                            if (is(item, 'function')){
-                                return item.bind(elem || obj);
-                }
-
-                            return item;
-            }
-        }
-        return false;
-    }
-
-
-    var testBundle = (function( styles, tests ) {
-        var style = styles.join(''),
-            len = tests.length;
-
-        injectElementWithStyles(style, function( node, rule ) {
-            var style = document.styleSheets[document.styleSheets.length - 1],
-                                                    cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
-                children = node.childNodes, hash = {};
-
-            while ( len-- ) {
-                hash[children[len].id] = children[len];
-            }
-
-                       Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9;
-                                }, len, tests);
-
-    })([
-                       ,['@media (',prefixes.join('touch-enabled),('),mod,')',
-                                '{#touch{top:9px;position:absolute}}'].join('')           ],
-      [
-                       ,'touch'                ]);
-
-
-
-    tests['touch'] = function() {
-        return Modernizr['touch'];
+      return bound;
     };
+  }
 
+  function setCss(str) {
+    mStyle.cssText = str;
+  }
 
+  function setCssAll(str1, str2) {
+    return setCss(prefixes.join(str1 + ';') + (str2 || ''));
+  }
 
-    for ( var feature in tests ) {
-        if ( hasOwnProperty(tests, feature) ) {
-                                    featureName  = feature.toLowerCase();
-            Modernizr[featureName] = tests[feature]();
+  function is(obj, type) {
+    return typeof obj === type;
+  }
 
-            classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
+  function contains(str, substr) {
+    return !!~('' + str).indexOf(substr);
+  }
+
+  function testDOMProps(props, obj, elem) {
+    for (var i in props) {
+      var item = obj[props[i]];
+      if (item !== undefined) {
+
+        if (elem === false) return props[i];
+
+        if (is(item, 'function')) {
+          return item.bind(elem || obj);
         }
+
+        return item;
+      }
     }
-    setCss('');
-    modElem = inputElem = null;
+    return false;
+  }
 
+  var testBundle = (function(styles, tests) {
+    var style = styles.join(''),
+      len = tests.length;
 
-    Modernizr._version      = version;
+    injectElementWithStyles(style, function(node, rule) {
+      var style = document.styleSheets[document.styleSheets.length - 1],
+        cssText = style ? (style.cssRules && style.cssRules[0] ? style.cssRules[0].cssText : style.cssText || '') : '',
+        children = node.childNodes,
+        hash = {};
 
-    Modernizr._prefixes     = prefixes;
+      while (len--) {
+        hash[children[len].id] = children[len];
+      }
 
-    Modernizr.testStyles    = injectElementWithStyles;
-    return Modernizr;
+      Modernizr['touch'] = ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch || (hash['touch'] && hash['touch'].offsetTop) === 9;
+    }, len, tests);
 
-})(this, this.document);
-;
+  })([, ['@media (', prefixes.join('touch-enabled),('), mod, ')',
+    '{#touch{top:9px;position:absolute}}'
+  ].join('')], [, 'touch']);
+
+  tests['touch'] = function() {
+    return Modernizr['touch'];
+  };
+
+  for (var feature in tests) {
+    if (hasOwnProperty(tests, feature)) {
+      featureName = feature.toLowerCase();
+      Modernizr[featureName] = tests[feature]();
+
+      classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
+    }
+  }
+  setCss('');
+  modElem = inputElem = null;
+
+  Modernizr._version = version;
+
+  Modernizr._prefixes = prefixes;
+
+  Modernizr.testStyles = injectElementWithStyles;
+  return Modernizr;
+
+})(this, this.document);;
 (function(exports) {
   var MOUSE_ID = 1;
 
@@ -230,7 +213,7 @@ window.Modernizr = (function( window, document, undefined ) {
   var PointerTypes = {
     TOUCH: 'touch',
     MOUSE: 'mouse',
-    PEN:   'pen'
+    PEN: 'pen'
   };
 
   function setMouse(mouseEvent) {
@@ -379,7 +362,7 @@ window.Modernizr = (function( window, document, undefined ) {
       event.textPointerType = PointerTypes.MOUSE;
     }
     if (event.textPointerType == PointerTypes.MOUSE) {
-        event.target.msMouseDown = true;
+      event.target.msMouseDown = true;
     }
     if (!event.target.msPointerList) event.target.msPointerList = {};
     event.target.msPointerList[event.pointerId] = event;
@@ -425,7 +408,7 @@ window.Modernizr = (function( window, document, undefined ) {
       event.textPointerType = PointerTypes.MOUSE;
     }
     if (event.textPointerType == PointerTypes.MOUSE) {
-        event.target.msMouseDown = false;
+      event.target.msMouseDown = false;
     }
     var payload = {
       pointerType: event.textPointerType,
@@ -483,7 +466,7 @@ window.Modernizr = (function( window, document, undefined ) {
     return window.navigator.msPointerEnabled;
   }
 
-   /**
+  /**
    * @return {Boolean} Returns true iff this user agent supports pointer
    * events.
    */
@@ -538,7 +521,7 @@ window.Modernizr = (function( window, document, undefined ) {
         handler(this);
       } else {
         console.error('Warning: no handler found for {{evt}}.'
-                      .replace('{{evt}}', type));
+          .replace('{{evt}}', type));
       }
     }
   }
@@ -581,7 +564,7 @@ window.Modernizr = (function( window, document, undefined ) {
   PointerPosition.prototype.calculateSquaredDistance = function(pointer) {
     var dx = this.x - pointer.clientX;
     var dy = this.y - pointer.clientY;
-    return dx*dx + dy*dy;
+    return dx * dx + dy * dy;
   };
 
   function pointerDown(e) {
@@ -591,8 +574,7 @@ window.Modernizr = (function( window, document, undefined ) {
     if (now - this.lastDownTime < DOUBLETAP_TIME && this.lastPosition && this.lastPosition.calculateSquaredDistance(pointers[0]) < WIGGLE_THRESHOLD * WIGGLE_THRESHOLD) {
       this.lastDownTime = 0;
       this.lastPosition = null;
-      var payload = {
-      };
+      var payload = {};
       window._createCustomEvent('gesturedoubletap', e.target, payload);
     }
     this.lastPosition = new PointerPosition(pointers[0]);
@@ -634,9 +616,8 @@ window.Modernizr = (function( window, document, undefined ) {
   PointerPosition.prototype.calculateSquaredDistance = function(pointer) {
     var dx = this.x - pointer.clientX;
     var dy = this.y - pointer.clientY;
-    return dx*dx + dy*dy;
+    return dx * dx + dy * dy;
   };
-
 
   function pointerDown(e) {
 
@@ -646,7 +627,7 @@ window.Modernizr = (function( window, document, undefined ) {
     var pointers = e.getPointerList();
 
     // check that we only have one pointer down
-    if(pointers.length === 1) {
+    if (pointers.length === 1) {
 
       // cache the position of the pointer on the target
       e.target.longpressInitPosition = new PointerPosition(pointers[0]);
@@ -664,17 +645,16 @@ window.Modernizr = (function( window, document, undefined ) {
   function pointerMove(e) {
     var pointers = e.getPointerList();
 
-    if(e.pointerType === PointerTypes.MOUSE) {
+    if (e.pointerType === PointerTypes.MOUSE) {
       // if the pointer is a mouse we cancel the longpress
       // as soon as it starts wiggling around
       clearTimeout(this.longPressTimer);
-    }
-    else if(pointers.length === 1) {
+    } else if (pointers.length === 1) {
       // but if the pointer is something else we allow a
       // for a bit of smudge space
       var pos = e.target.longpressInitPosition;
 
-      if(pos && pos.calculateSquaredDistance(pointers[0]) > WIGGLE_THRESHOLD * WIGGLE_THRESHOLD) {
+      if (pos && pos.calculateSquaredDistance(pointers[0]) > WIGGLE_THRESHOLD * WIGGLE_THRESHOLD) {
         clearTimeout(this.longPressTimer);
       }
     }
@@ -726,7 +706,7 @@ window.Modernizr = (function( window, document, undefined ) {
   PointerPair.prototype.span = function() {
     var dx = this.p1.pageX - this.p2.pageX;
     var dy = this.p1.pageY - this.p2.pageY;
-    return Math.sqrt(dx*dx + dy*dy);
+    return Math.sqrt(dx * dx + dy * dy);
   };
 
   /**
@@ -745,7 +725,7 @@ window.Modernizr = (function( window, document, undefined ) {
     if (pointerList.length == 2) {
       // Record the initial pointer pair.
       e.target.scaleReferencePair = new PointerPair(pointerList[0],
-                                                    pointerList[1]);
+        pointerList[1]);
     }
   }
 

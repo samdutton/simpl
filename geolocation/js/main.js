@@ -2,14 +2,14 @@
 
 var data = document.querySelector('#data');
 
-function log(message){
-	data.innerHTML += message + '<br />' + data.innerHTML;
+function log(message) {
+  data.innerHTML += message + '<br />' + data.innerHTML;
 }
 
 navigator.geolocation.watchPosition(logPosition);
 
-function logPosition(position){
+function logPosition(position) {
   console.log(position);
   log('latitude: ' + position.coords.latitude +
-      ', longitude: ' + position.coords.longitude);
+    ', longitude: ' + position.coords.longitude);
 }

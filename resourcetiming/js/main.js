@@ -1,11 +1,12 @@
 'use strict';
 
 var data = document.querySelector('p#data');
-function log(message){
+
+function log(message) {
   data.innerHTML += message + '<br />';
 }
 
-window.onload = function(){
+window.onload = function() {
   if (!window.performance.getEntriesByType) {
     log('This browser does not support the Resource Timing API :^\\.');
     return;

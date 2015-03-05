@@ -15,7 +15,7 @@ function successCallback(stream) {
   video.src = window.URL.createObjectURL(stream);
 }
 
-function errorCallback(error){
+function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
@@ -24,13 +24,13 @@ function displayVideoDimensions() {
     'x' + video.videoHeight + 'px.';
 }
 
-video.addEventListener('play', function(){
-  setTimeout(function(){
+video.addEventListener('play', function() {
+  setTimeout(function() {
     displayVideoDimensions();
   }, 500);
 });
 
-var qvgaConstraints  = {
+var qvgaConstraints = {
   video: {
     mandatory: {
       maxWidth: 320,
@@ -39,7 +39,7 @@ var qvgaConstraints  = {
   }
 };
 
-var vgaConstraints  = {
+var vgaConstraints = {
   video: {
     mandatory: {
       maxWidth: 640,
@@ -48,7 +48,7 @@ var vgaConstraints  = {
   }
 };
 
-var hdConstraints  = {
+var hdConstraints = {
   video: {
     mandatory: {
       minWidth: 1280,
@@ -57,15 +57,20 @@ var hdConstraints  = {
   }
 };
 
-qvgaButton.onclick = function(){getMedia(qvgaConstraints);};
-vgaButton.onclick = function(){getMedia(vgaConstraints);};
-hdButton.onclick = function(){getMedia(hdConstraints);};
+qvgaButton.onclick = function() {
+  getMedia(qvgaConstraints);
+};
+vgaButton.onclick = function() {
+  getMedia(vgaConstraints);
+};
+hdButton.onclick = function() {
+  getMedia(hdConstraints);
+};
 
-function getMedia(constraints){
+function getMedia(constraints) {
   if (!!stream) {
     video.src = null;
     stream.stop();
   }
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
-

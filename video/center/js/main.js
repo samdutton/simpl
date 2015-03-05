@@ -4,8 +4,8 @@ var container = document.querySelector('div#container');
 var smallVideo = document.querySelector('video#small');
 var largeVideo = document.querySelector('video#large');
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia;
+navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 var constraints = {
   video: {

@@ -7,18 +7,17 @@ var clearSpan = document.getElementById('clearSpan');
 var video1 = document.getElementById('video1');
 var video2 = document.getElementById('video2');
 
-
-colorInput.onchange = function(){
+colorInput.onchange = function() {
   video1.style.backgroundColor = this.value;
   video2.style.backgroundColor = this.value;
 };
 
-clearSpan.onclick = function(){
+clearSpan.onclick = function() {
   video1.style.backgroundColor = 'transparent';
   video2.style.backgroundColor = 'transparent';
 };
 
-function toggleChromeVideo(){
+function toggleChromeVideo() {
   if (chromeVideo.classList.contains('transparent')) {
     chromeVideo.classList.remove('transparent');
     chromeVideo.play();
@@ -41,16 +40,18 @@ function addEventListeners(video) {
 addEventListeners(video1);
 addEventListeners(video2);
 
-function handleDoubleTap(event){
+function handleDoubleTap(event) {
   var video = event.srcElement;
   video.classList.remove('rotateOut');
-  setTimeout(function(){video.classList.add('rotateOut');}, 5);
+  setTimeout(function() {
+    video.classList.add('rotateOut');
+  }, 5);
   event.preventDefault();
 }
 
 var isPointerDown = false;
 
-function handlePointerDown(event){
+function handlePointerDown(event) {
   isPointerDown = true;
   var video = event.srcElement;
   video.style.opacity = 0.7;
@@ -59,7 +60,7 @@ function handlePointerDown(event){
   event.preventDefault();
 }
 
-function handlePointerUp(event){
+function handlePointerUp(event) {
   isPointerDown = false;
   var video = event.srcElement;
   video.style.opacity = 1;
@@ -67,7 +68,7 @@ function handlePointerUp(event){
   event.preventDefault();
 }
 
-function handlePointerMove(event){
+function handlePointerMove(event) {
   if (!isPointerDown) {
     return;
   }

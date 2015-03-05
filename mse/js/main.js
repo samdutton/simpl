@@ -20,13 +20,16 @@ document.querySelector('[data-num-chunks]').textContent = NUM_CHUNKS;
 video.src = window.URL.createObjectURL(mediaSource);
 
 mediaSource.addEventListener('sourceopen', function() {
-  var sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
+  var sourceBuffer =
+      mediaSource.addSourceBuffer('video/webm; codecs="vorbis,vp8"');
   console.log(sourceBuffer);
 
   log('MediaSource readyState: ' + this.readyState);
 
   GET(FILE, function(uInt8Array) {
-    var file = new Blob([uInt8Array], {type: 'video/webm'});
+    var file = new Blob([uInt8Array], {
+      type: 'video/webm'
+    });
     var chunkSize = Math.ceil(file.size / NUM_CHUNKS);
 
     log('Number of chunks: ' + NUM_CHUNKS);
@@ -58,7 +61,7 @@ mediaSource.addEventListener('sourceopen', function() {
       var chunk = file.slice(startByte, startByte + chunkSize);
 
       reader.readAsArrayBuffer(chunk);
-    })(i);  // Start the recursive call by self calling.
+    })(i); // Start the recursive call by self calling.
   });
 
 }, false);
@@ -82,6 +85,6 @@ function GET(url, callback) {
   };
 }
 
-function log(message){
+function log(message) {
   document.getElementById('data').innerHTML += message + '<br /><br />';
 }

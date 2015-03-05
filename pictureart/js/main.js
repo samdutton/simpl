@@ -9,7 +9,7 @@ var dpr = document.querySelector('#devicePixelRatio');
 var viewportWidth = document.querySelector('#viewportWidth');
 var availableWidth = document.querySelector('#availableWidth');
 
-function displayData(){
+function displayData() {
   imgSrc.innerHTML = '<a href="' + img.currentSrc + '">' +
     img.currentSrc.replace(/^.*[\\\/]/, '') + '</a>';
   imgNaturalWidth.textContent = img.naturalWidth;

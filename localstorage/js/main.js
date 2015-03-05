@@ -1,12 +1,12 @@
 'use strict';
 
-document.getElementById('storeButton').addEventListener('click', function () {
+document.getElementById('storeButton').addEventListener('click', function() {
   var key = document.getElementById('storeKey').value;
   var value = document.getElementById('storeValue').value;
   localStorage.setItem(key, value); //same as localStorage[key] = value;
 }, false);
 
-document.getElementById('retrieveButton').addEventListener('click', function () {
+document.getElementById('retrieveButton').addEventListener('click', function() {
   var key = document.getElementById('retrieveKey').value;
   var value = window.localStorage[key];
   document.getElementById('retrieveValue').value = value;

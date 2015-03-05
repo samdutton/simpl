@@ -10,27 +10,32 @@
 // write to the file
 // read from the file
 
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+window.requestFileSystem = window.requestFileSystem ||
+    window.webkitRequestFileSystem;
 
-window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/,
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024 /*5MB*/ ,
   handleInitSuccess, handleError);
 
 var fileSystem;
+
 function handleInitSuccess(fileSystem) {
   window.fileSystem = fileSystem;
-	log('Initiated FileSystem: ' + fileSystem.name);
-	createFile('foo.txt');
+  log('Initiated FileSystem: ' + fileSystem.name);
+  createFile('foo.txt');
 }
 
-function createFile(fullPath){
-  fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/},
+function createFile(fullPath) {
+  fileSystem.root.getFile(fullPath, {
+      create: true,
+      /*exclusive: true*/
+    },
     function(fileEntry) {
       log('Created file: ' + fileEntry.fullPath);
       writeToFile(fileEntry, 'Greetings from success callback!');
-  }, handleError);
+    }, handleError);
 }
 
-function writeToFile(fileEntry, text){
+function writeToFile(fileEntry, text) {
   // Create a FileWriter object for fileEntry
   fileEntry.createWriter(function(fileWriter) {
     fileWriter.onwriteend = function() {
@@ -42,20 +47,22 @@ function writeToFile(fileEntry, text){
       log('Write failed: ' + e.toString());
     };
     // Create a new Blob and write it to log.txt.
-    var blob = new Blob([text], {type: 'text/plain'});
+    var blob = new Blob([text], {
+      type: 'text/plain'
+    });
     fileWriter.write(blob);
   }, handleError);
 }
 
-function readFromFile(fullPath){
+function readFromFile(fullPath) {
   fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
     // Get a File object representing the file, then use FileReader to read its contents.
     fileEntry.file(function(file) {
-       var reader = new FileReader();
-       reader.onloadend = function() {
-         log('Read text \'' + this.result + '\' from file ' + fullPath);
-       };
-       reader.readAsText(file);
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        log('Read text \'' + this.result + '\' from file ' + fullPath);
+      };
+      reader.readAsText(file);
     }, handleError);
 
   }, handleError);
@@ -85,6 +92,7 @@ function handleError(e) {
 }
 
 var data = document.getElementById('data');
-function log(text){
+
+function log(text) {
   data.innerHTML += text + '<br />';
 }

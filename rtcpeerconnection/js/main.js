@@ -2,19 +2,21 @@
 
 /* globals webkitRTCPeerConnection */
 
-var localStream, localPeerConnection, remotePeerConnection;
+var localStream;
+var localPeerConnection;
+var remotePeerConnection;
 
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
 
-localVideo.addEventListener('loadedmetadata', function(){
-trace('Local video currentSrc: ' + this.currentSrc +
-        ', videoWidth: ' + this.videoWidth +
-        'px,  videoHeight: ' + this.videoHeight + 'px');
+localVideo.addEventListener('loadedmetadata', function() {
+  trace('Local video currentSrc: ' + this.currentSrc +
+    ', videoWidth: ' + this.videoWidth +
+    'px,  videoHeight: ' + this.videoHeight + 'px');
 });
 
-remoteVideo.addEventListener('loadedmetadata', function(){
-trace('Remote video currentSrc: ' + this.currentSrc +
+remoteVideo.addEventListener('loadedmetadata', function() {
+  trace('Remote video currentSrc: ' + this.currentSrc +
     ', videoWidth: ' + this.videoWidth +
     'px,  videoHeight: ' + this.videoHeight + 'px');
 });
@@ -30,12 +32,13 @@ callButton.onclick = call;
 hangupButton.onclick = hangup;
 
 var total = '';
+
 function trace(text) {
   total += text;
   console.log((window.performance.now() / 1000).toFixed(3) + ': ' + text);
 }
 
-function gotStream(stream){
+function gotStream(stream) {
   trace('Received local stream');
   localVideo.src = URL.createObjectURL(stream);
   localStream = stream;
@@ -47,7 +50,9 @@ function start() {
   startButton.disabled = true;
   navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-  navigator.getUserMedia({video:true}, gotStream,
+  navigator.getUserMedia({
+      video: true
+    }, gotStream,
     function(error) {
       trace('navigator.getUserMedia error: ', error);
     });
@@ -81,14 +86,14 @@ function call() {
   localPeerConnection.createOffer(gotLocalDescription);
 }
 
-function gotLocalDescription(description){
+function gotLocalDescription(description) {
   localPeerConnection.setLocalDescription(description);
   trace('Offer from localPeerConnection: \n' + description.sdp);
   remotePeerConnection.setRemoteDescription(description);
   remotePeerConnection.createAnswer(gotRemoteDescription);
 }
 
-function gotRemoteDescription(description){
+function gotRemoteDescription(description) {
   remotePeerConnection.setLocalDescription(description);
   trace('Answer from remotePeerConnection: \n' + description.sdp);
   localPeerConnection.setRemoteDescription(description);
@@ -104,19 +109,19 @@ function hangup() {
   callButton.disabled = false;
 }
 
-function gotRemoteStream(event){
+function gotRemoteStream(event) {
   remoteVideo.src = URL.createObjectURL(event.stream);
   trace('Received remote stream');
 }
 
-function gotLocalIceCandidate(event){
+function gotLocalIceCandidate(event) {
   if (event.candidate) {
     remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
     trace('Local ICE candidate: \n' + event.candidate.candidate);
   }
 }
 
-function gotRemoteIceCandidate(event){
+function gotRemoteIceCandidate(event) {
   if (event.candidate) {
     localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
     trace('Remote ICE candidate: \n ' + event.candidate.candidate);

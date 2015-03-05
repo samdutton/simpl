@@ -23,7 +23,7 @@ self.addEventListener('fetch', function(event) {
   console.log(event, event.request.url);
   // hijack all fetches
   event.respondWith(
-    cachesPolyfill.match(event.request).then(function(response){
+    cachesPolyfill.match(event.request).then(function(response) {
       console.log('cache response: ', response);
       // return response from cache or return file fetched from internet
       return response || fetch(event.request);

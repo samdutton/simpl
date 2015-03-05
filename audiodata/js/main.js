@@ -6,13 +6,14 @@ var metadataElement = document.getElementById('metadataElement');
 var eventTimeElement = document.getElementById('eventTimeElement');
 var eventDataElement = document.getElementById('eventDataElement');
 
-framebufferLengthInput.addEventListener('change', handleFramebufferLengthChanged, false);
+framebufferLengthInput.addEventListener('change',
+    handleFramebufferLengthChanged, false);
 mediaElement.addEventListener('loadedmetadata', handleMetadata, false);
 
 mediaElement.addEventListener('MozAudioAvailable', handleAudioData, false);
-mediaElement.addEventListener('seeked', handleSeeked, false);  // when pressing play
+mediaElement.addEventListener('seeked', handleSeeked, false); // play pressed
 
-function handleFramebufferLengthChanged(){
+function handleFramebufferLengthChanged() {
   mediaElement.mozFrameBufferLength = framebufferLengthInput.value;
 }
 
@@ -25,7 +26,7 @@ function handleSeeked() {
   framebufferLengthInput.value = mediaElement.mozFrameBufferLength;
 }
 
-function handleMetadata(){
+function handleMetadata() {
   framebufferLengthInput.value = mediaElement.mozFrameBufferLength;
   metadataElement.innerHTML +=
     'mozChannels:&nbsp;' + mediaElement.mozChannels + '<br />' +
@@ -33,8 +34,9 @@ function handleMetadata(){
 }
 
 var i = 1;
-function handleAudioData(event){
-    eventTimeElement.innerHTML += i + ' ' + event.time + '<br />';
-    eventDataElement.innerHTML += event.frameBuffer[0].toFixed(18) + '<br />';
+
+function handleAudioData(event) {
+  eventTimeElement.innerHTML += i + ' ' + event.time + '<br />';
+  eventDataElement.innerHTML += event.frameBuffer[0].toFixed(18) + '<br />';
   i++;
 }

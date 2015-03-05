@@ -3,7 +3,8 @@
 /* globals EventSource */
 
 var dataDiv = document.querySelector('#data');
-function log(message){
+
+function log(message) {
   dataDiv.innerHTML = message + '<br />' + dataDiv.innerHTML;
 }
 

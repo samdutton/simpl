@@ -2,14 +2,14 @@
 
 var data = document.querySelector('#data');
 
-function log(message){
+function log(message) {
   data.innerHTML += message + '<br /><br />';
 }
 
 var o = {};
 
 function observer(changes) {
-	log(JSON.stringify(changes));
+  log(JSON.stringify(changes));
 }
 
 Object.observe(o, observer);

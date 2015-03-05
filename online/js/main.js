@@ -1,6 +1,6 @@
 'use strict';
 
-function log(message){
+function log(message) {
   document.querySelector('#data').innerHTML += message + '<br /><br />';
 }
 
@@ -21,5 +21,5 @@ if (typeof navigator.onLine !== 'undefined') {
   };
 
 } else {
-	log('Shame! navigator.onLine is not supported on this platform.');
+  log('Shame! navigator.onLine is not supported on this platform.');
 }

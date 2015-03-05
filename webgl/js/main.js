@@ -11,8 +11,8 @@ function shaderProgram(gl, vs, fs) {
     gl.shaderSource(s, source);
     gl.compileShader(s);
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-      throw 'Could not compile '+type+
-        ' shader:\n\n'+gl.getShaderInfoLog(s);
+      throw 'Could not compile ' + type +
+        ' shader:\n\n' + gl.getShaderInfoLog(s);
     }
     gl.attachShader(prog, s);
   };
@@ -39,7 +39,9 @@ function draw() {
   try {
     var canvas = document.querySelector('canvas');
     gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) { throw 'x'; }
+    if (!gl) {
+      throw 'x';
+    }
   } catch (err) {
     alert('This browser does not support WebGL.');
     throw 'Your web browser does not support WebGL!';
@@ -48,18 +50,17 @@ function draw() {
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   var prog = shaderProgram(gl,
-    'attribute vec3 pos;'+
-    'void main() {'+
-    ' gl_Position = vec4(pos, 2.0);'+
+    'attribute vec3 pos;' +
+    'void main() {' +
+    ' gl_Position = vec4(pos, 2.0);' +
     '}',
-    'void main() {'+
-    ' gl_FragColor = vec4(0.7, 0.2, 0.2, 1.0);'+
+    'void main() {' +
+    ' gl_FragColor = vec4(0.7, 0.2, 0.2, 1.0);' +
     '}'
   );
   gl.useProgram(prog);
 
-  attributeSetFloats(gl, prog, 'pos', 3, [
-    -1, 0, 0,
+  attributeSetFloats(gl, prog, 'pos', 3, [-1, 0, 0,
     0, 1, 0,
     0, -1, 0,
     1, 0, 0

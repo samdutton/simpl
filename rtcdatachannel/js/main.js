@@ -2,9 +2,10 @@
 
 /* globals webkitRTCPeerConnection */
 
-
-var localPeerConnection, remotePeerConnection;
-var sendChannel, receiveChannel;
+var localPeerConnection;
+var remotePeerConnection;
+var sendChannel;
+var receiveChannel;
 
 var startButton = document.getElementById('startButton');
 var sendButton = document.getElementById('sendButton');
@@ -19,7 +20,6 @@ closeButton.onclick = closeDataChannels;
 var dataChannelSend = document.getElementById('dataChannelSend');
 var dataChannelReceive = document.getElementById('dataChannelReceive');
 
-
 function trace(text) {
   console.log((window.performance.now() / 1000).toFixed(3) + ': ' + text);
 }
@@ -27,26 +27,36 @@ function trace(text) {
 function createConnection() {
   var servers = null;
   localPeerConnection = window.localPeerConnection =
-    new webkitRTCPeerConnection(servers,
-    {optional: [{RtpDataChannels: true}]});
+    new webkitRTCPeerConnection(servers, {
+      optional: [{
+        RtpDataChannels: true
+      }]
+    });
   trace('Created local peer connection object localPeerConnection');
 
   try {
     // Reliable Data Channels not yet supported in Chrome
-    sendChannel = localPeerConnection.createDataChannel('sendDataChannel',
-      {reliable: false});
+    sendChannel = localPeerConnection.createDataChannel('sendDataChannel', {
+      reliable: false
+    });
     trace('Created send data channel');
   } catch (e) {
     alert('Failed to create data channel. ' +
-          'You need Chrome M25 or later with RtpDataChannel enabled');
+      'You need Chrome M25 or later with RtpDataChannel enabled');
     trace('createDataChannel() failed with exception: ' + e.message);
   }
   localPeerConnection.onicecandidate = gotLocalCandidate;
   sendChannel.onopen = handleSendChannelStateChange;
   sendChannel.onclose = handleSendChannelStateChange;
 
-  remotePeerConnection = window.remotePeerConnection = new webkitRTCPeerConnection(servers,
-    {optional: [{RtpDataChannels: true}]});
+  remotePeerConnection = window.remotePeerConnection =
+    new webkitRTCPeerConnection(
+      servers, {
+        optional: [{
+          RtpDataChannels: true
+        }]
+      }
+    );
   trace('Created remote peer connection object remotePeerConnection');
 
   remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
@@ -80,7 +90,8 @@ function closeDataChannels() {
   dataChannelSend.value = '';
   dataChannelReceive.value = '';
   dataChannelSend.disabled = true;
-  dataChannelSend.placeholder = 'Press Start, enter some text, then press Send.';
+  dataChannelSend.placeholder =
+    'Press Start, enter some text, then press Send.';
 }
 
 function gotLocalDescription(desc) {

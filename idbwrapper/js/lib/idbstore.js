@@ -9,7 +9,7 @@
  * Licensed under the MIT (X11) license
  */
 
-(function (name, definition, global) {
+(function(name, definition, global) {
   if (typeof define === 'function') {
     define(definition);
   } else if (typeof module !== 'undefined' && module.exports) {
@@ -17,7 +17,7 @@
   } else {
     global[name] = definition();
   }
-})('IDBStore', function () {
+})('IDBStore', function() {
 
   "use strict";
 
@@ -27,9 +27,8 @@
     dbVersion: 1,
     keyPath: 'id',
     autoIncrement: true,
-    onStoreReady: function () {
-    },
-    onError: function(error){
+    onStoreReady: function() {},
+    onError: function(error) {
       throw error;
     },
     indexes: []
@@ -92,9 +91,9 @@
         }
       });
    */
-  var IDBStore = function (kwArgs, onStoreReady) {
+  var IDBStore = function(kwArgs, onStoreReady) {
 
-    for(var key in defaults){
+    for (var key in defaults) {
       this[key] = typeof kwArgs[key] != 'undefined' ? kwArgs[key] : defaults[key];
     }
 
@@ -107,12 +106,12 @@
     this.keyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.mozIDBKeyRange;
 
     this.consts = {
-      'READ_ONLY':         'readonly',
-      'READ_WRITE':        'readwrite',
-      'VERSION_CHANGE':    'versionchange',
-      'NEXT':              'next',
+      'READ_ONLY': 'readonly',
+      'READ_WRITE': 'readwrite',
+      'VERSION_CHANGE': 'versionchange',
+      'NEXT': 'next',
       'NEXT_NO_DUPLICATE': 'nextunique',
-      'PREV':              'prev',
+      'PREV': 'prev',
       'PREV_NO_DUPLICATE': 'prevunique'
     };
 
@@ -229,7 +228,7 @@
      * @private
      *
      */
-    openDB: function () {
+    openDB: function() {
 
       var features = this.features = {};
       features.hasAutoIncrement = !window.mozIndexedDB; // TODO: Still, really?
@@ -237,7 +236,7 @@
       var openRequest = this.idb.open(this.dbName, this.dbVersion);
       var preventSuccessCallback = false;
 
-      openRequest.onerror = function (error) {
+      openRequest.onerror = function(error) {
 
         var gotVersionErr = false;
         if ('error' in error.target) {
@@ -253,25 +252,25 @@
         }
       }.bind(this);
 
-      openRequest.onsuccess = function (event) {
+      openRequest.onsuccess = function(event) {
 
         if (preventSuccessCallback) {
           return;
         }
 
-        if(this.db){
+        if (this.db) {
           this.onStoreReady();
           return;
         }
 
         this.db = event.target.result;
 
-        if(typeof this.db.version == 'string'){
+        if (typeof this.db.version == 'string') {
           this.onError(new Error('The IndexedDB implementation in this browser is outdated. Please upgrade your browser.'));
           return;
         }
 
-        if(!this.db.objectStoreNames.contains(this.storeName)){
+        if (!this.db.objectStoreNames.contains(this.storeName)) {
           // We should never ever get here.
           // Lets notify the user anyway.
           this.onError(new Error('Something is wrong with the IndexedDB implementation in this browser. Please upgrade your browser.'));
@@ -282,10 +281,10 @@
         this.store = emptyTransaction.objectStore(this.storeName);
 
         // check indexes
-        this.indexes.forEach(function(indexData){
+        this.indexes.forEach(function(indexData) {
           var indexName = indexData.name;
 
-          if(!indexName){
+          if (!indexName) {
             preventSuccessCallback = true;
             this.onError(new Error('Cannot create index: No index name given.'));
             return;
@@ -293,17 +292,17 @@
 
           this.normalizeIndexData(indexData);
 
-          if(this.hasIndex(indexName)){
+          if (this.hasIndex(indexName)) {
             // check if it complies
             var actualIndex = this.store.index(indexName);
             var complies = this.indexComplies(actualIndex, indexData);
-            if(!complies){
+            if (!complies) {
               preventSuccessCallback = true;
-              this.onError(new Error('Cannot modify index "' + indexName + '" for current version. Please bump version number to ' + ( this.dbVersion + 1 ) + '.'));
+              this.onError(new Error('Cannot modify index "' + indexName + '" for current version. Please bump version number to ' + (this.dbVersion + 1) + '.'));
             }
           } else {
             preventSuccessCallback = true;
-            this.onError(new Error('Cannot create new index "' + indexName + '" for current version. Please bump version number to ' + ( this.dbVersion + 1 ) + '.'));
+            this.onError(new Error('Cannot create new index "' + indexName + '" for current version. Please bump version number to ' + (this.dbVersion + 1) + '.'));
           }
 
         }, this);
@@ -311,37 +310,46 @@
         preventSuccessCallback || this.onStoreReady();
       }.bind(this);
 
-      openRequest.onupgradeneeded = function(/* IDBVersionChangeEvent */ event){
+      openRequest.onupgradeneeded = function( /* IDBVersionChangeEvent */ event) {
 
         this.db = event.target.result;
 
-        if(this.db.objectStoreNames.contains(this.storeName)){
+        if (this.db.objectStoreNames.contains(this.storeName)) {
           this.store = event.target.transaction.objectStore(this.storeName);
         } else {
-          this.store = this.db.createObjectStore(this.storeName, { keyPath: this.keyPath, autoIncrement: this.autoIncrement});
+          this.store = this.db.createObjectStore(this.storeName, {
+            keyPath: this.keyPath,
+            autoIncrement: this.autoIncrement
+          });
         }
 
-        this.indexes.forEach(function(indexData){
+        this.indexes.forEach(function(indexData) {
           var indexName = indexData.name;
 
-          if(!indexName){
+          if (!indexName) {
             preventSuccessCallback = true;
             this.onError(new Error('Cannot create index: No index name given.'));
           }
 
           this.normalizeIndexData(indexData);
 
-          if(this.hasIndex(indexName)){
+          if (this.hasIndex(indexName)) {
             // check if it complies
             var actualIndex = this.store.index(indexName);
             var complies = this.indexComplies(actualIndex, indexData);
-            if(!complies){
+            if (!complies) {
               // index differs, need to delete and re-create
               this.store.deleteIndex(indexName);
-              this.store.createIndex(indexName, indexData.keyPath, { unique: indexData.unique, multiEntry: indexData.multiEntry });
+              this.store.createIndex(indexName, indexData.keyPath, {
+                unique: indexData.unique,
+                multiEntry: indexData.multiEntry
+              });
             }
           } else {
-            this.store.createIndex(indexName, indexData.keyPath, { unique: indexData.unique, multiEntry: indexData.multiEntry });
+            this.store.createIndex(indexName, indexData.keyPath, {
+              unique: indexData.unique,
+              multiEntry: indexData.multiEntry
+            });
           }
 
         }, this);
@@ -353,7 +361,7 @@
      * Deletes the database used for this store if the IDB implementations
      * provides that functionality.
      */
-    deleteDatabase: function () {
+    deleteDatabase: function() {
       if (this.idb.deleteDatabase) {
         this.idb.deleteDatabase(this.dbName);
       }
@@ -362,7 +370,6 @@
     /*********************
      * data manipulation *
      *********************/
-
 
     /**
      * Puts an object into the store. If an entry with the given id exists,
@@ -374,8 +381,8 @@
      * @param {Function} [onError] A callback that is called if insertion
      *  failed.
      */
-    put: function (dataObj, onSuccess, onError) {
-      onError || (onError = function (error) {
+    put: function(dataObj, onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not write data.', error);
       });
       onSuccess || (onSuccess = noop);
@@ -384,7 +391,7 @@
       }
       var putTransaction = this.db.transaction([this.storeName], this.consts.READ_WRITE);
       var putRequest = putTransaction.objectStore(this.storeName).put(dataObj);
-      putRequest.onsuccess = function (event) {
+      putRequest.onsuccess = function(event) {
         onSuccess(event.target.result);
       };
       putRequest.onerror = onError;
@@ -400,14 +407,14 @@
      * @param {Function} [onError] A callback that will be called if an error
      *  occurred during the operation.
      */
-    get: function (key, onSuccess, onError) {
-      onError || (onError = function (error) {
+    get: function(key, onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not read data.', error);
       });
       onSuccess || (onSuccess = noop);
       var getTransaction = this.db.transaction([this.storeName], this.consts.READ_ONLY);
       var getRequest = getTransaction.objectStore(this.storeName).get(key);
-      getRequest.onsuccess = function (event) {
+      getRequest.onsuccess = function(event) {
         onSuccess(event.target.result);
       };
       getRequest.onerror = onError;
@@ -422,14 +429,14 @@
      * @param {Function} [onError] A callback that will be called if an error
      *  occurred during the operation.
      */
-    remove: function (key, onSuccess, onError) {
-      onError || (onError = function (error) {
+    remove: function(key, onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not remove data.', error);
       });
       onSuccess || (onSuccess = noop);
       var removeTransaction = this.db.transaction([this.storeName], this.consts.READ_WRITE);
       var deleteRequest = removeTransaction.objectStore(this.storeName)['delete'](key);
-      deleteRequest.onsuccess = function (event) {
+      deleteRequest.onsuccess = function(event) {
         onSuccess(event.target.result);
       };
       deleteRequest.onerror = onError;
@@ -445,34 +452,34 @@
      * @param {Function} [onError] A callback that is called if an error
      *  occurred during one of the operations.
      */
-    batch: function (dataArray, onSuccess, onError) {
-      onError || (onError = function (error) {
+    batch: function(dataArray, onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not apply batch.', error);
       });
       onSuccess || (onSuccess = noop);
 
-      if(Object.prototype.toString.call(dataArray) != '[object Array]'){
+      if (Object.prototype.toString.call(dataArray) != '[object Array]') {
         onError(new Error('dataArray argument must be of type Array.'));
       }
-      var batchTransaction = this.db.transaction([this.storeName] , this.consts.READ_WRITE);
+      var batchTransaction = this.db.transaction([this.storeName], this.consts.READ_WRITE);
       var count = dataArray.length;
       var called = false;
 
-      dataArray.forEach(function (operation) {
+      dataArray.forEach(function(operation) {
         var type = operation.type;
         var key = operation.key;
         var value = operation.value;
 
         if (type == "remove") {
           var deleteRequest = batchTransaction.objectStore(this.storeName)['delete'](key);
-          deleteRequest.onsuccess = function (event) {
+          deleteRequest.onsuccess = function(event) {
             count--;
             if (count === 0 && !called) {
               called = true;
               onSuccess();
             }
           };
-          deleteRequest.onerror = function (err) {
+          deleteRequest.onerror = function(err) {
             batchTransaction.abort();
             if (!called) {
               called = true;
@@ -484,14 +491,14 @@
             value[this.keyPath] = this._getUID();
           }
           var putRequest = batchTransaction.objectStore(this.storeName).put(value);
-          putRequest.onsuccess = function (event) {
+          putRequest.onsuccess = function(event) {
             count--;
             if (count === 0 && !called) {
               called = true;
               onSuccess();
             }
           };
-          putRequest.onerror = function (err) {
+          putRequest.onerror = function(err) {
             batchTransaction.abort();
             if (!called) {
               called = true;
@@ -510,8 +517,8 @@
      * @param {Function} [onError] A callback that will be called if an error
      *  occurred during the operation.
      */
-    getAll: function (onSuccess, onError) {
-      onError || (onError = function (error) {
+    getAll: function(onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not read data.', error);
       });
       onSuccess || (onSuccess = noop);
@@ -519,7 +526,7 @@
       var store = getAllTransaction.objectStore(this.storeName);
       if (store.getAll) {
         var getAllRequest = store.getAll();
-        getAllRequest.onsuccess = function (event) {
+        getAllRequest.onsuccess = function(event) {
           onSuccess(event.target.result);
         };
         getAllRequest.onerror = onError;
@@ -539,18 +546,17 @@
      *  error occurred during the operation.
      * @private
      */
-    _getAllCursor: function (tr, onSuccess, onError) {
+    _getAllCursor: function(tr, onSuccess, onError) {
       var all = [];
       var store = tr.objectStore(this.storeName);
       var cursorRequest = store.openCursor();
 
-      cursorRequest.onsuccess = function (event) {
+      cursorRequest.onsuccess = function(event) {
         var cursor = event.target.result;
         if (cursor) {
           all.push(cursor.value);
           cursor['continue']();
-        }
-        else {
+        } else {
           onSuccess(all);
         }
       };
@@ -565,14 +571,14 @@
      * @param {Function} [onError] A callback that will be called if an
      *  error occurred during the operation.
      */
-    clear: function (onSuccess, onError) {
-      onError || (onError = function (error) {
+    clear: function(onSuccess, onError) {
+      onError || (onError = function(error) {
         console.error('Could not clear store.', error);
       });
       onSuccess || (onSuccess = noop);
       var clearTransaction = this.db.transaction([this.storeName], this.consts.READ_WRITE);
       var clearRequest = clearTransaction.objectStore(this.storeName).clear();
-      clearRequest.onsuccess = function (event) {
+      clearRequest.onsuccess = function(event) {
         onSuccess(event.target.result);
       };
       clearRequest.onerror = onError;
@@ -584,12 +590,11 @@
      * @return {Number} The id
      * @private
      */
-    _getUID: function () {
+    _getUID: function() {
       // FF bails at times on non-numeric ids. So we take an even
       // worse approach now, using current time as id. Sigh.
-      return this._insertIdCount++ + Date.now();
+      return this._insertIdCount++ +Date.now();
     },
-
 
     /************
      * indexing *
@@ -600,7 +605,7 @@
      *
      * @return {DOMStringList} The list of index names
      */
-    getIndexList: function () {
+    getIndexList: function() {
       return this.store.indexNames;
     },
 
@@ -610,7 +615,7 @@
      * @param {String} indexName The name of the index to look for
      * @return {Boolean} Whether the store contains an index with the given name
      */
-    hasIndex: function (indexName) {
+    hasIndex: function(indexName) {
       return this.store.indexNames.contains(indexName);
     },
 
@@ -624,7 +629,7 @@
      * @param {Boolean} [indexData.unique] Whether the index is unique
      * @param {Boolean} [indexData.multiEntry] Whether the index is multi entry
      */
-    normalizeIndexData: function (indexData) {
+    normalizeIndexData: function(indexData) {
       indexData.keyPath = indexData.keyPath || indexData.name;
       indexData.unique = !!indexData.unique;
       indexData.multiEntry = !!indexData.multiEntry;
@@ -637,8 +642,8 @@
      * @param {Object} expected An Object describing an expected index
      * @return {Boolean} Whether both index definitions are identical
      */
-    indexComplies: function (actual, expected) {
-      var complies = ['keyPath', 'unique', 'multiEntry'].every(function (key) {
+    indexComplies: function(actual, expected) {
+      var complies = ['keyPath', 'unique', 'multiEntry'].every(function(key) {
         // IE10 returns undefined for no multiEntry
         if (key == 'multiEntry' && actual[key] === undefined && expected[key] === false) {
           return true;
@@ -671,7 +676,7 @@
      * @param {Function} [options.onError=console.error] A callback to be called if an error
      *  occurred during the operation.
      */
-    iterate: function (onItem, options) {
+    iterate: function(onItem, options) {
       options = mixin({
         index: null,
         order: 'ASC',
@@ -679,7 +684,7 @@
         keyRange: null,
         writeAccess: false,
         onEnd: null,
-        onError: function (error) {
+        onError: function(error) {
           console.error('Could not open cursor.', error);
         }
       }, options || {});
@@ -697,13 +702,13 @@
 
       var cursorRequest = cursorTarget.openCursor(options.keyRange, this.consts[directionType]);
       cursorRequest.onerror = options.onError;
-      cursorRequest.onsuccess = function (event) {
+      cursorRequest.onsuccess = function(event) {
         var cursor = event.target.result;
         if (cursor) {
           onItem(cursor.value, cursor, cursorTransaction);
           cursor['continue']();
         } else {
-          if(options.onEnd){
+          if (options.onEnd) {
             options.onEnd();
           } else {
             onItem(null);
@@ -728,13 +733,13 @@
      * @param {Function} [options.onError=console.error] A callback to be called if an error
      *  occurred during the operation.
      */
-    query: function (onSuccess, options) {
+    query: function(onSuccess, options) {
       var result = [];
       options = options || {};
-      options.onEnd = function () {
+      options.onEnd = function() {
         onSuccess(result);
       };
-      this.iterate(function (item) {
+      this.iterate(function(item) {
         result.push(item);
       }, options);
     },
@@ -752,14 +757,14 @@
      * @param {Function} [options.onError=console.error] A callback to be called if an error
      *  occurred during the operation.
      */
-    count: function (onSuccess, options) {
+    count: function(onSuccess, options) {
 
       options = mixin({
         index: null,
         keyRange: null
       }, options || {});
 
-      var onError = options.onError || function (error) {
+      var onError = options.onError || function(error) {
         console.error('Could not open cursor.', error);
       };
 
@@ -770,10 +775,10 @@
       }
 
       var countRequest = cursorTarget.count(options.keyRange);
-      countRequest.onsuccess = function (evt) {
+      countRequest.onsuccess = function(evt) {
         onSuccess(evt.target.result);
       };
-      countRequest.onError = function (error) {
+      countRequest.onError = function(error) {
         onError(error);
       };
     },
@@ -797,13 +802,13 @@
      *  bound passed in options.upper from the key range
      * @return {Object} The IDBKeyRange representing the specified options
      */
-    makeKeyRange: function(options){
+    makeKeyRange: function(options) {
       /*jshint onecase:true */
       var keyRange,
-          hasLower = typeof options.lower != 'undefined',
-          hasUpper = typeof options.upper != 'undefined';
+        hasLower = typeof options.lower != 'undefined',
+        hasUpper = typeof options.upper != 'undefined';
 
-      switch(true){
+      switch (true) {
         case hasLower && hasUpper:
           keyRange = this.keyRange.bound(options.lower, options.upper, options.excludeLower, options.excludeUpper);
           break;
@@ -825,10 +830,9 @@
 
   /** helpers **/
 
-  var noop = function () {
-  };
+  var noop = function() {};
   var empty = {};
-  var mixin = function (target, source) {
+  var mixin = function(target, source) {
     var name, s;
     for (name in source) {
       s = source[name];

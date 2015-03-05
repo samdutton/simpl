@@ -7,7 +7,7 @@ var customers = new IDBStore({
   storeName: 'customer',
   keyPath: 'id',
   autoIncrement: true,
-  onStoreReady: function(){
+  onStoreReady: function() {
     console.log('Store ready!');
   }
 });
@@ -22,11 +22,11 @@ var dude = {
   ]
 };
 
-var onsuccess = function(id){
+var onsuccess = function(id) {
   console.log('Yeah, dude inserted! insertId is: ' + id);
 };
 
-var onerror = function(error){
+var onerror = function(error) {
   console.log('Oh noes, sth went wrong!', error);
 };
 

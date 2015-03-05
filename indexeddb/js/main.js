@@ -1,8 +1,10 @@
 'use strict';
 
-var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB;
+var indexedDB = window.indexedDB || window.webkitIndexedDB ||
+    window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB;
 
-var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
+var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction ||
+    window.OIDBTransaction || window.msIDBTransaction;
 
 var dbVersion = 1.0;
 
@@ -18,14 +20,13 @@ function getImageFile() {
   putElephantInDb('blah');
 }
 
-function getTransaction(){
+function getTransaction() {
   var transaction;
-  try {
-  } catch(event0) {
+  try {} catch (event0) {
     try {
       transaction = db.transaction(['songs'], IDBTransaction.READ_WRITE);
       console.log('transaction: ', transaction);
-    } catch(event1) {
+    } catch (event1) {
       console.log('Error creating transaction: ', event1);
     }
   }
@@ -37,7 +38,7 @@ function putElephantInDb(blob) {
   var transaction = getTransaction();
   //  var put = transaction.objectStore('songs').put(blob, 'image');
   transaction.objectStore('songs').put(blob, 'image');
-  transaction.objectStore('songs').get('image').onsuccess = function (event) {
+  transaction.objectStore('songs').get('image').onsuccess = function(event) {
     console.log(event.target.result);
   };
 }
@@ -56,21 +57,20 @@ request.onsuccess = function(event) {
   if (db.setVersion) {
     if (db.version !== dbVersion) {
       var setVersion = db.setVersion(dbVersion);
-      setVersion.onsuccess = function () {
+      setVersion.onsuccess = function() {
         createObjectStore(db);
         getImageFile();
       };
     } else {
-    getImageFile();
+      getImageFile();
     }
-  }
-  else {
+  } else {
     getImageFile();
   }
 };
 
 // For future use. Currently only in latest Firefox versions.
 // GI: might be good to have the versions for FF,Chrome and IE (10:) here.
-request.onupgradeneeded = function (event) {
+request.onupgradeneeded = function(event) {
   createObjectStore(event.target.result);
 };

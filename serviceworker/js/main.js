@@ -7,7 +7,7 @@ if ('serviceWorker' in navigator) {
     scope: './'
   }).then(function(registrationObject) {
     console.log('Registration succeeded', registrationObject);
-  }).catch (function(e) {
+  }).catch(function(e) {
     console.log('Registration failed', e);
   });
 }

@@ -3,7 +3,7 @@
 var button = document.querySelector('button');
 var video = document.querySelector('video');
 
-button.onclick = function(){
+button.onclick = function() {
   if (video.paused) {
     video.play();
     button.textContent = 'Pause';
@@ -13,13 +13,12 @@ button.onclick = function(){
   }
 };
 
-video.onplay = function(){
+video.onplay = function() {
   button.textContent = 'Pause';
 };
 
-video.onloadedmetadata = function(){
+video.onloadedmetadata = function() {
   video.play();
   var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'Playing video: ' + fileName;
 };
-

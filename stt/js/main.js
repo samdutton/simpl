@@ -3,12 +3,13 @@
 /* globals SpeechRecognition */
 
 var data = document.querySelector('p#data');
-function log(message){
+
+function log(message) {
   data.innerHTML = message + '<br><br>' + data.innerHTML;
 }
 
-
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+window.SpeechRecognition = window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 recognition.continuous = true;
 recognition.interimResults = true;
@@ -44,7 +45,6 @@ recognition.onerror = function(event) {
 };
 
 var startButton = document.querySelector('button#startButton');
-startButton.onclick = function(){
+startButton.onclick = function() {
   recognition.start();
 };
-

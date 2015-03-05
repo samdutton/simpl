@@ -2,8 +2,7 @@ RedirectMatch 301 /ajax /xhr
 RedirectMatch 301 /alpha /videoalpha
 RedirectMatch 301 /br$ /vibrate
 RedirectMatch 301 /cds$ /chrome/index.html
-RedirectMatch 301 /ck$ /eme/clearkey/src
-RedirectMatch 301 /clearkey$ /eme/clearkey/src
+RedirectMatch 301 /ck$ /eme/clearkey/
 RedirectMatch 301 /cpt$ /canplaytype
 RedirectMatch 301 /d$ /rtcdatachannel/
 RedirectMatch 301 /datachannel /rtcdatachannel/

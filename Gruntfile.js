@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         options: {
           import: 2
         },
-        src: ['**/*.css','!node_modules/**/*']
+        src: ['**/*.css', '!node_modules/**/*']
       }
     },
 
@@ -47,8 +47,7 @@ module.exports = function(grunt) {
       files: ['**/main.js']
     }
 
-});
-
+  });
 
   // enable plugins
   grunt.loadNpmTasks('grunt-contrib-csslint');

@@ -14,7 +14,8 @@ function gotSources(sourceInfos) {
     var option = document.createElement('option');
     option.value = sourceInfo.id;
     if (sourceInfo.kind === 'audio') {
-      option.text = sourceInfo.label || 'microphone ' + (audioSelect.length + 1);
+      option.text = sourceInfo.label ||
+          'microphone ' + (audioSelect.length + 1);
       audioSelect.appendChild(option);
     } else if (sourceInfo.kind === 'video') {
       option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
@@ -25,25 +26,24 @@ function gotSources(sourceInfos) {
   }
 }
 
-if (typeof MediaStreamTrack === 'undefined'){
-  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome Canary.');
+if (typeof MediaStreamTrack === 'undefined') {
+  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
 } else {
   MediaStreamTrack.getSources(gotSources);
 }
-
 
 function successCallback(stream) {
   window.stream = stream; // make stream available to console
   videoElement.src = window.URL.createObjectURL(stream);
   videoElement.play();
-   MediaStreamTrack.getSources(gotSources);
+  MediaStreamTrack.getSources(gotSources);
 }
 
-function errorCallback(error){
+function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-function start(){
+function start() {
   if (!!window.stream) {
     videoElement.src = null;
     window.stream.stop();
@@ -52,10 +52,14 @@ function start(){
   var videoSource = videoSelect.value;
   var constraints = {
     audio: {
-      optional: [{sourceId: audioSource}]
+      optional: [{
+        sourceId: audioSource
+      }]
     },
     video: {
-      optional: [{sourceId: videoSource}]
+      optional: [{
+        sourceId: videoSource
+      }]
     }
   };
   navigator.getUserMedia(constraints, successCallback, errorCallback);

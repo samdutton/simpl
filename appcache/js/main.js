@@ -46,6 +46,7 @@ function handleCacheError(e) {
 }
 
 var data = document.getElementById('data');
-function log(text){
+
+function log(text) {
   data.innerHTML += text + '<br />';
 }

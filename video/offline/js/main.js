@@ -9,9 +9,11 @@
 
 var video = document.querySelector('video');
 
-function getVideo(fileEntry){
+function getVideo(fileEntry) {
   GET('../video/chrome.webm', function(uInt8Array) {
-    var blob = new Blob([uInt8Array], {type: 'video/webm'});
+    var blob = new Blob([uInt8Array], {
+      type: 'video/webm'
+    });
     writeToFile(fileEntry, blob);
   });
 }
@@ -31,7 +33,6 @@ function GET(url, callback) {
   };
 }
 
-
 // code adapted from HTML5 Rocks article by Eric Bidelman
 // http://www.html5rocks.com/en/tutorials/file/filesystem/
 
@@ -40,27 +41,32 @@ function GET(url, callback) {
 // write to the file
 // read from the file
 
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+window.requestFileSystem =
+  window.requestFileSystem || window.webkitRequestFileSystem;
 
-window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/,
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024 /*5MB*/ ,
   handleInitSuccess, handleError);
 
 var fileSystem;
+
 function handleInitSuccess(fileSystem) {
   window.fileSystem = fileSystem;
   log('Initiated FileSystem: ' + fileSystem.name);
   createFile('video.webm');
 }
 
-function createFile(fullPath){
-  fileSystem.root.getFile(fullPath, {create: true, /*exclusive: true*/},
+function createFile(fullPath) {
+  fileSystem.root.getFile(fullPath, {
+      create: true,
+      /*exclusive: true*/
+    },
     function(fileEntry) {
       log('Created file: ' + fileEntry.fullPath);
       getVideo(fileEntry);
-  }, handleError);
+    }, handleError);
 }
 
-function writeToFile(fileEntry, blob){
+function writeToFile(fileEntry, blob) {
   // Create a FileWriter object for fileEntry
   fileEntry.createWriter(function(fileWriter) {
     fileWriter.onwriteend = function() {
@@ -76,7 +82,7 @@ function writeToFile(fileEntry, blob){
   }, handleError);
 }
 
-function readFromFile(fullPath){
+function readFromFile(fullPath) {
   fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
     // Get a File object representing the file, then use FileReader to read its contents.
     fileEntry.file(function(file) {
@@ -116,13 +122,14 @@ function handleError(e) {
 }
 
 var data = document.getElementById('data');
-function log(text){
+
+function log(text) {
   data.innerHTML += text + '<br />';
 }
 
-document.querySelector('video').addEventListener('loadedmetadata', function(){
+document.querySelector('video').addEventListener('loadedmetadata', function() {
   var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'currentSrc: ' + fileName +
-    '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this.videoHeight + 'px';
+    '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this
+    .videoHeight + 'px';
 });
-

@@ -5,10 +5,10 @@ window.addEventListener("message", function(event) {
 
 var childWindow = document.querySelector("iframe").contentWindow;
 
-childWindow.onload = function(){
+childWindow.onload = function() {
   childWindow.postMessage("Hi from index.html!", "*");
 }
 
-function log(message){
+function log(message) {
   document.getElementById("data").innerHTML += message + "<br /><br />";
 }
