@@ -14,7 +14,7 @@ function gotSources(sourceInfos) {
     option.value = sourceInfo.id;
     if (sourceInfo.kind === 'audio') {
       option.text = sourceInfo.label || 'microphone ' +
-          (audioSelect.length + 1);
+        (audioSelect.length + 1);
       audioSelect.appendChild(option);
     } else if (sourceInfo.kind === 'video') {
       option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
@@ -25,7 +25,8 @@ function gotSources(sourceInfos) {
   }
 }
 
-if (typeof MediaStreamTrack === 'undefined') {
+if (typeof MediaStreamTrack === 'undefined' ||
+    typeof MediaStreamTrack.getSources === 'undefined') {
   alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
 } else {
   MediaStreamTrack.getSources(gotSources);

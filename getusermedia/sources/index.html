@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="../../css/main.css" />
 
-	<style>
+  <style>
   div.select {
     margin: 0 0 1em 0;
   }
@@ -25,12 +25,32 @@
 </head>
 
 <body>
-<style type="text/css">
-<!--
-.display_archive {font-family: arial,verdana; font-size: 12px;}
-.campaign {line-height: 125%; margin: 5px;}
-//-->
-</style>
-<script language="javascript" src="http://us10.campaign-archive1.com/generate-js/?u=10daef16af68e769196fa61dd&fid=89&show=10" type="text/javascript"></script>
+
+<div id="container">
+
+  <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> MediaStreamTrack.getSources</h1>
+
+  <div class="select">
+    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+  </div>
+
+  <div class="select">
+    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+  </div>
+
+  <video muted autoplay></video>
+
+  <script src="js/main.js"></script>
+
+  <p>This demo requires Chrome 30 or later.</p>
+
+  <p>For more information, see <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
+
+<a href="https://github.com/samdutton/simpl/blob/master/getusermedia/sources/js/main.js" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../../js/lib/ga.js"></script>
+
 </body>
 </html>
