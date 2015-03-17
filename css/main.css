@@ -99,6 +99,13 @@ div#container {
   padding: 1em 1.5em 1.3em 1.5em;
 }
 
+div#highlight {
+  border: 1px solid #666;
+  font-size: 1.2em;
+  margin: 0 0 50px 0;
+  padding: 0 1em 0 1em;
+}
+
 div#links {
   padding: 0.5em 0 0 0;
 }

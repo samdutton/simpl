@@ -37,6 +37,7 @@ function createFile(fullPath) {
 
 function writeToFile(fileEntry, text) {
   // Create a FileWriter object for fileEntry
+  window.fileEntry = fileEntry;
   fileEntry.createWriter(function(fileWriter) {
     fileWriter.onwriteend = function() {
       // read from file
