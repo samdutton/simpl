@@ -27,25 +27,25 @@ var rubbles = array.filter(function(element /*, index, array */ ) {
   return element.email.indexOf('rubble') !== -1;
 });
 
-rubbles.forEach(function(element /*, index, array */ ) {
+rubbles.forEach(function(element /*, index, array */) {
   log(element.name + ' ');
 });
 
-var hasFlintstones = array.some(function(element /*, index, array */ ) {
+var hasFlintstones = array.some(function(element /*, index, array */) {
   return element.name.indexOf('Flintstone') !== -1;
 });
 
 log('<br />Use some() to check if the array contains any Flintstones:<br />' +
     'any Flintstones? ' + hasFlintstones);
 
-var allFlintstones = array.every(function(element /*, index, array */ ) {
+var allFlintstones = array.every(function(element /*, index, array */) {
   return element.name.indexOf('Flintstone') !== -1;
 });
 
 log('<br />Use every() to check if the array is all Flintstones:<br />' +
     'all Flinstones? ' + allFlintstones);
 
-var firstNames = array.map(function(element /*, index, array */ ) {
+var firstNames = array.map(function(element /*, index, array */) {
   return element.name.split(' ')[0];
 });
 
