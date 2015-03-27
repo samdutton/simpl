@@ -4,9 +4,9 @@
 simpl
 =====
 
-[simpl.info](http://www.simpl.info) is a website for simplest-possible code examples, nothing more.
+[simpl.info](http://www.simpl.info) is a website for simplest-possible code examples.
 
-I also maintain a [list of resources]https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I/edit#) for information about HTML, CSS and JavaScript.
+I also maintain a [list of resources](https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I/edit#) for working with HTML, CSS and JavaScript.
 
 Your contributions and comments are welcome.
 
