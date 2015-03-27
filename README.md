@@ -1,4 +1,5 @@
-![Travis](https://travis-ci.org/samdutton/simpl.svg?branch=demo-updates)
+[![Build Status](https://travis-ci.org/samdutton/simpl.svg)](https://travis-ci.org/samdutton/simpl)
+
 
 
 simpl
