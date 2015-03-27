@@ -23,7 +23,7 @@ log('Array:<br />' + JSON.stringify(array).replace(/},/g, '},<br />') +
 
 log('Use filter() and forEach() to show people with rubble.com emails:');
 
-var rubbles = array.filter(function(element /*, index, array */ ) {
+var rubbles = array.filter(function(element /*, index, array */) {
   return element.email.indexOf('rubble') !== -1;
 });
 
