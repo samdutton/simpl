@@ -1,7 +1,9 @@
 [![Build Status](https://travis-ci.org/samdutton/simpl.svg)](https://travis-ci.org/samdutton/simpl)
 
-Check out my new blog post: [High performance HTML](//samdutton.wordpress.com/2015/04/02/high-performance-html/)
 
+<div style="border: 1px solid #eee; padding: 10px">
+  <p>Check out my new blog post: <a href="//samdutton.wordpress.com/2015/04/02/high-performance-html/" title="Blog post about how to write clean, concise HTML">High performance HTML</a>.</p>
+</div>
 
 simpl
 =====
