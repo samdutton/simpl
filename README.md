@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/samdutton/simpl.svg)](https://travis-ci.org/samdutton/simpl)
 
+Check out my new blog post: [High performance HTML](//samdutton.wordpress.com/2015/04/02/high-performance-html/)
 
 
 simpl
