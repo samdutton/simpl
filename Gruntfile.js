@@ -21,6 +21,12 @@ module.exports = function(grunt) {
       }
     },
 
+    githooks: {
+      all: {
+        'pre-commit': 'csslint htmlhint jscs jshint'
+      }
+    },
+
     htmlhint: {
       default: {
         src: ['**/*.html', '!node_modules/**/*']
@@ -54,6 +60,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-htmlhint');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-githooks');
 
   // set default tasks to run when grunt is called without parameters
   grunt.registerTask('default', ['csslint', 'htmlhint', 'jscs', 'jshint']);
