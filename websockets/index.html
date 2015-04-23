@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<base target="_blank">
+<title>websockets</title>
+<link rel="stylesheet" href="../css/main.css" />
+<style>
+  .input{ float: left; }
+  .output{ float: right; }
+
+  label, button, input, textarea{
+    display: block;
+    margin: 20px 0;
+    width: auto;
+  }
+
+  label {
+    color: white;
+    font-weight: bold;
+  }
+
+  button{
+    width: 15em;
+    height: 2em;
+  }
+
+  input {
+    width: 20em;
+  }
+
+  .log{
+    width: 20em;
+    height: 15em;
+    background-color: white;
+    padding: 10px;
+  }
+
+  .log p{
+    color: black;
+    padding: 0;
+    margin: 0px;
+    font-size: 13px;
+    font-family: courier;
+  }
+
+  p.msg{
+    color: green;
+  }
+  p.send{
+    color: blue;
+  }
+  p.err{
+    color: red;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> websockets</h1>
+
+  <p>A WebSocket connection is established with the server and kept open. </p>
+  <p>The default server will echo the send message. More info can be found at <a href="https://www.websocket.org/" title="WebSockets.org">WebSockets.org</a></p>
+
+  <div class="input">
+    <label for="serverInput">Server</label>
+    <input id="serverInput" type="text" value="ws://echo.websocket.org/">
+
+    <button id="connectButton">Connect</button>
+    <button id="disconnectButton" disabled>Disconnect</button>
+
+    <label for="textInput">Send text: </label>
+    <input id="textInput" type="text" />
+
+    <button id="sendButton" disabled>Send</button>
+  </div>
+
+  <div class="output">
+    <label for="log">Console</label>
+    <div id="log" class="log"></div>
+  </div>
+
+  <div style="clear:both;"></div>
+
+  <script src="js/main.js"></script>
+
+<a href="https://github.com/samdutton/simpl/blob/master/websockets/index.html" title="View source for this page on GitHub" id="viewSource">View source on github</a>
+</div>
+<script src="../js/lib/ga.js"></script>
+</body>
+</html>
