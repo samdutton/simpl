@@ -5,7 +5,6 @@
 // This demo is based on code at http://dev.w3.org/html5/spec/media-elements.html#text-track-api
 
 $(document).ready(function() {
-
   window.VTTCue = window.VTTCue || window.TextTrackCue;
 
   var audio = new Audio('audio/animalSounds.mp3');
@@ -77,7 +76,7 @@ $(document).ready(function() {
         cue.id = sound.id;
         window.track.addCue(cue);
         $('#soundButtons').append(
-          '<button class="playSound" id=" + sound.id + ">' + sound.id +
+          '<button class="playSound" id="' + sound.id + '">' + sound.id +
           '</button>');
       }
 
@@ -89,23 +88,20 @@ $(document).ready(function() {
       });
 
       function playSound(id) {
-        var cue = window.track.getCueById(id);
-        audio.currentTime = cue.startTime;
-        endTime = cue.endTime;
+        var thisCue = window.track.getCueById(id);
+        audio.currentTime = thisCue.startTime;
+        endTime = thisCue.endTime;
         audio.play();
       }
 
       $('button.playSound').click(function() {
         playSound(this.id);
       });
-
     });
 
     // if track element not supported
   } else {
     $('.isSupported').addClass('hidden');
     $('.isNotSupported').addClass('visible');
-
   }
-
 });

@@ -27,7 +27,7 @@ function trace(text) {
 function createConnection() {
   var servers = null;
   localPeerConnection = window.localPeerConnection =
-    new webkitRTCPeerConnection(servers, {
+    new webkitRTCPeerConnection(servers, {  // eslint-disable-line new-cap
       optional: [{
         RtpDataChannels: true
       }]
@@ -50,7 +50,7 @@ function createConnection() {
   sendChannel.onclose = handleSendChannelStateChange;
 
   remotePeerConnection = window.remotePeerConnection =
-    new webkitRTCPeerConnection(
+    new webkitRTCPeerConnection(  // eslint-disable-line new-cap
       servers, {
         optional: [{
           RtpDataChannels: true

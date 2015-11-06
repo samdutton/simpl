@@ -22,7 +22,9 @@ function getImageFile() {
 
 function getTransaction() {
   var transaction;
-  try {} catch (event0) {
+  try {
+    console.log('Try');
+  } catch (event0) {
     try {
       transaction = db.transaction(['songs'], IDBTransaction.READ_WRITE);
       console.log('transaction: ', transaction);
@@ -50,10 +52,11 @@ request.onerror = function(event) {
 request.onsuccess = function(event) {
   console.log('Request success: ', event);
   db = request.result;
-  db.onerror = function(event) {
-    console.log('Database error:', event);
+  db.onerror = function(error) {
+    console.log('Database error:', error);
   };
-  // Interim solution for Google Chrome to create an objectStore. Will be deprecated.
+  // Interim solution for Google Chrome to create an objectStore.
+  // Will be deprecated.
   if (db.setVersion) {
     if (db.version !== dbVersion) {
       var setVersion = db.setVersion(dbVersion);

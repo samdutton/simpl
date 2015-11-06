@@ -10,7 +10,7 @@
 var video = document.querySelector('video');
 
 function getVideo(fileEntry) {
-  GET('../video/chrome.webm', function(uInt8Array) {
+  get('../video/chrome.webm', function(uInt8Array) {
     var blob = new Blob([uInt8Array], {
       type: 'video/webm'
     });
@@ -18,7 +18,7 @@ function getVideo(fileEntry) {
   });
 }
 
-function GET(url, callback) {
+function get(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.responseType = 'arraybuffer';
@@ -42,12 +42,10 @@ function GET(url, callback) {
 // read from the file
 
 window.requestFileSystem =
-  window.requestFileSystem || window.webkitRequestFileSystem;
+window.requestFileSystem || window.webkitRequestFileSystem;
 
-window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024 /*5MB*/ ,
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, // 5MB
   handleInitSuccess, handleError);
-
-var fileSystem;
 
 function handleInitSuccess(fileSystem) {
   window.fileSystem = fileSystem;
@@ -56,14 +54,14 @@ function handleInitSuccess(fileSystem) {
 }
 
 function createFile(fullPath) {
-  fileSystem.root.getFile(fullPath, {
-      create: true,
-      /*exclusive: true*/
-    },
-    function(fileEntry) {
-      log('Created file: ' + fileEntry.fullPath);
-      getVideo(fileEntry);
-    }, handleError);
+  window.fileSystem.root.getFile(fullPath, {
+    create: true
+    /* exclusive: true */
+  },
+  function(fileEntry) {
+    log('Created file: ' + fileEntry.fullPath);
+    getVideo(fileEntry);
+  }, handleError);
 }
 
 function writeToFile(fileEntry, blob) {
@@ -83,8 +81,9 @@ function writeToFile(fileEntry, blob) {
 }
 
 function readFromFile(fullPath) {
-  fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
-    // Get a File object representing the file, then use FileReader to read its contents.
+  window.fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
+    // Get a File object representing the file
+    // then use FileReader to read its contents
     fileEntry.file(function(file) {
       var reader = new FileReader();
       reader.onloadend = function() {
@@ -94,30 +93,29 @@ function readFromFile(fullPath) {
       // reader.readAsDataURL(file);
       reader.readAsArrayBuffer(file);
     }, handleError);
-
   }, handleError);
 }
 
 function handleError(e) {
   switch (e.code) {
-    case FileError.QUOTA_EXCEEDED_ERR:
-      log('QUOTA_EXCEEDED_ERR');
-      break;
-    case FileError.NOT_FOUND_ERR:
-      log('NOT_FOUND_ERR');
-      break;
-    case FileError.SECURITY_ERR:
-      log('SECURITY_ERR');
-      break;
-    case FileError.INVALID_MODIFICATION_ERR:
-      log('INVALID_MODIFICATION_ERR');
-      break;
-    case FileError.INVALID_STATE_ERR:
-      log('INVALID_STATE_ERR');
-      break;
-    default:
-      log('Unknown error');
-      break;
+  case FileError.QUOTA_EXCEEDED_ERR:
+    log('QUOTA_EXCEEDED_ERR');
+    break;
+  case FileError.NOT_FOUND_ERR:
+    log('NOT_FOUND_ERR');
+    break;
+  case FileError.SECURITY_ERR:
+    log('SECURITY_ERR');
+    break;
+  case FileError.INVALID_MODIFICATION_ERR:
+    log('INVALID_MODIFICATION_ERR');
+    break;
+  case FileError.INVALID_STATE_ERR:
+    log('INVALID_STATE_ERR');
+    break;
+  default:
+    log('Unknown error');
+    break;
   }
 }
 
@@ -130,6 +128,6 @@ function log(text) {
 document.querySelector('video').addEventListener('loadedmetadata', function() {
   var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'currentSrc: ' + fileName +
-    '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this
-    .videoHeight + 'px';
+  '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this
+  .videoHeight + 'px';
 });

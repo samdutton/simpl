@@ -28,12 +28,11 @@ recognition.onresult = function(event) {
     if (result.isFinal) {
       log('Final transcript: ' + results[0][0].transcript);
       recognition.stop();
-      return;
     } else {
       interimTranscript += result[0].transcript;
+      log('Interim transcript: ' + interimTranscript);
     }
   }
-  log('Interim transcript: ' + interimTranscript);
 };
 
 recognition.onend = function() {

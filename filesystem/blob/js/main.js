@@ -11,12 +11,11 @@
 // read from the file
 
 window.requestFileSystem = window.requestFileSystem ||
-    window.webkitRequestFileSystem;
+  window.webkitRequestFileSystem;
 
-window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024 /*5MB*/ ,
+// 5MB
+window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024,
   handleInitSuccess, handleError);
-
-var fileSystem;
 
 function handleInitSuccess(fileSystem) {
   window.fileSystem = fileSystem;
@@ -25,14 +24,13 @@ function handleInitSuccess(fileSystem) {
 }
 
 function createFile(fullPath) {
-  fileSystem.root.getFile(fullPath, {
-      create: true,
-      /*exclusive: true*/
-    },
-    function(fileEntry) {
-      log('Created file: ' + fileEntry.fullPath);
-      writeToFile(fileEntry, 'Greetings from success callback!');
-    }, handleError);
+  window.fileSystem.root.getFile(fullPath, {
+    create: true
+  },
+  function(fileEntry) {
+    log('Created file: ' + fileEntry.fullPath);
+    writeToFile(fileEntry, 'Greetings from success callback!');
+  }, handleError);
 }
 
 function writeToFile(fileEntry, text) {
@@ -56,8 +54,9 @@ function writeToFile(fileEntry, text) {
 }
 
 function readFromFile(fullPath) {
-  fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
-    // Get a File object representing the file, then use FileReader to read its contents.
+  window.fileSystem.root.getFile(fullPath, {}, function(fileEntry) {
+    // Get a File object representing the file
+    // then use FileReader to read its contents
     fileEntry.file(function(file) {
       var reader = new FileReader();
       reader.onloadend = function() {
@@ -65,30 +64,29 @@ function readFromFile(fullPath) {
       };
       reader.readAsText(file);
     }, handleError);
-
   }, handleError);
 }
 
 function handleError(e) {
   switch (e.code) {
-    case FileError.QUOTA_EXCEEDED_ERR:
-      log('QUOTA_EXCEEDED_ERR');
-      break;
-    case FileError.NOT_FOUND_ERR:
-      log('NOT_FOUND_ERR');
-      break;
-    case FileError.SECURITY_ERR:
-      log('SECURITY_ERR');
-      break;
-    case FileError.INVALID_MODIFICATION_ERR:
-      log('INVALID_MODIFICATION_ERR');
-      break;
-    case FileError.INVALID_STATE_ERR:
-      log('INVALID_STATE_ERR');
-      break;
-    default:
-      log('Unknown error');
-      break;
+  case FileError.QUOTA_EXCEEDED_ERR:
+    log('QUOTA_EXCEEDED_ERR');
+    break;
+  case FileError.NOT_FOUND_ERR:
+    log('NOT_FOUND_ERR');
+    break;
+  case FileError.SECURITY_ERR:
+    log('SECURITY_ERR');
+    break;
+  case FileError.INVALID_MODIFICATION_ERR:
+    log('INVALID_MODIFICATION_ERR');
+    break;
+  case FileError.INVALID_STATE_ERR:
+    log('INVALID_STATE_ERR');
+    break;
+  default:
+    log('Unknown error');
+    break;
   }
 }
 

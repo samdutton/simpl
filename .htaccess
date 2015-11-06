@@ -1,3 +1,4 @@
+RedirectMatch 301 /a$ /audio
 RedirectMatch 301 /ajax /xhr
 RedirectMatch 301 /alpha /videoalpha
 RedirectMatch 301 /br$ /vibrate
@@ -20,6 +21,7 @@ RedirectMatch 301 /gum$ /getusermedia/
 RedirectMatch 301 /input$ /inputtypes
 RedirectMatch 301 /jw$ /video/jwplayer/index.html
 RedirectMatch 301 /location$ /geolocation
+RedirectMatch 301 /lv$ /longvideo
 RedirectMatch 301 /map$ /track/map/index.html
 RedirectMatch 301 /mf$ /mediafragments
 RedirectMatch 301 /mo$ /mutationobserver
@@ -37,14 +39,12 @@ RedirectMatch 301 /rate$ /video/playbackRate.html
 RedirectMatch 301 /pm$ /postmessage
 RedirectMatch 301 /res$ /getusermedia/constraints
 RedirectMatch 301 /rt$ /resourcetiming
-RedirectMatch 301 /s$ /shearch/
 RedirectMatch 301 /scripted$ /video/scripted/
 RedirectMatch 301 /search$ /shearch/
 RedirectMatch 301 /sources$ /getusermedia/sources/index.html
 RedirectMatch 301 /sse$ /eventsource
 RedirectMatch 301 /summary$ /details
 RedirectMatch 301 /sw$ /serviceworker
-RedirectMatch 301 /t$ /track/
 RedirectMatch 301 /ua$ /useragent
 RedirectMatch 301 /unyt$ /video/youtube/unresponsive/
 RedirectMatch 301 /v$ /video
@@ -53,7 +53,7 @@ RedirectMatch 301 /ve$ /video/events
 RedirectMatch 301 /video2014$ https://docs.google.com/presentation/d/1Hl3kXhD8hMkXE_kHEUBqG6lYGcykFLBp5402LhOKUjI
 RedirectMatch 301 /wa$ /webaudio
 RedirectMatch 301 /webintents /stnetnibew
-RedirectMatch 301 /ww$ /web-workers
+RedirectMatch 301 /ww$ /webworkers
 RedirectMatch 301 /yt$ /video/youtube/
 RedirectMatch 301 /ytun$ /video/youtube/unresponsive/
 

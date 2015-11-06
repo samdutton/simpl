@@ -5,7 +5,6 @@ var qvgaButton = document.querySelector('button#qvga');
 var hdButton = document.querySelector('button#hd');
 var dimensions = document.querySelector('p#dimensions');
 var video = document.querySelector('video');
-var stream;
 
 navigator.getUserMedia = navigator.getUserMedia ||
   navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -68,9 +67,9 @@ hdButton.onclick = function() {
 };
 
 function getMedia(constraints) {
-  if (!!stream) {
+  if (window.stream) {
     video.src = null;
-    stream.stop();
+    window.stream.stop();
   }
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }

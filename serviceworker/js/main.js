@@ -1,13 +1,17 @@
 'use strict';
 
 if ('serviceWorker' in navigator) {
-  console.log('serviceWorker in navigator');
-  navigator.serviceWorker.register('js/sw.js', {
-    // scope is relative to index.html
+  console.log('Service Worker is supported :^)');
+  // scope and URLs are relative to index.html
+  navigator.serviceWorker.register('sw.js', {
     scope: './'
   }).then(function(registrationObject) {
     console.log('Registration succeeded', registrationObject);
-  }).catch(function(e) {
-    console.log('Registration failed', e);
+  }).catch(function(error) {
+    console.log('Registration failed — make sure to run via HTTPS or localhost',
+      error);
   });
+} else {
+  console.log('Service Worker is not supported :^(');
 }
+

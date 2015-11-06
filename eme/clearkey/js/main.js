@@ -1,6 +1,7 @@
 'use strict';
 
-// Define a key: hardcoded in this example – this corresponds to the key used for encryption
+// Define a key: hardcoded in this example
+// This corresponds to the key used for encryption
 var KEY = new Uint8Array([
   0xeb, 0xdd, 0x62, 0xf1, 0x68, 0x14, 0xd2, 0x7b,
   0x68, 0xef, 0x12, 0x2a, 0xfc, 0xe4, 0xae, 0x3c

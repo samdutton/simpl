@@ -1,6 +1,6 @@
 'use strict';
 
-/* globals webkitAudioContext */
+/* globals AudioContext, webkitAudioContext */
 
 // create an AudioContext
 // create an audio source node
@@ -10,10 +10,10 @@
 
 // cope with browser differences
 var context;
-if (typeof webkitAudioContext === 'function') {
-  context = new webkitAudioContext();
-} else if (typeof AudioContext === 'function') {
+if (typeof AudioContext === 'function') {
   context = new AudioContext();
+} else if (typeof webkitAudioContext === 'function') {
+  context = new webkitAudioContext(); // eslint-disable-line new-cap
 } else {
   alert('Sorry! Web Audio is not supported by this browser');
 }
@@ -25,14 +25,15 @@ var sourceNode = context.createMediaElementSource(audioElement);
 // connect the source node to a filter node
 var filterNode = context.createBiquadFilter();
 // see https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html#BiquadFilterNode-section
-filterNode.type = 0; // LOWPASS
-// cutoff frequency: for LOWPASS, audio is attenuated above this frequency
-filterNode.frequency.value = 300;
+filterNode.type = 'highpass';
+// cutoff frequency: for highpass, audio is attenuated below this frequency
+filterNode.frequency.value = 10000;
 
 sourceNode.connect(filterNode);
 // connect the filter node to a gain node (to change audio volume)
 var gainNode = context.createGain();
-// default is 1 (no change); less than 1 means audio is attenuated, and vice versa
+// default is 1 (no change); less than 1 means audio is attenuated
+// and vice versa
 gainNode.gain.value = 0.5;
 filterNode.connect(gainNode);
 

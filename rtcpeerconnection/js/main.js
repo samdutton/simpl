@@ -49,13 +49,13 @@ function start() {
   trace('Requesting local stream');
   startButton.disabled = true;
   navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
   navigator.getUserMedia({
-      video: true
-    }, gotStream,
-    function(error) {
-      trace('navigator.getUserMedia error: ', error);
-    });
+    video: true
+  }, gotStream,
+  function(error) {
+    trace('navigator.getUserMedia error: ', error);
+  });
 }
 
 function call() {
@@ -72,11 +72,13 @@ function call() {
 
   var servers = null;
 
-  localPeerConnection = new webkitRTCPeerConnection(servers);
+  localPeerConnection =
+    new webkitRTCPeerConnection(servers);  // eslint-disable-line new-cap
   trace('Created local peer connection object localPeerConnection');
   localPeerConnection.onicecandidate = gotLocalIceCandidate;
 
-  remotePeerConnection = new webkitRTCPeerConnection(servers);
+  remotePeerConnection =
+    new webkitRTCPeerConnection(servers);  // eslint-disable-line new-cap
   trace('Created remote peer connection object remotePeerConnection');
   remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
   remotePeerConnection.onaddstream = gotRemoteStream;

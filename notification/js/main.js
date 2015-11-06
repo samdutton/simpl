@@ -4,7 +4,9 @@
 
 // More information at https://developer.mozilla.org/en-US/docs/WebAPI/Using_Web_Notifications
 
-// Tags are used to avoid excessive notifications: if a tag is set in the options, only the most recent notification for this tag will be displayed.
+// Tags are used to avoid excessive notifications:
+// if a tag is set in the options, only the most recent
+// notification for this tag will be displayed.
 
 var button = document.querySelector('button');
 var input = document.querySelector('input');

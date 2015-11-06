@@ -5,7 +5,6 @@ function log(message) {
 }
 
 if (typeof navigator.onLine !== 'undefined') {
-
   if (navigator.onLine) {
     log('navigator.onLine says you\'re online');
   } else {
@@ -19,7 +18,6 @@ if (typeof navigator.onLine !== 'undefined') {
   window.onoffline = function() {
     log('window.ononline says you\'re offline.');
   };
-
 } else {
   log('Shame! navigator.onLine is not supported on this platform.');
 }

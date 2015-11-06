@@ -1,7 +1,6 @@
 'use strict';
 
 (function() {
-
   // Helper function to fetch a url
   function getUrl(url) {
     // Return a new promise.
@@ -61,9 +60,7 @@
 
     // Now let's add our nice list to the page
     addHtmlToPage(ul);
-
   }, function(error) {
     console.error('Failed! No feed for you :(', error);
   });
-
 })();

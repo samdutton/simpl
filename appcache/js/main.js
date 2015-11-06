@@ -1,9 +1,9 @@
 'use strict';
 
-// Adapted from Eric Bidelman's article at www.html5rocks.com/en/tutorials/appcache/beginner
+// Adapted from Eric Bidelman's article:
+// html5rocks.com/en/tutorials/appcache/beginner
 
 window.addEventListener('load', function() {
-
   log('Window <em>load</em> event');
 
   var appCache = window.applicationCache;
@@ -33,7 +33,6 @@ window.addEventListener('load', function() {
 
   // Fired when the manifest resources have been newly redownloaded.
   appCache.addEventListener('updateready', handleCacheEvent, false);
-
 }, false);
 
 function handleCacheEvent(e) {

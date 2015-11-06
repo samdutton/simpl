@@ -25,8 +25,7 @@ function findSong(text) {
     var statement = 'SELECT artist, song FROM songs WHERE artist LIKE "%' +
       text + '%" OR song like "%' + text + '%"';
     // array unused here: ? field values not used in query statement
-    tx.executeSql(statement, [], function(tx, results) {
-      tx = null; // dummy statement to avoid jshint errors...
+    tx.executeSql(statement, [], function(thisTx, results) {
       var numRows = results.rows.length;
       for (var i = 0; i !== numRows; ++i) {
         var row = results.rows.item(i);

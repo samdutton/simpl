@@ -20,6 +20,6 @@ log(
   'using querySelectorAll(\'div#bedrock p:nth-child(odd)\'): '
 );
 var oddParagraphs = document.querySelectorAll('div#bedrock p:nth-child(odd)');
-for (var i = 0; i !== oddParagraphs.length; ++i) {
+for (i = 0; i !== oddParagraphs.length; ++i) {
   log(oddParagraphs[i].innerHTML);
 }

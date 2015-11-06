@@ -9,7 +9,7 @@ var FILE = 'test.webm';
 var NUM_CHUNKS = 5;
 var video = document.querySelector('video');
 
-if (!!!window.MediaSource) {
+if (!window.MediaSource) {
   alert('The MediaSource API is not available on this platform');
 }
 
@@ -26,7 +26,7 @@ mediaSource.addEventListener('sourceopen', function() {
 
   log('MediaSource readyState: ' + this.readyState);
 
-  GET(FILE, function(uInt8Array) {
+  get(FILE, function(uInt8Array) {
     var file = new Blob([uInt8Array], {
       type: 'video/webm'
     });
@@ -38,7 +38,7 @@ mediaSource.addEventListener('sourceopen', function() {
     // Slice the video into NUM_CHUNKS and append each to the media element.
     var i = 0;
 
-    (function readChunk_(i) {
+    (function readChunk_(i) { // eslint-disable-line no-shadow
       var reader = new FileReader();
 
       // Reads aren't guaranteed to finish in the same order they're started in,
@@ -63,14 +63,13 @@ mediaSource.addEventListener('sourceopen', function() {
       reader.readAsArrayBuffer(chunk);
     })(i); // Start the recursive call by self calling.
   });
-
 }, false);
 
 mediaSource.addEventListener('sourceended', function() {
   log('MediaSource readyState: ' + this.readyState);
 }, false);
 
-function GET(url, callback) {
+function get(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.responseType = 'arraybuffer';
