@@ -1,0 +1,56 @@
+ button {
+  margin: 0 20px 20px 0;
+  width: 120px;
+}
+
+button#startButton {
+  margin:
+}
+
+button:last-of-type {
+  margin: 0;
+}
+
+p.borderBelow {
+  margin: 0 0 1.5em 0;
+  padding: 0 0 1.5em 0;
+}
+
+video {
+  height: 225px;
+  margin: 0 0 20px 0;
+  vertical-align: top;
+  width: calc(50% - 13px);
+}
+
+video#gumVideo {
+  margin: 0 20px 20px 0;
+}
+
+
+
+@media screen and (max-width: 500px) {
+
+ button {
+    width: 83px;
+  }
+
+  button {
+    margin: 0 11px 10px 0;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  video {
+    height: 90px;
+    margin: 0 0 10px 0;
+    width: calc(50% - 13px);
+  }
+
+  video#gumVideo {
+    margin: 0 10px 20px 0;
+  }
+
+}
