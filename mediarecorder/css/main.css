@@ -1,10 +1,8 @@
  button {
-  margin: 0 20px 20px 0;
-  width: 120px;
-}
-
-button#startButton {
-  margin:
+  margin: 0 3px 10px 0;
+  width: 98px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 button:last-of-type {
@@ -12,22 +10,24 @@ button:last-of-type {
 }
 
 p.borderBelow {
-  margin: 0 0 1.5em 0;
-  padding: 0 0 1.5em 0;
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
 }
 
 video {
   height: 225px;
-  margin: 0 0 20px 0;
+  margin: 0 12px 20px 0;
   vertical-align: top;
   width: calc(50% - 13px);
+}
+
+video:last-of-type {
+  margin: 0 0 20px 0;
 }
 
 video#gumVideo {
   margin: 0 20px 20px 0;
 }
-
-
 
 @media screen and (max-width: 500px) {
 
@@ -42,7 +42,6 @@ video#gumVideo {
 }
 
 @media screen and (max-width: 600px) {
-
   video {
     height: 90px;
     margin: 0 0 10px 0;
@@ -52,5 +51,4 @@ video#gumVideo {
   video#gumVideo {
     margin: 0 10px 20px 0;
   }
-
 }

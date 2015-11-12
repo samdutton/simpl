@@ -2,110 +2,117 @@
 
 /* globals MediaRecorder */
 
-// This code is shamelessly stelen from https://rawgit.com/Miguelao/demos/master/mediarecorder.html
-
-// Idea from: http://codepen.io/anon/pen/gpmPzm?editors=101, stuff received
-// data in |chunks|, then blobify it and plug the result in a <video>.
-//
-// The alternative is, e.g. [1, 2], using MediaSource where we basically pass
-// recorded chunks one by one into a MediaSource associated to a <video>.
-// MediaRecorder supposedly produces BlobEvents and Blobs are not friendly to
-// MediaSource-SourceBuffer, so there's an Experimental CL sending stuff as
-// an Uint8ArrayEvent.
-//
-// [1] http://html5-demos.appspot.com/static/media-source.html
-// [2] https://github.com/html5rocks/www.html5rocks.com/blob/master/content/tutorials/streaming/multimedia/en/index.md
-
-var recordedChunks = [];
+// This code is shamelessly stolen/adapted from
+// https://rawgit.com/Miguelao/demos/master/mediarecorder.html
 
 var mediaSource = new MediaSource();
+mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
+var mediaRecorder;
+var recordedChunks = [];
 var sourceBuffer;
 
-function mediaSourceOpened(e) {
-  console.log('MediaSource opened correctly');
+navigator.getUserMedia = navigator.getUserMedia ||
+navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+var constraints = {
+  audio: false,
+  video: true
+};
+
+var gumVideo = document.querySelector('video#gum');
+var recordedVideo = document.querySelector('video#recorded');
+// recordedVideo.src = URL.createObjectURL(mediaSource);
+
+var recordButton = document.querySelector('button#record');
+var playButton = document.querySelector('button#play');
+var downloadButton = document.querySelector('button#download');
+recordButton.onclick = toggleRecording;
+playButton.onclick = play;
+downloadButton.onclick = download;
+
+navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
+
+function handleSourceOpen(event) {
+  console.log('MediaSource opened');
   sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+  console.log('Source buffer: ', sourceBuffer);
 }
-mediaSource.addEventListener('sourceopen', mediaSourceOpened, false);
 
-createVideoTag('localview', 80, 60, '');
-createVideoTag('video', 320, 240, mediaSource);
-document.body.appendChild(document.createElement('br'));
+function handleGumSuccess(stream) {
+  console.log('getUserMedia() got stream: ', stream);
+  window.stream = stream; // make available to browser console
+  if (window.URL) {
+    gumVideo.src = window.URL.createObjectURL(stream);
+  } else {
+    gumVideo.src = stream;
+  }
+}
 
-function getUserMediaOkCallback(stream) {
-  console.log('getUserMedia succeeded :)');
-  theStream = stream;
-  document.getElementById('localview').src = URL.createObjectURL(stream);
-  createButton('btn2', 'Stop recording and play back',
-    stopStreamsAndPlaybackData);
-  createButton('btn3', 'Stop recording and download data',
-    'stopStreamsAndDownloadData');
+function handleGumError(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
 
+function handleDataAvailable(event) {
+  if (event.data.size > 0) {
+    recordedChunks.push(event.data);
+    console.assert(mediaRecorder.state === 'recording',
+      'State should be "recording"');
+  } else {
+    console.assert(mediaRecorder.state === 'inactive',
+      'State should be "inactive"');
+  }
+}
+
+function toggleRecording() {
+  if (recordButton.textContent === 'Start Recording') {
+    startRecording();
+    recordButton.textContent = 'Stop Recording';
+  } else {
+    stopRecording();
+    recordButton.textContent = 'Start Recording';
+  }
+}
+
+function startRecording() {
+  gumVideo.play();
   try {
-    recorder = new MediaRecorder(stream, 'video/vp8');
-  } catch (e) {
-    console.assert(false, 'Exception while creating MediaRecorder: ' + e);
+    mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
+    mediaRecorder.onstop = function(event) {
+      console.log('Recorder stopped: ', event);
+    };
+  } catch (event) {
+    alert('MediaRecorder is not supported by this browser.\n\n ' +
+        'Please try Chrome 47 or later.');
+    console.error('Exception while creating MediaRecorder:', event);
     return;
   }
-  console.assert(recorder.state == 'inactive');
-  recorder.ondataavailable = recorderOnDataAvailable;
-  recorder.onstop = recorderOnStop;
-  recorder.start();
-  console.log('Recorder is started');
-  console.assert(recorder.state == 'recording');
+  console.assert(mediaRecorder.state === 'inactive');
+  mediaRecorder.ondataavailable = handleDataAvailable;
+  mediaRecorder.start();
+  console.log('MediaRecorder started', mediaRecorder);
+  console.assert(mediaRecorder.state === 'recording');
 }
 
-function recorderOnDataAvailable(event) {
-  if (event) {
-    console.assert(event.data.size > 0, 'Recorded data size should be > 0');
-    if (event.data.size > 0) {
-      console.assert(recorder.state == 'recording',
-        'State should be "recording"');
-    } else {
-      console.assert(recorder.state == 'inactive',
-        'State should be "inactive"');
-    }
-  }
-
-  recordedChunks.push(event.data);
+function stopRecording() {
+  mediaRecorder.stop();
+  gumVideo.pause();
+  // window.stream.getVideoTracks()[0].stop();
 }
 
-function saveByteArray(data, name) {
-  var blob = new Blob(data, {
-    type: 'video/webm'
-  });
+function play() {
+  // sourceBuffer.appendBuffer(recordedChunks); // or...
+  var superBuffer = new Blob(recordedChunks);
+  recordedVideo.src = window.URL.createObjectURL(superBuffer);
+}
+
+function download() {
+  var blob = new Blob(recordedChunks, {type: 'video/webm'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   document.body.appendChild(a);
   a.style = 'display: none';
   a.href = url;
-  a.download = name;
+  a.download = 'test.webm';
   a.click();
-  URL.revokeObjectURL(url);
+  window.URL.revokeObjectURL(url);
 }
-
-function stopStreamsAndPlaybackData() {
-  document.getElementById('btn').disabled = true;
-  document.getElementById('btn2').disabled = true;
-  console.log('Stopping record and starting playback');
-  recorder.stop();
-  theStream.getVideoTracks()[0].stop();
-
-  // sourceBuffer.appendBuffer(recordedChunks);
-  // Or...
-  var superBuffer = new Blob(recordedChunks);
-  document.getElementById('video').src =
-  window.URL.createObjectURL(superBuffer);
-}
-
-function stopStreamsAndDownloadData() {
-  document.getElementById('btn').disabled = true;
-  document.getElementById('btn2').disabled = true;
-  console.log('Stopping record and starting playback');
-  recorder.stop();
-  theStream.getVideoTracks()[0].stop();
-
-  saveByteArray(recordedChunks, 'test.webm')();
-}
-
-createButton('btn', 'Start playback', makeGetStreamX(320, 240, 'btn',
-  getUserMediaOkCallback));
