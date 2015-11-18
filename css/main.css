@@ -157,8 +157,8 @@ input[type=radio] {
 }
 
 input[type=radio] {
-position: relative;
-top: -1px;
+  position: relative;
+  top: -1px;
 }
 
 ol {
@@ -219,7 +219,7 @@ ul {
 }
 
 section p:last-of-type {
-margin: 0;
+  margin: 0;
 }
 
 section {
@@ -275,3 +275,57 @@ video {
 }
 
 
+/* Twitter button from http://codepen.io/alistairtweedie/pen/JlFnq */
+
+.custom-follow-button a {
+  position: relative;
+  display: inline-block;
+  padding: 4px 6px 6px 4px;
+  border: 1px solid #ccc;
+  font-family: 'Helvetica Neue';
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  font-weight: bold;
+  background-color: #F8F8F8;
+  background-image:
+  -webkit-gradient(linear, left top, left bottom,from(#FFF),to(#DEDEDE));
+  background-image: -moz-linear-gradient(top,#FFF,#DEDEDE);
+  background-image: -o-linear-gradient(top,#FFF,#DEDEDE);
+  background-image: -ms-linear-gradient(top,#FFF,#DEDEDE);
+  border: #CCC solid 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.custom-follow-button a:hover  {
+  border-color: #BBB;
+  background-color: #F8F8F8;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#D9D9D9));
+  background-image: -moz-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: -o-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: -ms-linear-gradient(top,#F8F8F8,#D9D9D9);
+  background-image: linear-gradient(top,#F8F8F8,#D9D9D9);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.custom-follow-button a .btn-icon{
+  position: absolute;
+  width: 22px;
+  height: 18px;
+  top: 50%;
+  left: 7px;
+  margin-top: -9px;
+  background: url('../images/twitter.ico') 1px center no-repeat;
+  background-size: 18px;
+}
+.custom-follow-button a .btn-text{
+  display: inline-block;
+  padding: 2px 3px 0 28px;
+}
+
+/* Twitter button ends */

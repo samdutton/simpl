@@ -16,7 +16,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="icon" href="/favicon.ico" type="image/png" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" sizes="192x192" href="icon_192x192.png">
+  <link rel="icon" sizes="192x192" href="images/icon_192x192.png">
   <link rel="apple-touch-icon" href="/touch-icon-ipad.png" />
 
   <link rel="stylesheet" href="css/main.css" />
@@ -37,30 +37,34 @@
 
     <h1>simpl.info</h1>
 
-    <a href="https://twitter.com/sw12" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @sw12</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <div class="custom-follow-button">
+     <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fsimpl.info%2F&ref_src=twsrc%5Etfw&region=follow_link&screen_name=sw12&tw_p=followbutton" target="_blank" alt="Follow @sw12">
+       <i class="btn-icon"></i>
+       <span class="btn-text">Follow</span>
+     </a>
+   </div>
 
-    <p>This site aims to provide simplest possible examples of HTML, CSS and JavaScript.</p>
+   <p>This site aims to provide simplest possible examples of HTML, CSS and JavaScript.</p>
 
-    <p>There are shortcuts for many of these pages (see <a href="shortcuts" title="Full list of redirect URL shortcuts">full list</a>). For example, <a href="//simpl.info/v" title="Video element demo">simpl.info/v</a> redirects to <a href="//simpl.info/video" title="Video element demo">simpl.info/video</a>.</p>
+   <p>There are shortcuts for many of these pages (see <a href="shortcuts" title="Full list of redirect URL shortcuts">full list</a>). For example, <a href="//simpl.info/v" title="Video element demo">simpl.info/v</a> redirects to <a href="//simpl.info/video" title="Video element demo">simpl.info/video</a>.</p>
 
-    <p>I also maintain a <a href="https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I" title="HTML, CSS and JavaScript resources">list of resources</a> for tutorials, documentation and reference material.</p>
+   <p>I also maintain a <a href="https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I" title="HTML, CSS and JavaScript resources">list of resources</a> for tutorials, documentation and reference material.</p>
 
-    <p class="borderBelow">Submit bug reports, requests and comments at <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
+   <p class="borderBelow">Submit bug reports, requests and comments at <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
 
-    <div id="links">
-      <a href="xhr" title="Ajax (aka XMLHttpRequest) example">Ajax (aka XMLHttpRequest)</a>
-      <a href="appcache" title="Application Cache">AppCache</a>
-      <a href="array" title="Array methods">Array methods: some, every, filter, forEach, map</a>
-      <a href="audio" title="Audio element">&lt;audio&gt;</a>
-      <a href="audiodata" title="Audio Data API">Audio Data</a>
-      <a href="battery" title="Battery API">Battery API</a>
-      <a href="canplaytype" title="canPlayType()">canPlayType()</a>
-      <a href="canvas" title="Canvas element example">&lt;canvas&gt;</a>
-      <a href="cssfilters" title="CSS filters">CSS filters</a>
-      <a href="flexboxcenter" title="CSS flexbox center">CSS flexbox: center</a>
-      <a href="flexboxexpand" title="CSS flexbox expand-to-fit example">CSS flexbox: expand to fit</a>
-      <a href="cssnegativeselector" title="CSS negative selector example">CSS negative selector</a>
+   <div id="links">
+    <a href="xhr" title="Ajax (aka XMLHttpRequest) example">Ajax (aka XMLHttpRequest)</a>
+    <a href="appcache" title="Application Cache">AppCache</a>
+    <a href="array" title="Array methods">Array methods: some, every, filter, forEach, map</a>
+    <a href="audio" title="Audio element">&lt;audio&gt;</a>
+    <a href="audiodata" title="Audio Data API">Audio Data</a>
+    <a href="battery" title="Battery API">Battery API</a>
+    <a href="canplaytype" title="canPlayType()">canPlayType()</a>
+    <a href="canvas" title="Canvas element example">&lt;canvas&gt;</a>
+    <a href="cssfilters" title="CSS filters">CSS filters</a>
+    <a href="flexboxcenter" title="CSS flexbox center">CSS flexbox: center</a>
+    <a href="flexboxexpand" title="CSS flexbox expand-to-fit example">CSS flexbox: expand to fit</a>
+    <a href="cssnegativeselector" title="CSS negative selector example">CSS negative selector</a>
 <!--   <a href="cssoverflowscrolling" title="CSS overflow-scrolling example">CSS overflow-scrolling</a>
 -->
 <a href="csstextindent" title="CSS text-indent example">CSS text-indent</a>
@@ -144,18 +148,18 @@
 </div>  <!-- container -->
 
 <script>
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-33848682-1']);
-_gaq.push(['_trackPageview']);
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33848682-1']);
+  _gaq.push(['_trackPageview']);
 
-(function() {
-  var ga = document.createElement('script');
-  ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ?
-    'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(ga, s);
-})();
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ?
+      'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
 </script>
 
 </body>
