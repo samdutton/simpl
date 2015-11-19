@@ -1,0 +1,87 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+a {
+  color: #77aaff;
+}
+
+a.video {
+  border-bottom: 1px dotted #ddd;
+  display: block;
+  font-family: Roboto Condensed;
+  margin:0 0 1.5em 0;
+  padding: 0 0 2em 0;
+}
+
+body {
+  padding: 2em;
+}
+
+div#google_translate_element {
+  margin: 0 0 1em 0;
+}
+
+div#container {
+  margin: auto;
+  max-width: 42em;
+  width: 100%;
+}
+
+h1 {
+  font-family: Roboto Condensed, sans-serif;
+  font-size: 1.5em;
+  border-top: 1px solid #eee;
+  padding: 1em 0 0 0;
+  margin: 1em 0 0 0;
+}
+
+h2 {
+  color: #666;
+  font-family: Roboto Condensed;
+  font-size: 1.2em;
+}
+
+p {
+  color: #444;
+  font-family: Roboto;
+  font-weight: 200;
+  line-height: 1.7em;
+  margin: 0;
+  text-indent: 1.5em;
+}
+
+p.speaker {
+  margin: 1em 0 0 0;
+  text-indent: 0;
+}
+
+div.transcript > p:first-child {
+  text-indent: 0;
+}
+
+span.speaker {
+  color: black;
+  font-weight: 900;
+}
+
+span[data-start]:hover {
+  color: #cf402f;
+  cursor: pointer;
+}
+
+span[data-start].current {
+  color: #cf402f;
+}
+
+
+/* Google Translate */
+
+.goog-te-gadget-simple {
+    border-left: 1px solid #ccc !important;
+    border-top: 1px solid #ccc !important;
+    border-bottom: 1px solid #ccc !important;
+    border-right: 1px solid #ccc !important;
+    padding-top: 2px !important;
+    padding-bottom: 3px !important;
+}

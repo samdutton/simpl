@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+
+Copyright 2015 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Google developer video search." />
+  <meta name="author" content="//samdutton.com">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta itemprop="name" content="shearch.me: Google developer video search">
+  <meta itemprop="image" content="images/icon_192x192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <title>Google developer video search</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/png" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" sizes="192x192" href="images/icon_192x192.png">
+  <link rel="apple-touch-icon" href="/touch-icon-ipad.png" />
+
+  <link rel="stylesheet" href="css/main.css" />
+
+  <base target="_blank">
+
+</head>
+
+<body>
+  <div id="container">
+
+    <h1>Google developer video search</h1>
+
+    <form>
+      <div id="q">
+        <input placeholder="Search captions and all data" type="text" autofocus >
+        <button type="submit">Search</button>
+      </div>
+
+      <details id="searchOptions">
+
+        <summary>More search options</summary>
+
+        <div id="orderBy">
+          <label for="orderByField">Order by: </label>
+          <select id="orderByField">
+            <option value="publishedAt<string>">date</option>
+            <option value="viewCount">views</option>
+            <option value="likeCount">likes</option>
+            <option value="dislikeCount">dislikes</option>
+            <option value="commentCount">comments</option>
+          </select>
+          <select id="lessOrMore">
+            <option value="-">descending</option>
+            <option value="">ascending</option>
+          </select>
+        </div>
+
+        <div id="values">
+
+          <div>
+            <label for="captions">Captions: </label><input type="text" id="captions">
+          </div>
+          <div>
+            <label for="title">Title: </label><input type="text" id="title">
+          </div>
+          <div>
+            <label for="description">Description: </label><input type="text" id="description">
+          </div>
+          <div>
+            <label for="speaker">Speaker: </label><input id="speaker"  pattern="[\w -]+" title="One speaker name" type="text">
+          </div>
+          <div>
+            <label for="id">Video ID: </label><input id="id" pattern="[\w-]{11}" title="YouTube video ID" type="text">
+          </div>
+          <div>
+            <label for="from">Date from: </label><input type="date" id="from">
+          </div>
+          <div>
+            <label for="to">Date to: </label><input type="date" id="to">
+          </div>
+
+        </div>
+
+        <div id="quantities">
+
+          <div>
+            <label for="viewCount">Views: </label>
+            <select id="viewCountOperator">
+              <option value=">">more than</option>
+              <option value="<">less than</option>
+            </select>
+            <input id="viewCount" type="number">
+          </div>
+          <div>
+            <label for="likeCount">Likes: </label>
+            <select id="likeCountOperator">
+              <option value=">">more than</option>
+              <option value="<">less than</option>
+            </select>
+            <input id="likeCount" type="number">
+          </div>
+          <div>
+            <label for="dislikeCount">Dislikes: </label>
+            <select id="dislikeCountOperator">
+              <option value=">">more than</option>
+              <option value="<">less than</option>
+            </select>
+            <input id="dislikeCount" type="number">
+          </div>
+          <div>
+            <label for="commentCount">Comments: </label>
+            <select id="commentCountOperator">
+              <option value=">">more than</option>
+              <option value="<">less than</option>
+            </select>
+            <input id="commentCount" type="number">
+          </div>
+
+        </div>
+
+      </details>
+
+    </form>
+
+    <div id="info"></div>
+    <div id="queryInfo"></div>
+
+    <!-- begin results container, content generated dynamically -->
+    <div id="results"></div>
+    <!-- end results container, content generated dynamically -->
+
+    <!-- hidden by default, shown when there are results -->
+    <div id="previousPage" class="hidden">Previous ❮</div>
+    <div id="nextPage" class="hidden">❯ Next</div>
+
+  </div>
+
+  <script src="third_party/bower_components/better-dom/dist/better-dom.js"></script>
+  <script src="third_party/bower_components/better-details-polyfill/dist/better-details-polyfill.js"></script>
+  <script src="js/main.js"></script>
+  <script src="third_party/ga.js"></script>
+
+</body>
+
+</html>
