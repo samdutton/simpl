@@ -19,32 +19,27 @@
 
 </head>
 
-<body>
+<div id="container">
 
-  <div id="container">
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStream Recording</h1>
 
-    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStream Recording</h1>
+  <p>This demo requires Chrome 47 or later with <strong>Enable experimental Web Platform features</strong> enabled from chrome://flags.</p>
 
-    <p>This demo requires Chrome 47 or later.</p>
+  <p>For more information see the MediaStream Recording API <a href="http://w3c.github.io/mediacapture-record/MediaRecorder.html" title="W3C MediaStream Recording API Editor's Draft">Editor's Draft</a>.</p>
 
-    <p>For more information see the MediaStream Recording API <a href="http://w3c.github.io/mediacapture-record/MediaRecorder.html" title="W3C MediaStream Recording API Editor's Draft">Editor's Draft</a>.</p>
+  <video id="gum" autoplay></video>
+  <video id="recorded" autoplay controls loop></video>
 
-    <video id="gum" autoplay></video>
-    <video id="recorded" autoplay loop></video>
+  <div>
+    <button id="record">Start Recording</button>
+    <button id="play" disabled>Play</button>
+    <button id="download" disabled="">Download</button>
+  </div>
 
-    <div>
-      <button id="record">Start Recording</button>
-      <button id="play">Play</button>
-      <button id="download">Download</button>
-   </div>
+  <a href="//github.com/samdutton/simpl/blob/master/mediarecorder/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-   <script src="js/main.js"></script>
+</div>
 
-   <a href="//github.com/samdutton/simpl/blob/master/mediarecorder/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-
- </div>
-
- <script src="../js/lib/ga.js"></script>
-
-</body>
+<script src="js/main.js"></script>
+<script src="../js/lib/ga.js"></script>
 </html>

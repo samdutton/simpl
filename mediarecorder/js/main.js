@@ -67,14 +67,17 @@ function toggleRecording() {
   if (recordButton.textContent === 'Start Recording') {
     startRecording();
     recordButton.textContent = 'Stop Recording';
+    playButton.disabled = true;
+    downloadButton.disabled = true;
   } else {
     stopRecording();
     recordButton.textContent = 'Start Recording';
+    playButton.disabled = false;
+    downloadButton.disabled = false;
   }
 }
 
 function startRecording() {
-  gumVideo.play();
   try {
     mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
     mediaRecorder.onstop = function(event) {
@@ -82,7 +85,7 @@ function startRecording() {
     };
   } catch (event) {
     alert('MediaRecorder is not supported by this browser.\n\n ' +
-        'Please try Chrome 47 or later.');
+      'Please try Chrome 47 or later.');
     console.error('Exception while creating MediaRecorder:', event);
     return;
   }
@@ -95,7 +98,6 @@ function startRecording() {
 
 function stopRecording() {
   mediaRecorder.stop();
-  gumVideo.pause();
   // window.stream.getVideoTracks()[0].stop();
 }
 
