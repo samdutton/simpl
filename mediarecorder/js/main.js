@@ -31,7 +31,7 @@ playButton.onclick = play;
 downloadButton.onclick = download;
 
 // window.isSecureContext not available in Firefox
-var isSecureOrigin = location.protocol === 'https' ||
+var isSecureOrigin = location.protocol === 'https:' ||
   location.host === 'localhost';
 if (isSecureOrigin) {
   navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
