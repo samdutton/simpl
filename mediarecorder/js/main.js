@@ -5,12 +5,6 @@
 // This code is shamelessly stolen/adapted from
 // https://rawgit.com/Miguelao/demos/master/mediarecorder.html
 
-var isSecureOrigin = location.protocol === 'https' ||
-  location.host === 'localhost';
-if (!isSecureOrigin) {
-  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost');
-}
-
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
@@ -36,7 +30,14 @@ recordButton.onclick = toggleRecording;
 playButton.onclick = play;
 downloadButton.onclick = download;
 
-navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
+// window.isSecureContext not available in Firefox
+var isSecureOrigin = location.protocol === 'https' ||
+  location.host === 'localhost';
+if (isSecureOrigin) {
+  navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
+} else {
+  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost');
+}
 
 function handleSourceOpen(event) {
   console.log('MediaSource opened');
