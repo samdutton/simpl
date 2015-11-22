@@ -5,6 +5,12 @@
 // This code is shamelessly stolen/adapted from
 // https://rawgit.com/Miguelao/demos/master/mediarecorder.html
 
+var isSecureOrigin = location.protocol === 'https' ||
+  location.host === 'localhost';
+if (!isSecureOrigin) {
+  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost');
+}
+
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
