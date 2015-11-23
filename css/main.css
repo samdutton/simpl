@@ -290,11 +290,10 @@ video {
   font-weight: bold;
   background-color: #F8F8F8;
   background-image:
-  -webkit-gradient(linear, left top, left bottom,from(#FFF),to(#DEDEDE));
+  -moz-gradient(linear, left top, left bottom,from(#FFF),to(#DEDEDE));
   background-image: -moz-linear-gradient(top,#FFF,#DEDEDE);
   background-image: -o-linear-gradient(top,#FFF,#DEDEDE);
   background-image: -ms-linear-gradient(top,#FFF,#DEDEDE);
-  border: #CCC solid 1px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;

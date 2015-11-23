@@ -1,8 +1,13 @@
 {
   "adjoining-classes": false,
   "box-model": false,
+  "font-sizes": false,
+  "gradients": false,
   "ids": false,
+  "important": false,
   "known-properties": false,
+  "outline-none": false,
   "overqualified-elements": false,
+  "qualified-headings": false,
   "unique-headings": false
 }

@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
+      /* eslint max-len:0 */
+      google.load('visualization', '1', {packages: ['corechart']});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
@@ -20,7 +22,8 @@
 
         chart.draw(data, options);
       }
-    </script>
+</script>
+<title>Sample chart</title>
   </head>
   <body>
     <div id="chart_div" style="width: 100%; height: 500px;"></div>

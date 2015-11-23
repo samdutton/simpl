@@ -84,8 +84,8 @@ if (search) {
 }
 
 // Remove qInput value whenever text is entered in a value input
-for (var i = 0; i !== valueInputs.length; ++i) {
-  valueInputs[i].onkeydown = handleValueInputKeyDown;
+for (var vi = 0; vi !== valueInputs.length; ++vi) {
+  valueInputs[vi].onkeydown = handleValueInputKeyDown;
 }
 
 function handleValueInputKeyDown() {
@@ -132,7 +132,7 @@ function buildQueryString() {
       displayInfo('You entered a \'stop word\': a word excluded from search ' +
         'indexing. Try something else.');
       qInput.focus();
-      return;
+      return false;
     } else {
       queries.push('q=' + qInput.value);
     }
@@ -206,7 +206,6 @@ function queryDatabase(query) {
   // }).catch(function(error) {
   //   console.error('Caught fetch() error: ', error);
   // });
-
 }
 
 function handleDatabaseResponse(response) {
@@ -486,7 +485,7 @@ function hideNextPrevious() {
   previousPageElement.classList.add('hidden');
 }
 
-///////////// Utility functions
+// Utility functions
 
 function spaceToNonBreaking(item) {
   return item.replace(/ /gm, '&nbsp;');

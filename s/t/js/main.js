@@ -26,7 +26,7 @@ var videoId = location.search.split('id=')[1];
 if (videoId) {
   var match = videoId.match(/[\w-]{11}/);
   if (match) {
-    getAndDisplayTranscript(videoId);
+    getAndDisplayTranscript();
   } else {
     window.alert('That doesn\'t seem to be a valid YouTube ID:\n\n ' + videoId);
   }
@@ -37,7 +37,7 @@ if (videoId) {
     'simpl.info/s/t?id=ngBy0H_q-GY');
 }
 
-function getAndDisplayTranscript(videoId) {
+function getAndDisplayTranscript() {
   var baseUrl = location.host === 'localhost' ? // to enable testing
   'http://localhost:8080' : 'http://www.shearch.me';
   var url = baseUrl + '/' + videoId;
@@ -58,10 +58,8 @@ function getAndDisplayTranscript(videoId) {
 }
 
 function handleTranscriptRequest(results) {
-
   for (var i = 0; i !== results.length; ++i) {
     var video = results[i];
-    var videoId = video.id;
     videos[videoId] = {
       currentTime: 0,
       id: videoId,
@@ -155,7 +153,7 @@ function initPolling(video) {
   }, 100);
 }
 
-function addTranscriptClickHandler(span, videoId) {
+function addTranscriptClickHandler(span) {
   var start = span.getAttribute('data-start');
   span.title = start;
   span.onclick = function() {

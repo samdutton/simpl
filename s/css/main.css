@@ -329,9 +329,6 @@ span.inputLabel {
 details.matches span:hover {
   color: #cf402f;
 }
-.matches span[data-start] {
-  /* position: absolute; */
-}
 .speakers span {
   cursor: pointer;
 }

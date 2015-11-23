@@ -17,12 +17,6 @@ module.exports = function(grunt) {
           import: 2
         },
         src: ['**/*.css', '!node_modules/**/*']
-      },
-      lax: {
-        options: {
-          import: false
-        },
-        src: ['**/*.css', '!node_modules/**/*']
       }
     },
 
