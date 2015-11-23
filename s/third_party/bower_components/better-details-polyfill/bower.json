@@ -1,0 +1,21 @@
+{
+  "name": "better-details-polyfill",
+  "version": "2.1.0",
+  "main": [
+    "dist/better-details-polyfill.js"
+  ],
+  "ignore": [
+    ".*",
+    "test",
+    "src",
+    "index.html",
+    "package.json",
+    "bower.json"
+  ],
+  "keywords": [
+    "better-dom"
+  ],
+  "dependencies": {
+    "better-dom": "~2.1.0"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "better-details-polyfill",
+  "version": "2.1.0",
+  "main": [
+    "dist/better-details-polyfill.js"
+  ],
+  "ignore": [
+    ".*",
+    "test",
+    "src",
+    "index.html",
+    "package.json",
+    "bower.json"
+  ],
+  "keywords": [
+    "better-dom"
+  ],
+  "dependencies": {
+    "better-dom": "~2.1.0"
+  },
+  "homepage": "https://github.com/chemerisuk/better-details-polyfill",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "0013152fcbaf706dbb5e0359623650da99e526ed"
+  },
+  "_source": "git://github.com/chemerisuk/better-details-polyfill.git",
+  "_target": "~2.1.0",
+  "_originalSource": "better-details-polyfill",
+  "_direct": true
+}
