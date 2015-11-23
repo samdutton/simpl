@@ -18,7 +18,7 @@ video {
   height: 232px;
   margin: 0 12px 20px 0;
   vertical-align: top;
-  width: calc(50% - 10px);
+  width: calc(20em - 10px);
 }
 
 
@@ -31,25 +31,21 @@ video#gumVideo {
 }
 
 @media screen and (max-width: 500px) {
-
- button {
-    width: 83px;
-  }
-
   button {
-    margin: 0 11px 10px 0;
+    font-size: 0.7em;
+    margin: 0 3px 10px 0;
+    width: 88px;
   }
-
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
   video {
-    height: 90px;
-    margin: 0 0 10px 0;
-    width: calc(50% - 13px);
+    height: calc((50vw - 48px) * 3 / 4);
+    margin: 0 10px 10px 0;
+    width: calc(50vw - 48px);
   }
 
   video#gumVideo {
-    margin: 0 10px 20px 0;
+    margin: 0 10px 10px 0;
   }
 }

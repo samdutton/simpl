@@ -8,7 +8,7 @@
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
-var recordedChunks = [];
+var recordedBlobs = [];
 var sourceBuffer;
 
 navigator.getUserMedia = navigator.getUserMedia ||
@@ -32,12 +32,13 @@ downloadButton.onclick = download;
 
 // window.isSecureContext not available in Firefox
 var isSecureOrigin = location.protocol === 'https:' ||
-  location.host === 'localhost';
-if (isSecureOrigin) {
-  navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
-} else {
-  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost');
+location.host === 'localhost';
+if (!isSecureOrigin) {
+  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
+    '\n\nChanging protocol to HTTPS');
+  location.protocol = 'HTTPS';
 }
+navigator.getUserMedia(constraints, handleGumSuccess, handleGumError);
 
 function handleSourceOpen(event) {
   console.log('MediaSource opened');
@@ -61,7 +62,7 @@ function handleGumError(error) {
 
 function handleDataAvailable(event) {
   if (event.data.size > 0) {
-    recordedChunks.push(event.data);
+    recordedBlobs.push(event.data);
     console.assert(mediaRecorder.state === 'recording',
       'State should be "recording"');
   } else {
@@ -70,12 +71,13 @@ function handleDataAvailable(event) {
   }
 }
 
+function handleStop(event) {
+  console.log('Recorder stopped: ', event);
+}
+
 function toggleRecording() {
   if (recordButton.textContent === 'Start Recording') {
     startRecording();
-    recordButton.textContent = 'Stop Recording';
-    playButton.disabled = true;
-    downloadButton.disabled = true;
   } else {
     stopRecording();
     recordButton.textContent = 'Start Recording';
@@ -87,16 +89,17 @@ function toggleRecording() {
 function startRecording() {
   try {
     mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
-    mediaRecorder.onstop = function(event) {
-      console.log('Recorder stopped: ', event);
-    };
   } catch (event) {
-    alert('MediaRecorder is not supported by this browser.\n\n ' +
-      'Please try Chrome 47 or later.');
+    alert('MediaRecorder is not supported by this browser.\n\n' +
+      'Try Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
     console.error('Exception while creating MediaRecorder:', event);
     return;
   }
   console.assert(mediaRecorder.state === 'inactive');
+  recordButton.textContent = 'Stop Recording';
+  playButton.disabled = true;
+  downloadButton.disabled = true;
+  mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
   mediaRecorder.start();
   console.log('MediaRecorder started', mediaRecorder);
@@ -105,17 +108,19 @@ function startRecording() {
 
 function stopRecording() {
   mediaRecorder.stop();
+  console.log('Recorded Blobs: ', recordedBlobs);
   // window.stream.getVideoTracks()[0].stop();
 }
 
 function play() {
-  // sourceBuffer.appendBuffer(recordedChunks); // or...
-  var superBuffer = new Blob(recordedChunks);
+  // sourceBuffer.appendBuffer(recordedBlobs); // or...
+  var superBuffer = new Blob(recordedBlobs);
   recordedVideo.src = window.URL.createObjectURL(superBuffer);
+  recordedVideo.controls = true;
 }
 
 function download() {
-  var blob = new Blob(recordedChunks, {type: 'video/webm'});
+  var blob = new Blob(recordedBlobs, {type: 'video/webm'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   document.body.appendChild(a);
