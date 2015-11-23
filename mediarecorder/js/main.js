@@ -2,7 +2,7 @@
 
 /* globals MediaRecorder */
 
-// This code is shamelessly stolen/adapted from
+// This code is adapted from
 // https://rawgit.com/Miguelao/demos/master/mediarecorder.html
 
 var mediaSource = new MediaSource();
@@ -30,7 +30,7 @@ recordButton.onclick = toggleRecording;
 playButton.onclick = play;
 downloadButton.onclick = download;
 
-// window.isSecureContext not available in Firefox
+// window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
 location.host === 'localhost';
 if (!isSecureOrigin) {
@@ -122,12 +122,15 @@ function play() {
 
 function download() {
   var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  var url = URL.createObjectURL(blob);
+  var url = window.URL.createObjectURL(blob);
   var a = document.createElement('a');
-  document.body.appendChild(a);
   a.style = 'display: none';
   a.href = url;
   a.download = 'test.webm';
+  document.body.appendChild(a);
   a.click();
-  window.URL.revokeObjectURL(url);
+  setTimeout(function() {
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }, 100);
 }
