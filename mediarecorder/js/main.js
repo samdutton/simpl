@@ -8,7 +8,7 @@
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
-var recordedBlobs = [];
+var recordedBlobs;
 var sourceBuffer;
 
 navigator.getUserMedia = navigator.getUserMedia ||
@@ -88,7 +88,8 @@ function toggleRecording() {
 
 function startRecording() {
   try {
-    mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
+    recordedBlobs = [];
+    mediaRecorder = new MediaRecorder(window.stream /* , 'video/vp8' */);
   } catch (event) {
     alert('MediaRecorder is not supported by this browser.\n\n' +
       'Try Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');

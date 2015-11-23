@@ -1,8 +1,8 @@
  button {
   margin: 0 3px 10px 0;
-  width: 98px;
-  padding-left: 3px;
-  padding-right: 3px;
+  width: 99px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 button:last-of-type {
