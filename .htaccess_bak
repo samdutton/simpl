@@ -1,0 +1,85 @@
+RedirectMatch 301 /a$ /audio
+RedirectMatch 301 /ajax /xhr
+RedirectMatch 301 /alpha /videoalpha
+RedirectMatch 301 /br$ /vibrate
+RedirectMatch 301 /cds$ /chrome/index.html
+RedirectMatch 301 /ck$ /eme/clearkey/
+RedirectMatch 301 /cpt$ /canplaytype
+RedirectMatch 301 /d$ /rtcdatachannel/
+RedirectMatch 301 /datachannel /rtcdatachannel/
+RedirectMatch 301 /dc$ /rtcdatachannel/
+RedirectMatch 301 /desc$ /track/descriptions/
+RedirectMatch 301 /dm$ /devicemotion
+RedirectMatch 301 /do$ /deviceorientation
+RedirectMatch 301 /es$ /eventsource
+RedirectMatch 301 /fieldset /localstorage
+RedirectMatch 301 /fs$ /fullscreen
+RedirectMatch 301 /fsv$ /fullscreen/video
+RedirectMatch 301 /g$ /getusermedia/
+RedirectMatch 301 /geo$ /geolocation
+RedirectMatch 301 /gum$ /getusermedia/
+RedirectMatch 301 /input$ /inputtypes
+RedirectMatch 301 /jw$ /video/jwplayer/index.html
+RedirectMatch 301 /location$ /geolocation
+RedirectMatch 301 /lv$ /longvideo
+RedirectMatch 301 /map$ /track/map/index.html
+RedirectMatch 301 /mf$ /mediafragments
+RedirectMatch 301 /mo$ /mutationobserver
+RedirectMatch 301 /mq$ /video/mq/
+RedirectMatch 301 /mr$ /mediarecorder
+RedirectMatch 301 /n$ /notification
+RedirectMatch 301 /nt$ /navigationtiming
+RedirectMatch 301 /o$ /observe/
+RedirectMatch 301 /ol$ /online/
+RedirectMatch 301 /p$ /rtcpeerconnection/
+RedirectMatch 301 /pc$ /rtcpeerconnection/
+RedirectMatch 301 /peerconnection /rtcpeerconnection/
+RedirectMatch 301 /performance /navigationtiming
+RedirectMatch 301 /rate$ /video/playbackRate.html
+RedirectMatch 301 /pm$ /postmessage
+RedirectMatch 301 /res$ /getusermedia/constraints
+RedirectMatch 301 /rt$ /resourcetiming
+RedirectMatch 301 /scripted$ /video/scripted/
+RedirectMatch 301 /search$ /shearch/
+RedirectMatch 301 /sources$ /getusermedia/sources/index.html
+RedirectMatch 301 /sse$ /eventsource
+RedirectMatch 301 /summary$ /details
+RedirectMatch 301 /sw$ /serviceworker
+RedirectMatch 301 /ua$ /useragent
+RedirectMatch 301 /unyt$ /video/youtube/unresponsive/
+RedirectMatch 301 /v$ /video
+RedirectMatch 301 /vc$ /video/center
+RedirectMatch 301 /ve$ /video/events
+RedirectMatch 301 /video2014$ https://docs.google.com/presentation/d/1Hl3kXhD8hMkXE_kHEUBqG6lYGcykFLBp5402LhOKUjI
+RedirectMatch 301 /wa$ /webaudio
+RedirectMatch 301 /webintents /stnetnibew
+RedirectMatch 301 /ww$ /webworkers
+RedirectMatch 301 /yt$ /video/youtube/
+RedirectMatch 301 /ytun$ /video/youtube/unresponsive/
+
+# RewriteEngine On
+# RewriteCond %{HTTPS} !on
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+AddType text/cache-manifest .appcache
+AddCharset UTF-8 .html
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+
+<ifModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 1 month”
+# My favicon
+ExpiresByType image/x-icon "access plus 1 year”
+
+# Images
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+
+# CSS
+ExpiresByType text/css "access 1 month”
+
+# Javascript
+ExpiresByType application/javascript "access plus 1 month”
+</ifModule>
