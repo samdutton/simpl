@@ -22,7 +22,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
 navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 var constraints = {
-  audio: true,
+  audio: false,
   video: true
 };
 
