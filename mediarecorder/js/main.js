@@ -106,7 +106,7 @@ function startRecording() {
   downloadButton.disabled = true;
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
-  mediaRecorder.start(100); // collect 100ms of data
+  mediaRecorder.start(1000); // collect 1000ms of data
   console.log('MediaRecorder started', mediaRecorder);
   console.assert(mediaRecorder.state === 'recording');
 }
