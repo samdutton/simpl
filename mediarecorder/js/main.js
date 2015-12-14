@@ -18,9 +18,6 @@ var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
 
-navigator.getUserMedia = navigator.getUserMedia ||
-navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var constraints = {
   audio: true,
   video: true
@@ -93,7 +90,7 @@ function toggleRecording() {
 function startRecording() {
   try {
     recordedBlobs = [];
-    mediaRecorder = new MediaRecorder(window.stream /* , 'video/vp8' */);
+    mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
   } catch (event) {
     alert('MediaRecorder is not supported by this browser.\n\n' +
       'Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
