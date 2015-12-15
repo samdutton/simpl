@@ -62,7 +62,7 @@ function handleSourceOpen(event) {
 }
 
 function handleDataAvailable(event) {
-  if (event.data.size > 0) {
+  if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
     console.assert(mediaRecorder.state === 'recording',
       'State should be "recording"');
@@ -90,7 +90,7 @@ function toggleRecording() {
 function startRecording() {
   try {
     recordedBlobs = [];
-    mediaRecorder = new MediaRecorder(window.stream, 'video/vp8');
+    mediaRecorder = new MediaRecorder(window.stream/* , 'video/vp8' */);
   } catch (event) {
     alert('MediaRecorder is not supported by this browser.\n\n' +
       'Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
@@ -123,7 +123,7 @@ function download() {
   var blob = new Blob(recordedBlobs, {type: 'video/webm'});
   var url = window.URL.createObjectURL(blob);
   var a = document.createElement('a');
-  a.style = 'display: none';
+  a.style.display = 'none';
   a.href = url;
   a.download = 'test.webm';
   document.body.appendChild(a);
