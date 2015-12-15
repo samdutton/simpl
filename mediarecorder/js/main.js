@@ -103,7 +103,7 @@ function startRecording() {
       return;
     }
   }
-  console.log('Created MediaRecorder', mediaRecorder, ' with options', options);
+  console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
   console.assert(mediaRecorder.state === 'inactive');
   recordButton.textContent = 'Stop Recording';
   playButton.disabled = true;
