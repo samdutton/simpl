@@ -64,11 +64,6 @@ function handleSourceOpen(event) {
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
-    console.assert(mediaRecorder.state === 'recording',
-      'State should be "recording"');
-  } else {
-    console.assert(mediaRecorder.state === 'inactive',
-      'State should be "inactive"');
   }
 }
 
@@ -104,7 +99,6 @@ function startRecording() {
     }
   }
   console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-  console.assert(mediaRecorder.state === 'inactive');
   recordButton.textContent = 'Stop Recording';
   playButton.disabled = true;
   downloadButton.disabled = true;
@@ -112,7 +106,6 @@ function startRecording() {
   mediaRecorder.ondataavailable = handleDataAvailable;
   mediaRecorder.start(10); // collect 10ms of data
   console.log('MediaRecorder started', mediaRecorder);
-  console.assert(mediaRecorder.state === 'recording');
 }
 
 function stopRecording() {
