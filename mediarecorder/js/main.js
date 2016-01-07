@@ -82,20 +82,28 @@ function toggleRecording() {
   }
 }
 
+// The nested try blocks will be simplified when Chrome 47 moves to Stable
 function startRecording() {
   var options = {mimeType: 'video/vp9'};
+  recordedBlobs = [];
   try {
-    recordedBlobs = [];
     mediaRecorder = new MediaRecorder(window.stream, options);
-  } catch (e) {
+  } catch (e0) {
+    console.log('Unable to create MediaRecorder with options Object: ', e0);
     try {
-      options = 'video/vp8'; // Chrome 47
+      options = {mimeType: 'video/vp9'};
       mediaRecorder = new MediaRecorder(window.stream, options);
-    } catch (event) {
-      alert('MediaRecorder is not supported by this browser.\n\n' +
-        'Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
-      console.error('Exception while creating MediaRecorder:', event);
-      return;
+    } catch (e1) {
+      console.log('Unable to create MediaRecorder with options Object: ', e1);
+      try {
+        options = 'video/vp8'; // Chrome 47
+        mediaRecorder = new MediaRecorder(window.stream, options);
+      } catch (e2) {
+        alert('MediaRecorder is not supported by this browser.\n\n' +
+            'Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
+        console.error('Exception while creating MediaRecorder:', e2);
+        return;
+      }
     }
   }
   console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
