@@ -18,11 +18,6 @@ var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
 
-var constraints = {
-  audio: true,
-  video: true
-};
-
 var gumVideo = document.querySelector('video#gum');
 var recordedVideo = document.querySelector('video#recorded');
 
@@ -42,18 +37,45 @@ if (!isSecureOrigin) {
   location.protocol = 'HTTPS';
 }
 
-navigator.mediaDevices.getUserMedia(constraints)
-.then(function(stream) {
+// Use old-style gUM to avoid requirement to enable the
+// Enable experimental Web Platform features flag in Chrome 49
+
+navigator.getUserMedia = navigator.getUserMedia ||
+  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+var constraints = {
+  audio: true,
+  video: true
+};
+
+navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+function successCallback(stream) {
   console.log('getUserMedia() got stream: ', stream);
-  window.stream = stream; // make available to browser console
+  window.stream = stream;
   if (window.URL) {
     gumVideo.src = window.URL.createObjectURL(stream);
   } else {
     gumVideo.src = stream;
   }
-}).catch(function(error) {
+}
+
+function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
-});
+}
+
+// navigator.mediaDevices.getUserMedia(constraints)
+// .then(function(stream) {
+//   console.log('getUserMedia() got stream: ', stream);
+//   window.stream = stream; // make available to browser console
+//   if (window.URL) {
+//     gumVideo.src = window.URL.createObjectURL(stream);
+//   } else {
+//     gumVideo.src = stream;
+//   }
+// }).catch(function(error) {
+//   console.log('navigator.getUserMedia error: ', error);
+// });
 
 function handleSourceOpen(event) {
   console.log('MediaSource opened');
@@ -84,14 +106,14 @@ function toggleRecording() {
 
 // The nested try blocks will be simplified when Chrome 47 moves to Stable
 function startRecording() {
-  var options = {mimeType: 'video/webm'};
+  var options = {mimeType: 'video/webm', bitsPerSecond: 100000};
   recordedBlobs = [];
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
   } catch (e0) {
     console.log('Unable to create MediaRecorder with options Object: ', e0);
     try {
-      options = {mimeType: 'video/webm,codecs=vp9'};
+      options = {mimeType: 'video/webm,codecs=vp9', bitsPerSecond: 100000};
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e1) {
       console.log('Unable to create MediaRecorder with options Object: ', e1);
