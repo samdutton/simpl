@@ -24,12 +24,10 @@ input[type=range]:focus {
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 0;
-  cursor: pointer;
-  animate: 0.2s;
 }
 input[type=range]::-webkit-slider-thumb {
-  height: 36px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   background: black;
   opacity: 0.5;
   cursor: pointer;
