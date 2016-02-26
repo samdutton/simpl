@@ -1,3 +1,7 @@
+:root {
+  --video-height: 0px;
+}
+
 div#splitview {
   position: relative;
 }
@@ -7,30 +11,51 @@ div#splitview {
 }
 
 #splitview video:last-of-type {
--webkit-clip-path: inset(0 30% 0 0);
+  -webkit-clip-path: inset(0 30% 0 0);
 }
 
 #splitview input[type=range] {
-  height: 100%;
   margin: 0 2px 0 0;
   position: absolute;
   transform: translateZ(0);
   width: 100%;
   -webkit-appearance: none;
 }
+
 input[type=range]:focus {
   outline: none;
 }
+
+input[type=range]::-moz-range-track {
+  height: 0;
+}
+
 input[type=range]::-webkit-slider-runnable-track {
   height: 0;
 }
+
+input[type=range]::-moz-range-thumb {
+  height: var(--video-height);
+  background: black;
+  opacity: 0.5;
+  cursor: pointer;
+  width: 20px;
+}
+
 input[type=range]::-webkit-slider-thumb {
+  height: var(--video-height);
   width: 20px;
   background: black;
   opacity: 0.5;
   cursor: pointer;
   -webkit-appearance: none;
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: none;
+
+input[type=range]:focus::-moz-range-track {
+  height: 0;
 }
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  height: 0;
+}
+
