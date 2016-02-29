@@ -1,20 +1,29 @@
+/* csslint ignore:start */
 :root {
   --video-height: 0px;
 }
+/* csslint ignore:end */
 
 div#splitview {
+  height: calc(var(--video-height));
+  overflow: hidden;
   position: relative;
 }
 
 #splitview video {
+  opacity: 0.5;
   position: absolute;
 }
 
 #splitview video:last-of-type {
+  display: block;
+  clip: rect(0, 30px, var(--video-height), 0);
   -webkit-clip-path: inset(0 30% 0 0);
+  opacity: 1;
 }
 
 #splitview input[type=range] {
+  background: none;
   margin: 0 2px 0 0;
   position: absolute;
   transform: translateZ(0);
@@ -22,32 +31,45 @@ div#splitview {
   -webkit-appearance: none;
 }
 
+/* bad and wrong */
+/* csslint ignore:start */
+@-moz-document url-prefix() {
+  #splitview input[type=range] {
+    height: calc(var(--video-height));
+    left: -1px;
+    position: relative;
+  }
+}
+/* csslint ignore:end */
+
 input[type=range]:focus {
   outline: none;
 }
 
 input[type=range]::-moz-range-track {
-  height: 0;
-}
+  background: none;
+  }
 
 input[type=range]::-webkit-slider-runnable-track {
   height: 0;
 }
 
 input[type=range]::-moz-range-thumb {
-  height: var(--video-height);
   background: black;
-  opacity: 0.5;
+  border: none;
+  border-radius: 0;
   cursor: pointer;
+  height: var(--video-height);
+  opacity: 0.5;
   width: 20px;
 }
 
 input[type=range]::-webkit-slider-thumb {
-  height: var(--video-height);
-  width: 20px;
   background: black;
-  opacity: 0.5;
   cursor: pointer;
+  height: var(--video-height);
+  opacity: 0.5;
+  width: 20px;
   -webkit-appearance: none;
 }
 
