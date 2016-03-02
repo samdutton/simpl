@@ -1,5 +1,6 @@
 /* csslint ignore:start */
 :root {
+  --video-clip: 30px;
   --video-height: 0px;
 }
 /* csslint ignore:end */
@@ -16,9 +17,7 @@ div#splitview {
 }
 
 #splitview video:last-of-type {
-  display: block;
-  clip: rect(0, 30px, var(--video-height), 0);
-  -webkit-clip-path: inset(0 30% 0 0);
+  -webkit-clip-path: inset(0 0 0 var(--video-clip));
   opacity: 1;
 }
 
@@ -39,6 +38,9 @@ div#splitview {
     left: -1px;
     position: relative;
   }
+  #splitview video:last-of-type {
+ clip: rect(0 var(--video-clip) var(--video-height) 0);  }
+
 }
 /* csslint ignore:end */
 
