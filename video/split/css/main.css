@@ -6,6 +6,21 @@
 }
 /* csslint ignore:end */
 
+#splitview audio {
+  bottom: 5px;
+  height: 36px;
+  opacity: 0;
+  outline: none;
+  padding: 0 5px;
+  position: absolute;
+  transition: opacity 0.3s;
+  width: calc(100% - 10px);
+}
+
+div#splitview:hover audio {
+  opacity: 1;
+}
+
 div#splitview {
   height: var(--video-height);
   overflow: hidden;
@@ -36,6 +51,11 @@ div#splitview {
 /* bad and wrong */
 /* csslint ignore:start */
 @-moz-document url-prefix() {
+  #splitview audio {
+    bottom: 0;
+    padding: 0;
+    width: 100%;
+  }
   #splitview input[type=range] {
     height: var(--video-height);
     left: -1px;
@@ -51,7 +71,7 @@ input[type=range]:focus {
 
 input[type=range]::-moz-range-track {
   background: none;
-  }
+}
 
 input[type=range]::-webkit-slider-runnable-track {
   height: 0;
@@ -84,7 +104,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   height: 0;
 }
 
-video::-webkit-media-controls-panel {
+/*video::-webkit-media-controls-panel {
   display: flex !important;
   opacity: 1 !important;
-}
+}*/
