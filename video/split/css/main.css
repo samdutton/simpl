@@ -28,7 +28,7 @@ div#splitview {
 }
 
 #splitview video {
-  opacity: 0.5;
+  /*opacity: 0.5;*/
   position: absolute;
 }
 

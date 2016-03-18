@@ -30,7 +30,7 @@ audio.onplaying = function() {
 audio.onpause = function() {
   firstVideo.pause();
   secondVideo.pause();
-//  firstVideo.currentTime = secondVideo.currentTime = audio.currentTime;
+  firstVideo.currentTime = secondVideo.currentTime = audio.currentTime;
 };
 
 audio.onvolumechange = function() {
