@@ -1,5 +1,9 @@
+/* global SplitVideo */
+
 'use strict';
 
+new SplitVideo('splitview',
+    'video/vp8_webrtc.webm#t=2', 'video/vp9_webrtc.webm#t=2');
 
 var container = document.getElementById('splitview');
 var range = container.querySelector('input[type=range]');
@@ -17,10 +21,6 @@ firstVideo.onloadedmetadata = window.onresize = function() {
     firstVideo.clientHeight + 'px');
   setVideoClip();
 };
-
-// firstVideo.onplaying = function() {
-//   secondVideo.play();
-// };
 
 audio.onplaying = function() {
   firstVideo.play();
@@ -41,30 +41,6 @@ audio.onvolumechange = function() {
 audio.onseeked = function() {
   firstVideo.currentTime = secondVideo.currentTime = audio.currentTime;
 };
-
-// firstVideo.ontimeupdate = function() {
-//   secondVideo.currentTime = firstVideo.currentTime;
-// };
-
-// firstVideo.onseeked = function() {
-//   if (secondVideo.currentTime !== firstVideo.currentTime) {
-//     secondVideo.currentTime = firstVideo.currentTime;
-//   }
-// };
-
-// secondVideo.onseeked = function() {
-//   if (firstVideo.currentTime !== secondVideo.currentTime) {
-//     firstVideo.currentTime = secondVideo.currentTime;
-//   }
-// };
-
-// audio.onseeked = function() {
-//   firstVideo.currentTime = secondVideo.currentTime = audio.currentTime;
-// };
-
-// firstVideo.ontimeupdate = function() {
-//   audio.currentTime = firstVideo.currentTime;
-// };
 
 range.oninput = function() {
   setVideoClip();
