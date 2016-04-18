@@ -1,5 +1,10 @@
 'use strict';
 
+// ////////////////////////////////////////////////////////////////////
+// WARNING: this is a demo only and is NOT SUITABLE for production use.
+// See the bug at  https://github.com/samdutton/simpl/issues/68.
+// ////////////////////////////////////////////////////////////////////
+
 // view chrome://serviceworker-internals to see console logging
 
 // temporary polyfill for caches: use cachesPolyfill instead
