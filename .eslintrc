@@ -9,10 +9,16 @@
         "dot-notation": 2,
         "eqeqeq": 2,
         "indent": [
-            2,
-            2
+        2,
+        2
         ],
-        "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
+        "key-spacing": [
+        2,
+        {
+            "beforeColon": false,
+            "afterColon": true
+        }
+        ],
         "max-len": [2, 80, 2, {"ignoreUrls": true}],
         "new-cap": 2,
         "no-console": 0,
@@ -27,55 +33,55 @@
         "object-curly-spacing": [2, "never"],
         "padded-blocks": [2, "never"],
         "quotes": [
-            2,
-            "single"
+        2,
+        "single"
         ],
         "semi": [
-            2,
-            "always"
+        2,
+        "always"
         ],
-        "space-after-keywords": 2,
         "space-before-blocks": 2,
         "space-before-function-paren": [2, "never"],
         "spaced-comment": 2,
         "valid-typeof": 2
-    },
-    "env": {
-        "es6": true,
-        "browser": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-  "globals": {
-    "addExplicitTest": true,
-    "addTest": true,
-    "arrayAverage": true,
-    "arrayMax": true,
-    "arrayMin": true,
-    "audioContext": true,
-    "AudioContext": true,
-    "Call": true,
-    "chrome": true,
-    "createLineChart": true,
-    "expectEquals": true,
-    "ga": true,
-    "google": true,
-    "MediaStreamTrack": true,
-    "report": true,
-    "reportBug": true,
-    "reportError": true,
-    "reportFatal": true,
-    "reportInfo": true,
-    "reportSuccess": true,
-    "RTCIceCandidate": true,
-    "RTCPeerConnection": true,
-    "RTCSessionDescription": true,
-    "setTestProgress": true,
-    "setTimeoutWithProgressBar": true,
-    "Ssim": true,
-    "StatisticsAggregate": true,
-    "testFinished": true,
-    "trace": true,
-    "webrtcDetectedBrowser": true,
-    "webrtcDetectedVersion": true
-  }}
+        },
+        "env": {
+            "es6": true,
+            "browser": true,
+            "node": true
+            },
+            "extends": "eslint:recommended",
+            "globals": {
+                "addExplicitTest": true,
+                "addTest": true,
+                "arrayAverage": true,
+                "arrayMax": true,
+                "arrayMin": true,
+                "audioContext": true,
+                "AudioContext": true,
+                "Call": true,
+                "chrome": true,
+                "createLineChart": true,
+                "expectEquals": true,
+                "ga": true,
+                "google": true,
+                "MediaStreamTrack": true,
+                "report": true,
+                "reportBug": true,
+                "reportError": true,
+                "reportFatal": true,
+                "reportInfo": true,
+                "reportSuccess": true,
+                "RTCIceCandidate": true,
+                "RTCPeerConnection": true,
+                "RTCSessionDescription": true,
+                "setTestProgress": true,
+                "setTimeoutWithProgressBar": true,
+                "shaka": true,
+                "Ssim": true,
+                "StatisticsAggregate": true,
+                "testFinished": true,
+                "trace": true,
+                "webrtcDetectedBrowser": true,
+                "webrtcDetectedVersion": true
+                }}
