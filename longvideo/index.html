@@ -10,7 +10,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta id="theme-color" name="theme-color" content="#fff">
 
-  <title>Long video</title>
+  <title>Long(ish) video</title>
 
   <link rel="stylesheet" href="../css/main.css" />
 
@@ -18,32 +18,31 @@
 
 <body>
 
-  <div id="container">
+<div id="container">
 
-    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> long video (~380MB)</h1>
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Long(ish) video (~30MB)</h1>
 
-    <video autoplay controls>
-      <source src="video/gbike.webm" type="video/webm" />
-      <source src="video/gbike.ogv" type="video/ogg" />
-      <source src="video/gbike.mp4" type="video/mp4" />
-      <p>This browser does not support the video element.</p>
-    </video>
+<video autoplay controls>
+  <source src="video/gbike.webm" type="video/webm" />
+  <source src="video/gbike.mp4" type="video/mp4" />
+  <p>This browser does not support the video element.</p>
+</video>
 
-    <p id="videoSrc"></p>
-    <p></p>
+<p id="videoSrc"></p>
+<p></p>
 
-    <script>
-      document.querySelector("video").addEventListener("loadedmetadata", function(){
-        var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-        document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
-      });
-    </script>
+<script>
+document.querySelector('video').onloadedmetadata = function() {
+  var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+  document.querySelector('#videoSrc').textContent = 'Video: ' + fileName;
+};
+</script>
 
-    <a href="https://github.com/samdutton/simpl/blob/master/longvideo/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+<a href="https://github.com/samdutton/simpl/blob/master/longvideo/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-  </div>
+</div>
 
-  <script src="../js/lib/ga.js"></script>
+<script src="../js/lib/ga.js"></script>
 
 </body>
 </html>

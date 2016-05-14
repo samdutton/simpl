@@ -15,18 +15,7 @@
 
   <link rel="stylesheet" href="css/mapTrack.css">
 
-  <script src="js/lib/jquery-1.7.1.min.js"></script>
-  <script>jQuery.noConflict();</script>
-
   <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAey8Y9zVKV0F7S3CKIUXoyCP-T-N-2NCk&amp;v=2&amp;sensor=false" type="text/javascript" lang="javascript"></script>
-
-  <script src="js/mapTrack.js"></script>
-
-  <script src="//www.google-analytics.com/urchin.js" type="text/javascript" lang="javascript"></script>
-  <script>
-    _uacct = "UA-2630780-1";
-    urchinTracker();
-  </script>
 
 </head>
 
@@ -35,7 +24,7 @@
 
     <h1>XML map track demo</h1>
 
-    <div class="warningMessage trackNotSupported">This demo requires a browser such as <a href="http://tools.google.com/dlpage/chromesxs" title="Google Chrome Canary download">Google&nbsp;Chrome&nbsp;Canary</a> that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
+    <div class="warningMessage trackNotSupported">This demo requires a browser such as Google Chrome that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
 
     <div id="map" class="trackSupported"></div>
 
@@ -49,8 +38,6 @@
     <div id="panorama" class="trackSupported"></div>
 
     <p class="thanks">This is an implementation using the HTML track element of a demo originally built by Jeff Faust. Thanks to Jeff for the idea and data!</p>
-
-    <p>Please note you will currently need the <a href="https://www.google.com/landing/chrome/beta/" title="Download Google Chrome Beta">Beta</a> or <a href="https://tools.google.com/dlpage/chromesxs" title="Download Google Chrome Canary">Canary</a> version of Chrome to run this demo.</p>
 
     <p>This demo shows how the track element can be used to synchronise video playback with the position of a map marker, and make synchronised changes to DOM elements.</p>
 
@@ -83,6 +70,16 @@
     <p>For a 'bare-bones' example of the track element, see <a href="http://www.simpl.info/track" title="Simple track example">simpl.info/track</a>.</p>
 
   </div> <!-- container -->
+
+  <script src="js/lib/jquery-1.7.1.min.js"></script>
+  <script>jQuery.noConflict();</script>
+  <script src="js/mapTrack.js"></script>
+
+  <script src="//www.google-analytics.com/urchin.js" type="text/javascript" lang="javascript"></script>
+  <script>
+    _uacct = "UA-2630780-1";
+    urchinTracker();
+  </script>
 
 </body>
 
