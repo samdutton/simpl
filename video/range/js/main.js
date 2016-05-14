@@ -8,6 +8,7 @@ function getVideo(start, finish) {
   var range = 'bytes=' + start + '-' + finish;
   var options = {
     headers: {
+      'Content-Type': 'video/webm',
       'Range': range
     }
   };
@@ -18,10 +19,4 @@ function getVideo(start, finish) {
   });
 }
 
-getVideo(0, 20000);
-
-// var options = {
-//   headers: {
-//     'Range': 'bytes=0-50000'
-//   }
-// };
+getVideo(100000, '');
