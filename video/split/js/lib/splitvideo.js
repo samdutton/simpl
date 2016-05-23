@@ -13,58 +13,119 @@
 var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
   var that = this;
   this.containerElement_= document.getElementById(containerId);
-
-  this.setVideos(firstVideoSrc, secondVideoSrc);
-
-  var range = document.createElement('input');
-  range.setAttribute('type', 'range');
-  this.containerElement_.appendChild(range);
-
-  this.audio_ = document.createElement('audio');
-  this.audio_.src = firstVideoSrc;
-  this.audio_.setAttribute('controls', '');
-  this.audio_.setAttribute('muted', '');
-  this.containerElement_.appendChild(this.audio_);
-
   this.styles_ = getComputedStyle(document.documentElement);
-  this.thumbWidth_ = parseInt(this.styles_.getPropertyValue('--thumb-width'));
+  this.thumbWidth_ = 20;
 
-  this.firstVideo_.onloadedmetadata = window.onresize = function() {
-    document.documentElement.style.setProperty('--video-height',
-      this.clientHeight + 'px');
-    that.setCssClip_();
+  this.initVideos_ = function() {
+    this.setVideos(firstVideoSrc, secondVideoSrc);
+    this.firstVideo_.onloadedmetadata = window.onresize = function() {
+      document.documentElement.style.setProperty('--video-height',
+        this.clientHeight + 'px');
+      that.setCssClip_();
+    };
   };
 
-  this.audio_.onplaying = function() {
-    that.firstVideo_.play();
-    that.secondVideo_.play();
-  };
+  this.initAudio_ = function() {
+    this.audio_ = document.createElement('audio');
+    this.audio_.src = firstVideoSrc;
+    this.audio_.setAttribute('controls', '');
+    this.audio_.setAttribute('muted', '');
+    this.containerElement_.appendChild(this.audio_);
+    // this.audio_.style.display='none';
+    // this.audio_.style.display='block';
 
-  this.audio_.onpause = function() {
-    that.firstVideo_.pause();
-    that.secondVideo_.pause();
-    that.firstVideo_.currentTime = that.secondVideo_.currentTime =
-    that.audio_.currentTime;
-  };
+    this.audio_.onplaying = function() {
+      that.firstVideo_.play();
+      that.secondVideo_.play();
+    };
 
-  this.audio_.onvolumechange = function() {
-    that._unmutedVideo.muted = this.muted;
-    that.unmutedVideo_.volume = this.volume;
-  };
-
-  this.audio_.onseeked = function() {
-    that.firstVideo_.currentTime = that.secondVideo_.currentTime =
+    this.audio_.onpause = function() {
+      that.firstVideo_.pause();
+      that.secondVideo_.pause();
+      that.firstVideo_.currentTime = that.secondVideo_.currentTime =
       that.audio_.currentTime;
+    };
+
+    this.audio_.onvolumechange = function() {
+      that._unmutedVideo.muted = this.muted;
+      that.unmutedVideo_.volume = this.volume;
+    };
+
+    this.audio_.onseeked = function() {
+      that.firstVideo_.currentTime = that.secondVideo_.currentTime =
+      that.audio_.currentTime;
+    };
   };
 
-  range.oninput = this.setCssClip_;
+  this.initRange_ = function() {
+    var range = this.range_ = document.createElement('input');
+    range.setAttribute('type', 'range');
+    range.oninput = this.setCssClip_;
+    this.containerElement_.appendChild(range);
+  };
 
-  // Set the CSS clip value based on the position of the range slider
+  // Set the CSS clip value based on the position of the range slider.
+  // This value is used to set the displayed width of the second video.
   this.setCssClip_ = function() {
-    var width =
-      (this.firstVideo_.clientWidth - this.thumbWidth_) * range.value / 100 ;
+    var width = (that.firstVideo_.clientWidth - that.thumbWidth_) *
+    that.range_.value / 100;
     document.documentElement.style.setProperty('--video-clip', width + 'px');
   };
+
+  this.appendVideo_ = function(videoSrc) {
+    var video = document.createElement('video');
+    video.setAttribute('muted','');
+    video.src = videoSrc;
+    this.containerElement_.appendChild(video);
+  };
+
+  this.addCss_ = function() {
+    var sheet = window.document.styleSheets[0];
+    sheet.insertRule(':root {--thumb-width: ' + this.thumbWidth_ +
+      'px; --video-height: 0px; --video-clip: 30px;}', 0);
+    sheet.insertRule('#splitview audio {bottom: 5px; height: 36px; opacity: 0;'
+      + 'outline: none; padding: 0 5px; position: absolute; ' +
+      'transition: opacity 0.3s; width: calc(100% - 10px); z-index: 1}', 0);
+    sheet.insertRule('div#splitview:hover audio {opacity: 1;}', 0);
+    sheet.insertRule('div#splitview {height: var(--video-height); ' +
+      'overflow: hidden; position: relative;}', 0);
+    sheet.insertRule('#splitview video {position: absolute;}', 0);
+    sheet.insertRule('#splitview video:last-of-type {display: block; ' +
+      'clip: rect(0 var(--video-clip) var(--video-height) 0); ' +
+      '-webkit-clip-path: inset(0 0 0 0); opacity: 1;}', 0);
+    sheet.insertRule('#splitview input[type=range] {background: none; ' +
+      'margin: 0 2px 0 0; position: absolute; transform: translateZ(0);' +
+      'width: 100%; -webkit-appearance: none;}', 0);
+    sheet.insertRule('input[type=range]:focus {outline: none;}', 0);
+
+    if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+      sheet.insertRule('input[type=range]::-webkit-slider-runnable-track ' +
+        '{height: 0;}', 0);
+      sheet.insertRule('input[type=range]::-webkit-slider-thumb {background:' +
+        ' black; cursor: pointer; height: var(--video-height); opacity: 0.5;' +
+        'width: var(--thumb-width); -webkit-appearance: none;}', 0);
+      sheet.insertRule('input[type=range]:focus::-webkit-slider-runnable-track'
+        + '{height: 0;}', 0);
+    } else if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    // Bad and wrong, but AFAICT only way to get consistent UI in Firefox
+      sheet.insertRule('#splitview audio {bottom: 0; padding: 0; ' +
+        'width: 100%;}', 0);
+      sheet.insertRule('#splitview input[type=range] {height: ' +
+        'var(--video-height); left: -1px; position: relative; top: -1px;}', 0);
+      sheet.insertRule('input[type=range]::-moz-range-track ' +
+        '{background: none;}', 0);
+      sheet.insertRule('input[type=range]::-moz-range-thumb {background: black;'
+        + 'border: none; border-radius: 0; cursor: pointer; height: ' +
+        'var(--video-height); opacity: 0.5; width: var(--thumb-width)', 0);
+      sheet.insertRule('input[type=range]:focus::-moz-range-track {height: 0;}',
+        0);
+    }
+  };
+
+  this.addCss_();
+  this.initVideos_();
+  this.initRange_();
+  this.initAudio_();
 };
 
 SplitVideo.prototype.setVideos = function(firstVideoSrc, secondVideoSrc) {
@@ -77,9 +138,3 @@ SplitVideo.prototype.setVideos = function(firstVideoSrc, secondVideoSrc) {
   this.unmutedVideo_ = this.firstVideo_;
 };
 
-SplitVideo.prototype.appendVideo_ = function(videoSrc) {
-  var video = document.createElement('video');
-  video.setAttribute('muted','');
-  video.src = videoSrc;
-  this.containerElement_.appendChild(video);
-};
