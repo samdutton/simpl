@@ -15,6 +15,8 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
   this.containerElement_= document.getElementById(containerId);
   this.styles_ = getComputedStyle(document.documentElement);
   this.thumbWidth_ = 20;
+  var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
   this.initVideos_ = function() {
     this.setVideos(firstVideoSrc, secondVideoSrc);
@@ -26,13 +28,19 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
   };
 
   this.initAudio_ = function() {
+    if (isFirefox) {
+      this.firstVideo_.setAttribute('controls', '');
+      this.secondVideo_.setAttribute('controls', '');
+      this.firstVideo_.play();
+      this.secondVideo_.play();
+      return;
+    }
     this.audio_ = document.createElement('audio');
-    this.audio_.src = firstVideoSrc;
+    // Firefox audio element doesn't support .webm used here, though canPlaytype
+    this.audio_.src = this.firstVideo_.src;
     this.audio_.setAttribute('controls', '');
     this.audio_.setAttribute('muted', '');
     this.containerElement_.appendChild(this.audio_);
-    // this.audio_.style.display='none';
-    // this.audio_.style.display='block';
 
     this.audio_.onplaying = function() {
       that.firstVideo_.play();
@@ -74,7 +82,7 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
 
   this.appendVideo_ = function(videoSrc) {
     var video = document.createElement('video');
-    video.setAttribute('muted','');
+    video.setAttribute('muted', '');
     video.src = videoSrc;
     this.containerElement_.appendChild(video);
   };
@@ -85,7 +93,8 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
       'px; --video-height: 0px; --video-clip: 30px;}', 0);
     sheet.insertRule('#splitview audio {bottom: 5px; height: 36px; opacity: 0;'
       + 'outline: none; padding: 0 5px; position: absolute; ' +
-      'transition: opacity 0.3s; width: calc(100% - 10px); z-index: 1}', 0);
+      'transition: opacity 0.3s; width: calc(100% - 10px); ' +
+      'transform: translateZ(0); z-index: 1;}', 0);
     sheet.insertRule('div#splitview:hover audio {opacity: 1;}', 0);
     sheet.insertRule('div#splitview {height: var(--video-height); ' +
       'overflow: hidden; position: relative;}', 0);
@@ -94,19 +103,20 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
       'clip: rect(0 var(--video-clip) var(--video-height) 0); ' +
       '-webkit-clip-path: inset(0 0 0 0); opacity: 1;}', 0);
     sheet.insertRule('#splitview input[type=range] {background: none; ' +
-      'margin: 0 2px 0 0; position: absolute; transform: translateZ(0);' +
+      'margin: 0 2px 0 0; position: absolute;' +
       'width: 100%; -webkit-appearance: none;}', 0);
     sheet.insertRule('input[type=range]:focus {outline: none;}', 0);
 
-    if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+    if (isChrome) {
       sheet.insertRule('input[type=range]::-webkit-slider-runnable-track ' +
         '{height: 0;}', 0);
-      sheet.insertRule('input[type=range]::-webkit-slider-thumb {background:' +
-        ' black; cursor: pointer; height: var(--video-height); opacity: 0.5;' +
+      sheet.insertRule('input[type=range]::-webkit-slider-thumb {background: ' +
+        'black; cursor: pointer; height: var(--video-height); opacity: 0.5; ' +
+        'transform: translateZ(0px);' +
         'width: var(--thumb-width); -webkit-appearance: none;}', 0);
       sheet.insertRule('input[type=range]:focus::-webkit-slider-runnable-track'
         + '{height: 0;}', 0);
-    } else if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    } else if (isFirefox) {
     // Bad and wrong, but AFAICT only way to get consistent UI in Firefox
       sheet.insertRule('#splitview audio {bottom: 0; padding: 0; ' +
         'width: 100%;}', 0);
@@ -124,8 +134,8 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
 
   this.addCss_();
   this.initVideos_();
-  this.initRange_();
   this.initAudio_();
+  this.initRange_();
 };
 
 SplitVideo.prototype.setVideos = function(firstVideoSrc, secondVideoSrc) {
