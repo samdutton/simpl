@@ -51,7 +51,7 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
       that.firstVideo_.pause();
       that.secondVideo_.pause();
       that.firstVideo_.currentTime = that.secondVideo_.currentTime =
-      that.audio_.currentTime;
+        that.audio_.currentTime;
     };
 
     this.audio_.onvolumechange = function() {
@@ -60,8 +60,11 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
     };
 
     this.audio_.onseeked = function() {
+      this.pause();
+      that.firstVideo_.pause();
+      that.secondVideo_.pause();
       that.firstVideo_.currentTime = that.secondVideo_.currentTime =
-      that.audio_.currentTime;
+        that.audio_.currentTime;
     };
   };
 
