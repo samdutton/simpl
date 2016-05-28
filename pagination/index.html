@@ -491,22 +491,22 @@ textTrack.oncuechange = function() {
  // Check to see if the browser supports the basic APIs Shaka needs.
  // This is an asynchronous check.
  shaka.Player.support().then(function(support) {
- // This executes when the asynchronous check is complete.
- if (support.supported) {
- // Everything looks good!
- initPlayer();
+   // This executes when the asynchronous check is complete.
+   if (support.supported) {
+   // Everything looks good!
+   initPlayer();
 } else {
-// This browser does not have the minimum set of APIs you need.
-console.error('Browser not supported!');
+  // This browser does not have the minimum set of APIs you need.
+  console.error('Browser not supported!');
 }
 });
 
 function initPlayer() {
-// Create a Player instance.
-var video = document.querySelector('video');
-var player = new shaka.Player(video);
-player.configure({
-preferredTextLanguage: 'en'
+  // Create a Player instance.
+  var video = document.querySelector('video');
+  var player = new shaka.Player(video);
+  player.configure({
+  preferredTextLanguage: 'en'
 });
 // Add player to global scope so it's visible from the browser console
 window.player = player;
@@ -515,18 +515,18 @@ player.addEventListener('error', onErrorEvent);
 // Try to load a manifest.
 // This is an asynchronous process.
 player.load(manifestUri).then(function() {
-// This runs if the asynchronous load is successful.
-console.log('The video has now been loaded!');
+  // This runs if the asynchronous load is successful.
+  console.log('The video has now been loaded!');
 }).catch(onError); // onError is executed if the asynchronous load fails.
 }
 
 function onErrorEvent(event) {
-// Extract the shaka.util.Error object from the event.
-onError(event.detail);
+  // Extract the shaka.util.Error object from the event.
+  onError(event.detail);
 }
 
 function onError(error) {
-console.error('Error code', error.code, 'object', error);
+  console.error('Error code', error.code, 'object', error);
 }
 </blockquote>
 
@@ -581,6 +581,7 @@ console.error('Error code', error.code, 'object', error);
 &lt;!--Generated with &lt;a href=&quot;https://github.com/google/edash-packager&quot;&gt;https://github.com/google/edash-packager&lt;/a&gt; version fe6775a-release--&gt;
 
 &lt;MPD xmlns=&quot;urn:mpeg:dash:schema:mpd:2011&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xsi:schemaLocation=&quot;urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd&quot; xmlns:cenc=&quot;urn:mpeg:cenc:2013&quot; minBufferTime=&quot;PT2S&quot; type=&quot;static&quot; profiles=&quot;urn:mpeg:dash:profile:isoff-on-demand:2011&quot; mediaPresentationDuration=&quot;PT888.0533447265625S&quot;&gt;
+
   &lt;Period id=&quot;0&quot;&gt;
     &lt;AdaptationSet id=&quot;0&quot; contentType=&quot;text&quot; lang=&quot;nl&quot;&gt;
       &lt;Representation id=&quot;0&quot; bandwidth=&quot;256&quot; mimeType=&quot;text/vtt&quot;&gt;
@@ -700,11 +701,12 @@ console.error('Error code', error.code, 'object', error);
   player.configure({preferredTextLanguage: 'fr'});
 </blockquote>
 
+<p>From the DevTools, also take a look at the WebVTT files and the text track options in dash.mpd.</p>
+
 <aside class="note">
-  <p>(From the DevTools, also take a look at the WebVTT files and the text track options in dash.mpd.)</p>
   <p>If a video has audio tracks for different languages, you can set the language from the player.</p>
   <p>For example:</p>
-  <code>player.configure({preferredAudioLanguage: 'fr'});</code>
+  <p><code>player.configure({preferredAudioLanguage: 'fr'});</code></p>
 </aside>
 
 <p>The <code>player.getConfiguration()</code> and <code>player.getStats()</code> methods provide more information about video playback and the player environment:</p>
