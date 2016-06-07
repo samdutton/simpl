@@ -100,10 +100,10 @@ div#container {
 }
 
 div#highlight {
-  border: 1px solid #666;
+  background-color: #eee;
   font-size: 1.2em;
   margin: 0 0 50px 0;
-  padding: 0 1em 0 1em;
+  padding: 0.5em 2em;
 }
 
 div#links {

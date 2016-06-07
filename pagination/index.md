@@ -1,12 +1,4 @@
-High performance video for the mobile web
-=========================================
-
-<div class="container">
-
-<div class="section">
-
-Introduction
-------------
+## Introduction
 
 It's simple to add video to your website, but how can you deliver great
 performance even when connectivity is flakey and bandwidth is limited?
@@ -14,12 +6,9 @@ performance even when connectivity is flakey and bandwidth is limited?
 In this codelab you'll find out how to get the best possible experience
 on any device.
 
-</div>
-
 <div class="section">
 
-What are you going to build?
-----------------------------
+## What are you going to build?
 
 You will build a player that enables you to deliver video using Dynamic
 Adaptive Streaming over HTTP (DASH).
@@ -33,8 +22,7 @@ Adaptive Streaming over HTTP (DASH).
 
 <div class="section">
 
-Overview
---------
+## Overview
 
 Duration: 0:30
 
@@ -63,8 +51,7 @@ across devices and platforms, even on flaky networks or offline.
 
 <div class="section">
 
-Get started
------------
+## Get started
 
 Duration: 2:00
 
@@ -150,8 +137,7 @@ away with simply refreshing your test browser tab.
 
 <div class="section">
 
-Make the most of the video element
-----------------------------------
+## Make the most of the video element
 
 Duration: 5:00
 
@@ -332,8 +318,7 @@ the smaller video.
 
 <div class="section">
 
-Add subtitles, captions & descriptions
---------------------------------------
+## Add subtitles, captions &amp; descriptions
 
 Duration: 2:00
 
@@ -433,8 +418,7 @@ they are related but entirely different!
 
 <div class="section">
 
-Build a video stream in JavaScript
-----------------------------------
+## Build a video stream in JavaScript
 
 Duration: 2:00
 
@@ -500,8 +484,7 @@ the video element.
 
 <div class="section">
 
-Implement adaptive streaming
-----------------------------
+## Implement adaptive streaming
 
 Duration: 2:00
 
@@ -777,8 +760,7 @@ more information about video playback and the player environment:
 
 <div class="section">
 
-Congratulations!
-----------------
+## Congratulations!
 
 Duration: 2:00
 
@@ -810,7 +792,5 @@ subtitles.
 -   [A Digital Media Primer for
     Geeks](https://xiph.org/video/vid1.shtml): a great quirky
     introduction to the science behind digital audio and video
-
-</div>
 
 </div>
