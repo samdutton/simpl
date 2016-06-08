@@ -12,9 +12,15 @@
 
 <base target="_blank">
 
-<title>The video element</title>
+<title>Video playback rate</title>
 
 <link rel="stylesheet" href="../../css/main.css" />
+
+<style>
+input[type=range] {
+  width: 100%;
+}
+</style>
 
 </head>
 
@@ -22,7 +28,7 @@
 
 <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video </h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> playbackRate</h1>
 
   <video autoplay controls poster="../images/poster.jpg" preload="metadata">
     <source src="../video/chrome.webm" type="video/webm" />
@@ -32,6 +38,9 @@
 
   <p id="videoSrc"></p>
 
+  <input type="range" min="-10" max="10" step="0.2">
+
+  <p>Video playback rate: <span id="playbackRate"></span></p>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/playbackrate/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
