@@ -17,10 +17,9 @@ function handleInput(inputEvent) {
     var displayElement = isVideo ? video : img;
     displayElement.classList.remove('hidden');
     try {
-      console.log('trying URL');
       var url = window.URL.createObjectURL(file);
       displayElement.src = url;
-      // window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(url);
     } catch(event) {
       try {
         var fileReader = new FileReader();
