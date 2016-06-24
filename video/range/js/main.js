@@ -2,7 +2,7 @@
 
 var video = window.video = document.querySelector('video');
 
-var url = 'video/chrome.webm';
+var url = '../video/small.webm';
 
 var rangeLength = 50000; // bytes
 var totalBytes = 0;
@@ -21,25 +21,25 @@ function getVideoHeaders() {
     // }
     totalBytes = response.headers.get('content-length');
     console.log('Total bytes: ', totalBytes);
-    getVideos();
+    getRanges();
   });
 }
 
-function getVideos() {
-  for (var i = 1; i !== 50; ++i) {
+function getRanges() {
+  for (var i = 1; i !== 2; ++i) {
     var rangeEnd = i * rangeLength;
     // If all the bytes have already been retrieved
     if (rangeEnd - rangeLength > totalBytes) {
-      console.log(rangeEnd, rangeLength, i);
+      console.log('Got all bytes', rangeEnd, rangeLength, i);
       break;
     }
-    getVideo(rangeEnd);
+    getRange(rangeEnd);
   }
 }
 
-function getVideo(finish) {
+function getRange(finish) {
   var range = 'bytes=' + 0 + '-' + finish;
-//  console.log('range: ', range);
+  console.log('range: ', range);
   var options = {
     headers: {
       'Range': range
