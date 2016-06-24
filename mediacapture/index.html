@@ -14,8 +14,12 @@
 
   <link rel="stylesheet" href="../css/main.css" />
   <style>
-  img {
+  .hidden {
+    display: none;
+  }
+  img, video {
     display: block;
+    margin: 2em 0 0 0;
   }
   </style>
 
@@ -33,8 +37,8 @@
     <p>Video:</p>
     <input type="file" accept="video/*" capture />
 
-    <img>
-
+    <img class="hidden">
+    <video class="hidden" autoplay controls loop></video>
 
     <a href="https://github.com/samdutton/simpl/blob/gh-pages/mediacapture/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
