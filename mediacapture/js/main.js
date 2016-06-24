@@ -19,7 +19,7 @@ function handleInput(inputEvent) {
     try {
       var url = window.URL.createObjectURL(file);
       displayElement.src = url;
-      window.URL.revokeObjectURL(url);
+//      window.URL.revokeObjectURL(url);
     } catch(event) {
       try {
         var fileReader = new FileReader();
