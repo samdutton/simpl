@@ -2,7 +2,7 @@
 
 'use strict';
 
-// Enable synchronised playback of two videos, one on top of the other
+// Synchronised playback of two videos, one on top of the other,
 // with a slider to control how much width of the second video is displayed
 // Given the ID of a container element and two video src values:
 // • create two video elements
@@ -36,7 +36,7 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
       return;
     }
     this.audio_ = document.createElement('audio');
-    // Firefox audio element doesn't support .webm used here, though canPlaytype
+    // Firefox audio element doesn't support .webm, despite canPlaytype
     this.audio_.src = this.firstVideo_.src;
     this.audio_.setAttribute('controls', '');
     this.audio_.setAttribute('muted', '');
@@ -61,10 +61,10 @@ var SplitVideo = function(containerId, firstVideoSrc, secondVideoSrc) {
 
     this.audio_.onseeked = function() {
       this.pause();
-      that.firstVideo_.pause();
-      that.secondVideo_.pause();
-      that.firstVideo_.currentTime = that.secondVideo_.currentTime =
-        that.audio_.currentTime;
+      // that.firstVideo_.pause();
+      // that.secondVideo_.pause();
+      // that.firstVideo_.currentTime = that.secondVideo_.currentTime =
+      //   that.audio_.currentTime;
     };
   };
 
