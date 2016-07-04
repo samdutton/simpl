@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="author" content="//samdutton.com">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="/images/icons/icon192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <base target="_blank">
+
+  <title>Image Capture</title>
+
+  <link rel="canonical" href="https://simpl.info/mediarecorder" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStream&nbsp;Recording</h1>
+
+    <p>This demo requires Chrome 52 or later using the <strong>--enable-blink-features=ImageCapture</strong> command line flag.</p>
+
+    <p>For more information see the Image Capture API <a href="https://w3c.github.io/mediacapture-image/index.html" title="W3C Image Capture API Editor's Draft">Editor's&nbsp;Draft</a>.</p>
+
+    <div>
+      <button id="grabFrame">Grab Frame</button>
+      <button id="takePhoto">Take Photo</button>
+      <input id="zoom" type="range" step="20">
+    </div>
+
+    <video autoplay></video>
+    <img>
+    <canvas></canvas>
+
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/imagecapture/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="../js/lib/ga.js"></script>
+
+</body>
+</html>
