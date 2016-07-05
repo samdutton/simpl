@@ -5,6 +5,14 @@
 // This code is adapted from
 // https://cdn.rawgit.com/Miguelao/demos/master/imagecapture.html
 
+// window.isSecureContext could be used for Chrome
+var isSecureOrigin = location.protocol === 'https:' ||
+location.host === 'localhost';
+if (!isSecureOrigin) {
+  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
+    '\n\nChanging protocol to HTTPS');
+  location.protocol = 'HTTPS';
+}
 var imageCapture;
 
 var grabFrameButton = document.querySelector('button#grabFrame');
