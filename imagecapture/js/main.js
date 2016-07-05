@@ -42,13 +42,28 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     new ImageCapture(stream.getVideoTracks()[0]);
   imageCapture.getPhotoCapabilities().then(function(capabilities) {
     console.log('Camera capabilitities:', capabilities);
-    zoomInput.min = capabilities.zoom.min;
-    zoomInput.max = capabilities.zoom.max;
-    zoomInput.value = capabilities.zoom.current;
+    if (capabilities.zoom.max > 0) {
+      zoomInput.min = capabilities.zoom.min;
+      zoomInput.max = capabilities.zoom.max;
+      zoomInput.value = capabilities.zoom.current;
+      zoomInput.classList.add('show');
+    }
   }).catch(function(error) {
     console.log('navigator.getUserMedia error: ', error);
   });
 });
+
+function grabFrame() {
+  imageCapture.grabFrame().then(function(imageBitmap) {
+    console.log('Grabbed frame:', imageBitmap);
+    canvas.width = imageBitmap.width;
+    canvas.height = imageBitmap.height;
+    canvas.getContext('2d').drawImage(imageBitmap, 0, 0);
+    canvas.classList.add('show');
+  }).catch(function(error) {
+    console.log('takePhoto() error: ', error);
+  });
+}
 
 function takePhoto() {
   imageCapture.takePhoto().then(function(a) {
@@ -59,13 +74,3 @@ function takePhoto() {
   });
 }
 
-function grabFrame() {
-  imageCapture.grabFrame().then(function(a) {
-    console.log('Grabbed frame:', a);
-    canvas.width = a.width;
-    canvas.height = a.height;
-    canvas.getContext('2d').drawImage(a, 0, 0);
-  }).catch(function(error) {
-    console.log('takePhoto() error: ', error);
-  });
-}

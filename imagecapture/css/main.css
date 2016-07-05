@@ -1,15 +1,30 @@
- button {
-  margin: 0 3px 10px 0;
+.show {
+  display: block;
+}
+
+button {
+  margin: 0 3px 20px 0;
   width: 99px;
-  padding-left: 2px;
-  padding-right: 2px;
 }
 
 button:last-of-type {
   margin: 0;
 }
 
-p.borderBelow {
+canvas {
+  display: none;
+}
+
+img {
+  display: block;
+}
+
+input[type=range] {
+  display: none;
+  margin: 0 0 20px 0;
+}
+
+.borderBelow {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;
 }
@@ -19,15 +34,6 @@ video {
   margin: 0 12px 20px 0;
   vertical-align: top;
   width: calc(20em - 10px);
-}
-
-
-video:last-of-type {
-  margin: 0 0 20px 0;
-}
-
-video#gumVideo {
-  margin: 0 20px 20px 0;
 }
 
 @media screen and (max-width: 500px) {
@@ -42,9 +48,5 @@ video#gumVideo {
     height: calc((50vw - 48px) * 3 / 4);
     margin: 0 10px 10px 0;
     width: calc(50vw - 48px);
-  }
-
-  video#gumVideo {
-    margin: 0 10px 10px 0;
   }
 }
