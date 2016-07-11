@@ -19,9 +19,9 @@ img {
   display: block;
 }
 
-input[type=range] {
-  display: block;
+input#zoom {
   margin: 0 0 20px 0;
+  width: 100%;
 }
 
 .borderBelow {
@@ -30,10 +30,8 @@ input[type=range] {
 }
 
 video {
-  height: 232px;
   margin: 0 12px 20px 0;
   vertical-align: top;
-  width: calc(20em - 10px);
 }
 
 @media screen and (max-width: 500px) {
@@ -45,8 +43,6 @@ video {
 
 @media screen and (max-width: 720px) {
   video {
-    height: calc((50vw - 48px) * 3 / 4);
     margin: 0 10px 10px 0;
-    width: calc(50vw - 48px);
   }
 }
