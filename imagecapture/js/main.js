@@ -54,7 +54,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
       zoomInput.min = capabilities.zoom.min;
       zoomInput.max = capabilities.zoom.max;
       zoomInput.value = capabilities.zoom.current;
-      zoomInput.classList.remove('hide');
+      zoomInput.classList.remove('hidden');
     }
   }).catch(function(error) {
     console.log('navigator.getUserMedia error: ', error);
