@@ -1,5 +1,5 @@
-.show {
-  display: block;
+.hidden {
+  display: none;
 }
 
 button {
@@ -12,7 +12,7 @@ button:last-of-type {
 }
 
 canvas {
-  display: none;
+  display: block;
 }
 
 img {
@@ -20,7 +20,7 @@ img {
 }
 
 input[type=range] {
-  display: none;
+  display: block;
   margin: 0 0 20px 0;
 }
 

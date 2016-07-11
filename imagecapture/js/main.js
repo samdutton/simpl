@@ -54,7 +54,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
       zoomInput.min = capabilities.zoom.min;
       zoomInput.max = capabilities.zoom.max;
       zoomInput.value = capabilities.zoom.current;
-      zoomInput.classList.add('show');
+      zoomInput.classList.remove('hide');
     }
   }).catch(function(error) {
     console.log('navigator.getUserMedia error: ', error);
@@ -67,7 +67,7 @@ function grabFrame() {
     canvas.width = imageBitmap.width;
     canvas.height = imageBitmap.height;
     canvas.getContext('2d').drawImage(imageBitmap, 0, 0);
-    canvas.classList.add('show');
+    canvas.classList.remove('hidden');
   }).catch(function(error) {
     console.log('takePhoto() error: ', error);
   });
