@@ -13,10 +13,12 @@ button:last-of-type {
 
 canvas {
   display: block;
+  margin: 0 0 20px 0;
 }
 
 img {
   display: block;
+  margin: 0 0 20px 0;
 }
 
 input#zoom {
