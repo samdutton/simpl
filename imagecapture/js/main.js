@@ -46,8 +46,14 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
   } else {
     video.src = stream;
   }
+
   imageCapture = window.imageCapture =
     new ImageCapture(stream.getVideoTracks()[0]);
+
+  setTimeout(getCapabilities, 100);
+});
+
+function getCapabilities() {
   imageCapture.getPhotoCapabilities().then(function(capabilities) {
     console.log('Camera capabilitities:', capabilities);
     if (capabilities.zoom.max > 0) {
@@ -59,7 +65,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
   }).catch(function(error) {
     console.log('navigator.getUserMedia error: ', error);
   });
-});
+}
 
 function grabFrame() {
   imageCapture.grabFrame().then(function(imageBitmap) {
