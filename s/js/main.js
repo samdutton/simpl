@@ -20,7 +20,7 @@ limitations under the License.
 
 // For testing
 var baseUrl = location.host === 'localhost' ?
-  'http://localhost:8080' : 'http://www.shearch.me';
+'http://localhost:8080' : 'http://www.shearch.me';
 
 var infoElement = document.getElementById('info');
 var nextPageElement = document.getElementById('nextPage');
@@ -39,25 +39,25 @@ var orderByFieldSelector = document.getElementById('orderByField');
 var lessOrMoreSelector = document.getElementById('lessOrMore');
 
 var stopWords = ['and', 'are', 'but', 'for', 'into', 'not', 'such', 'that',
-  'the', 'their', 'then', 'there', 'these', 'they', 'this', 'was', 'will',
-  'with'
+'the', 'their', 'then', 'there', 'these', 'they', 'this', 'was', 'will',
+'with'
 ];
 
 var transcriptStyle = '<style>' +
-  '* {font-family: Roboto, sans-serif}\n' +
-  'a {color: #77aaff}\n' +
-  'a.video {border-bottom: 1px dotted #ddd; display: block; ' +
-  'font-family: Roboto Condensed; margin:0 0 1.5em 0; padding: 0 0 2em 0}\n' +
-  'body {padding: 2em}\n' +
-  'div.container {margin: auto; max-width: 42em; width: 100%;}\n' +
-  'h1 {font-family: Roboto Condensed, sans-serif; font-size: 1.5em}\n' +
-  'h2 {color: #666; font-family: Roboto Condensed; font-size: 1.2em;}\n' +
-  'p {color: #444; font-family: Roboto; font-weight: 200; ' +
-  'line-height: 1.7em; margin: 0; text-indent: 1.5em;}\n' +
-  'p.speaker {margin: 1em 0 0 0; text-indent: 0;}\n' +
-  'div#transcript > p:first-child {text-indent: 0;}\n' +
-  'span.speaker {color: black; font-weight: 900;}\n' +
-  '</style>\n\n';
+'* {font-family: Roboto, sans-serif}\n' +
+'a {color: #77aaff}\n' +
+'a.video {border-bottom: 1px dotted #ddd; display: block; ' +
+'font-family: Roboto Condensed; margin:0 0 1.5em 0; padding: 0 0 2em 0}\n' +
+'body {padding: 2em}\n' +
+'div.container {margin: auto; max-width: 42em; width: 100%;}\n' +
+'h1 {font-family: Roboto Condensed, sans-serif; font-size: 1.5em}\n' +
+'h2 {color: #666; font-family: Roboto Condensed; font-size: 1.2em;}\n' +
+'p {color: #444; font-family: Roboto; font-weight: 200; ' +
+'line-height: 1.7em; margin: 0; text-indent: 1.5em;}\n' +
+'p.speaker {margin: 1em 0 0 0; text-indent: 0;}\n' +
+'div#transcript > p:first-child {text-indent: 0;}\n' +
+'span.speaker {color: black; font-weight: 900;}\n' +
+'</style>\n\n';
 
 var googleTranslate = '<div id="google_translate_element"></div><script>function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'en\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: \'UA-33848682-1\'}, \'google_translate_element\');}; console.log(\'>>>>>>>>>fooo\');</script><script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>';
 
@@ -166,7 +166,7 @@ function buildQueryString() {
 
 function queryDatabase(query) {
   //  if (!/[<>]/.test(query)) { // add ordering if not doing quantity match
-  query += '&sort=' + lessOrMoreSelector.value +
+    query += '&sort=' + lessOrMoreSelector.value +
     orderByFieldSelector.value;
   // }
   console.log('>>>>> query: ' + query);
@@ -229,7 +229,7 @@ function handleDatabaseResponse(response) {
   displayInfo('Showing ' + start + ' to ' + end + ' of ' +
     response.totalResults + ' matching video(s) in ' + elapsed + 's');
   queryInfoElement.textContent =
-    'Click on a match or caption to view video';
+  'Click on a match or caption to view video';
 
   var videos = response.videos;
 
@@ -281,7 +281,7 @@ function showNextPage() {
 function showPreviousPage() {
   hideNextPrevious();
   var query = currentPage > 1 ? currentQuery + '&bookmark=' +
-    bookmarks[currentPage - 1] : currentQuery;
+  bookmarks[currentPage - 1] : currentQuery;
   queryDatabase(query);
   currentPage--;
 }
@@ -323,7 +323,7 @@ function addVideoDetails(videoDiv, video) {
   details.ontoggle = function() {
     if (iframe.src === '') {
       iframe.src = 'http://www.youtube.com/embed/' + video.id +
-        '?enablejsapi=1';
+      '?enablejsapi=1';
     }
     if (!this.open) {
       tellPlayer(iframe, 'pauseVideo');
@@ -348,25 +348,28 @@ function addVideoDetails(videoDiv, video) {
   var likeCountDiv = document.createElement('div');
   likeCountDiv.classList.add('count');
   likeCountDiv.innerHTML = '<strong>Likes: </strong>' +
-    video.likeCount.toLocaleString();
+  video.likeCount.toLocaleString();
   details.appendChild(likeCountDiv);
 
   var dislikeCountDiv = document.createElement('div');
   dislikeCountDiv.classList.add('count');
   dislikeCountDiv.innerHTML = '<strong>Dislikes: </strong>' +
-    video.dislikeCount.toLocaleString();
+  video.dislikeCount.toLocaleString();
   details.appendChild(dislikeCountDiv);
 
-  var commentCountDiv = document.createElement('div');
-  commentCountDiv.classList.add('count');
-  commentCountDiv.innerHTML = '<strong>Comments: </strong>' +
+  // comments are disabled for some videos
+  if (video.commentCount) {
+    var commentCountDiv = document.createElement('div');
+    commentCountDiv.classList.add('count');
+    commentCountDiv.innerHTML = '<strong>Comments: </strong>' +
     video.commentCount.toLocaleString();
-  details.appendChild(commentCountDiv);
+    details.appendChild(commentCountDiv);
+  }
 
   var viewCountDiv = document.createElement('div');
   viewCountDiv.classList.add('count');
   viewCountDiv.innerHTML = '<strong>View count: </strong>' +
-    video.viewCount.toLocaleString();
+  video.viewCount.toLocaleString();
   details.appendChild(viewCountDiv);
 
   var publishedAtDiv = document.createElement('div');
@@ -390,7 +393,7 @@ function handleSpeakerClick(event) {
 // Wrap span tags around speaker names, with a title
 function addSpeakerSpanTags(item) {
   return '<span title="Click to find videos featuring ' + item + '">' +
-    item + '</span>';
+  item + '</span>';
 }
 
 function addMatchesDetails(videoDiv, video) {
@@ -448,16 +451,16 @@ function addTranscriptDetails(videoDiv, video) {
   }
 
   var downloadHTML = transcriptStyle + '<div class="container">' +
-    googleTranslate + '<h1>' + video.title + '</h1>\n\n';
+  googleTranslate + '<h1>' + video.title + '</h1>\n\n';
   if (video.speakers) {
     downloadHTML += '<h2>' + video.speakers.join(', ') + '</h2>\n\n';
   }
   downloadHTML += '<a class="video" href="http://youtu.be/' +
-    video.id + '">youtu.be/' + video.id + '</a>' +
-    '<div id="transcript">' + video.transcript + '</div></div>';
+  video.id + '">youtu.be/' + video.id + '</a>' +
+  '<div id="transcript">' + video.transcript + '</div></div>';
 
   downloadLink.href = 'data:text/plain;charset=utf-8,' +
-    encodeURIComponent(downloadHTML);
+  encodeURIComponent(downloadHTML);
 }
 
 function addClickHandler(element, videoId, start) {
@@ -472,7 +475,7 @@ function addClickHandler(element, videoId, start) {
     // iframe src isn't set until details.video is opened
     if (iframe.src === '') {
       iframe.src = 'http://www.youtube.com/embed/' + videoId +
-        '?enablejsapi=1&start=' + start + '&autoplay=1';
+      '?enablejsapi=1&start=' + start + '&autoplay=1';
     } else {
       tellPlayer(iframe, 'seekTo', [start]);
       tellPlayer(iframe, 'playVideo');
