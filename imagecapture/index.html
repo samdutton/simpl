@@ -33,10 +33,13 @@
     <div>
       <button id="grabFrame">Grab Frame</button>
       <button id="takePhoto">Take Photo</button>
+      <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+      </div>
       <input class="hidden" id="zoom" type="range" step="20">
     </div>
 
-    <video autoplay></video>
+    <video autoplay class="hidden"></video>
     <img>
     <canvas class="hidden"></canvas>
 
