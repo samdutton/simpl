@@ -28,22 +28,23 @@ var zoomInput = document.querySelector('input#zoom');
 
 grabFrameButton.onclick = grabFrame;
 takePhotoButton.onclick = takePhoto;
-videoSelect.onchange = start;
+videoSelect.onchange = getStream;
 zoomInput.oninput = setZoom;
 
+// Get a list of available media input and output devices.
 navigator.mediaDevices.enumerateDevices().then(gotDevices).
   catch(function(error) {
     console.log('Error getting devices: ', error);
   });
 
-start();
 
-function start() {
-  // if (window.stream) {
-  //   window.stream.getTracks().forEach(function(track) {
-  //     track.stop();
-  //   });
-  // }
+// Get a video stream from the currently selected camera source.
+function getStream() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(function(track) {
+      track.stop();
+    });
+  }
   var videoSource = videoSelect.value;
   constraints = {
     audio: false,
@@ -55,20 +56,24 @@ function start() {
     });
 }
 
+// From the list of media devices available, set up the camera source <select>,
+// then get a video stream from the default camera source.
 function gotDevices(deviceInfos) {
   for (var i = 0; i !== deviceInfos.length; ++i) {
     var deviceInfo = deviceInfos[i];
+    console.log('Found media input or output device: ', deviceInfo);
     var option = document.createElement('option');
     option.value = deviceInfo.deviceId;
     if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || 'camera ' + (videoSelect.length + 1);
+      option.text = deviceInfo.label || 'Camera ' + (videoSelect.length + 1);
       videoSelect.appendChild(option);
-    } else {
-      console.log('Some other kind of source/device: ', deviceInfo);
     }
   }
+  getStream();
 }
 
+// Display the stream from the currently selected camera source, and then
+// create an ImageCapture object, using the video from the stream.
 function gotStream(stream) {
   console.log('getUserMedia() got stream: ', stream);
   window.stream = stream; // global scope visible in browser console
@@ -85,6 +90,7 @@ function gotStream(stream) {
   setTimeout(getCapabilities, 100);
 }
 
+// Get the PhotoCapabilities for the currently selected camera source.
 function getCapabilities() {
   imageCapture.getPhotoCapabilities().then(function(capabilities) {
     console.log('Camera capabilitities:', capabilities);
@@ -99,6 +105,8 @@ function getCapabilities() {
   });
 }
 
+// Get an ImageBitmap from the currently selected camera source and
+// display this with a canvas element.
 function grabFrame() {
   imageCapture.grabFrame().then(function(imageBitmap) {
     console.log('Grabbed frame:', imageBitmap);
@@ -117,6 +125,8 @@ function setZoom() {
   });
 }
 
+// Get a Blob from the currently selected camera source and
+// display this with an img element.
 function takePhoto() {
   imageCapture.takePhoto().then(function(a) {
     console.log('Took photo:', a);
