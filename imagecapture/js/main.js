@@ -28,17 +28,17 @@ var zoomInput = document.querySelector('input#zoom');
 
 grabFrameButton.onclick = grabFrame;
 takePhotoButton.onclick = takePhoto;
-videoSelect.onchange = getVideo;
+videoSelect.onchange = start;
 zoomInput.oninput = setZoom;
 
 navigator.mediaDevices.enumerateDevices().then(gotDevices).
-catch(function(error) {
-  console.log('Error getting devices: ', error);
-});
+  catch(function(error) {
+    console.log('Error getting devices: ', error);
+  });
 
-getVideo();
+start();
 
-function getVideo() {
+function start() {
   // if (window.stream) {
   //   window.stream.getTracks().forEach(function(track) {
   //     track.stop();
