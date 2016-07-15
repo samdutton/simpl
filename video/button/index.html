@@ -12,7 +12,7 @@
 
 <base target="_blank">
 
-<title>Scripted muted video playback</title>
+<title>Button-initiated playback</title>
 
 <link rel="stylesheet" href="../../css/main.css" />
 <style>
@@ -27,21 +27,22 @@ video {
 
 <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Muted video with scripted playback</h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video  playback initiated by a button click</h1>
 
-  <video muted controls>
+  <video controls>
     <source src="../video/chrome.mp4" type="video/mp4" />
     <source src="../video/chrome.webm" type="video/webm" />
     <p>This browser does not support the video element.</p>
   </video>
 
-  <p>Playback of this video is initiated by the <code>autoplay</code> attribute.</p>
+  <button>Play</button>
+
 
   <p id="videoSrc"></p>
 
   <script src="js/main.js"></script>
 
-  <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/scripted/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/button/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>
 <script src="../../js/lib/ga.js"></script>
