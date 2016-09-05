@@ -8,6 +8,7 @@
         "default-case": 2,
         "dot-notation": 2,
         "eqeqeq": 2,
+        "es6": true,
         "indent": [
         2,
         2

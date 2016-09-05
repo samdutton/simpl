@@ -17,20 +17,17 @@
 <link rel="stylesheet" href="../css/main.css" />
 
   <style>
-    div#outer {
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -moz-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -moz-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      height: 10em;
-    }
+  .container {
+    display: flex;
+    height: 300px;
+  }
+
+  .child {
+    background-color: #ccc;
+    height: 200px;
+    margin: auto;
+    width: 200px;
+  }
   </style>
 
 
@@ -42,8 +39,8 @@
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS flexbox center</h1>
 
-  <div id="outer">
-    <p>This should be centred/centered vertically and horizontally.</p>
+  <div class="container">
+    <div class="child"></div>
   </div>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/flexboxcenter/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
