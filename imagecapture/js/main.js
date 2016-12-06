@@ -16,6 +16,7 @@ if (!isSecureOrigin) {
 
 var constraints;
 var imageCapture;
+var mediaStream;
 
 var grabFrameButton = document.querySelector('button#grabFrame');
 var takePhotoButton = document.querySelector('button#takePhoto');
@@ -31,17 +32,17 @@ takePhotoButton.onclick = takePhoto;
 videoSelect.onchange = getStream;
 zoomInput.oninput = setZoom;
 
-// Get a list of available media input and output devices.
-navigator.mediaDevices.enumerateDevices().then(gotDevices).
-  catch(function(error) {
-    console.log('Error getting devices: ', error);
-  });
+// Get a list of available media input (and output) devices.
+navigator.mediaDevices.enumerateDevices()
+  .then(gotDevices)
+  .catch(error => {console.log('enumerateDevices() error: ', error);})
+  .then(getStream);
 
 
 // Get a video stream from the currently selected camera source.
 function getStream() {
-  if (window.stream) {
-    window.stream.getTracks().forEach(function(track) {
+  if (mediaStream) {
+    mediaStream.getTracks().forEach(track => {
       track.stop();
     });
   }
@@ -50,10 +51,11 @@ function getStream() {
     audio: false,
     video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
-  navigator.mediaDevices.getUserMedia(constraints).
-    then(gotStream).then(gotDevices).catch(function(error) {
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(gotStream)
+    .catch(error => {
       console.log('getUserMedia error: ', error);
-    });
+  });
 }
 
 // From the list of media devices available, set up the camera source <select>,
@@ -69,31 +71,27 @@ function gotDevices(deviceInfos) {
       videoSelect.appendChild(option);
     }
   }
-  getStream();
 }
 
 // Display the stream from the currently selected camera source, and then
 // create an ImageCapture object, using the video from the stream.
 function gotStream(stream) {
   console.log('getUserMedia() got stream: ', stream);
-  window.stream = stream; // global scope visible in browser console
+  mediaStream = stream;
   if (window.URL) {
     video.src = window.URL.createObjectURL(stream);
     video.classList.remove('hidden');
   } else {
     video.src = stream;
   }
-
-  imageCapture = window.imageCapture =
-  new ImageCapture(stream.getVideoTracks()[0]);
-
-  setTimeout(getCapabilities, 100);
+  imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+  getCapabilities();
 }
 
 // Get the PhotoCapabilities for the currently selected camera source.
 function getCapabilities() {
   imageCapture.getPhotoCapabilities().then(function(capabilities) {
-    console.log('Camera capabilitities:', capabilities);
+    console.log('Camera capabilities:', capabilities);
     if (capabilities.zoom.max > 0) {
       zoomInput.min = capabilities.zoom.min;
       zoomInput.max = capabilities.zoom.max;
@@ -101,7 +99,7 @@ function getCapabilities() {
       zoomInput.classList.remove('hidden');
     }
   }).catch(function(error) {
-    console.log('navigator.getUserMedia error: ', error);
+    console.log('getCapabilities() error: ', error);
   });
 }
 
@@ -115,7 +113,7 @@ function grabFrame() {
     canvas.getContext('2d').drawImage(imageBitmap, 0, 0);
     canvas.classList.remove('hidden');
   }).catch(function(error) {
-    console.log('takePhoto() error: ', error);
+    console.log('grabFrame() error: ', error);
   });
 }
 
@@ -128,11 +126,11 @@ function setZoom() {
 // Get a Blob from the currently selected camera source and
 // display this with an img element.
 function takePhoto() {
-  imageCapture.takePhoto().then(function(a) {
-    console.log('Took photo:', a);
-    img.src = URL.createObjectURL(a);
+  imageCapture.takePhoto().then(function(blob) {
+    console.log('Took photo:', blob);
+    img.classList.remove('hidden');
+    img.src = URL.createObjectURL(blob);
   }).catch(function(error) {
     console.log('takePhoto() error: ', error);
   });
 }
-
