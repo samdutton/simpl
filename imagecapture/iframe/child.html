@@ -1,31 +1,79 @@
-'use strict';
-
-/* globals ImageCapture */
-
-// This code is adapted from
-// https://cdn.rawgit.com/Miguelao/demos/master/imagecapture.html
-
-// window.isSecureContext could be used for Chrome
-var isSecureOrigin = location.protocol === 'https:' ||
-location.host === 'localhost';
-if (!isSecureOrigin) {
-  alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
-    '\n\nChanging protocol to HTTPS');
-  location.protocol = 'HTTPS';
+<style>
+#ic-demo .hidden {
+display: none;
 }
 
+#ic-demo button {
+display: block;
+float: left;
+margin: 0 10px 20px 0;
+width: 120px;
+}
+
+#ic-demo button:last-of-type {
+float: none;
+margin: 0 0 20px 0;
+}
+
+#ic-demo canvas {
+display: block;
+margin: 0 0 20px 0;
+max-width: 100%;
+}
+
+div#ic-demo {
+border-top: 1px solid #eee;
+margin: 20px 0 0 0;
+padding: 20px 0 0 0;
+}
+
+#ic-demo img {
+display: block;
+margin: 0 0 20px 0;
+}
+
+#ic-demo input#zoom {
+margin: 0 0 20px 0;
+width: 100%;
+}
+
+#ic-demo select {
+margin: 0 0 20px 0;
+}
+
+#ic-demo video {
+margin: 0 0 20px 0;
+vertical-align: top;
+max-width: 100%;
+}
+</style>
+
+<div id="ic-demo">
+  <button id="grabFrame">Grab Frame</button>
+  <button id="takePhoto">Take Photo</button>
+  <div class="select">
+    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+  </div>
+  <input class="hidden" id="zoom" type="range" step="20">
+  <video autoplay class="hidden"></video>
+  <canvas class="hidden"></canvas>
+  <img class="hidden">
+</div>
+
+<script>
+console.log('foo');
 var constraints;
 var imageCapture;
 var mediaStream;
 
-var grabFrameButton = document.querySelector('button#grabFrame');
-var takePhotoButton = document.querySelector('button#takePhoto');
+var grabFrameButton = document.querySelector('#ic-demo button#grabFrame');
+var takePhotoButton = document.querySelector('#ic-demo button#takePhoto');
 
-var canvas = document.querySelector('canvas');
-var img = document.querySelector('img');
-var video = document.querySelector('video');
-var videoSelect = document.querySelector('select#videoSource');
-var zoomInput = document.querySelector('input#zoom');
+var canvas = document.querySelector('#ic-demo canvas');
+var img = document.querySelector('#ic-demo img');
+var video = document.querySelector('#ic-demo video');
+var videoSelect = document.querySelector('#ic-demo select#videoSource');
+var zoomInput = document.querySelector('#ic-demo input#zoom');
 
 grabFrameButton.onclick = grabFrame;
 takePhotoButton.onclick = takePhoto;
@@ -34,14 +82,10 @@ zoomInput.oninput = setZoom;
 
 // Get a list of available media input (and output) devices.
 navigator.mediaDevices.enumerateDevices()
-  .then(blah)
   .then(gotDevices)
   .catch(error => {console.log('enumerateDevices() error: ', error);})
   .then(getStream);
 
-function blah(){
-  console.log('blah');
-}
 
 // Get a video stream from the currently selected camera source.
 function getStream() {
@@ -82,12 +126,8 @@ function gotDevices(deviceInfos) {
 function gotStream(stream) {
   console.log('getUserMedia() got stream: ', stream);
   mediaStream = stream;
-  if (window.URL) {
-    video.src = window.URL.createObjectURL(stream);
-    video.classList.remove('hidden');
-  } else {
-    video.src = stream;
-  }
+  video.srcObject = stream;
+  video.classList.remove('hidden');
   imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
   getCapabilities();
 }
@@ -99,6 +139,7 @@ function getCapabilities() {
     if (capabilities.zoom.max > 0) {
       zoomInput.min = capabilities.zoom.min;
       zoomInput.max = capabilities.zoom.max;
+      zoomInput.step = capabilities.zoom.step;
       zoomInput.value = capabilities.zoom.current;
       zoomInput.classList.remove('hidden');
     }
@@ -138,3 +179,4 @@ function takePhoto() {
     console.log('takePhoto() error: ', error);
   });
 }
+</script>

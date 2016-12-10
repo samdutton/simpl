@@ -12,12 +12,14 @@
 
 <base target="_blank">
 
-<title>iframe</title>
+<title>enumerateDevices() and getUserMedia() in an iframe</title>
 
 <link rel="stylesheet" href="../../css/main.css" />
 <style>
 iframe {
-width: 100%;
+  border: none;
+  height: 600px;
+  width: 100%;
 }
 </style>
 </head>
@@ -26,13 +28,13 @@ width: 100%;
 
 <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> iframe</h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> enumerateDevices() and getUserMedia() in an iframe</h1>
 
-  <p>This document has a seamless iframe:</p>
+  <p>This document has a seamless iframe that includes calls to enumerateDevices() and getUserMedia():</p>
 
-  <iframe src="child.html" seamless="seamless"></iframe>
+  <iframe src="child.html"></iframe>
 
-  <a href="https://github.com/samdutton/simpl/blob/gh-pages/iframe/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/imagecapture/iframe/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>
 
