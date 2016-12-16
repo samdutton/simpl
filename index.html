@@ -151,6 +151,7 @@
 <a href="webgl" title="Fullscren">WebGL</a>
 <a href="webp" title="WebP">WebP</a>
 <a href="webrtc" title="WebRTC home">WebRTC (getUserMedia, RTCPeerConnection, RTCDataChannel)</a>
+<a href="websockets" title="WebSockets">WebSockets</a>
 <a href="stt" title="Web Speech API: speech to text">Web Speech: speech recognition</a>
 <a href="tts" title="Web Speech API: text to speech">Web Speech: speech synthesis</a>
 <a href="websql" title="WebSQL">WebSQL</a>
@@ -170,7 +171,7 @@
   (function() {
     var ga = document.createElement('script');
     ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ?
+    ga.src = ('https:' === document.location.protocol ?
               'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ga, s);
