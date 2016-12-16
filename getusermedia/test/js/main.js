@@ -46,7 +46,7 @@ function errorCallback(error) {
 function start() {
   if (window.stream) {
     videoElement.src = null;
-    window.stream.stop();
+    window.stream.getVideoTracks()[0].stop();
   }
   var audioSource = audioSelect.value;
   var videoSource = videoSelect.value;

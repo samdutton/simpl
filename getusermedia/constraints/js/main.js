@@ -69,7 +69,7 @@ hdButton.onclick = function() {
 function getMedia(constraints) {
   if (window.stream) {
     video.src = null;
-    window.stream.stop();
+    window.stream.getVideoTracks()[0].stop();
   }
   navigator.getUserMedia(constraints, successCallback, errorCallback);
 }
