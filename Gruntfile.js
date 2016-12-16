@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         options: {
           import: 2
         },
-        src: ['**/*.css', '!node_modules/**/*']
+        src: ['**/*.css', '!video/split/css/main.css', '!node_modules/**/*']
       }
     },
 
