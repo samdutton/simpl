@@ -11,12 +11,12 @@ function gotSources(sourceInfos) {
   for (var i = 0; i !== sourceInfos.length; ++i) {
     var sourceInfo = sourceInfos[i];
     var option = document.createElement('option');
-    option.value = sourceInfo.id;
-    if (sourceInfo.kind === 'audio') {
+    option.value = sourceInfo.deviceId;
+    if (sourceInfo.kind === 'audiooutput') {
       option.text = sourceInfo.label || 'microphone ' +
         (audioSelect.length + 1);
       audioSelect.appendChild(option);
-    } else if (sourceInfo.kind === 'video') {
+    } else if (sourceInfo.kind === 'videoinput') {
       option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
       videoSelect.appendChild(option);
     } else {
@@ -29,7 +29,9 @@ if (typeof MediaStreamTrack === 'undefined' ||
     typeof MediaStreamTrack.getSources === 'undefined') {
   alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
 } else {
-  MediaStreamTrack.getSources(gotSources);
+  navigator.mediaDevices.enumerateDevices().then(function(e){
+    gotSources(e)
+  });
 }
 
 function successCallback(stream) {
@@ -45,10 +47,13 @@ function errorCallback(error) {
 function start() {
   if (window.stream) {
     videoElement.src = null;
-    window.stream.stop();
+    window.stream.getTracks().forEach(function(track){
+      track.stop();
+    })
   }
   var audioSource = audioSelect.value;
   var videoSource = videoSelect.value;
+
   var constraints = {
     audio: {
       optional: [{
