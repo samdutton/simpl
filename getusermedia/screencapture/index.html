@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="author" content="//samdutton.com">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="/images/icons/icon192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <base target="_blank">
+
+  <title>getUserMedia: screen capture</title>
+
+  <link rel="stylesheet" href="../../css/main.css" />
+
+  <style>
+    video {
+      object-fit: cover;
+    }
+
+    @media screen and (min-width: 1000px) {
+      video {
+        height: 480px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia: screen&nbsp;capture</h1>
+
+    <p>This demo only works on Android Chrome with the <strong>Experimental ScreenCapture</strong> flag enabled from the chrome://flags page.</p>
+
+    <video autoplay></video>
+
+    <p>The <code>constraints</code> and <code>stream</code> variables are in global scope, so you can inspect them from the console.</p>
+
+    <p>For more information and demos, see Paul Kinlan's article <a href="https://medium.com/dev-channel/screen-recording-on-android-with-getusermedia-and-webrtc-c32ba9d29c28" title="Screen capture article by Paul Kinlan on Medium">Screen recording on Android with getUserMedia and WebRTC</a>.</p>
+
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/getusermedia" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
+
+  <script src="../../js/lib/ga.js"></script>
+
+</body>
+</html>
