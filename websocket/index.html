@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="keywords" content="Sam Dutton, HTML5, JavaScript" />
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <base target="_blank">
+    <title>WebSocket</title>
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <style>
+
+    #inputOutput {
+    display: block;
+    height: 240px;
+    }
+
+    .input {
+    float: left;
+    }
+
+    .log {
+    height: 15em;
+    width: 20em;
+    }
+
+    .output {
+    float: right;
+    }
+
+    button {
+    display: block;
+    margin: 0 0 10px 0;
+    width: 8em;
+    }
+
+    button#disconnectButton {
+      margin: 0 0 20px 0;
+    }
+
+    input {
+    display: block;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    padding: 3px;
+    width: 15em;
+    }
+
+    label {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    }
+
+    textarea {
+    display: block;
+    }
+
+    .log p {
+    color: black;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    }
+
+    p.err {
+    color: red;
+    }
+
+    p.msg {
+    color: green;
+    }
+
+    p.send {
+    color: blue;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> WebSocket</h1>
+
+      <p>Enter a server URL and tap/click the <strong>Connect</strong> button to establish a WebSocket connection.</p>
+
+      <p>This connection will remain open. Enter text, tap/click the <strong>Send</strong> button and the WebSocket server will echo the sent message.</p>
+
+      <p>More info can be found at <a href="https://www.websocket.org/" title="websocket.org">websocket.org</a>.</p>
+
+      <div id="inputOutput">
+
+        <div class="input">
+          <label for="serverInput">Server</label>
+          <input id="serverInput" type="text" value="wss://echo.websocket.org">
+
+          <button id="connectButton">Connect</button>
+          <button id="disconnectButton" disabled>Disconnect</button>
+
+          <label for="textInput">Send text</label>
+          <input id="textInput" type="text" />
+
+          <button id="sendButton" disabled>Send</button>
+        </div>
+
+        <div class="output">
+          <label for="log">Response</label>
+          <div id="log" class="log"></div>
+        </div>
+
+      </div>
+
+      <script src="js/main.js"></script>
+
+      <a href="https://github.com/samdutton/simpl/blob/master/websockets" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+    </div>
+    <script src="../js/lib/ga.js"></script>
+  </body>
+</html>
