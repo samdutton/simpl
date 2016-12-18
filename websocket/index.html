@@ -8,76 +8,8 @@
     <base target="_blank">
     <title>WebSocket</title>
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
-    <style>
-
-    #inputOutput {
-    display: block;
-    height: 240px;
-    }
-
-    .input {
-    float: left;
-    }
-
-    .log {
-    height: 15em;
-    width: 20em;
-    }
-
-    .output {
-    float: right;
-    }
-
-    button {
-    display: block;
-    margin: 0 0 10px 0;
-    width: 8em;
-    }
-
-    button#disconnectButton {
-      margin: 0 0 20px 0;
-    }
-
-    input {
-    display: block;
-    font-size: 14px;
-    margin: 0 0 10px 0;
-    padding: 3px;
-    width: 15em;
-    }
-
-    label {
-    display: block;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0 0 5px 0;
-    }
-
-    textarea {
-    display: block;
-    }
-
-    .log p {
-    color: black;
-    font-family: 'Courier New', monospace;
-    font-size: 13px;
-    margin: 0;
-    padding: 0;
-    }
-
-    p.err {
-    color: red;
-    }
-
-    p.msg {
-    color: green;
-    }
-
-    p.send {
-    color: blue;
-    }
-    </style>
   </head>
   <body>
     <div id="container">
@@ -90,26 +22,23 @@
 
       <p>More info can be found at <a href="https://www.websocket.org/" title="websocket.org">websocket.org</a>.</p>
 
-      <div id="inputOutput">
+      <div id="input">
+        <label for="serverInput">Server:</label>
+        <input id="serverInput" type="text" value="wss://echo.websocket.org">
+      </div>
 
-        <div class="input">
-          <label for="serverInput">Server</label>
-          <input id="serverInput" type="text" value="wss://echo.websocket.org">
+      <button id="connectButton">Connect</button>
+      <button id="disconnectButton" disabled>Disconnect</button>
 
-          <button id="connectButton">Connect</button>
-          <button id="disconnectButton" disabled>Disconnect</button>
+      <div id="sendText">
+        <label for="textInput">Send text:</label>
+        <input id="textInput" type="text" />
+      </div>
+      <button id="sendButton" disabled>Send</button>
 
-          <label for="textInput">Send text</label>
-          <input id="textInput" type="text" />
-
-          <button id="sendButton" disabled>Send</button>
-        </div>
-
-        <div class="output">
-          <label for="log">Response</label>
-          <div id="log" class="log"></div>
-        </div>
-
+      <div id="output">
+        <label for="log">Response:</label>
+        <div id="log" class="log"></div>
       </div>
 
       <script src="js/main.js"></script>
