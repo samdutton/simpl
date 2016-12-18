@@ -43,7 +43,7 @@ function clickDisconnect() {
 }
 
 function clickSend() {
-  logMessage('send', 'Send: ' + textInput.value);
+  logMessage('send', 'Sent: ' + textInput.value);
   ws.send(textInput.value);
 }
 
