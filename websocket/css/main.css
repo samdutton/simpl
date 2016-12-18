@@ -24,7 +24,7 @@ input {
   font-size: 14px;
   margin: 0 0 10px 0;
   padding: 3px;
-  width: 40%;
+  width: calc(100% - 7em);
 }
 
 label {
@@ -34,8 +34,7 @@ label {
   width: 5em;
 }
 
-.log p {
-  color: black;
+#log p {
   font-family: 'Courier New', monospace;
   font-size: 14px;
   margin: 0;
