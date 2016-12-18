@@ -1,0 +1,55 @@
+button {
+  margin: 5px 10px 0 0;
+  width: 6.5em;
+}
+
+button#disconnectButton {
+  margin: 0 0 20px 0;
+}
+
+div#input {
+  border-top: 1px solid #ccc;
+  padding: 30px 0 0 0;
+}
+
+div#output {
+  margin: 30px 0 0 0;
+}
+
+div#sendText {
+  margin: 10px 0 0 0;
+}
+
+input {
+  font-size: 14px;
+  margin: 0 0 10px 0;
+  padding: 3px;
+  width: 40%;
+}
+
+label {
+  display: inline-block;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  width: 5em;
+}
+
+.log p {
+  color: black;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+p.err {
+  color: red;
+}
+
+p.msg {
+  color: green;
+}
+
+p.send {
+  color: blue;
+}
