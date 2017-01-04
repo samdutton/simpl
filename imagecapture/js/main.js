@@ -32,35 +32,12 @@ takePhotoButton.onclick = takePhoto;
 videoSelect.onchange = getStream;
 zoomInput.oninput = setZoom;
 
-// Get a list of available media input (and output) devices.
+// Get a list of available media input (and output) devices
+// then get a MediaStream for the currently selected input device
 navigator.mediaDevices.enumerateDevices()
-  .then(blah)
   .then(gotDevices)
   .catch(error => {console.log('enumerateDevices() error: ', error);})
   .then(getStream);
-
-function blah(){
-  console.log('blah');
-}
-
-// Get a video stream from the currently selected camera source.
-function getStream() {
-  if (mediaStream) {
-    mediaStream.getTracks().forEach(track => {
-      track.stop();
-    });
-  }
-  var videoSource = videoSelect.value;
-  constraints = {
-    audio: false,
-    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
-  };
-  navigator.mediaDevices.getUserMedia(constraints)
-    .then(gotStream)
-    .catch(error => {
-      console.log('getUserMedia error: ', error);
-  });
-}
 
 // From the list of media devices available, set up the camera source <select>,
 // then get a video stream from the default camera source.
@@ -75,6 +52,24 @@ function gotDevices(deviceInfos) {
       videoSelect.appendChild(option);
     }
   }
+}
+
+// Get a video stream from the currently selected camera source.
+function getStream() {
+  if (mediaStream) {
+    mediaStream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  var videoSource = videoSelect.value;
+  constraints = {
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(gotStream)
+    .catch(error => {
+      console.log('getUserMedia error: ', error);
+  });
 }
 
 // Display the stream from the currently selected camera source, and then
