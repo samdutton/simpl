@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="author" content="//samdutton.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+    <meta itemprop="image" content="/images/icons/icon192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
+
+    <base target="_blank">
+
+    <title>Media queries</title>
+
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <style>
+    #mediaQueries p {
+      display: none;
+    }
+
+    @media (min-width: 301px) {
+      #mediaQueries p#gt300 {
+        display: block;
+      }
+    }
+    @media (min-width: 401px) {
+      #mediaQueries p#gt400 {
+        display: block;
+      }
+    }
+    @media (min-width: 501px) {
+      #mediaQueries p#gt500 {
+        display: block;
+      }
+    }
+    @media (min-width: 601px) {
+      #mediaQueries p#gt600 {
+        display: block;
+      }
+    }
+    @media (min-width: 701px) {
+      #mediaQueries p#gt700 {
+        display: block;
+      }
+    }
+    @media (min-width: 801px) {
+      #mediaQueries p#gt800 {
+        display: block;
+      }
+    }
+    @media (min-width: 901px) {
+      #mediaQueries p#gt900 {
+        display: block;
+      }
+    }
+    @media (min-width: 1001px) {
+      #mediaQueries p#gt1000 {
+        display: block;
+      }
+    }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="container">
+
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Media queries</h1>
+
+      <p>Viewport width: <span id="viewportWidth"></span>px.</p>
+
+      <div id="mediaQueries">
+        <p id="gt1000">Viewport width is greater than 1000px.</p>
+        <p id="gt900">Viewport width is greater than 900px.</p>
+        <p id="gt800">Viewport width is greater than 800px.</p>
+        <p id="gt700">Viewport width is greater than 700px.</p>
+        <p id="gt600">Viewport width is greater than 600px.</p>
+        <p id="gt500">Viewport width is greater than 500px.</p>
+        <p id="gt400">Viewport width is greater than 400px.</p>
+        <p id="gt300">Viewport width is greater than 300px.</p>
+      </div>
+
+      <script>
+        var viewportWidthEl = document.getElementById("viewportWidth");
+        function displayViewportWidth() {
+          var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+          viewportWidthEl.textContent = viewportWidth;
+        }
+        window.onresize = displayViewportWidth;
+        displayViewportWidth();
+      </script>
+
+      <a href="https://github.com/samdutton/simpl/blob/gh-pages/mediaqueries/" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+    </div>
+
+    <script src="../js/lib/ga.js"></script>
+
+  </body>
+</html>
