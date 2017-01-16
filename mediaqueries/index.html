@@ -21,42 +21,47 @@
       display: none;
     }
 
-    @media (min-width: 301px) {
+    @media (min-width: 0px) and (max-width: 299px) {
+      #mediaQueries p#gt0 {
+        display: block;
+      }
+    }
+    @media (min-width: 300px) and (max-width: 399px) {
       #mediaQueries p#gt300 {
         display: block;
       }
     }
-    @media (min-width: 401px) {
+    @media (min-width: 400px) and (max-width: 499px) {
       #mediaQueries p#gt400 {
         display: block;
       }
     }
-    @media (min-width: 501px) {
+    @media (min-width: 500px) and (max-width: 599px) {
       #mediaQueries p#gt500 {
         display: block;
       }
     }
-    @media (min-width: 601px) {
+    @media (min-width: 600px) and (max-width: 699px) {
       #mediaQueries p#gt600 {
         display: block;
       }
     }
-    @media (min-width: 701px) {
+    @media (min-width: 700px) and (max-width: 799px) {
       #mediaQueries p#gt700 {
         display: block;
       }
     }
-    @media (min-width: 801px) {
+    @media (min-width: 800px) and (max-width: 899px) {
       #mediaQueries p#gt800 {
         display: block;
       }
     }
-    @media (min-width: 901px) {
+    @media (min-width: 900px) and (max-width: 999px) {
       #mediaQueries p#gt900 {
         display: block;
       }
     }
-    @media (min-width: 1001px) {
+    @media (min-width: 1000px) {
       #mediaQueries p#gt1000 {
         display: block;
       }
@@ -71,18 +76,19 @@
 
       <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Media queries</h1>
 
-      <p>Viewport width: <span id="viewportWidth"></span>px.</p>
-
       <div id="mediaQueries">
-        <p id="gt1000">Viewport width is greater than 1000px.</p>
-        <p id="gt900">Viewport width is greater than 900px.</p>
-        <p id="gt800">Viewport width is greater than 800px.</p>
-        <p id="gt700">Viewport width is greater than 700px.</p>
-        <p id="gt600">Viewport width is greater than 600px.</p>
-        <p id="gt500">Viewport width is greater than 500px.</p>
-        <p id="gt400">Viewport width is greater than 400px.</p>
-        <p id="gt300">Viewport width is greater than 300px.</p>
+        <p id="gt0">Viewport width: less than 300px.</p>
+        <p id="gt300">Viewport width: 300–399px.</p>
+        <p id="gt400">Viewport width: 400–399px.</p>
+        <p id="gt500">Viewport width: 500–599px.</p>
+        <p id="gt600">Viewport width: 600–699px.</p>
+        <p id="gt700">Viewport width: 700–799px.</p>
+        <p id="gt800">Viewport width: 800–899px.</p>
+        <p id="gt900">Viewport width: 900–999px.</p>
+        <p id="gt1000">Viewport width: greater than 999px.</p>
       </div>
+
+      <p>Viewport width: <span id="viewportWidth"></span>px.</p>
 
       <script>
         var viewportWidthEl = document.getElementById("viewportWidth");
