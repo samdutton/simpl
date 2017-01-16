@@ -15,8 +15,13 @@ function displayData() {
     img.currentSrc.replace(/^.*[\\\/]/, '') + '</a>';
   imgNaturalWidth.textContent = img.naturalWidth;
   imgWidth.textContent = img.width;
-  dpr.textContent = window.devicePixelRatio;
-  minimumWidth.textContent = img.width * window.devicePixelRatio;
+  if (window.devicePixelRatio) {
+    dpr.textContent = window.devicePixelRatio;
+    minimumWidth.textContent = img.width * window.devicePixelRatio;
+  } else {
+    dpr.textContent = minimumWidth.textContent = 'undefined';
+  }
+
   viewportWidth.textContent = document.documentElement.clientWidth;
   availableWidth.textContent = window.screen.availWidth;
 }
