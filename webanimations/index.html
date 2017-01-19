@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="author" content="//samdutton.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+    <meta itemprop="image" content="/images/icons/icon192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
+    <base target="_blank">
+    <title>Web Animations API</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      *{-webkit-box-sizing:border-box;box-sizing:border-box}
+      .overflow-hidden{overflow:hidden}
+      .grid{display:block;font-size:0}
+      .cell{display:inline-block;font-size:2rem;font-weight:700;position:relative;width:100%;height:30vh;padding:1rem .5rem;text-align:center}
+      .cell .content{display:block;position:absolute;top:.5rem;bottom:.5rem;left:.5rem;right:.5rem;padding:1rem;color:#fff;background:#4183C4;box-shadow:0 2px 10px -10px #ccc}
+      .cell.w16{width:16%;width:-webkit-calc(100% / 6);width:calc(100% / 6)}
+      .cell.w25{width:25%}
+      .cell.w33{width:33%width:-webkit-calc(100% / 3);width:calc(100% / 3)}
+      .cell.w50{width:50%}
+      .cell.w66{width:66%;width:-webkit-calc(100% / (3 / 2));width:calc(100% / (3 / 2))}
+      .cell.w75{width:75%}
+      .cell.w83{width:83%;width:-webkit-calc(100% / (6 / 5));width:calc(100% / (6 / 5))}
+      .cell.w100{width:100%}
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Web Animations API</h1>
+      <p>If the below does not appear to be a scrolling marquee, but rather a static grid, your browser does not support the Web Animations API (or the partial polyfill used in this example).</p>
+      <div class="overflow-hidden">
+        <div class="grid marquee">
+          <div class="cell w66">
+            <div class="content">
+              Start
+            </div>
+          </div>
+          <div class="cell w33">
+            <div class="content">
+              1
+            </div>
+          </div>
+          <div class="cell w25">
+            <div class="content">
+              2
+            </div>
+          </div>
+          <div class="cell w25">
+            <div class="content">
+              3
+            </div>
+          </div>
+          <div class="cell w50">
+            <div class="content">
+              4
+            </div>
+          </div>
+          <div class="cell w100">
+            <div class="content">
+              5
+            </div>
+          </div>
+          <div class="cell w16">
+            <div class="content">
+              6
+            </div>
+          </div>
+          <div class="cell w83">
+            <div class="content">
+              7
+            </div>
+          </div>
+          <div class="cell w25">
+            <div class="content">
+              8
+            </div>
+          </div>
+          <div class="cell w75">
+            <div class="content">
+              9
+            </div>
+          </div>
+          <div class="cell w66">
+            <div class="content">
+              10
+            </div>
+          </div>
+          <div class="cell w33">
+            <div class="content">
+              Finish
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://github.com/samdutton/simpl/blob/gh-pages/webanimations" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    </div>
+    <script src="//cdn.rawgit.com/wnda/web-animations-api-shiv/07ed88f3/web-animations-api-shiv.js"></script>
+    <script src="js/main.js"></script>
+    <script src="../js/lib/ga.js"></script>
+  </body>
+</html>
