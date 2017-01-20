@@ -28,7 +28,7 @@
 
 <script type="text/javascript">
 // thanks to Nicholas Zakas
-// http://www.html5rocks.com/en/tutorials/cors/
+// https://www.html5rocks.com/en/tutorials/cors/
 function createCORSRequest(method, url){
     var xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr){
@@ -47,7 +47,7 @@ function createCORSRequest(method, url){
 // header("Access-Control-Allow-Origin: *");
 // echo "This text was retrieved by a CORS request to thehillsarealive.net/cors.php";
 // ?>
-var request = createCORSRequest("get", "http://www.thehillsarealive.net/cors.php");
+var request = createCORSRequest("get", "https://simpl.info/cors/index.html");
 if (request){
     request.onload = function(){
       document.getElementById("response").textContent = request.responseText;

@@ -400,7 +400,7 @@ day is overlaid on the video.
 **Tracks and tracks**
 
 Don't confuse the track element and the [TextTrack
-API](http://www.html5rocks.com/en/tutorials/track/basics/#toc-cues-js)
+API](https://www.html5rocks.com/en/tutorials/track/basics/#toc-cues-js)
 with
 [MediaStreamTrack](https://developer.mozilla.org/docs/Web/API/MediaStream):
 they are related but entirely different!
@@ -408,7 +408,7 @@ they are related but entirely different!
 ### Learn more
 
 -   [Getting started with the track
-    element](http://www.html5rocks.com/en/tutorials/track/basics/)
+    element](https://www.html5rocks.com/en/tutorials/track/basics/)
 -   [An introduction to WebVTT
     and](https://dev.opera.com/articles/an-introduction-to-webvtt-and-track/)
 -   [Mozilla Developer
@@ -713,7 +713,7 @@ the Request URL relates to the URL from the manifest.
 It's possible to add text tracks to HTML5 video either declaratively by
 adding a `<track>` element pointing to a WebVTT file, or via JavaScript
 using [TextTrack
-API](http://www.html5rocks.com/en/tutorials/track/basics/#toc-cues-js) —
+API](https://www.html5rocks.com/en/tutorials/track/basics/#toc-cues-js) —
 which is what Shaka does.
 
 You can turn on subtitles by clicking on the CC button near the bottom
@@ -785,7 +785,7 @@ subtitles.
 -   Learn more about Shaka's [codebase and the API
     architecture](https://github.com/google/shaka-player)
 -   Get to grips with APIs for DRM: [EME
-    WTF?](http://www.html5rocks.com/en/tutorials/eme/basics/)
+    WTF?](https://www.html5rocks.com/en/tutorials/eme/basics/)
 
 ### Learn More
 

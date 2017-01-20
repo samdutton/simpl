@@ -3,7 +3,7 @@
 /* globals FileError */
 
 // code adapted from HTML5 Rocks article by Eric Bidelman
-// http://www.html5rocks.com/en/tutorials/file/filesystem/
+// https://www.html5rocks.com/en/tutorials/file/filesystem/
 
 // init a FileSystem
 // create a file
