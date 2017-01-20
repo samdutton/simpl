@@ -24,6 +24,8 @@
 
 <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CORS</h1>
 
+<p class="strong">A CORS request is made for this page using XHR. The response will be displayed below.</p>
+
 <p id="response"></p>
 
 <script type="text/javascript">
@@ -42,11 +44,6 @@ function createCORSRequest(method, url){
     return xhr;
 }
 
-// cors.php looks like this:
-// <?php
-// header("Access-Control-Allow-Origin: *");
-// echo "This text was retrieved by a CORS request to thehillsarealive.net/cors.php";
-// ?>
 var request = createCORSRequest("get", "https://simpl.info/cors/index.html");
 if (request){
     request.onload = function(){
