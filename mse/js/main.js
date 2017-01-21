@@ -48,7 +48,11 @@ mediaSource.addEventListener('sourceopen', function() {
         sourceBuffer.appendBuffer(new Uint8Array(e.target.result));
         log('Appending chunk: ' + i);
         if (i === NUM_CHUNKS - 1) {
-          mediaSource.endOfStream();
+          sourceBuffer.addEventListener('updateend', function() {
+            if (!sourceBuffer.updating && mediaSource.readyState === 'open') {
+              mediaSource.endOfStream();
+            }
+          });
         } else {
           if (video.paused) {
             video.play(); // Start playing after 1st chunk is appended.
