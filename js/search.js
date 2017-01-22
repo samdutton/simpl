@@ -79,6 +79,7 @@
     // We're using data-attributes to govern CSS properties of the search form/results panel
     _root.setAttribute('data-displayresults','true');
     _root.removeAttribute('data-searchinit');
+    _results.removeAttribute('aria-hidden');
 
     // Display number of results found above the results list
     _results
@@ -180,10 +181,12 @@
 
   // Delete all the results and close the search panel
   function resetSearchResults() {
-    [].slice.call(_results.getElementsByTagName('a'))
-      .forEach(function(result) {
-        result.parentNode.removeChild(result);
-      });
+    [].slice.call(
+      _results.getElementsByTagName('a')
+    ).forEach(function(result) {
+      result.parentNode.removeChild(result);
+    });
+    _results.setAttribute('aria-hidden', 'true');
     _root.removeAttribute('data-displayresults');
   }
 
