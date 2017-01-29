@@ -31,7 +31,7 @@
   <body>
     <div id="container">
       <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> requestIdleCallback</h1>
-      <p>Press the button to fire off some thread-halting synchronous XMLHttpRequests; the tasks wrapped by requestIdleCallback will not be executed until the main thread frees up, as you will be able to see from the timestamps:</p>
+      <p>Press the button to fire off some thread-halting synchronous <code>XMLHttpRequests</code>; the tasks wrapped by <code>requestIdleCallback</code> will not be executed until the main thread frees up, as you will be able to see from the timestamps:</p>
       <div class="demo-box">
         <div><button class="demo-button">Click</button></div>
         <div class="high-priority">
@@ -44,10 +44,10 @@
         </div>
       </div>
       <p>For more information on <code>requestIdleCallback</code> and its use cases, read <a href="https://developers.google.com/web/updates/2015/08/using-requestidlecallback" title="Google Developers: Paul Lewis on the requestIdleCallback API">Paul Lewis' article</a>.</p>
-      <a href="https://github.com/samdutton/simpl/blob/gh-pages/webanimations" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+      <a href="https://github.com/samdutton/simpl/blob/gh-pages/requestidlecallback" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
     </div>
     <script>
-    // Polyfills and cosmetics only
+    /* Polyfills and cosmetics only */
     !function(){'use strict';if(!('performance'in window)){window.performance={'now':function(){return (new Date.getTime())}};}else if('performance'in window&&!('now'in window.performance)){window.performance.now=function(){return (new Date.getTime())};}var scheduled=null;var arr=document.querySelectorAll('.output');var h=0;for(;h<arr.length;++h){arr[h].addEventListener('scroll',scrollHandler,false);}function scrollHandler(e){if(!!scheduled){window.cancelAnimationFrame(scheduled);}scheduled=window.requestAnimationFrame(function(){var i=0;for(;i<arr.length;++i){if(e.target!==arr[i]){arr[i].scrollTop=e.target.scrollTop;}}scheduled=null;});}}();
     </script>
     <script async="async" defer="defer" src="js/main.js"></script>
