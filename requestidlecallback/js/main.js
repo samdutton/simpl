@@ -29,7 +29,7 @@
           executed until the main thread is freed
       */
       document.querySelector('.high-priority > .output').insertAdjacentHTML('beforeend', '<p>Did task at '+ window.performance.now().toFixed(2) + '</p>');
-      _xhr.open('GET', 'https://api.github.com', false);
+      _xhr.open('GET', './', false);
       _xhr.send(null);
       _xhr = null;
     }
