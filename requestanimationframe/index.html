@@ -9,16 +9,19 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta id="theme-color" name="theme-color" content="#fff">
     <base target="_blank">
-    <title>requestAnimationFrame</title>
+    <title>requestAnimationFrame / cancelAnimationFrame</title>
     <link rel="stylesheet" href="../css/main.css" />
     <style>
+      .demo-box {}
+      .square {display:inline-block;width:50px;height:50px;background:#4183C4;-webkit-transform:translateX(0);transform:translateX(0);will-change:transform;}
     </style>
   </head>
   <body>
     <div id="container">
       <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> requestAnimationFrame</h1>
+      <p>Click to interrupt the animation; double-click to resume.</p>
       <div class="demo-box">
-        
+        <span class="square"></span>
       </div>
       <a href="https://github.com/samdutton/simpl/blob/gh-pages/requestanimationframe" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
     </div>
