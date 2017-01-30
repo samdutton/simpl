@@ -3,19 +3,23 @@
 
   // very, very roughly polyfill rAF / cAF
   if (!('requestAnimationFrame' in window)) {
-    win.requestAnimationFrame = win.webkitRequestAnimationFrame
-                             || win.mozRequestAnimationFrame
-                             || win.msRequestAnimationFrame
-                             || win.oRequestAnimationFrame
-                             || function (cbk) { return win.setTimeout(cbk, 1000 / 16) };
+    window.requestAnimationFrame = (function(){
+      return window.webkitRequestAnimationFrame
+             || window.mozRequestAnimationFrame
+             || window.msRequestAnimationFrame
+             || window.oRequestAnimationFrame
+             || function (cbk) { return win.setTimeout(cbk, 1000 / 16) };
+    })();
   }
 
   if (!('cancelAnimationFrame' in window)) {
-    win.cancelAnimationFrame = win.webkitCancelAnimationFrame
-                            || win.mozCancelAnimationFrame
-                            || win.msCancelAnimationFrame
-                            || win.oCancelAnimationFrame
-                            || function (id) { return win.clearTimeout(id) };
+    window.cancelAnimationFrame = (function(){
+      return window.webkitCancelAnimationFrame
+             || window.mozCancelAnimationFrame
+             || window.msCancelAnimationFrame
+             || window.oCancelAnimationFrame
+             || function (id) { return win.clearTimeout(id) };
+    })();
   }
 
   var _this_rAF;
