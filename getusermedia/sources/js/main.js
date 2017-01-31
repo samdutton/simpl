@@ -27,7 +27,7 @@ function gotSources(sourceInfos) {
 
 if (typeof MediaStreamTrack === 'undefined' ||
     typeof MediaStreamTrack.getSources === 'undefined') {
-  alert('This browser does not support MediaStreamTrack.\n\nTry Chrome.');
+  alert('This browser does not support MediaStreamTrack.getSources().');
 } else {
   navigator.mediaDevices.enumerateDevices().then(function(e){
     gotSources(e)
