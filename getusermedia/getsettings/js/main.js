@@ -11,7 +11,7 @@ function handleSuccess(stream) {
   window.stream = stream; // stream available to console
   video.src = window.URL.createObjectURL(stream);
   var track = stream.getTracks()[0];
-  var settings = track.getSettings();
+  var settings = track.getSettings ? track.getSettings() : null;
   var settingsString;
   if (settings) {
     settingsString = JSON.stringify(settings).
@@ -20,7 +20,7 @@ function handleSuccess(stream) {
       replace(/{"/g, '').
       replace(/[}]/g, '');
   } else {
-    settingsString = 'MediaStreamTrack.getSettings() is not supported by this browser';
+    settingsString = 'MediaStreamTrack.getSettings() is not supported by this browser :^(.';
   }
   settingsDiv.textContent = settingsString;
 }
