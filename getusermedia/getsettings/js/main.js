@@ -12,12 +12,17 @@ function handleSuccess(stream) {
   video.src = window.URL.createObjectURL(stream);
   var track = stream.getTracks()[0];
   var settings = track.getSettings();
-  var settingsString = JSON.stringify(settings).
-    replace(/,"/g,'\n').
-    replace(/":/g, ': ').
-    replace(/{"/g, '').
-    replace(/[}]/g, '');
-  settingsDiv.innerHTML += settingsString;
+  var settingsString;
+  if (settings) {
+    settingsString = JSON.stringify(settings).
+      replace(/,"/g,'\n').
+      replace(/":/g, ': ').
+      replace(/{"/g, '').
+      replace(/[}]/g, '');
+  } else {
+    settingsString = 'MediaStreamTrack.getSettings() is not supported by this browser';
+  }
+  settingsDiv.textContent = settingsString;
 }
 
 function handleError(error) {
