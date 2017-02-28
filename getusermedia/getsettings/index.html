@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+  <meta name="author" content="//samdutton.com">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="/images/icons/icon192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta id="theme-color" name="theme-color" content="#fff">
+
+  <base target="_blank">
+
+  <title>MediaStreamTrack.getSettings()</title>
+
+  <link rel="stylesheet" href="../../css/main.css" />
+
+  <style>
+    div#settings {
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.5em;
+      padding-top: 5px;
+      white-space: pre;
+    }
+
+    video {
+      object-fit: cover;
+    }
+
+    @media screen and (min-width: 1000px) {
+      video {
+        height: 480px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> MediaStreamTrack.getSettings()</h1>
+
+    <div id="highlight">
+      <p>New codelab: <a href="https://codelabs.developers.google.com/codelabs/webrtc-web">Realtime communication with WebRTC</a></p>
+    </div>
+
+    <video autoplay></video>
+
+
+    <strong>Settings: </strong>
+    <div id="settings"></div>
+
+    <p>The <code>MediaStream</code> object <code>stream</code> passed to the <code>getUserMedia()</code> callback in this demo is in global scope, so you can inspect it from the console.</p>
+
+    <p>For more information, see <a href="https://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
+
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/getusermedia" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
+
+  <script src="../../js/lib/ga.js"></script>
+
+</body>
+</html>

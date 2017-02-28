@@ -27,8 +27,8 @@ var qvgaConstraints = {
 var hdConstraints = {
   video: {
     mandatory: {
-      minWidth: 1280,
-      minHeight: 720
+      minWidth: 320,
+      minHeight: 180
     }
   }
 };
