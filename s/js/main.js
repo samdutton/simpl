@@ -55,9 +55,8 @@ var orderByFieldSelector = document.getElementById('orderByField');
 var lessOrMoreSelector = document.getElementById('lessOrMore');
 
 var stopWords = ['and', 'are', 'but', 'for', 'into', 'not', 'such', 'that',
-'the', 'their', 'then', 'there', 'these', 'they', 'this', 'was', 'will',
-'with'
-];
+  'the', 'their', 'then', 'there', 'these', 'they', 'this', 'was', 'will',
+  'with'];
 
 var transcriptStyle = '<style>' +
 '* {font-family: Roboto, sans-serif}\n' +

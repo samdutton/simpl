@@ -24,7 +24,7 @@
   "homepage": "https://github.com/samdutton/simpl",
   "devDependencies": {
     "csslint": "^1.0.5",
-    "eslint": "^3.3.1",
+    "eslint": "^3.18.0",
     "grunt": "^0.4.5",
     "grunt-cli": ">=0.1.9",
     "grunt-contrib-csslint": "^1.0.0",
