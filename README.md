@@ -12,7 +12,9 @@ simpl
 
 I also maintain a [list of resources](https://docs.google.com/document/d/1Uy7zybjFecFWmW2xTbYKN8t-JhG0_hlJzW6xJjkUA-I/edit#) for working with HTML, CSS and JavaScript.
 
-Your contributions and comments are welcome.
+Your contributions and comments are welcome. See [CONTRIBUTING.md](https://github.com/samdutton/simpl/blob/gh-pages/CONTRIBUTING.md) for more information.
+
+The [Developer's Guide](https://docs.google.com/document/d/1rdetLH8RrOxPEe_fWgiHKPq8GiFG5QuSQ8YlzMMr2LI) for this repo has more information about code style, structure and validation.
 
 [![Analytics](https://ga-beacon.appspot.com/UA-46871133-1/samdutton/simpl)](https://github.com/igrigorik/ga-beacon)
 
