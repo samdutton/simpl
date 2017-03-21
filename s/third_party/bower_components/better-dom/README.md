@@ -46,7 +46,7 @@ In order to modify the source code you have to install [gulp](http://gulpjs.com)
 $ npm install -g gulp
 ```
 
-The project uses set of ES6 transpilers to compile the output file. You can use command below to start development: 
+The project uses set of ES6 transpilers to compile the output file. You can use command below to start development:
 
 ```sh
 $ npm start
@@ -58,7 +58,7 @@ After any change it recompiles `build/better-dom.js` and runs unit tests automat
 For IE8-9 support you have to incude an extra file via the conditional comment below __before end of the `<head>`__ on your page:
 
 ```html
-<html>
+<html lang="en">
 <head>
 ...
 <!--[if IE]>

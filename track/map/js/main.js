@@ -1,3 +1,23 @@
+/*
+Copyright 2017 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+'use strict';
+
+// NEEDS REFACTORING!
+
 var map, marker, panorama; // created in video loadedmetadata handler
 var video = document.querySelector('video');
 var mapElement = document.getElementById('map');
@@ -14,7 +34,7 @@ if (typeof video.addTextTrack === 'undefined') {
   // need to get wait for video to load before getting duration, etc.,
   // in order to create track
   setupMap();
-};
+}
 
 function setupMap() {
   var track = video.addTextTrack('metadata', 'GBike track', 'en');
@@ -24,9 +44,9 @@ function setupMap() {
     return response.text();
   }).then(function(text) {
     var domParser = new window.DOMParser();
-    var document = domParser.parseFromString(text, "text/xml");
+    var document = domParser.parseFromString(text, 'text/xml');
     var pElements = document.querySelectorAll('p');
-    pElements.forEach(function(p){
+    pElements.forEach(function(p) {
       points.push({
         'lat': p.getAttribute('a'),
         'lng': p.getAttribute('b'),
@@ -46,13 +66,9 @@ function setupPointsAndPath(track, points) {
   };
   map = new google.maps.Map(mapElement, options);
 
-  var path = [],
-  latSum = 0,
-  lngSum = 0;
+  var path = [];
   for (var i = 0; i !== points.length; ++i) { // not very efficient...
     var point = points[i];
-    latSum += point.lat;
-    lngSum += point.lng;
     path.push(new google.maps.LatLng(point.lat, point.lng));
     var startTime = point.t - VIDEO_OFFSET;
     var endTime = i === points.length - 1 ?
@@ -63,11 +79,11 @@ function setupPointsAndPath(track, points) {
 
   track.oncuechange = function() {
     // 'this' is a textTrack, and there is only one active cue in this example
-    var cue = this.activeCues[0];
+    cue = this.activeCues[0];
     if (typeof cue === 'undefined') {
       return;
     }
-    var point = JSON.parse(cue.text);
+    point = JSON.parse(cue.text);
     var newLatLng = new google.maps.LatLng(point.lat, point.lng);
     if (!map.getBounds().contains(newLatLng)) {
       map.setCenter(newLatLng);
@@ -84,9 +100,7 @@ function setupPointsAndPath(track, points) {
     marker.setPosition(newLatLng);
     timeOfDay.textContent =
       new Date(point.t * 1000).toLocaleTimeString();
-  }
-
-
+  };
 
   var panoramaOptions = {
     position: startLatLng,

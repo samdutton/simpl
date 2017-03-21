@@ -5,12 +5,12 @@ a.download {
   display: block;
   font-size: 0.8em;
   font-weight: 400;
+  height: 0;
   left: 80px;
+  position: relative;
   text-decoration: underline;
   width: 72px;
-  position: relative;
   z-index: 1;
-  height: 0;
 }
 a {
   color: #4183C4;
@@ -22,9 +22,9 @@ a:hover {
   text-decoration: underline;
 }
 a#viewSource {
+  border-top: 1px solid #999;
   display: block;
   margin: 1.3em 0 0 0;
-  border-top: 1px solid #999;
   padding: 1em 0 0 0;
 }
 div#links a {
@@ -125,9 +125,9 @@ div#youtubeContainer {
   height: 0;
   margin: 0 0 1.5em 0;
   overflow: hidden;
-  position: relative;
   padding-bottom: 38.25%;
   padding-top: 30px;
+  position: relative;
 }
 div.noCaptions {
   font-size: 0.9em;
@@ -188,8 +188,8 @@ div.container.transcriptView:last-of-type {
   border-bottom: none;
 }
 div.video {
-  margin: 0 0 1.5em 0;
   border-bottom: 1px dotted #999;
+  margin: 0 0 1.5em 0;
   padding: 0 0 0.7em 0;
 }
 em {
@@ -222,9 +222,9 @@ img.videoThumbnail {
   cursor: pointer;
   height: 180px;
   margin: 0 1em 1em 0;
-  width: 240px;
   position: relative;
   top: 3px;
+  width: 240px;
 }
 input {
   font-family: sans-serif;
@@ -311,8 +311,8 @@ pre {
   top: -2px;
 }
 span#loading {
-  width: 70px;
   display: inline-block;
+  width: 70px;
 }
 details.matches span.start {
   color: #888;
@@ -357,8 +357,8 @@ summary {
   font-size: 0.8em;
   font-weight: 500;
   line-height: 1.2em;
-  outline: none;
   margin: 0 0 1em 0;
+  outline: none;
 }
 #searchOptions summary {
   color: #666;
@@ -407,8 +407,8 @@ video {
     padding: 0;
   }
   h2 {
-    font-size: 1em;
     color: black;
+    font-size: 1em;
   }
   img.videoThumbnail {
     float: none;

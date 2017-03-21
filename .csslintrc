@@ -6,6 +6,7 @@
   "ids": false,
   "important": false,
   "known-properties": false,
+  "order-alphabetical": true,
   "outline-none": false,
   "overqualified-elements": false,
   "qualified-headings": false,

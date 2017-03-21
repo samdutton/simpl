@@ -1,3 +1,19 @@
+/*
+Copyright 2017 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 'use strict';
 
 /* globals ImageCapture */
@@ -36,7 +52,9 @@ zoomInput.oninput = setZoom;
 // then get a MediaStream for the currently selected input device
 navigator.mediaDevices.enumerateDevices()
   .then(gotDevices)
-  .catch(error => {console.log('enumerateDevices() error: ', error);})
+  .catch(error => {
+    console.log('enumerateDevices() error: ', error);
+  })
   .then(getStream);
 
 // From the list of media devices available, set up the camera source <select>,
@@ -69,7 +87,7 @@ function getStream() {
     .then(gotStream)
     .catch(error => {
       console.log('getUserMedia error: ', error);
-  });
+    });
 }
 
 // Display the stream from the currently selected camera source, and then

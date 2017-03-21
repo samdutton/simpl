@@ -1,11 +1,3 @@
-/* csslint ignore:start */
-:root {
-  --thumb-width: 20px;
-  --video-height: 0px;
-  --video-clip: 30px;
-}
-/* csslint ignore:end */
-
 #splitview audio {
   bottom: 5px;
   height: 36px;
@@ -33,19 +25,20 @@ div#splitview {
 }
 
 #splitview video:last-of-type {
-  display: block;
   clip: rect(0 var(--video-clip) var(--video-height) 0);
   -webkit-clip-path: inset(0 0 0 0);
+  display: block;
   opacity: 1;
 }
 
 #splitview input[type=range] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
   background: none;
   margin: 0 2px 0 0;
   position: absolute;
   transform: translateZ(0);
   width: 100%;
-  -webkit-appearance: none;
 }
 
 /* bad and wrong */
@@ -88,12 +81,13 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]::-webkit-slider-thumb {
+  -moz-appearance: none;
+  -webkit-appearance: none;
   background: black;
   cursor: pointer;
   height: var(--video-height);
   opacity: 0.5;
   width: var(--thumb-width);
-  -webkit-appearance: none;
 }
 
 input[type=range]:focus::-moz-range-track {

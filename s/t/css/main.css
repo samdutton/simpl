@@ -29,11 +29,11 @@ div#container {
 }
 
 h1 {
+  border-top: 1px solid #eee;
   font-family: Roboto Condensed, sans-serif;
   font-size: 1.5em;
-  border-top: 1px solid #eee;
-  padding: 1em 0 0 0;
   margin: 1em 0 0 0;
+  padding: 1em 0 0 0;
 }
 
 h2 {
@@ -78,10 +78,10 @@ span[data-start].current {
 /* Google Translate */
 
 .goog-te-gadget-simple {
-    border-left: 1px solid #ccc !important;
-    border-top: 1px solid #ccc !important;
     border-bottom: 1px solid #ccc !important;
+    border-left: 1px solid #ccc !important;
     border-right: 1px solid #ccc !important;
-    padding-top: 2px !important;
+    border-top: 1px solid #ccc !important;
     padding-bottom: 3px !important;
+    padding-top: 2px !important;
 }
