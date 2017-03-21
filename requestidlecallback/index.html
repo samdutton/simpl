@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="author" content="//samdutton.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+    <meta itemprop="image" content="/images/icons/icon192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
+    <base target="_blank">
+    <title>requestIdleCallback</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+      .demo-box { font-size: 0; white-space: nowrap; text-align: center; }
+      .demo-box > div > .demo-button { font-size: 16px; font-size: 1rem; }
+      .demo-box .high-priority,.low-priority { display: inline-block; font-size: 1rem; width: 50%; text-align: center; }
+      .demo-box .high-priority > .output,.low-priority > .output { font-size: 16px; font-size: 1rem; height: 50vh; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+      .demo-box .low-priority { color: mediumblue; }
+      .demo-box .low-priority>.output::-webkit-scrollbar-thumb { background: mediumblue; }
+      .demo-box .high-priority { color: crimson; }
+      .demo-box .high-priority>.output::-webkit-scrollbar-thumb { background: crimson; }
+      .demo-box .output::-webkit-scrollbar { width: 8px; }
+      .demo-box .output::-webkit-scrollbar-track { background-color: transparent; background: rgba(0,0,0,0); }
+      .demo-box h2 { font-size: 21px; margin-bottom: 0; }
+      .demo-box p { margin: 1ex 0 .5ex 0; }
+      .demo-box p + p { margin: .5ex 0 .5ex 0; }
+      .demo-box p:nth-child(even) { background: #eee; }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> requestIdleCallback</h1>
+      <p>Press the button to fire off some thread-halting synchronous <code>XMLHttpRequests</code>; the tasks wrapped by <code>requestIdleCallback</code> will not be executed until the main thread frees up, as you will be able to see from the timestamps:</p>
+      <div class="demo-box">
+        <div><button class="demo-button">Click</button></div>
+        <div class="high-priority">
+          <h2>High priority tasks</h2>
+          <div class="output"></div>
+        </div>
+        <div class="low-priority">
+          <h2>Low priority tasks</h2>
+          <div class="output"></div>
+        </div>
+      </div>
+      <p>For more information on <code>requestIdleCallback</code> and its use cases, read <a href="https://developers.google.com/web/updates/2015/08/using-requestidlecallback" title="Google Developers: Paul Lewis on the requestIdleCallback API">Paul Lewis' article</a>.</p>
+      <a href="https://github.com/samdutton/simpl/blob/gh-pages/requestidlecallback" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    </div>
+    <script>
+    /* Polyfills and cosmetics only */
+    !function(){'use strict';if(!('performance'in window)){window.performance={'now':function(){return (new Date.getTime())}};}else if('performance'in window&&!('now'in window.performance)){window.performance.now=function(){return (new Date.getTime())};}var scheduled=null;var arr=document.querySelectorAll('.output');var h=0;for(;h<arr.length;++h){arr[h].addEventListener('scroll',scrollHandler,false);}function scrollHandler(e){if(!!scheduled){window.cancelAnimationFrame(scheduled);}scheduled=window.requestAnimationFrame(function(){var i=0;for(;i<arr.length;++i){if(e.target!==arr[i]){arr[i].scrollTop=e.target.scrollTop;}}scheduled=null;});}}();
+    </script>
+    <script async="async" defer="defer" src="js/main.js"></script>
+    <script async="async" defer="defer" src="../js/lib/ga.js"></script>
+  </body>
+</html>
