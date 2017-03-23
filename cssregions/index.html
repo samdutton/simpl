@@ -25,8 +25,8 @@ limitations under the License.
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <title>CSS Regions</title>
 <link rel="stylesheet" href="../css/main.css" />
-<style>
 
+<style>
   article {
     -webkit-flow-into: myFlow;
     flow-into: myFlow;
@@ -37,9 +37,9 @@ limitations under the License.
   }
 
   .region {
+    display: inline-block;
     -webkit-flow-from: myFlow;
     flow-from: myFlow;
-    display: inline-block;
     height: 300px;
   }
 
@@ -52,6 +52,7 @@ limitations under the License.
     width: 60%;
   }
 </style>
+
 </head>
 <body>
 <div id="container">
@@ -68,7 +69,7 @@ limitations under the License.
   <div class="region" id="region1"></div>
   <div class="region" id="region2"></div>
 
-<a href="https://github.com/samdutton/simpl/blob/master/cssregions" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+<a href="https://github.com/samdutton/simpl/blob/gh-pages/cssregions" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>
 <script src="../js/lib/ga.js"></script>
