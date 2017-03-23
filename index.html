@@ -44,7 +44,121 @@ limitations under the License.
 
     <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="css/main.css" />
+    <style type="text/css">
+    a {
+      color: #1da1f2;
+      font-weight: 300;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a#twitter {
+      color: black;
+      display: block;
+      text-decoration: none;
+    }
+
+    a#viewSource {
+      border-top: 1px solid #999;
+      display: block;
+      margin: 1.3em 0 0 0;
+      padding: 1em 0 0 0;
+    }
+
+    a#twitter div {
+      display: inline-block;
+      font-weight: 500;
+      position: relative;
+      top: -13px;
+    }
+
+    a#twitter div:hover {
+      color: #1da1f2;
+    }
+
+    div#links a {
+      display: block;
+      line-height: 1.3em;
+      margin: 0 0 1.5em 0;
+    }
+
+    @media (min-width: 1000px) {
+      /* hack! to target non-touch devices */
+      div#links a {
+        line-height: 0.8em;
+      }
+    }
+
+    body {
+      font-family: sans-serif;
+      font-weight: 300;
+      margin: 0;
+      padding: 1em;
+      word-break: break-word;
+    }
+
+    div#container {
+      margin: 0 auto 0 auto;
+      max-width: 40em;
+      padding: 1em 1.5em 1.3em 1.5em;
+    }
+
+    div#highlight {
+      background-color: #eee;
+      font-size: 1.2em;
+      margin: 0 0 50px 0;
+      padding: 0.5em 2em;
+    }
+
+    div#links {
+      padding: 0.5em 0 0 0;
+    }
+
+    h1 {
+      border-bottom: 1px solid #ccc;
+      font-family: sans-serif;
+      font-weight: 500;
+      margin: 0 0 0.8em 0;
+      padding: 0 0 0.2em 0;
+    }
+
+    p {
+      color: #444;
+      font-weight: 300;
+      line-height: 1.6em;
+    }
+
+    p.borderBelow {
+      border-bottom: 1px solid #eee;
+      padding: 0 0 20px 0;
+    }
+
+    a#twitter svg {
+      height: 40px;
+      width: 40px;
+    }
+
+    @media screen and (max-width: 650px) {
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    @media screen and (max-width: 450px) {
+      h1 {
+        font-size: 20px;
+      }
+    }
+    </style>
 
     <base target="_blank">
 
@@ -66,7 +180,7 @@ limitations under the License.
 
       <h1>simpl.info</h1>
 
-      <a id="twitter" href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fsimpl.info%2F&ref_src=twsrc%5Etfw&region=follow_link&screen_name=sw12&tw_p=followbutton" target="_blank" alt="Follow @sw12"><svg viewbox="0 0 400 400"><title>Follow @sw12</title><path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#1da1f2" /></svg></a>
+      <a id="twitter" href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fsimpl.info%2F&ref_src=twsrc%5Etfw&region=follow_link&screen_name=sw12&tw_p=followbutton" target="_blank" alt="Follow @sw12"><svg viewbox="0 0 400 400"><title>Follow @sw12</title><path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#1da1f2" /></svg> <div>Follow on Twitter</div></a>
 
       <p>This site aims to provide simplest possible examples of HTML, CSS and JavaScript.</p>
 
@@ -181,20 +295,20 @@ limitations under the License.
 
       </div>  <!-- container -->
 
-      <script>
+<script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-33848682-1']);
       _gaq.push(['_trackPageview']);
 
       (function() {
-      var ga = document.createElement('script');
-      ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' === document.location.protocol ?
-      'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ga, s);
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' === document.location.protocol ?
+        'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
       })();
-      </script>
+</script>
 
     </body>
   </html>

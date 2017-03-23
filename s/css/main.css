@@ -32,7 +32,7 @@ div#links a {
   line-height: 1.3em;
   margin: 0 0 1.5em 0;
 }
-@media screen and (min-width: 1000px) {
+@media (min-width: 1000px) {
   div#links a {
     line-height:0.8em;
   }
@@ -371,7 +371,7 @@ details.matches > summary {
 video {
   background: #222;
 }
-@media screen and (max-width: 450px) {
+@media (max-width: 450px) {
   a.download {
     font-size:1em;
     font-weight: 600;

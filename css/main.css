@@ -1,21 +1,11 @@
-body {
-  font-family: sans-serif;
-  font-weight: 300;
-}
-
 a {
-  color: #4183C4;
+  color: #1da1f2;
   font-weight: 300;
   text-decoration: none;
 }
 
 a:hover {
-  color: #3d85c6;
   text-decoration: underline;
-}
-
-a#twitter {
-  display: block;
 }
 
 a#viewSource {
@@ -31,7 +21,7 @@ div#links a {
   margin: 0 0 1.5em 0;
 }
 
-@media screen and (min-width: 1000px) {
+@media (min-width: 1000px) {
   /* hack! to detect non-touch devices */
   div#links a {
     line-height: 0.8em;
@@ -49,6 +39,7 @@ audio {
 
 body {
   font-family: sans-serif;
+  font-weight: 300;
   margin: 0;
   padding: 1em;
   word-break: break-word;
@@ -250,24 +241,19 @@ strong {
   font-weight: 500;
 }
 
-a#twitter svg {
-  height: 40px;
-  width: 40px;
-}
-
 video {
   background: #222;
   margin: 0 0 20px 0;
   width: 100%;
 }
 
-@media screen and (max-width: 650px) {
+@media (max-width: 650px) {
   h1 {
     font-size: 24px;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media (max-width: 550px) {
   button:active {
     background-color: darkRed;
   }
@@ -276,10 +262,8 @@ video {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media (max-width: 450px) {
   h1 {
     font-size: 20px;
   }
 }
-
-

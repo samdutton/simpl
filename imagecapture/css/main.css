@@ -36,14 +36,14 @@ video {
   vertical-align: top;
 }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 500px) {
   button {
     font-size: 0.8em;
     width: calc(33% - 5px);
   }
 }
 
-@media screen and (max-width: 720px) {
+@media (max-width: 720px) {
   video {
     margin: 0 10px 10px 0;
   }
