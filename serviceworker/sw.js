@@ -25,7 +25,6 @@ limitations under the License.
 
 // temporary polyfill for caches: use cachesPolyfill instead
 // uses indexedDB to mimic ServiceWorker caching
-importScripts('js/lib/serviceworker-cache-polyfill.js');
 
 console.log('self in sw.js: ', self);
 

@@ -52,7 +52,6 @@ limitations under the License.
 
   <video controls preload="metadata" autoplay>
     <source src="../video/chrome.webm#t=10,15" type="video/webm" />
-    <source src="../video/chrome.ogv#t=10,15" type="video/ogg" />
     <source src="../video/chrome.mp4#t=10,15" type="video/mp4" />
     <p>This browser does not support the video element.</p>
   </video>
@@ -64,12 +63,12 @@ limitations under the License.
   for (var i = 0; i !== videos.length; ++i) {
     videos[i].onplay = displaySource;
   }
-  function displaySource(){
+  function displaySource() {
     var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-    document.querySelector("#videoSrc").innerHTML = "Video src: " + fileName;
+    document.querySelector('#videoSrc').innerHTML = 'Video src: ' + fileName;
   }
 
-  </script>
+</script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

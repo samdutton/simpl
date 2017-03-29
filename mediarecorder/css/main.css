@@ -30,14 +30,14 @@ video#gumVideo {
   margin: 0 20px 20px 0;
 }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 500px) {
   button {
     font-size: 0.8em;
     width: calc(33% - 5px);
   }
 }
 
-@media screen and (max-width: 720px) {
+@media (max-width: 720px) {
   video {
     height: calc((50vw - 48px) * 3 / 4);
     margin: 0 10px 10px 0;

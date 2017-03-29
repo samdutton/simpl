@@ -48,7 +48,7 @@ chromeVideo.addEventListener('gesturedoubletap', toggleChromeVideo, false);
 containerDiv.addEventListener('gesturedoubletap', toggleChromeVideo, false);
 
 function addEventListeners(video) {
-  video.addEventListener('gesturedoubletap', handleDoubleTap, false);
+  video.addEventListener('dblclick', handleDoubleClick, false);
   video.addEventListener('pointerdown', handlePointerDown, false);
   video.addEventListener('pointerup', handlePointerUp, false);
   video.addEventListener('pointermove', handlePointerMove, false);
@@ -56,7 +56,7 @@ function addEventListeners(video) {
 addEventListeners(video1);
 addEventListeners(video2);
 
-function handleDoubleTap(event) {
+function handleDoubleClick(event) {
   var video = event.srcElement;
   video.classList.remove('rotateOut');
   setTimeout(function() {
@@ -91,10 +91,9 @@ function handlePointerMove(event) {
   var video = event.srcElement;
   var videoWidth = video.clientWidth;
   var videoHeight = video.clientHeight;
-  var pointer = event.getPointerList()[0];
 
-  video.style.left = (pointer.clientX - videoWidth / 2) + 'px';
-  video.style.top = (pointer.clientY - videoHeight / 2) + 'px';
+  video.style.left = (event.clientX - videoWidth / 2) + 'px';
+  video.style.top = (event.clientY - videoHeight / 2) + 'px';
 
   event.preventDefault();
 }

@@ -52,11 +52,12 @@ limitations under the License.
   <p id="videoSrc"></p>
 
   <script>
-  document.querySelector("video").addEventListener("loadedmetadata", function(){
-    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-  	document.querySelector("#videoSrc").innerHTML = "Video src: " + fileName;
-  });
-  </script>
+  document.querySelector('video').addEventListener('loadedmetadata',
+    function() {
+      var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+      document.querySelector('#videoSrc').innerHTML = 'Video src: ' + fileName;
+    });
+</script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
