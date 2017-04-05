@@ -84,9 +84,11 @@ function handleFaceTrackingEvent() {
   }
 }
 
+var n = 0;
 // requires headPosition : true in Tracker constructor
 function handleHeadTrackingEvent(e) {
-  console.log('headtrackingEvent: ', e.x, e.y, e.z);
+  console.log('headtrackingEvent: ', n, e.x, e.y, e.z);
+  ++n;
 }
 
 var htracker = new headtrackr.Tracker({

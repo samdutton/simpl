@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<!--
+Copyright 2017 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html lang="en">
+<head>
+
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<base target="_blank">
+
+<title>Video with overlay</title>
+
+<link rel="stylesheet" href="../../css/main.css" />
+
+  <style>
+  div#videoContainer{
+    position: relative;
+  }
+  div#overlay {
+    background: red;
+    font-weight: bold;
+    opacity: 0.7;
+    padding: 2em;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    margin: 20%;
+  }
+  </style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video with &lt;div&gt; overlay</h1>
+
+  <div id="videoContainer">
+    <div id="overlay">This 0.7 opacity &lt;div&gt; is over the video element.</div>
+    <video autoplay controls>
+      <source src="../video/chrome.webm" type="video/webm" />
+      <source src="../video/chrome.mp4" type="video/mp4" />
+      <p>This browser does not support the video element.</p>
+    </video>
+  </div>
+
+  <p id="videoSrc"></p>
+
+  <script>
+document.querySelector('video').addEventListener('loadedmetadata',
+  function() {
+    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+    document.querySelector('#videoSrc').innerHTML =
+      'Playing video: ' + fileName;
+  });
+</script>
+
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/videooverlay" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div>
+
+<script src="../../js/lib/ga.js"></script>
+
+</body>
+</html>
