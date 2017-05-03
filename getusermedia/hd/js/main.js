@@ -19,7 +19,11 @@ limitations under the License.
 var dimensions = document.querySelector('p#dimensions');
 
 var constraints = {
-  video: {width: {exact: 1920}, height: {exact: 1080}}
+  video: {
+    width: {exact: 1920},
+    height: {exact: 1080},
+    facingMode: {exact: 'environment'}
+  }
 };
 
 var video = document.querySelector('video');
