@@ -35,7 +35,7 @@ function errorCallback(error) {
 }
 
 function displayVideoDimensions() {
-  dimensions.innerHTML = 'Actual video dimensions: ' + video.videoWidth +
+  dimensions.textContent = 'Actual video dimensions: ' + video.videoWidth +
     'x' + video.videoHeight + 'px.';
 }
 

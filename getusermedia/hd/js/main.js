@@ -16,6 +16,8 @@ limitations under the License.
 
 'use strict';
 
+var dimensions = document.querySelector('p#dimensions');
+
 var constraints = {
   video: {width: {exact: 1920}, height: {exact: 1080}}
 };
@@ -32,4 +34,9 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
+then(handleSuccess).catch(handleError);
+
+video.onplay = function() {
+  dimensions.textContent = 'Actual video dimensions: ' + video.videoWidth +
+  'x' + video.videoHeight + 'px.';
+};
