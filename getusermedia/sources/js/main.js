@@ -27,8 +27,6 @@ audioSelect.onchange = getStream;
 videoSelect.onchange = getStream;
 
 function gotDevices(deviceInfos) {
-  var masterOutputSelector = document.createElement('select');
-
   for (var i = 0; i !== deviceInfos.length; ++i) {
     var deviceInfo = deviceInfos[i];
     var option = document.createElement('option');
@@ -38,7 +36,7 @@ function gotDevices(deviceInfos) {
         'microphone ' + (audioSelect.length + 1);
       audioSelect.appendChild(option);
     } else if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || 'camera ' + 
+      option.text = deviceInfo.label || 'camera ' +
         (videoSelect.length + 1);
       videoSelect.appendChild(option);
     } else {
