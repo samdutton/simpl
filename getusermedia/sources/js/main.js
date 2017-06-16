@@ -20,72 +20,63 @@ var videoElement = document.querySelector('video');
 var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+navigator.mediaDevices.enumerateDevices()
+    .then(gotDevices).then(getStream).catch(handleError);
 
-function gotSources(sourceInfos) {
-  for (var i = 0; i !== sourceInfos.length; ++i) {
-    var sourceInfo = sourceInfos[i];
+audioSelect.onchange = getStream;
+videoSelect.onchange = getStream;
+
+function gotDevices(deviceInfos) {
+  var masterOutputSelector = document.createElement('select');
+
+  for (var i = 0; i !== deviceInfos.length; ++i) {
+    var deviceInfo = deviceInfos[i];
     var option = document.createElement('option');
-    option.value = sourceInfo.deviceId;
-    if (sourceInfo.kind === 'audiooutput') {
-      option.text = sourceInfo.label || 'microphone ' +
-        (audioSelect.length + 1);
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label ||
+        'microphone ' + (audioSelect.length + 1);
       audioSelect.appendChild(option);
-    } else if (sourceInfo.kind === 'videoinput') {
-      option.text = sourceInfo.label || 'camera ' + (videoSelect.length + 1);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || 'camera ' + 
+        (videoSelect.length + 1);
       videoSelect.appendChild(option);
     } else {
-      console.log('Some other kind of source: ', sourceInfo);
+      console.log('Found ome other kind of source/device: ', deviceInfo);
     }
   }
 }
 
-if (typeof MediaStreamTrack === 'undefined' ||
-    typeof MediaStreamTrack.getSources === 'undefined') {
-  alert('This browser does not support MediaStreamTrack.getSources().');
-} else {
-  navigator.mediaDevices.enumerateDevices().then(function(e) {
-    gotSources(e);
-  });
-}
-
-function successCallback(stream) {
-  window.stream = stream; // make stream available to console
-  videoElement.src = window.URL.createObjectURL(stream);
-  videoElement.play();
-}
-
-function errorCallback(error) {
-  console.log('navigator.getUserMedia error: ', error);
-}
-
-function start() {
+function getStream() {
   if (window.stream) {
-    videoElement.src = null;
     window.stream.getTracks().forEach(function(track) {
       track.stop();
     });
   }
-  var audioSource = audioSelect.value;
-  var videoSource = videoSelect.value;
 
   var constraints = {
     audio: {
       optional: [{
-        sourceId: audioSource
+        sourceId: audioSelect.value
       }]
     },
     video: {
       optional: [{
-        sourceId: videoSource
+        sourceId: videoSelect.value
       }]
     }
   };
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
+
+  navigator.mediaDevices.getUserMedia(constraints).
+      then(gotStream).catch(handleError);
 }
 
-audioSelect.onchange = start;
-videoSelect.onchange = start;
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+}
 
-start();
+function handleError(error) {
+  console.log('Error: ', error);
+}
+
