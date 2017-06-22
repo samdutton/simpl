@@ -55,7 +55,7 @@ if (videoId) {
 
 function getAndDisplayTranscript() {
   var baseUrl = location.host === 'localhost' ? // to enable testing
-  'http://localhost:8080' : 'http://www.shearch.me';
+  'https://localhost:8080' : 'https://shearch-me.herokuapp.com';
   var url = baseUrl + '/' + videoId;
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
