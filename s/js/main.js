@@ -74,7 +74,7 @@ var transcriptStyle = '<style>' +
 'span.speaker {color: black; font-weight: 900;}\n' +
 '</style>\n\n';
 
-var googleTranslate = '<div id="google_translate_element"></div><script>function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'en\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: \'UA-33848682-1\'}, \'google_translate_element\');}; console.log(\'>>>>>>>>>fooo\');</script><script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>';
+var googleTranslate = '<div id="google_translate_element"></div><script>function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'en\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: \'UA-33848682-1\'}, \'google_translate_element\');};</script><script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>';
 
 var startTime;
 
@@ -168,8 +168,6 @@ function buildQueryString() {
 
   currentQuery = queries.join('&'); // global, used by showNextPage()
 
-  console.log('>>>>> currentQuery: ' + currentQuery);
-
   if (currentQuery === '') {
     displayInfo('Please enter something to search for.');
     qInput.focus();
@@ -184,7 +182,6 @@ function queryDatabase(query) {
   query += '&sort=' + lessOrMoreSelector.value +
     orderByFieldSelector.value;
   // }
-  console.log('>>>>> query: ' + query);
   startTime = window.performance.now();
   displayInfo('Searching...');
   resultsElement.textContent = '';
@@ -192,35 +189,17 @@ function queryDatabase(query) {
 
   var url = baseUrl + '?' + query;
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-      var responseText = xhr.responseText;
-      if (xhr.status === 200) {
-        var data = JSON.parse(responseText);
-        handleDatabaseResponse(data);
-      } else {
-        console.log('Error getting data: ', responseText);
-        // setSearchEnabled(true);
-      }
+  fetch(url).then(function(response) {
+    if (response.status !== 200) {
+      console.error('Problematic response status: ' + response.status);
+      return;
     }
-  };
-  xhr.send();
-
-  // waiting for Firefox 39
-
-  // fetch(url).then(function(response) {
-  //   if (response.status !== 200) {
-  //     console.error('Problematic response status: ' + response.status);
-  //     return;se
-  //   response.json().then(function(data) {
-  //     console.log('>>>>>> data: ', data);
-  //     handleDatabaseResponse(data);
-  //   });
-  // }).catch(function(error) {
-  //   console.error('Caught fetch() error: ', error);
-  // });
+    response.json().then(function(data) {
+      handleDatabaseResponse(data);
+    });
+  }).catch(function(error) {
+    console.error('Caught fetch() error: ', error);
+  });
 }
 
 function handleDatabaseResponse(response) {
