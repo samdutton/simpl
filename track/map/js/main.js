@@ -71,8 +71,8 @@ function setupPointsAndPath(track, points) {
     var point = points[i];
     path.push(new google.maps.LatLng(point.lat, point.lng));
     var startTime = point.t - VIDEO_OFFSET;
-    var endTime = i === points.length - 1 ?
-    video.duration : points[i + 1].t - VIDEO_OFFSET;
+    var endTime = i === points.length - 1 ? video.duration :
+      points[i + 1].t - VIDEO_OFFSET;
     var cue = new window.VTTCue(startTime, endTime, JSON.stringify(point));
     track.addCue(cue);
   }
