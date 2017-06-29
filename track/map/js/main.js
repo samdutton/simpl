@@ -33,7 +33,7 @@ if (typeof video.addTextTrack === 'undefined') {
 } else { // track implemented!
   // need to get wait for video to load before getting duration, etc.,
   // in order to create track
-  setupMap();
+  video.onloadedmetadata = setupMap;
 }
 
 function setupMap() {
