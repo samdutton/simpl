@@ -83,7 +83,7 @@ function handleTranscriptRequest(results) {
     };
 
     var h1 = document.createElement('h1');
-    h1.textContent = video.title;
+    h1.innerHTML = video.title;
     containerDiv.appendChild(h1);
 
     if (video.speakers) {
