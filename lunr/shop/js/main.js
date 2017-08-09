@@ -16,21 +16,57 @@ limitations under the License.
 
 'use strict';
 
-/* global lunr */
+/* global elasticlunr, lunr */
+
+const queryInput = document.getElementById('query');
+const matchList = document.getElementById('matches');
+
+var index;
 
 fetch('data/index.json').then(response => {
   return response.json();
 }).then(json => {
   startPerf();
-  const index = lunr.Index.load(json);
+  index = elasticlunr.Index.load(json);
   endPerf();
   logPerf('Index loading');
-  startPerf();
-  window.matches = index.search('crew');
-  endPerf();
-  logPerf('Search');
-  console.log('Matches: ', matches);
+  // un-disable search
 });
+
+queryInput.focus();
+queryInput.oninput = function() {
+  matchList.innerHTML = '';
+  const query = queryInput.value;
+  if (query.length < 2) {
+    return;
+  }
+  startPerf();
+  const options = {
+    fields: {
+      title: {boost: 2},
+      description: {boost: 1}
+    },
+    bool: "OR",
+    expand: true
+  };
+const matches = window.matches = index.search(query, options);
+endPerf();
+logPerf('Search');
+displayMatches(matches);
+}
+
+function displayMatches(matches) {
+  if (matches.length === 0) {
+    matchList.innerHTML = "No matches";
+    return;
+  }
+  console.log('Matches: ', matches);
+  for (let match of matches) {
+    matchList.innerHTML += '<li>' + match.ref + '</li>';
+  }
+}
+
+// window.performance utilities
 
 function startPerf() {
   window.performance.mark('start');
@@ -44,6 +80,6 @@ function logPerf(message) {
   window.performance.clearMeasures();
   window.performance.measure('duration', 'start', 'end');
   const duration =
-      performance.getEntriesByName('duration')[0].duration.toPrecision(4);
+  performance.getEntriesByName('duration')[0].duration.toPrecision(4);
   console.log(`${message} took ${duration} ms`);
 }

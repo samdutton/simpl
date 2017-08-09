@@ -1,0 +1,10 @@
+input#query {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 3px;
+  width: 250px;
+}
+
+label[for=query] {
+  margin: 0 10px 0 0;
+}

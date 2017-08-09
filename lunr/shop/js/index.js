@@ -20,7 +20,8 @@ limitations under the License.
 // node js/index.js < data/data.json > data/index.json
 
 // const lunr = require('lunr');
-const lunr = require('elasticlunr');
+// const lunr = require('elasticlunr');
+const elasticlunr = require('elasticlunr');
 const stdin = process.stdin;
 const stdout = process.stdout;
 const buffer = [];
@@ -44,16 +45,15 @@ stdin.on('end', () => {
   //   }
   // });
 
-    const idx = elasticlunr(function() { // can't seem to use fat arrow :/
-      this.setRef('name');
-      this.addField('title');
-      this.addField('description');
-      for (let doc of documents) {
-        this.addDoc(doc);
+  const idx = elasticlunr(function() { // can't seem to use fat arrow :/
+    this.addField('title');
+    this.addField('description');
+    this.setRef('name');
+//    this.saveDocument(false);
+    for (let doc of documents) {
+      this.addDoc(doc);
     }
   });
-
-
 
   stdout.write(JSON.stringify(idx));
 });

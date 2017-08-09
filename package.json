@@ -1,0 +1,36 @@
+{
+  "name": "simpl.info",
+  "version": "1.0.0",
+  "description": "Simplest possible examples of HTML, CSS and JavaScript",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samdutton/webrtc.git"
+  },
+  "keywords": [
+    "webrtc",
+    "demos",
+    "samples",
+    "javascript"
+  ],
+  "author": "Sam Dutton",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/samdutton/simpl/issues"
+  },
+  "homepage": "https://github.com/samdutton/simpl",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-eslint": "^20.0.0",
+    "grunt-githooks": "^0.6.0",
+    "grunt-htmlhint": "^0.9.13"
+  },
+  "dependencies": {
+    "npm-check": "^5.4.5"
+  }
+}
