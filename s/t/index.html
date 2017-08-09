@@ -59,6 +59,17 @@ limitations under the License.
 
   <base target="_blank">
 
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments);
+  };
+  ga.l = +new Date;
+  ga('create', 'UA-33848682-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
 </head>
 
 <body>
@@ -72,23 +83,22 @@ limitations under the License.
 
   </div>
 
-  <script>
-    /* jshint ignore:start */
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        gaTrack: true,
-        gaId: 'UA-33848682-1'},
-        'google_translate_element');
-    }
-    /* jshint ignore:end */
+<script>
+  /*eslint-disable */
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      gaTrack: true,
+      gaId: 'UA-33848682-1'},
+      'google_translate_element');
+  }
+  /*eslint-enable */
 </script>
 
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="js/main.js"></script>
-  <script src="../third_party/ga.js"></script>
 
 </body>
 
