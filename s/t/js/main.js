@@ -94,7 +94,7 @@ function handleTranscriptRequest(results) {
     var iframe = document.createElement('iframe');
     let iframeId = 'yt' + videoId;
     iframe.id = iframeId;
-    iframe.src = 'http://www.youtube.com/embed/' +
+    iframe.src = 'https://www.youtube.com/embed/' +
     videoId + '?enablejsapi=1&html5=1';
     iframe.classList.add('youtube-player');
     iframe.height = 270;
