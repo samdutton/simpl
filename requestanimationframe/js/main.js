@@ -51,10 +51,10 @@ limitations under the License.
   var _dX = 1;
   var _transform = ('transform' in _square.style ? 'transform' :
     'webkitTransform' in _square.style ? 'webkitTransform' :
-    'mozTransform' in _square.style ? 'mozTransform' :
-    'msTransform' in _square.style ? 'msTransform' :
-    'oTransform' in _square.style ? 'oTransform' :
-    'transform');
+      'mozTransform' in _square.style ? 'mozTransform' :
+        'msTransform' in _square.style ? 'msTransform' :
+          'oTransform' in _square.style ? 'oTransform' :
+            'transform');
 
   _container.addEventListener('click', interrupt, false);
   _container.addEventListener('dblclick', resume, false);

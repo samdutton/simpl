@@ -36,7 +36,7 @@ limitations under the License.
 
 // For testing
 var baseUrl = location.host === 'localhost' ?
-'http://localhost:8080' : 'https://shearch-me.herokuapp.com';
+  'http://localhost:8080' : 'https://shearch-me.herokuapp.com';
 
 var infoElement = document.getElementById('info');
 var nextPageElement = document.getElementById('nextPage');
@@ -89,7 +89,7 @@ form.onsubmit = buildQueryString;
 
 var search = location.search;
 if (search) {
-  var matches = search.match(/(q|query)=([^&?\/]+)/);
+  var matches = search.match(/(q|query)=([^&?/]+)/);
   if (matches) {
     if (/q|query/.test(matches[1])) {
       qInput.value = matches[2];
@@ -291,8 +291,8 @@ function addVideoDetails(videoDiv, video) {
     var speakersDiv = document.createElement('div');
     speakersDiv.classList.add('speakers');
     speakersDiv.innerHTML = video.speakers.map(spaceToNonBreaking).
-    map(addSpeakerSpanTags).
-    join(', ');
+      map(addSpeakerSpanTags).
+      join(', ');
     var spans = speakersDiv.querySelectorAll('span');
     for (var i = 0; i !== spans.length; ++i) {
       spans[i].onclick = handleSpeakerClick;
@@ -400,7 +400,7 @@ function addMatchesDetails(videoDiv, video) {
 
   for (var i = 0; i !== video.captions.length; ++i) {
     var caption = video.captions[i];
-    var start = caption.match(/data-start="([\d\.]+)"/)[1];
+    var start = caption.match(/data-start="([\d.]+)"/)[1];
     var hms = toHoursMinutesSeconds(start);
     var captionDiv = document.createElement('div');
     var startSpan = '<span class="start">' + hms + '</span>';
@@ -427,7 +427,7 @@ function addTranscriptDetails(videoDiv, video) {
   var downloadLink = document.createElement('a');
   downloadLink.classList.add('download');
   downloadLink.download = video.title.replace(/ /g, '_').
-  replace(/&mdash;/, '-') + '.html';
+    replace(/&mdash;/, '-') + '.html';
   downloadLink.textContent = 'download';
   videoDiv.appendChild(downloadLink);
 

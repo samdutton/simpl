@@ -23,7 +23,7 @@ db.transaction(function(tx) {
   //  tx.executeSql('DROP TABLE IF EXISTS songs');
   tx.executeSql(
     'CREATE TABLE IF NOT EXISTS songs (artist varchar(255), song varchar(255))',
-        [], null, handleError);
+    [], null, handleError);
 }, null, null); // error handler, success handler
 
 function addSong(artist, song) {

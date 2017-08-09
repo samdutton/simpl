@@ -174,7 +174,7 @@ function addTranscriptClickHandler(span) {
   span.title = start;
   span.onclick = function() {
     videos[videoId].player.seekTo(Math.round(start));
-      // tellPlayer(iframe, 'seekTo', [start]);
-      // tellPlayer(iframe, 'playVideo');
+    // tellPlayer(iframe, 'seekTo', [start]);
+    // tellPlayer(iframe, 'playVideo');
   };
 }

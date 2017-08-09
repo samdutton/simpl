@@ -78,7 +78,7 @@ function handleFaceTrackingEvent() {
     overlayContext.rotate(event.angle - (Math.PI / 2));
     overlayContext.strokeStyle = '#00CC00';
     overlayContext.strokeRect((-(event.width / 2)) >> 0,
-        (-(event.height / 2)) >> 0, event.width, event.height);
+      (-(event.height / 2)) >> 0, event.width, event.height);
     overlayContext.rotate((Math.PI / 2) - event.angle);
     overlayContext.translate(-event.x, -event.y);
   }
@@ -100,6 +100,6 @@ document.addEventListener('facetrackingEvent', handleFaceTrackingEvent);
 // requires headPosition : true in Tracker constructor
 document.addEventListener('headtrackingEvent', handleHeadTrackingEvent);
 document.addEventListener('headtrackrStatus', handleheadtrackrStatusEvent,
-    true);
+  true);
 htracker.init(videoInput, canvasInput);
 htracker.start();

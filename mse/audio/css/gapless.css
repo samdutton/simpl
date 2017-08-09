@@ -11,23 +11,23 @@
 }
 
 .play-overlay, .waveform, .waveform-container {
-  min-height: 300px;
   margin: auto;
+  min-height: 300px;
   width: 750px;
 }
 
 .play-overlay {
   background: url(../images/yt_play.png);
-  background-size: 80px 60px;
-  background-repeat: no-repeat;
-  background-position:center;
   background-color: #eee;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: 80px 60px;
   opacity: .3;
-  z-index: 10;
   position: absolute;
+  z-index: 10;
 }
 
 .play-overlay:hover {
-  opacity: .6;
   cursor: pointer;
+  opacity: .6;
 }

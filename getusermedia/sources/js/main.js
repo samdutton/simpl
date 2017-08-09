@@ -21,7 +21,7 @@ var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
 
 navigator.mediaDevices.enumerateDevices()
-    .then(gotDevices).then(getStream).catch(handleError);
+  .then(gotDevices).then(getStream).catch(handleError);
 
 audioSelect.onchange = getStream;
 videoSelect.onchange = getStream;
@@ -66,7 +66,7 @@ function getStream() {
   };
 
   navigator.mediaDevices.getUserMedia(constraints).
-      then(gotStream).catch(handleError);
+    then(gotStream).catch(handleError);
 }
 
 function gotStream(stream) {

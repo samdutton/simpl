@@ -38,7 +38,7 @@ function handleError(error) {
 }
 
 navigator.mediaDevices.getUserMedia(constraints).
-then(handleSuccess).catch(handleError);
+  then(handleSuccess).catch(handleError);
 
 video.onplay = function() {
   dimensions.textContent = 'Actual video dimensions: ' + video.videoWidth +

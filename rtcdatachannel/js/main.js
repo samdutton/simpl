@@ -56,7 +56,7 @@ function createConnection() {
   trace('Created local peer connection object localConnection');
 
   sendChannel = localConnection.createDataChannel('sendDataChannel',
-      dataConstraint);
+    dataConstraint);
   trace('Created send data channel');
 
   localConnection.onicecandidate = function(e) {
@@ -137,21 +137,21 @@ function getOtherPc(pc) {
 
 function getName(pc) {
   return (pc === localConnection) ? 'localPeerConnection' :
-      'remotePeerConnection';
+    'remotePeerConnection';
 }
 
 function onIceCandidate(pc, event) {
   getOtherPc(pc).addIceCandidate(event.candidate)
-  .then(
-    function() {
-      onAddIceCandidateSuccess(pc);
-    },
-    function(err) {
-      onAddIceCandidateError(pc, err);
-    }
-  );
+    .then(
+      function() {
+        onAddIceCandidateSuccess(pc);
+      },
+      function(err) {
+        onAddIceCandidateError(pc, err);
+      }
+    );
   trace(getName(pc) + ' ICE candidate: \n' + (event.candidate ?
-      event.candidate.candidate : '(null)'));
+    event.candidate.candidate : '(null)'));
 }
 
 function onAddIceCandidateSuccess() {

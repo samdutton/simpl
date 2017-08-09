@@ -24,7 +24,7 @@ playbackRateDisplay.textContent = video.defaultPlaybackRate;
 range.value = video.defaultPlaybackRate;
 
 video.addEventListener('loadedmetadata', function() {
-  var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+  var fileName = this.currentSrc.replace(/^.*[\\/]/, '');
   document.querySelector('#videoSrc').textContent =
     'Playing video: ' + fileName;
 });

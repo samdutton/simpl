@@ -16,7 +16,7 @@ limitations under the License.
 
 'use strict';
 
-/* global elasticlunr, lunr */
+/* global elasticlunr */
 
 const queryInput = document.getElementById('query');
 const matchList = document.getElementById('matches');
@@ -46,18 +46,18 @@ queryInput.oninput = function() {
       title: {boost: 2},
       description: {boost: 1}
     },
-    bool: "OR",
+    bool: 'OR',
     expand: true
   };
-const matches = window.matches = index.search(query, options);
-endPerf();
-logPerf('Search');
-displayMatches(matches);
-}
+  const matches = window.matches = index.search(query, options);
+  endPerf();
+  logPerf('Search');
+  displayMatches(matches);
+};
 
 function displayMatches(matches) {
   if (matches.length === 0) {
-    matchList.innerHTML = "No matches";
+    matchList.innerHTML = 'No matches';
     return;
   }
   console.log('Matches: ', matches);

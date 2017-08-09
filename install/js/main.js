@@ -36,7 +36,7 @@ if ('serviceWorker' in navigator) {
   });
   window.addEventListener('beforeinstallprompt', event => {
     event.preventDefault();
-//    console.log('beforeinstallprompt event:', event);
+    // console.log('beforeinstallprompt event:', event);
     installButton.removeAttribute('hidden');
     installButton.addEventListener('click', () => {
       event.prompt();

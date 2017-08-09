@@ -142,8 +142,8 @@ function log(text) {
 }
 
 document.querySelector('video').addEventListener('loadedmetadata', function() {
-  var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+  var fileName = this.currentSrc.replace(/^.*[\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'currentSrc: ' + fileName +
-  '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' + this
-  .videoHeight + 'px';
+  '<br /> videoWidth: ' + this.videoWidth + 'px<br /> videoHeight: ' +
+      this.videoHeight + 'px';
 });

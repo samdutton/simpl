@@ -79,7 +79,7 @@ function handleMessage(event) {
 // Convert Uint8Array into base64 using base64url alphabet, without padding.
 function toBase64(u8arr) {
   return btoa(String.fromCharCode.apply(null, u8arr)).
-      replace(/\+/g, '-').replace(/\//g, '_').replace(/=*$/, '');
+    replace(/\+/g, '-').replace(/\//g, '_').replace(/=*$/, '');
 }
 
 // This takes the place of a license server.

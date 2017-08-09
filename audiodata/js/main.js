@@ -23,7 +23,7 @@ var eventTimeElement = document.getElementById('eventTimeElement');
 var eventDataElement = document.getElementById('eventDataElement');
 
 framebufferLengthInput.addEventListener('change',
-    handleFramebufferLengthChanged, false);
+  handleFramebufferLengthChanged, false);
 mediaElement.addEventListener('loadedmetadata', handleMetadata, false);
 
 mediaElement.addEventListener('MozAudioAvailable', handleAudioData, false);

@@ -39,14 +39,14 @@ limitations under the License.
     for (var l = 0; l < toDo; ++l) {
       _xhr = new XMLHttpRequest();
 
-/*
-NB
-NEVER pass in 'false' to XHR as its third parameter in production code --
-Doing so initiates a **synchronous** XHR,
-which will eat the main thread for breakfast.
-We do it here specifically to demonstrate that the requestIdleCallback is not
-executed until the main thread is freed
-*/
+      /*
+      NB
+      NEVER pass in 'false' to XHR as its third parameter in production code --
+      Doing so initiates a **synchronous** XHR,
+      which will eat the main thread for breakfast.
+      We do it here specifically to demonstrate that the requestIdleCallback
+      is not executed until the main thread is freed
+      */
 
       document.querySelector('.high-priority > .output').
         insertAdjacentHTML('beforeend', '<p>Did task at ' +

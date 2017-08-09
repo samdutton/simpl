@@ -60,7 +60,7 @@ limitations under the License.
     for (var i = 0; i < stories.length; i++) {
       var title = stories[i].title;
       var link = stories[i].link;
-      ul += '<li><h3><a href=\"' + link + '\" class=\"story\">' +
+      ul += '<li><h3><a href="' + link + '" class="story">' +
         title + '</a></h3>';
     }
     ul += '</ul>';

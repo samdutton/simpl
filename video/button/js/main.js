@@ -34,6 +34,6 @@ video.onplay = function() {
 };
 
 video.onloadedmetadata = function() {
-  var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
+  var fileName = this.currentSrc.replace(/^.*[\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'Playing video: ' + fileName;
 };
