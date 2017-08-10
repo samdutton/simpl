@@ -23,7 +23,7 @@ const matchList = document.getElementById('matches');
 
 var index;
 
-fetch('data/index.json').then(response => {
+fetch('data/index1000.json').then(response => {
   return response.json();
 }).then(json => {
   startPerf();
