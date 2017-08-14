@@ -49,7 +49,7 @@ stdin.on('end', () => {
     this.addField('title');
     this.addField('description');
     this.setRef('name');
-    this.saveDocument(false);
+    this.saveDocument(true);
     for (let doc of documents) {
       this.addDoc(doc);
     }

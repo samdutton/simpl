@@ -1,3 +1,42 @@
+.hidden {
+  display: none;
+}
+
+div#info {
+  color: rgb(230, 0, 0);
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 0 0 1em 0;
+}
+
+div#nextPage {
+  color: #4183C4;
+  cursor: pointer;
+  float: right;
+}
+
+div#nextPage:hover {
+  color: #3d85c6;
+}
+
+div#previousPage {
+  color: #4183C4;
+  cursor: pointer;
+  float: left;
+}
+
+div#previousPage:hover {
+  color: #3d85c6;
+}
+
+div#queryInfo {
+  border-bottom: 1px solid #666;
+  color: #888;
+  font-size: 0.9em;
+  margin: 0 0 1.5em 0;
+  padding: 0 0 1.5em 0;
+}
+
 input#query {
   font-size: 16px;
   font-weight: 300;
@@ -8,3 +47,4 @@ input#query {
 label[for=query] {
   margin: 0 10px 0 0;
 }
+

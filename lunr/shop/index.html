@@ -19,6 +19,7 @@ limitations under the License.
 <html lang="en">
 <head>
 
+<meta charset="utf-8">
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
 <meta name="author" content="//samdutton.com">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
@@ -44,7 +45,17 @@ limitations under the License.
 
   <label for="query">Search:</label><input id="query">
 
-  <ul id="matches"></ul>
+  <div id="info"></div>
+  <div id="queryInfo"></div>
+
+  <!-- begin results container, content generated dynamically -->
+  <div id="results"></div>
+  <!-- end results container, content generated dynamically -->
+
+
+  <!-- hidden by default, shown when there are results -->
+      <div id="previousPage" class="hidden">Previous ❮</div>
+      <div id="nextPage" class="hidden">❯ Next</div>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/lunr" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

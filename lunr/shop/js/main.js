@@ -18,9 +18,13 @@ limitations under the License.
 
 /* global elasticlunr */
 
+const nextPageElement = document.getElementById('nextPage');
+const previousPageElement = document.getElementById('previousPage');
 const queryInput = document.getElementById('query');
-const matchList = document.getElementById('matches');
+const resultsElement = document.getElementById('results');
 
+const MATCHES_PER_PAGE = 10;
+var currentPage = 0;
 var index;
 
 fetch('data/index1000.json').then(response => {
@@ -35,7 +39,7 @@ fetch('data/index1000.json').then(response => {
 
 queryInput.focus();
 queryInput.oninput = function() {
-  matchList.innerHTML = '';
+  resultsElement.innerHTML = '';
   const query = queryInput.value;
   if (query.length < 2) {
     return;
@@ -47,7 +51,7 @@ queryInput.oninput = function() {
       description: {boost: 1}
     },
     bool: 'OR',
-    expand: true
+    expand: true // true: do not require whole-word matches only
   };
   const matches = window.matches = index.search(query, options);
   endPerf();
@@ -57,12 +61,13 @@ queryInput.oninput = function() {
 
 function displayMatches(matches) {
   if (matches.length === 0) {
-    matchList.innerHTML = 'No matches';
+    resultsElement.innerHTML = 'No matches';
     return;
   }
-  console.log('Matches: ', matches);
+  // console.log('Matches: ', matches);
+  console.log('Match doc: ', matches[0].doc);
   for (let match of matches) {
-    matchList.innerHTML += '<li>' + match.ref + '</li>';
+    resultsElement.innerHTML += '<li>' + match.ref + '</li>';
   }
 }
 
