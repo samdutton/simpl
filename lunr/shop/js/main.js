@@ -18,15 +18,30 @@ limitations under the License.
 
 /* global elasticlunr */
 
-const nextPageElement = document.getElementById('nextPage');
-const previousPageElement = document.getElementById('previousPage');
+const itemNavigationElement = document.getElementById('itemNavigation');
+const matchesElement = document.getElementById('matches');
+const nextPageLink = document.getElementById('nextPage');
+nextPageLink.onclick = showNextPage;
+const previousPageLink = document.getElementById('previousPage');
+previousPageLink.onclick = showPreviousPage;
+const queryInfoElement = document.getElementById('queryInfo');
 const queryInput = document.getElementById('query');
-const resultsElement = document.getElementById('results');
 
 const MATCHES_PER_PAGE = 10;
+const SEARCH_OPTIONS = {
+  fields: {
+    title: {boost: 2},
+    description: {boost: 1}
+  },
+  bool: 'OR',
+  expand: true // true: do not require whole-word matches only
+};
+
 var currentPage = 0;
 var index;
+var matches;
 
+// Get index data and load Elastic Lunr index
 fetch('data/index1000.json').then(response => {
   return response.json();
 }).then(json => {
@@ -34,41 +49,113 @@ fetch('data/index1000.json').then(response => {
   index = elasticlunr.Index.load(json);
   endPerf();
   logPerf('Index loading');
-  // un-disable search
+  // TODO: un-disable search
 });
 
 queryInput.focus();
-queryInput.oninput = function() {
-  resultsElement.innerHTML = '';
+// Search for products whenever query input text changes
+queryInput.oninput = doSearch;
+
+function doSearch() {
+  matchesElement.textContent = '';
+  displayMatchInfo('');
+  displayItemNavigationInfo('');
+  currentPage = 0;
+
   const query = queryInput.value;
   if (query.length < 2) {
     return;
   }
+
   startPerf();
-  const options = {
-    fields: {
-      title: {boost: 2},
-      description: {boost: 1}
-    },
-    bool: 'OR',
-    expand: true // true: do not require whole-word matches only
-  };
-  const matches = window.matches = index.search(query, options);
+  matches = window.matches = index.search(query, SEARCH_OPTIONS);
   endPerf();
   logPerf('Search');
-  displayMatches(matches);
-};
 
-function displayMatches(matches) {
   if (matches.length === 0) {
-    resultsElement.innerHTML = 'No matches';
+    displayMatchInfo('No matches :^\\');
+    displayItemNavigationInfo('');
     return;
+  } else {
+    displayMatches(0);
   }
-  // console.log('Matches: ', matches);
-  console.log('Match doc: ', matches[0].doc);
-  for (let match of matches) {
-    resultsElement.innerHTML += '<li>' + match.ref + '</li>';
+}
+
+function displayMatches() {
+  matchesElement.textContent = '';
+
+  // find index for first and last match to appear on the current page
+  var startIndex = currentPage * MATCHES_PER_PAGE;
+  var endIndex = Math.min((currentPage + 1) * MATCHES_PER_PAGE,
+    matches.length);
+
+  displayMatchInfo('Showing ' + (startIndex + 1) + ' to ' + endIndex +
+    ' of ' + matches.length + ' matching item(s)');
+  displayItemNavigationInfo('Click on an item to view product details');
+
+  for (let i = startIndex; i !== endIndex; ++i) {
+    displayMatch(matches[i]);
   }
+
+  if (matches.length > currentPage * MATCHES_PER_PAGE + MATCHES_PER_PAGE) {
+    show(nextPageLink);
+  } else {
+    hide(nextPageLink);
+  }
+  if (currentPage === 0) {
+    hide(previousPageLink);
+  } else {
+    show(previousPageLink);
+  }
+}
+
+function displayMatch(match) {
+  var matchElement = document.createElement('div');
+  matchElement.classList.add('match');
+  matchElement.textContent = match.doc.title;
+  matchesElement.appendChild(matchElement);
+}
+
+function displayMatchInfo(message) {
+  if (message === '') {
+    hide(queryInfoElement);
+  } else {
+    show(queryInfoElement);
+    queryInfoElement.textContent = message;
+  }
+}
+
+function displayItemNavigationInfo(message) {
+  if (message === '') {
+    hide(itemNavigationElement);
+  } else {
+    show(itemNavigationElement);
+    itemNavigationElement.textContent = message;
+  }
+}
+
+function showNextPage() {
+  hide(nextPageLink);
+  hide(previousPageLink);
+  currentPage++;
+  displayMatches();
+}
+
+function showPreviousPage() {
+  hide(nextPageLink);
+  hide(previousPageLink);
+  currentPage--;
+  displayMatches();
+}
+
+// General utility functions
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
 }
 
 // window.performance utilities

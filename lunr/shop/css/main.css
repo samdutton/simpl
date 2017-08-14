@@ -2,16 +2,16 @@
   display: none;
 }
 
-div#info {
+div#itemNavigation {
+  border-bottom: 1px solid #eee;
   color: rgb(230, 0, 0);
   font-size: 0.9em;
   font-weight: 500;
   margin: 0 0 1em 0;
+  padding: 0 0 1em 0;
 }
 
 div#nextPage {
-  color: #4183C4;
-  cursor: pointer;
   float: right;
 }
 
@@ -19,9 +19,18 @@ div#nextPage:hover {
   color: #3d85c6;
 }
 
-div#previousPage {
+div#prevNext {
+  margin: 0 0 1em 0;
+  padding: 0 0 1em 0;
+}
+
+div#prevNext div {
   color: #4183C4;
   cursor: pointer;
+  margin: 0 0 0.5em 0;
+}
+
+div#previousPage {
   float: left;
 }
 
@@ -30,16 +39,15 @@ div#previousPage:hover {
 }
 
 div#queryInfo {
-  border-bottom: 1px solid #666;
   color: #888;
   font-size: 0.9em;
   margin: 0 0 1.5em 0;
-  padding: 0 0 1.5em 0;
 }
 
 input#query {
   font-size: 16px;
   font-weight: 300;
+  margin: 0 0 1em 0;
   padding: 3px;
   width: 250px;
 }
