@@ -45,6 +45,7 @@ var matches;
 fetch('data/index1000.json').then(response => {
   return response.json();
 }).then(json => {
+  elasticlunr.clearStopWords();
   startPerf();
   index = elasticlunr.Index.load(json);
   endPerf();
@@ -69,6 +70,7 @@ function doSearch() {
 
   startPerf();
   matches = window.matches = index.search(query, SEARCH_OPTIONS);
+  console.log('matches', matches);
   endPerf();
   logPerf('Search');
 
