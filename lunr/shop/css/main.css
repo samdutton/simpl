@@ -55,10 +55,15 @@ input#query {
   font-weight: 300;
   margin: 0 0 1em 0;
   padding: 3px;
-  width: 250px;
+  width: 165px;
 }
 
 label[for=query] {
   margin: 0 10px 0 0;
 }
 
+@media (min-width: 350px) {
+  input#query {
+    width: 210px;
+  }
+}
