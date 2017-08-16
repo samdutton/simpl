@@ -3,18 +3,33 @@
 }
 
 div.match {
+  cursor: pointer;
   font-size: 14px;
   font-weight: 400;
   margin: 0 0 20px 0;
 }
 
+div#backToResults {
+  color: #4183C4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 1.5em 0;
+}
+
 div#itemNavigation {
   border-bottom: 1px solid #eee;
-  color: rgb(230, 0, 0);
-  font-size: 0.9em;
+  color: #c00;
+  font-size: 13px;
   font-weight: 500;
   margin: 0 0 1em 0;
-  padding: 0 0 1em 0;
+  padding: 0 0 1.5em 0;
+}
+
+div#matchesInfo {
+  color: #888;
+  font-size: 12px;
+  margin: 0 0 1em 0;
 }
 
 div#nextPage {
@@ -25,15 +40,13 @@ div#nextPage:hover {
   color: #3d85c6;
 }
 
-div#prevNext {
-  margin: 0 0 1em 0;
-  padding: 0 0 1em 0;
-}
-
-div#prevNext div {
+div#pageNavigation {
   color: #4183C4;
   cursor: pointer;
-  margin: 0 0 0.5em 0;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 1.5em 0;
+  padding: 0 0 1em 0;
 }
 
 div#previousPage {
@@ -42,12 +55,6 @@ div#previousPage {
 
 div#previousPage:hover {
   color: #3d85c6;
-}
-
-div#queryInfo {
-  color: #888;
-  font-size: 0.9em;
-  margin: 0 0 1.5em 0;
 }
 
 input#query {
@@ -63,7 +70,25 @@ label[for=query] {
 }
 
 @media (min-width: 350px) {
+
+  div#backToResults {
+    font-size: 14px;
+  }
+
+  div#matchesInfo {
+    font-size: 14px;
+  }
+
+  div#itemNavigation {
+   font-size: 14px;
+ }
+
+  div#pageNavigation {
+    font-size: 14px;
+  }
+
   input#query {
     width: 210px;
   }
+
 }

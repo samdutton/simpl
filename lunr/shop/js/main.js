@@ -18,13 +18,17 @@ limitations under the License.
 
 /* global elasticlunr */
 
+const backToResultsElement = document.getElementById('backToResults');
+backToResultsElement.onclick = backToResults;
 const itemNavigationElement = document.getElementById('itemNavigation');
 const matchesElement = document.getElementById('matches');
 const nextPageLink = document.getElementById('nextPage');
 nextPageLink.onclick = showNextPage;
+const pageNavigationElement = document.getElementById('pageNavigation');
 const previousPageLink = document.getElementById('previousPage');
 previousPageLink.onclick = showPreviousPage;
-const queryInfoElement = document.getElementById('queryInfo');
+const productInfoElement = document.getElementById('productInfo');
+const matchesInfoElement = document.getElementById('matchesInfo');
 const queryInput = document.getElementById('query');
 
 const MATCHES_PER_PAGE = 10;
@@ -50,7 +54,7 @@ fetch('data/index1000.json').then(response => {
   index = elasticlunr.Index.load(json);
   endPerf();
   logPerf('Index loading');
-  // TODO: un-disable search
+  queryInput.disabled = false;
 });
 
 queryInput.focus();
@@ -59,8 +63,8 @@ queryInput.oninput = doSearch;
 
 function doSearch() {
   matchesElement.textContent = '';
-  displayMatchInfo('');
-  displayItemNavigationInfo('');
+  showMatchInfo('');
+  showItemNavigationInfo('');
   currentPage = 0;
 
   const query = queryInput.value;
@@ -75,15 +79,15 @@ function doSearch() {
   logPerf('Search');
 
   if (matches.length === 0) {
-    displayMatchInfo('No matches :^\\');
-    displayItemNavigationInfo('');
+    showMatchInfo('No matches :^\\');
+    showItemNavigationInfo('');
     return;
   } else {
-    displayMatches(0);
+    showMatches(0);
   }
 }
 
-function displayMatches() {
+function showMatches() {
   matchesElement.textContent = '';
 
   // find index for first and last match to appear on the current page
@@ -91,12 +95,12 @@ function displayMatches() {
   var endIndex = Math.min((currentPage + 1) * MATCHES_PER_PAGE,
     matches.length);
 
-  displayMatchInfo('Showing ' + (startIndex + 1) + ' to ' + endIndex +
+  showMatchInfo('Showing ' + (startIndex + 1) + ' to ' + endIndex +
     ' of ' + matches.length + ' matching item(s)');
-  displayItemNavigationInfo('Click on an item to view product details');
+  showItemNavigationInfo('Click on an item to view product details');
 
   for (let i = startIndex; i !== endIndex; ++i) {
-    displayMatch(matches[i]);
+    addMatch(matches[i]);
   }
 
   if (matches.length > currentPage * MATCHES_PER_PAGE + MATCHES_PER_PAGE) {
@@ -111,23 +115,28 @@ function displayMatches() {
   }
 }
 
-function displayMatch(match) {
-  var matchElement = document.createElement('div');
+function addMatch(match) {
+  const matchElement = document.createElement('div');
   matchElement.classList.add('match');
-  matchElement.textContent = match.doc.title;
+  matchElement.appendChild(document.createTextNode(match.doc.title));
+  matchElement.onclick = showProductInfo;
   matchesElement.appendChild(matchElement);
 }
 
-function displayMatchInfo(message) {
+function showProductInfo() {
+  console.log('Hi');
+}
+
+function showMatchInfo(message) {
   if (message === '') {
-    hide(queryInfoElement);
+    hide(matchesInfoElement);
   } else {
-    show(queryInfoElement);
-    queryInfoElement.textContent = message;
+    show(matchesInfoElement);
+    matchesInfoElement.textContent = message;
   }
 }
 
-function displayItemNavigationInfo(message) {
+function showItemNavigationInfo(message) {
   if (message === '') {
     hide(itemNavigationElement);
   } else {
@@ -136,18 +145,28 @@ function displayItemNavigationInfo(message) {
   }
 }
 
+function backToResults() {
+  hide(backToResultsElement);
+  hide(productInfoElement);
+  show(pageNavigationElement);
+  show(matchesElement);
+  if (matches.length > currentPage * MATCHES_PER_PAGE + MATCHES_PER_PAGE) {
+    show(nextPageLink);
+  }
+}
+
 function showNextPage() {
   hide(nextPageLink);
   hide(previousPageLink);
   currentPage++;
-  displayMatches();
+  showMatches();
 }
 
 function showPreviousPage() {
   hide(nextPageLink);
   hide(previousPageLink);
   currentPage--;
-  displayMatches();
+  showMatches();
 }
 
 // General utility functions
