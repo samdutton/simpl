@@ -9,6 +9,16 @@ div.match {
   margin: 0 0 20px 0;
 }
 
+div.productTitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 0.5em 0;
+}
+
+div.productDescription {
+  font-size: 14px;
+}
+
 div#backToResults {
   color: #4183C4;
   cursor: pointer;

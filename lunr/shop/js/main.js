@@ -1,14 +1,14 @@
 /*
 Copyright 2017 Google Inc.
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Apache License, Version 2.0 (the 'License');
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an 'AS IS' BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
@@ -44,6 +44,12 @@ const SEARCH_OPTIONS = {
 var currentPage = 0;
 var index;
 var matches;
+
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js').catch(function(error) {
+    console.error('Unable to register service worker.', error);
+  });
+}
 
 // Get index data and load Elastic Lunr index
 fetch('data/index1000.json').then(response => {
@@ -119,12 +125,20 @@ function addMatch(match) {
   const matchElement = document.createElement('div');
   matchElement.classList.add('match');
   matchElement.appendChild(document.createTextNode(match.doc.title));
-  matchElement.onclick = showProductInfo;
+  matchElement.onclick = showProductInfo.bind(match.doc);
   matchesElement.appendChild(matchElement);
 }
 
 function showProductInfo() {
-  console.log('Hi');
+  console.log('this', this);
+  hide(matchesElement);
+  hide(pageNavigationElement);
+  show(backToResultsElement);
+  // dummy content: could include images if online/cached — whatever
+  productInfoElement.innerHTML =
+    '<div class="productTitle">' + this.title + '</div>' +
+    '<div class="productDescription">' + this.description + '</div>';
+  show(productInfoElement);
 }
 
 function showMatchInfo(message) {
