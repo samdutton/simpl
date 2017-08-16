@@ -71,6 +71,9 @@ function doSearch() {
   matchesElement.textContent = '';
   showMatchInfo('');
   showItemNavigationInfo('');
+  hide(nextPageLink);
+  hide(previousPageLink);
+
   currentPage = 0;
 
   const query = queryInput.value;

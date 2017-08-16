@@ -5,18 +5,19 @@
 div.match {
   cursor: pointer;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0 0 20px 0;
 }
 
 div.productTitle {
   font-size: 14px;
   font-weight: 500;
-  margin: 0 0 0.5em 0;
+  margin: 0 0 20px 0;
 }
 
 div.productDescription {
   font-size: 14px;
+  line-height: 1.4em;
 }
 
 div#backToResults {
@@ -24,7 +25,7 @@ div#backToResults {
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  margin: 0 0 1.5em 0;
+  height: 30px;
 }
 
 div#itemNavigation {
@@ -55,8 +56,7 @@ div#pageNavigation {
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  margin: 0 0 1.5em 0;
-  padding: 0 0 1em 0;
+  height: 30px;
 }
 
 div#previousPage {
