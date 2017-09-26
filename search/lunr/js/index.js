@@ -19,7 +19,9 @@ limitations under the License.
 // To build an index:
 // node js/index.js < data/data.json > data/index.json
 
-const lunr = require('lunr');
+// const lunr = require('lunr');
+// const lunr = require('elasticlunr');
+const elasticlunr = require('elasticlunr');
 const stdin = process.stdin;
 const stdout = process.stdout;
 const buffer = [];
@@ -34,13 +36,22 @@ stdin.on('data', data => {
 stdin.on('end', () => {
   var documents = JSON.parse(buffer.join());
 
-  const idx = lunr(function() { // can't seem to use fat arrow :/
-    this.ref('location');
-    this.ref('lines');
-    this.field('speaker');
-    this.field('lines');
+  // const idx = lunr(function() { // can't seem to use fat arrow :/
+  //   this.ref('name');
+  //   this.field('title');
+  //   this.field('description');
+  //   for (let doc of documents) {
+  //     this.add(doc);
+  //   }
+  // });
+
+  const idx = elasticlunr(function() { // can't seem to use fat arrow :/
+    this.addField('title'); // fields to index
+    this.addField('description');
+    this.setRef('name'); // field used to identify document
+    this.saveDocument(true); // include data in index
     for (let doc of documents) {
-      this.add(doc);
+      this.addDoc(doc);
     }
   });
 

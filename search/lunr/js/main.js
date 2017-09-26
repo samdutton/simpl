@@ -61,9 +61,9 @@ fetch('data/index1000.json').then(response => {
   endPerf();
   logPerf('Index loading');
   queryInput.disabled = false;
+  queryInput.focus();
 });
 
-queryInput.focus();
 // Search for products whenever query input text changes
 queryInput.oninput = doSearch;
 
@@ -92,7 +92,7 @@ function doSearch() {
     showItemNavigationInfo('');
     return;
   } else {
-    showMatches(0);
+    showMatches();
   }
 }
 

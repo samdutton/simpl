@@ -16,12 +16,3 @@ limitations under the License.
 
 'use strict';
 
-/* global lunr */
-
-fetch('data/index.json').then(response => {
-  return response.json();
-}).then(json => {
-  const index = lunr.Index.load(json);
-  window.matches = index.search('brick');
-  console.log(index.search('lines:brick'));
-});
