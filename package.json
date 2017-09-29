@@ -29,5 +29,5 @@
     "grunt-eslint": "^20.0.0",
     "grunt-githooks": "^0.6.0",
     "grunt-htmlhint": "^0.9.13"
-  }
+  },
 }

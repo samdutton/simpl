@@ -1,0 +1,104 @@
+.hidden {
+  display: none;
+}
+
+div.match {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+div.productTitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+div.productDescription {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+div#backToResults {
+  color: #4183C4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  height: 35px;
+}
+
+div#itemNavigation {
+  border-bottom: 1px solid #eee;
+  color: #c00;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 1em 0;
+  padding: 0 0 1.5em 0;
+}
+
+div#matchesInfo {
+  color: #888;
+  font-size: 12px;
+  margin: 0 0 1em 0;
+}
+
+div#nextPage {
+  float: right;
+}
+
+div#nextPage:hover {
+  color: #3d85c6;
+}
+
+div#pageNavigation {
+  color: #4183C4;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  height: 35px;
+}
+
+div#previousPage {
+  float: left;
+}
+
+div#previousPage:hover {
+  color: #3d85c6;
+}
+
+input#query {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0 0 1em 0;
+  padding: 3px;
+  width: 165px;
+}
+
+label[for=query] {
+  margin: 0 10px 0 0;
+}
+
+@media (min-width: 350px) {
+
+  div#backToResults {
+    font-size: 14px;
+  }
+
+  div#matchesInfo {
+    font-size: 14px;
+  }
+
+  div#itemNavigation {
+   font-size: 14px;
+ }
+
+  div#pageNavigation {
+    font-size: 14px;
+  }
+
+  input#query {
+    width: 210px;
+  }
+
+}

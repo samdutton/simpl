@@ -14,11 +14,9 @@
 const FILES = [
   'index.html',
   'css/main.css',
-  '../../css/main.css',
   'js/index.js',
   'js/main.js',
-  'js/lib/pouchdb-6.3.4.min.js',
-  'js/lib/pouchdb.find.js'
+  'js/lib/elasticlunr.min.js'
 ];
 
 self.addEventListener('install', (event) => {
@@ -33,10 +31,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   // console.log('Fetch:', event.request.url.split('/').pop().substring(0,40));
-  // Avoid PouchDB PUT and POST requests.
-  if (event.request.method === 'GET') {
-    event.respondWith(fetchHandler(event.request));
-  }
+  event.respondWith(fetchHandler(event.request));
 });
 
 /* eslint-disable */

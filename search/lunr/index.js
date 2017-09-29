@@ -28,13 +28,13 @@ const buffer = [];
 
 stdin.resume();
 stdin.setEncoding('utf8');
-
 stdin.on('data', data => {
   buffer.push(data);
 });
 
 stdin.on('end', () => {
   var documents = JSON.parse(buffer.join());
+  console.log(documents);
 
   // const idx = lunr(function() { // can't seem to use fat arrow :/
   //   this.ref('name');
