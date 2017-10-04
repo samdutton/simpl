@@ -19,7 +19,12 @@ limitations under the License.
 const observed = document.querySelector('img#observed');
 
 const options = {
-  rootMargin: '-100px 0px 0px 0px',
+  // rootMargin: top, right, bottom, left margins
+  // added to the bounding box of the root element (viewport if not defined)
+  // see https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver
+  rootMargin: '0px 0px 100px 0px',
+  // threshold: how much of the target visible for the callback to be invoked
+  // includes padding, 1.0 means 100%
   threshold: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 };
 
@@ -27,6 +32,8 @@ function callback(entries) {
   console.log(entries);
 }
 
+// callback is invoked whenever observe() is called
+// i.e. including when the page loads
 const intersectionObserver = new IntersectionObserver(callback, options);
 
 intersectionObserver.observe(observed);
