@@ -45,14 +45,16 @@ var currentPage = 0;
 var index;
 var matches;
 
+const INDEX_FILE = 'data/index1000.json';
+
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register('sw.js').catch(function(error) {
     console.error('Unable to register service worker.', error);
   });
 }
 
-// Get index data and load Elastic Lunr index
-fetch('data/index1000.json').then(response => {
+// Get index data and load index
+fetch(INDEX_FILE).then(response => {
   return response.json();
 }).then(json => {
   elasticlunr.clearStopWords();
