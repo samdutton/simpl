@@ -24,7 +24,7 @@ var video = document.querySelector('video');
 
 function handleSuccess(stream) {
   window.stream = stream; // only to make stream available to console
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
 }
 
 function handleError(error) {
