@@ -37,7 +37,6 @@ function displayImageDistance() {
   var distance = image.getBoundingClientRect().y - window.innerHeight;
   // distance from top of viewport to to bottom of image
   const toBottom = image.height + image.getBoundingClientRect().y;
-  console.log('toBottom', toBottom);
   if (toBottom < 0) {
     distance = Math.abs(toBottom);
   }
@@ -65,6 +64,6 @@ function callback(entries) {
 
 // callback is invoked whenever observe() is called
 // i.e. including when the page loads
-const intersectionObserver = new IntersectionObserver(callback, options);
+const io = new IntersectionObserver(callback, options);
 
-intersectionObserver.observe(image);
+io.observe(image);
