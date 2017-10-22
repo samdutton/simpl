@@ -100,7 +100,7 @@ function doSearch() {
 
   startPerf();
   matches = window.matches = index.search(query, SEARCH_OPTIONS);
-  console.log('matches', matches);
+  // console.log('matches', matches);
   endPerf();
   logPerf('Search');
 
@@ -150,7 +150,7 @@ function addMatch(match) {
 }
 
 function showProductInfo() {
-  console.log('this', this);
+  console.log('image:', this.image);
   hide(matchesElement);
   hide(pageNavigationElement);
   show(backToResultsElement);

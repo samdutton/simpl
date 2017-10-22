@@ -20,12 +20,12 @@ const FILES = [
 ];
 
 self.addEventListener('install', (event) => {
-  console.log('Service worker:', event);
+//  console.log('Service worker:', event);
   event.waitUntil(installHandler(event));
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('Service worker:', event);
+//  console.log('Service worker:', event);
   clients.claim();
 });
 
