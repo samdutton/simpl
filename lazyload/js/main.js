@@ -55,7 +55,8 @@ const options = {
 
 function callback(entries) {
   if (entries[0].isIntersecting) {
-    image.src = image.dataset.src;
+    const currentImage = entries[0].target;
+    currentImage.src = currentImage.dataset.src;
     isIntersecting = true;
   } else {
     isIntersecting = false;

@@ -21,7 +21,7 @@ function log(message) {
 }
 
 if (typeof navigator.onLine !== 'undefined') {
-  if (navigator.onLine) {
+  if (navigator.online) {
     log('navigator.onLine says you\'re online');
   } else {
     log('navigator.onLine says you\'re offline.');
