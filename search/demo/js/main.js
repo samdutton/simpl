@@ -150,14 +150,28 @@ function addMatch(match) {
 }
 
 function showProductInfo() {
-  console.log('image:', this.image);
   hide(matchesElement);
   hide(pageNavigationElement);
   show(backToResultsElement);
+  productInfoElement.textContent = '';
   // dummy content: could include images if online/cached — whatever
-  productInfoElement.innerHTML =
-    '<div class="productTitle">' + this.title + '</div>' +
-    '<div class="productDescription">' + this.description + '</div>';
+  let productTitle = document.createElement('DIV');
+  productTitle.className = 'productTitle';
+  productTitle.textContent = this.title;
+  productInfoElement.appendChild(productTitle);
+  const image = document.createElement('IMG');
+  const title = this.title;
+  image.classList.add('hidden');
+  image.onload = function() {
+    console.log('Image loaded', title);
+    image.classList.remove('hidden');
+  };
+  image.src = 'images/10-' + this.image + 'B.jpg';
+  productInfoElement.appendChild(image);
+  let productDescription = document.createElement('DIV');
+  productDescription.className = 'productDescription';
+  productDescription.textContent = this.description;
+  productInfoElement.appendChild(productDescription);
   show(productInfoElement);
 }
 

@@ -1,3 +1,7 @@
+.block {
+  display: block;
+}
+
 .hidden {
   display: none;
 }
@@ -85,6 +89,9 @@ div#previousPage {
 
 div#previousPage:hover {
   color: #3d85c6;
+}
+
+div#productInfo img {
 }
 
 input#query {
