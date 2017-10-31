@@ -1,0 +1,60 @@
+a {
+  color: #15c;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: 300;
+  padding: 0.5em;
+}
+
+button {
+  display: block;
+  margin: 0 0 20px 0;
+}
+
+div#container {
+  margin: 0 auto;
+  max-width: 40em;
+}
+
+h1 {
+  border-bottom: 1px solid #ccc;
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  height: 2em;
+  margin: 0 0 0.8em 0;
+  padding: 0 0 0.2em 0;
+}
+
+
+iframe {
+  border: none;
+  height: calc(100vh - 180px);
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  body {
+    padding: 1em;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 0.8em 0;
+    padding: 0 0 0.2em 0;
+  }
+}
+
+@media (min-width: 650px) {
+}
+
+@media (min-width: 550px) {
+}
+
