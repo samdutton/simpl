@@ -80,13 +80,13 @@ function doSearch() {
 }
 
 function displayMatches(results, query) {
+  const re = new RegExp(query, 'i');
   results = results.filter(function(result) {
-    return result.doc.t.includes(query);
+    return re.test(result.doc.t);
   });
-  console.log(results);
-  // results.sort((x, y) => {
-  //   return x.doc.t.includes(query) ? -1 : y.doc.t.includes(query) ? 1 : 0;
-  // });
+  results.sort((x, y) => {
+    return re.test(x.doc.t) ? -1 : re.test(y.doc.t) ? 1 : 0;
+  });
   for (const result of results) {
     addResult(result.doc);
   }

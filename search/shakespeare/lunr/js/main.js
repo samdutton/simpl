@@ -71,14 +71,15 @@ function doSearch() {
 
 function displayMatches(matches, query) {
   let results = [];
+  const re = new RegExp(query, 'i');
   for (const match of matches) {
     results.push(docs[match.ref]);
   }
   results = results.filter(function(result) {
-    return result.t.includes(query);
+    return re.test(result.t);
   });
   results.sort((x, y) => {
-    return x.t.includes(query) ? -1 : y.t.includes(query) ? 1 : 0;
+    return re.test(x.t) ? -1 : re.test(query) ? 1 : 0;
   });
   for (const result of results) {
     addResult(result);
@@ -95,4 +96,3 @@ function addResult(match) {
   };
   resultsDiv.appendChild(resultElement);
 }
-
