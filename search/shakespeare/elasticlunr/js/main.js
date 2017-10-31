@@ -21,7 +21,7 @@ limitations under the License.
 const queryInput = document.getElementById('query');
 // Search for products whenever query input text changes
 queryInput.oninput = doSearch;
-const resultsDiv = document.getElementById('results');
+const resultsList = document.getElementById('results');
 
 const SEARCH_OPTIONS = {
   fields: {
@@ -64,7 +64,7 @@ fetch(INDEX_FILE).then(response => {
 queryInput.oninput = doSearch;
 
 function doSearch() {
-  resultsDiv.textContent = '';
+  resultsList.textContent = '';
   console.clear();
   const query = queryInput.value;
   if (query.length < 2) {
@@ -93,12 +93,12 @@ function displayMatches(results, query) {
 }
 
 function addResult(match) {
-  const resultElement = document.createElement('div');
+  const resultElement = document.createElement('li');
   resultElement.classList.add('match');
   resultElement.dataset.location = match.l;
   resultElement.appendChild(document.createTextNode(match.t));
   resultElement.onclick = function() {
     console.log(match.id);
   };
-  resultsDiv.appendChild(resultElement);
+  resultsList.appendChild(resultElement);
 }
