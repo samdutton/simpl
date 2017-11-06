@@ -40,7 +40,7 @@ function gotDevices(deviceInfos) {
         (videoSelect.length + 1);
       videoSelect.appendChild(option);
     } else {
-      console.log('Found ome other kind of source/device: ', deviceInfo);
+      console.log('Found one other kind of source/device: ', deviceInfo);
     }
   }
 }
@@ -54,14 +54,10 @@ function getStream() {
 
   var constraints = {
     audio: {
-      optional: [{
-        sourceId: audioSelect.value
-      }]
+      deviceId: { exact: audioSelect.value }
     },
     video: {
-      optional: [{
-        sourceId: videoSelect.value
-      }]
+      deviceId: { exact: videoSelect.value }
     }
   };
 
