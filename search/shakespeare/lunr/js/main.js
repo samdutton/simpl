@@ -23,8 +23,8 @@ const queryInput = document.getElementById('query');
 queryInput.oninput = doSearch;
 const resultsList = document.getElementById('results');
 
-var docs;
 var index;
+var docs;
 
 const INDEX_AND_DOCS = 'data/index-and-docs.json';
 
@@ -51,48 +51,56 @@ fetch(INDEX_AND_DOCS).then(response => {
 
 // Search for products whenever query input text changes
 queryInput.oninput = doSearch;
+var timeout = null;
+const DEBOUNCE_DELAY = 200;
 
 function doSearch() {
   resultsList.textContent = '';
-  console.clear();
   const query = queryInput.value;
   if (query.length < 2) {
     return;
   }
-
-  console.time('Do search');
-  const matches = index.search(query);
-  // matches is an array of items with refs (IDs) and scores
-  if (matches.length > 0) {
-    displayMatches(matches, query);
-  }
-  console.timeEnd('Do search');
+  clearTimeout(timeout);
+  timeout = setTimeout(function() {
+    console.time(`Do search for ${query}`);
+    const results = index.search(query);
+    if (results.length > 0) {
+      displayMatches(results, query);
+    }
+    console.timeEnd(`Do search for ${query}`);
+  }, DEBOUNCE_DELAY);
 }
 
 function displayMatches(matches, query) {
   let results = [];
-  const re = new RegExp(query, 'i');
+  const exactPhrase = new RegExp(query, 'i');
+  // keep exact matches only
+  // results = results.filter(function(result) {
+  //   return exactPhrase.test(result.doc.t);
+  // });
   for (const match of matches) {
     results.push(docs[match.ref]);
   }
-  results = results.filter(function(result) {
-    return re.test(result.t);
-  });
-  results.sort((x, y) => {
-    return re.test(x.t) ? -1 : re.test(query) ? 1 : 0;
+  // sort alphanumerically by play location
+  results = results.sort((a, b) =>
+    a.l.localeCompare(b.l, {numeric: true}));
+  // prefer exact matches
+  results = results.sort((a, b) => {
+    return exactPhrase.test(a.t) ? -1 : exactPhrase.test(b.t) ? 1 : 0;
   });
   for (const result of results) {
     addResult(result);
   }
 }
 
-function addResult(match) {
+function addResult(result) {
   const resultElement = document.createElement('li');
   resultElement.classList.add('match');
-  resultElement.dataset.location = match.l;
-  resultElement.appendChild(document.createTextNode(match.t));
+  resultElement.dataset.location = result.l;
+  const text = result.s ? result.t : `<em>${result.t}</em>`;
+  resultElement.innerHTML = text;
   resultElement.onclick = function() {
-    console.log(match.id);
+    console.log(result.id);
   };
   resultsList.appendChild(resultElement);
 }

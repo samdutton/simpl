@@ -20,7 +20,7 @@ div#scene-description {
 
 div#scene-description:before {
   color: #c83f3f;
-  content: '☙';
+  content: '\2619'; /*  ☙ */
   font-size: 1.4em;
   margin: 0 0.5em 0 0;
   position: relative;
@@ -141,7 +141,7 @@ section.scene {
 
 section.scene:after {
   color: #c83f3f;
-  content: '❦'; /* ☙ */
+  content: '\2766'; /* ❦ */
   font-size: 30px;
 }
 
