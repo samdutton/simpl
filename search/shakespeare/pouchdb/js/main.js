@@ -96,21 +96,21 @@ function doSearch() {
 }
 
 function find(query) {
- // fyi: can't use indexing with regex selector :/
+  // fyi: can't use indexing with regex selector :/
   db.find({selector: {t: {$regex: new RegExp('.*' + query + '.*', 'i')}}}).
-  then(function(result) {
-    const matches = result.docs;
-    console.log('query', query);
-    if (matches.length === 0) {
-      // display no-matches warning
-      return;
-    } else {
-      displayMatches(matches, query);
-    }
-    console.timeEnd('Do search');
-  }).catch(function(err) {
-    console.log('find error:', err);
-  });
+    then(function(result) {
+      const matches = result.docs;
+      console.log('query', query);
+      if (matches.length === 0) {
+        // display no-matches warning
+        return;
+      } else {
+        displayMatches(matches, query);
+      }
+      console.timeEnd('Do search');
+    }).catch(function(err) {
+      console.log('find error:', err);
+    });
 }
 
 function displayMatches(matches, query) {
