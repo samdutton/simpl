@@ -15,10 +15,10 @@ height: 70px;
 input[type = range] {
 float: left;
 margin: 0 0 20px 0;
-width: calc(100% - 60px);
+width: calc(100% - 65px);
 }
 label {
 float: right;
 text-align: right;
-width: 50px;
+width: 65px;
 }
