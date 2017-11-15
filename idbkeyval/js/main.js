@@ -18,39 +18,85 @@ limitations under the License.
 
 /* global idbKeyval */
 
+const logDiv = document.querySelector('div#log');
+const rangeContainer = document.querySelector('div#rangeContainer');
+const label = document.querySelector('label');
+const range = document.querySelector('input[type=range]');
+range.oninput = displayRangeValue;
+
+const addDocsButton = document.querySelector('button');
+addDocsButton.onclick = addDocs;
+
 const DOCS_FILE = 'data/docs.json';
-const NUM_TO_ADD = 50000;
+const DEFAULT_NUM_TO_ADD = 1000;
+
+var docs;
 
 // Fetch and load docs
-console.log('Fetching docs...');
-console.time('Fetch docs');
+log('Fetching docs...');
+startPerf();
 fetch(DOCS_FILE).then(response => {
   return response.json();
-}).then(docs => {
-  console.timeEnd('Fetch docs');
-  console.log(`Adding ${NUM_TO_ADD} docs of ${docs.length} available...`);
-  docs = docs.slice(0, NUM_TO_ADD);
-  console.time(`Add ${docs.length} docs to database`);
+}).then(json => {
+  docs = json;
+  endPerf(`Fetching ${docs.length} docs`);
+  displayRange(docs.length);
+});
+
+
+function addDocs() {
+  const docsToAdd = docs.slice(0, range.value);
+  log(`<br>\nAdding ${docsToAdd.length} docs to database...`);
+  startPerf();
   idbKeyval.clear();
   let numSet = 0;
-  for (const doc of docs) {
+  for (const doc of docsToAdd) {
     idbKeyval.set(doc._id, doc).then(() => {
       numSet++;
-      if (numSet === docs.length) {
-        console.timeEnd(`Add ${docs.length} docs to database`);
-        console.time('Getting keys...');
-        console.time('Get keys');
+      if (numSet === docsToAdd.length) {
+        endPerf(`Adding ${docsToAdd.length} docs to database`);
+        log('Getting keys...');
+        startPerf();
         idbKeyval.keys().then(keys => {
-          console.timeEnd('Get keys');
-          console.log('keys.length', keys.length, keys);
+          endPerf(`Getting ${keys.length} keys`);
         }).catch(error => console.error('Error getting keys:', error));
-        console.time('Getting values...');
-        console.time('Get values');
+        log('Getting values...');
+        startPerf();
         idbKeyval.values().then(values => {
-          console.timeEnd('Get values');
-          console.log('keys.length', values.length, values);
+          endPerf(`Getting ${values.length} values`);
         }).catch(error => console.error('Error getting values:', error));
       }
     }).catch(error => console.error('Error storing doc:', doc, error));
   }
-});
+}
+
+function displayRangeValue() {
+  label.textContent = range.value;
+}
+
+function displayRange(numDocs) {
+  range.max = numDocs;
+  range.value = DEFAULT_NUM_TO_ADD;
+  label.textContent = range.value;
+  rangeContainer.classList.remove('hidden');
+}
+
+// window.performance utilities
+
+function startPerf() {
+  window.performance.mark('start');
+}
+
+function endPerf(message) {
+  window.performance.mark('end');
+  window.performance.clearMeasures();
+  window.performance.measure('duration', 'start', 'end');
+  const duration =
+    performance.getEntriesByName('duration')[0].duration.toFixed(0);
+  log(`${message} took ${duration} ms`);
+}
+
+function log(message) {
+  console.log(message.replace('<br>', ''));
+  logDiv.innerHTML += `${message}<br>`;
+}

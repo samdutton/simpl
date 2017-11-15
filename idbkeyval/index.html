@@ -7,7 +7,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,50 +17,75 @@ limitations under the License.
 -->
 
 <html lang="en">
-<head>
+  <head>
 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-<meta name="author" content="//samdutton.com">
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-<meta itemprop="image" content="/images/icons/icon192.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta id="theme-color" name="theme-color" content="#fff">
+    <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+    <meta name="author" content="//samdutton.com">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+    <meta itemprop="image" content="/images/icons/icon192.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
 
-<base target="_blank">
+    <base target="_blank">
 
-<title>IDB-Keyval</title>
+    <title>IDB-Keyval</title>
 
-<style>
-img#observed {
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  margin: 120vh 0;
-  padding: 100px 0;
-}
-</style>
+    <style>
+    .hidden {
+      visibility: hidden;
+    }
+    button {
+      display: block;
+      float: right;
+    }
+    div#log {
+      font-family: Roboto Mono, Courier New, monospace;
+      font-size: 13px;
+    }
+    div#rangeContainer {
+      height: 60px;
+    }
+    input[type = range] {
+    float: left;
+    margin: 0 0 20px 0;
+    width: calc(100% - 60px);
+    }
+    label {
+    float: right;
+    text-align: right;
+    width: 50px;
+    }
+    </style>
 
-<link rel="manifest" href="../manifest.json">
-<link rel="stylesheet" href="../css/main.css" />
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="../css/main.css" />
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-<div id="container">
+    <div id="container">
 
-  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> IDB-Keyval</h1>
+      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> IDB-Keyval</h1>
 
-  <p>Open the console to view logging.</p>
+      <p>Select number of docs to add to database</p>
 
-  <script src="js/main.js"></script>
-  <script src="js/lib/idbkeyval-values.js"></script>
+      <div id="rangeContainer"  class="hidden">
+        <input type="range" step="100"><label></label>
+        <button>Add Docs</button>
+      </div>
 
-  <a href="https://github.com/samdutton/simpl/blob/gh-pages/idbkeyval" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+      <div id="log"></div>
 
-</div>
+      <script src="js/main.js"></script>
+      <script src="js/lib/idbkeyval-values.js"></script>
 
-<script src="../js/lib/ga.js"></script>
+      <a href="https://github.com/samdutton/simpl/blob/gh-pages/idbkeyval" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-</body>
+    </div>
+
+    <script src="../js/lib/ga.js"></script>
+
+  </body>
 </html>
