@@ -32,24 +32,7 @@ limitations under the License.
 <title>Datalist</title>
 
 <link rel="stylesheet" href="../css/main.css" />
-
-  <style>
-  div#inputs {
-    background-color: white;
-    padding: 20px;
-  }
-  input {
-    display: block;
-    font-size: 16px;
-    margin: 0 0 2em 0;
-    padding: 5px;
-    width: 100%;
-  }
-  input[type=color] {
-    height: 25px;
-    width: 50px;
-  }
-  </style>
+<link rel="stylesheet" href="css/main.css" />
 
 </head>
 
@@ -75,8 +58,8 @@ limitations under the License.
       <option value="Wombat" />
     </datalist>
 
-    <input type="range" value="50" min="0" max="100" step="25" list="numbers">
-    <output name="range1value" for="range1" >1</output>
+    <input id="range" type="range" value="50" min="0" max="100" step="25" list="numbers">
+    <output for="range"></output>
     <datalist id="numbers">
       <option value="25" label="25" />
       <option value="50" label="50" />
@@ -98,6 +81,7 @@ limitations under the License.
 
 </div>
 
+<script src="js/main.js"></script>
 <script src="../js/lib/ga.js"></script>
 
 </body>
