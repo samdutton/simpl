@@ -40,8 +40,14 @@ limitations under the License.
   }
   input {
     display: block;
+    font-size: 16px;
     margin: 0 0 2em 0;
+    padding: 5px;
     width: 100%;
+  }
+  input[type=color] {
+    height: 25px;
+    width: 50px;
   }
   </style>
 
@@ -57,7 +63,7 @@ limitations under the License.
 
   <div id="inputs">
 
-    <input type="text" list="marsupials" placeholder="Start typing a word like 'Wombat'" />
+    <input type="text" list="marsupials" placeholder="Start typing a word like 'Wombat'">
     <datalist id="marsupials">
       <option value="Bilby" />
       <option value="Koala" />
@@ -69,16 +75,15 @@ limitations under the License.
       <option value="Wombat" />
     </datalist>
 
-    <input type="range" value="0" min="0" max="100" list="numbers" />
+    <input type="range" value="50" min="0" max="100" step="25" list="numbers">
+    <output name="range1value" for="range1" >1</output>
     <datalist id="numbers">
-      <option value="10" />
-      <option value="15" />
-      <option value="30" />
-      <option value="50" />
-      <option value="90" />
+      <option value="25" label="25" />
+      <option value="50" label="50" />
+      <option value="75" label="75" />
     </datalist>
 
-    <input type="color" value="#000000" list="grays" />
+    <input type="color" value="#000000" list="grays">
     <datalist id="grays">
       <option>#eeeeee</option>
       <option>#cccccc</option>
