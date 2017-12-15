@@ -40,13 +40,23 @@ const HTML_DIR = '../html/';
 var timeout = null;
 const DEBOUNCE_DELAY = 300;
 
-// for act numbers in formatLocation()
-
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register('sw.js').catch(function(error) {
 //     console.error('Unable to register service worker.', error);
 //   });
 // }
+
+window.addEventListener('popstate', function(event) {
+  console.log('popstate event', event);
+});
+
+window.addEventListener('hashchange', function(event) {
+  console.log('hashchange event', event);
+});
+
+window.addEventListener('beforeunload', function(event) {
+  console.log('beforeunload event', event);
+});
 
 // Get index data and load index
 console.log('Fetching index...');
