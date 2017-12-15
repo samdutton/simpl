@@ -63,6 +63,7 @@ fetch(INDEX_FILE).then(response => {
   index = elasticlunr.Index.load(json);
   console.timeEnd('Load index');
   queryInput.disabled = false;
+  queryInput.placeholder = 'Enter search text';
   queryInput.focus();
 });
 

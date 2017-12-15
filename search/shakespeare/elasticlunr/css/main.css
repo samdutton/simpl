@@ -10,7 +10,7 @@ body {
   font-family: Palatino, serif;
   height: 100%;
   margin: 0;
-  padding: 2em 0.5em;
+  padding: 30px 20px;
   word-break: break-word;
 }
 
@@ -195,6 +195,7 @@ ol.speech {
 ol#matches {
   max-height: calc(100% - 170px);
   overflow: scroll;
+  padding: 0;
 }
 
 ol#results {
