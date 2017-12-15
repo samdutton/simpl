@@ -1,13 +1,21 @@
+.hidden {
+  height: 0; /* to enable opacity transition: doesn't work if setting display */
+  opacity: 0;
+  overflow: hidden;
+}
+
 body {
   color: #444;
   counter-reset: line-number;
   font-family: Palatino, serif;
+  height: 100%;
   margin: 0;
   padding: 2em 0.5em;
   word-break: break-word;
 }
 
 div#container {
+  height: 100%;
   margin: 0 auto 0 auto;
   max-width: 550px;
 }
@@ -67,6 +75,19 @@ h3 {
   white-space: nowrap;
 }
 
+html {
+    height: 100%;
+}
+
+iframe {
+  border: none;
+  height: calc(100% - 100px);
+  opacity: 1;
+  overflow: scroll;
+  transition: opacity 2.5s;
+  width: 100%;
+}
+
 input#query {
   color: black;
   font-family: Palatino, serif;
@@ -89,7 +110,7 @@ li {
   list-style-type: none;
 }
 
-li.match {
+ol#matches li {
   color:#444;
   cursor: pointer;
   font-size: 15px;
@@ -100,9 +121,9 @@ li.match {
   width: calc(100% - 100px);
 }
 
-li.match::after {
+ol#matches li::after {
   color: #aaa;
-  content: attr(data-location);
+  content: attr(data-citation);
   display: inline-block;
   /* float: right; */
   font-size: 12px;
@@ -129,7 +150,7 @@ li.match::after {
   text-indent: -20px;
 }
 
-.scene li:not(.speaker):not(.stage-direction) {
+.scene li:not(.stage-direction) {
   counter-increment: line-number;
 }
 
@@ -169,6 +190,11 @@ ol.persona-group {
 ol.speech {
   margin: 0 0 5px 0;
   padding: 0;
+}
+
+ol#matches {
+  max-height: calc(100% - 170px);
+  overflow: scroll;
 }
 
 ol#results {

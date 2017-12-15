@@ -1,0 +1,4927 @@
+<!DOCTYPE html>
+
+<!--
+Derived from XML markup by Jon Bosak, 1996–1998.
+https://www.ibiblio.org/xml/examples/shakespeare/
+-->
+
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="author" content="//samdutton.com">
+<meta name="description" content="HTML Shakespeare" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Macbeth</title>
+
+<link rel="stylesheet" href="css/main.css" />
+
+</head>
+
+<body>
+
+<div id="container">
+
+<section id="preamble">
+
+<h1>The Tragedy of Macbeth</h1>
+
+<section id="dramatis-personae"><h2>Dramatis Personae</h2>
+
+<ol class="persona-group">
+  <li>DUNCAN, king of Scotland.</li>
+</ol>
+
+<ol class="persona-group" data-description="his sons.">
+  <li>MALCOLM</li>
+  <li>DONALBAIN</li>
+</ol>
+
+<ol class="persona-group" data-description="generals of the king's army.">
+  <li>MACBETH</li>
+  <li>BANQUO</li>
+</ol>
+
+<ol class="persona-group" data-description="noblemen of Scotland.">
+  <li>MACDUFF</li>
+  <li>LENNOX</li>
+  <li>ROSS</li>
+  <li>MENTEITH</li>
+  <li>ANGUS</li>
+  <li>CAITHNESS</li>
+</ol>
+
+<ol class="persona-group">
+  <li>FLEANCE, son to Banquo.</li>
+  <li>SIWARD, Earl of Northumberland, general of the English forces.</li>
+  <li>YOUNG SIWARD, his son.</li>
+  <li>SEYTON, an officer attending on Macbeth.</li>
+  <li>Boy, son to Macduff. </li>
+  <li>An English Doctor. </li>
+  <li>A Scotch Doctor. </li>
+  <li>A Soldier.</li>
+  <li>A Porter.</li>
+  <li>An Old Man.</li>
+  <li>LADY MACBETH</li>
+  <li>LADY MACDUFF</li>
+  <li>Gentlewoman attending on Lady Macbeth. </li>
+  <li>HECATE</li>
+  <li>Three Witches.</li>
+  <li>Apparitions.</li>
+  <li>Lords, Gentlemen, Officers, Soldiers, Murderers, Attendants, and Messengers. </li>
+</ol>
+
+</section>
+
+<div id="scene-description">SCENE  Scotland: England.</div>
+
+</section>
+
+<section class="act">
+
+<h2>ACT I</h2>
+
+<section class="scene">
+
+<h3>SCENE I.  A desert place.</h3>
+
+<div class="stage-direction">Thunder and lightning. Enter three Witches</div>
+
+<ol data-speaker="First Witch">
+  <li>When shall we three meet again</li>
+  <li>In thunder, lightning, or in rain?</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>When the hurlyburly’s done,</li>
+  <li>When the battle’s lost and won.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li class="number">That will be ere the set of sun.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Where the place?</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Upon the heath.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>There to meet with Macbeth.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>I come, Graymalkin!</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li class="number">Paddock calls.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Anon.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>Fair is foul, and foul is fair:</li>
+  <li>Hover through the fog and filthy air.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE II.  A camp near Forres.</h3>
+
+<div class="stage-direction">Alarum within. Enter DUNCAN, MALCOLM, DONALBAIN,
+LENNOX, with Attendants, meeting a bleeding Sergeant</div>
+
+<ol data-speaker="DUNCAN">
+  <li>What bloody man is that? He can report,</li>
+  <li>As seemeth by his plight, of the revolt</li>
+  <li>The newest state.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>This is the sergeant</li>
+  <li class="number">Who like a good and hardy soldier fought</li>
+  <li>’Gainst my captivity. Hail, brave friend!</li>
+  <li>Say to the king the knowledge of the broil</li>
+  <li>As thou didst leave it.</li>
+</ol>
+
+<ol data-speaker="Sergeant">
+  <li>Doubtful it stood;</li>
+  <li class="number">As two spent swimmers, that do cling together</li>
+  <li>And choke their art. The merciless Macdonwald — </li>
+  <li>Worthy to be a rebel, for to that</li>
+  <li>The multiplying villanies of nature</li>
+  <li>Do swarm upon him — from the western isles</li>
+  <li class="number">Of kerns and gallowglasses is supplied;</li>
+  <li>And fortune, on his damned quarrel smiling,</li>
+  <li>Show’d like a rebel’s whore: but all’s too weak:</li>
+  <li>For brave Macbeth — well he deserves that name — </li>
+  <li>Disdaining fortune, with his brandish’d steel,</li>
+  <li class="number">Which smoked with bloody execution,</li>
+  <li>Like valour’s minion carved out his passage</li>
+  <li>Till he faced the slave;</li>
+  <li>Which ne’er shook hands, nor bade farewell to him,</li>
+  <li>Till he unseam’d him from the nave to the chaps,</li>
+  <li class="number">And fix’d his head upon our battlements.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>O valiant cousin! worthy gentleman!</li>
+</ol>
+
+<ol data-speaker="Sergeant">
+  <li>As whence the sun ’gins his reflection</li>
+  <li>Shipwrecking storms and direful thunders break,</li>
+  <li>So from that spring whence comfort seem’d to come</li>
+  <li class="number">Discomfort swells. Mark, king of Scotland, mark:</li>
+  <li>No sooner justice had with valour arm’d</li>
+  <li>Compell’d these skipping kerns to trust their heels,</li>
+  <li>But the Norweyan lord surveying vantage,</li>
+  <li>With furbish’d arms and new supplies of men</li>
+  <li class="number">Began a fresh assault.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Dismay’d not this</li>
+  <li>Our captains, Macbeth and Banquo?</li>
+</ol>
+
+<ol data-speaker="Sergeant">
+  <li>Yes;</li>
+  <li>As sparrows eagles, or the hare the lion.</li>
+  <li class="number">If I say sooth, I must report they were</li>
+  <li>As cannons overcharged with double cracks, so they</li>
+  <li>Doubly redoubled strokes upon the foe:</li>
+  <li>Except they meant to bathe in reeking wounds,</li>
+  <li>Or memorise another Golgotha,</li>
+  <li class="number">I cannot tell.</li>
+  <li>But I am faint, my gashes cry for help.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>So well thy words become thee as thy wounds;</li>
+  <li>They smack of honour both. Go get him surgeons.</li>
+  <li class="stage-direction">Exit Sergeant, attended</li>
+  <li>Who comes here?</li>
+</ol>
+
+<div class="stage-direction">Enter ROSS</div>
+
+<ol data-speaker="MALCOLM">
+  <li class="number">The worthy thane of Ross.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>What a haste looks through his eyes! So should he look</li>
+  <li>That seems to speak things strange.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>God save the king!</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Whence camest thou, worthy thane?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">From Fife, great king;</li>
+  <li>Where the Norweyan banners flout the sky</li>
+  <li>And fan our people cold. Norway himself,</li>
+  <li>With terrible numbers,</li>
+  <li>Assisted by that most disloyal traitor</li>
+  <li class="number">The thane of Cawdor, began a dismal conflict;</li>
+  <li>Till that Bellona’s bridegroom, lapp’d in proof,</li>
+  <li>Confronted him with self-comparisons,</li>
+  <li>Point against point rebellious, arm ’gainst arm.</li>
+  <li>Curbing his lavish spirit: and, to conclude,</li>
+  <li class="number">The victory fell on us.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Great happiness!</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>That now</li>
+  <li>Sweno, the Norways’ king, craves composition:</li>
+  <li>Nor would we deign him burial of his men</li>
+  <li class="number">Till he disbursed at Saint Colme’s inch</li>
+  <li>Ten thousand dollars to our general use.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>No more that thane of Cawdor shall deceive</li>
+  <li>Our bosom interest: go pronounce his present death,</li>
+  <li>And with his former title greet Macbeth.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">I’ll see it done.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>What he hath lost noble Macbeth hath won.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE III.  A heath near Forres.</h3>
+
+<div class="stage-direction">Thunder. Enter the three Witches</div>
+
+<ol data-speaker="First Witch">
+  <li>Where hast thou been, sister?</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Killing swine.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Sister, where thou?</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>A sailor’s wife had chestnuts in her lap,</li>
+  <li class="number">And munch’d, and munch’d, and munch’d: — </li>
+  <li>’Give me,’ quoth I:</li>
+  <li>’Aroint thee, witch!’ the rump-fed ronyon cries.</li>
+  <li>Her husband’s to Aleppo gone, master o’ the Tiger:</li>
+  <li>But in a sieve I’ll thither sail,</li>
+  <li class="number">And, like a rat without a tail,</li>
+  <li>I’ll do, I’ll do, and I’ll do.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>I’ll give thee a wind.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Thou’rt kind.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>And I another.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li class="number">I myself have all the other,</li>
+  <li>And the very ports they blow,</li>
+  <li>All the quarters that they know</li>
+  <li>I’ the shipman’s card.</li>
+  <li>I will drain him dry as hay:</li>
+  <li class="number">Sleep shall neither night nor day</li>
+  <li>Hang upon his pent-house lid;</li>
+  <li>He shall live a man forbid:</li>
+  <li>Weary se’nnights nine times nine</li>
+  <li>Shall he dwindle, peak and pine:</li>
+  <li class="number">Though his bark cannot be lost,</li>
+  <li>Yet it shall be tempest-tost.</li>
+  <li>Look what I have.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Show me, show me.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Here I have a pilot’s thumb,</li>
+  <li class="number">Wreck’d as homeward he did come.</li>
+</ol>
+
+<div class="stage-direction">Drum within</div>
+
+<ol data-speaker="Third Witch">
+  <li>A drum, a drum!</li>
+  <li>Macbeth doth come.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>The weird sisters, hand in hand,</li>
+  <li>Posters of the sea and land,</li>
+  <li class="number">Thus do go about, about:</li>
+  <li>Thrice to thine and thrice to mine</li>
+  <li>And thrice again, to make up nine.</li>
+  <li>Peace! the charm’s wound up.</li>
+</ol>
+
+<div class="stage-direction">Enter MACBETH and BANQUO</div>
+
+<ol data-speaker="MACBETH">
+  <li>So foul and fair a day I have not seen.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">How far is’t call’d to Forres? What are these</li>
+  <li>So wither’d and so wild in their attire,</li>
+  <li>That look not like the inhabitants o’ the earth,</li>
+  <li>And yet are on’t? Live you? or are you aught</li>
+  <li>That man may question? You seem to understand me,</li>
+  <li class="number">By each at once her chappy finger laying</li>
+  <li>Upon her skinny lips: you should be women,</li>
+  <li>And yet your beards forbid me to interpret</li>
+  <li>That you are so.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Speak, if you can: what are you?</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li class="number">All hail, Macbeth! hail to thee, thane of Glamis!</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>All hail, Macbeth, hail to thee, thane of Cawdor!</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>All hail, Macbeth, thou shalt be king hereafter!</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Good sir, why do you start; and seem to fear</li>
+  <li>Things that do sound so fair? I’ the name of truth,</li>
+  <li class="number">Are ye fantastical, or that indeed</li>
+  <li>Which outwardly ye show? My noble partner</li>
+  <li>You greet with present grace and great prediction</li>
+  <li>Of noble having and of royal hope,</li>
+  <li>That he seems rapt withal: to me you speak not.</li>
+  <li class="number">If you can look into the seeds of time,</li>
+  <li>And say which grain will grow and which will not,</li>
+  <li>Speak then to me, who neither beg nor fear</li>
+  <li>Your favours nor your hate.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Hail!</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li class="number">Hail!</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Hail!</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Lesser than Macbeth, and greater.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Not so happy, yet much happier.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Thou shalt get kings, though thou be none:</li>
+  <li class="number">So all hail, Macbeth and Banquo!</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Banquo and Macbeth, all hail!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Stay, you imperfect speakers, tell me more:</li>
+  <li>By Sinel’s death I know I am thane of Glamis;</li>
+  <li>But how of Cawdor? the thane of Cawdor lives,</li>
+  <li class="number">A prosperous gentleman; and to be king</li>
+  <li>Stands not within the prospect of belief,</li>
+  <li>No more than to be Cawdor. Say from whence</li>
+  <li>You owe this strange intelligence? or why</li>
+  <li>Upon this blasted heath you stop our way</li>
+  <li class="number">With such prophetic greeting? Speak, I charge you.</li>
+</ol>
+
+<div class="stage-direction">Witches vanish</div>
+
+<ol data-speaker="BANQUO">
+  <li>The earth hath bubbles, as the water has,</li>
+  <li>And these are of them. Whither are they vanish’d?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Into the air; and what seem’d corporal melted</li>
+  <li>As breath into the wind. Would they had stay’d!</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">Were such things here as we do speak about?</li>
+  <li>Or have we eaten on the insane root</li>
+  <li>That takes the reason prisoner?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Your children shall be kings.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>You shall be king.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">And thane of Cawdor too: went it not so?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>To the selfsame tune and words. Who’s here?</li>
+</ol>
+
+<div class="stage-direction">Enter ROSS and ANGUS</div>
+
+<ol data-speaker="ROSS">
+  <li>The king hath happily received, Macbeth,</li>
+  <li>The news of thy success; and when he reads</li>
+  <li>Thy personal venture in the rebels’ fight,</li>
+  <li class="number">His wonders and his praises do contend</li>
+  <li>Which should be thine or his: silenced with that,</li>
+  <li>In viewing o’er the rest o’ the selfsame day,</li>
+  <li>He finds thee in the stout Norweyan ranks,</li>
+  <li>Nothing afeard of what thyself didst make,</li>
+  <li class="number">Strange images of death. As thick as hail</li>
+  <li>Came post with post; and every one did bear</li>
+  <li>Thy praises in his kingdom’s great defence,</li>
+  <li>And pour’d them down before him.</li>
+</ol>
+
+<ol data-speaker="ANGUS">
+  <li>We are sent</li>
+  <li class="number">To give thee from our royal master thanks;</li>
+  <li>Only to herald thee into his sight,</li>
+  <li>Not pay thee.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>And, for an earnest of a greater honour,</li>
+  <li>He bade me, from him, call thee thane of Cawdor:</li>
+  <li class="number">In which addition, hail, most worthy thane!</li>
+  <li>For it is thine.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>What, can the devil speak true?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>The thane of Cawdor lives: why do you dress me</li>
+  <li>In borrow’d robes?</li>
+</ol>
+
+<ol data-speaker="ANGUS">
+  <li class="number">Who was the thane lives yet;</li>
+  <li>But under heavy judgment bears that life</li>
+  <li>Which he deserves to lose. Whether he was combined</li>
+  <li>With those of Norway, or did line the rebel</li>
+  <li>With hidden help and vantage, or that with both</li>
+  <li class="number">He labour’d in his country’s wreck, I know not;</li>
+  <li>But treasons capital, confess’d and proved,</li>
+  <li>Have overthrown him.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li><span class="stage-direction">Aside</span>  Glamis, and thane of Cawdor!</li>
+  <li>The greatest is behind.</li>
+  <li class="stage-direction">To ROSS and ANGUS</li>
+  <li class="number">Thanks for your pains.</li>
+  <li class="stage-direction">To BANQUO</li>
+  <li>Do you not hope your children shall be kings,</li>
+  <li>When those that gave the thane of Cawdor to me</li>
+  <li>Promised no less to them?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>That trusted home</li>
+  <li class="number">Might yet enkindle you unto the crown,</li>
+  <li>Besides the thane of Cawdor. But ’tis strange:</li>
+  <li>And oftentimes, to win us to our harm,</li>
+  <li>The instruments of darkness tell us truths,</li>
+  <li>Win us with honest trifles, to betray’s</li>
+  <li class="number">In deepest consequence.</li>
+  <li>Cousins, a word, I pray you.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li><span class="stage-direction">Aside</span> Two truths are told,</li>
+  <li>As happy prologues to the swelling act</li>
+  <li>Of the imperial theme. — I thank you, gentlemen.</li>
+  <li class="number"><span class="stage-direction">Aside</span>  This supernatural soliciting</li>
+  <li>Cannot be ill, cannot be good: if ill,</li>
+  <li>Why hath it given me earnest of success,</li>
+  <li>Commencing in a truth? I am thane of Cawdor:</li>
+  <li>If good, why do I yield to that suggestion</li>
+  <li class="number">Whose horrid image doth unfix my hair</li>
+  <li>And make my seated heart knock at my ribs,</li>
+  <li>Against the use of nature? Present fears</li>
+  <li>Are less than horrible imaginings:</li>
+  <li>My thought, whose murder yet is but fantastical,</li>
+  <li class="number">Shakes so my single state of man that function</li>
+  <li>Is smother’d in surmise, and nothing is</li>
+  <li>But what is not.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Look, how our partner’s rapt.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li><span class="stage-direction">Aside</span>  If chance will have me king, why, chance may crown me,</li>
+  <li class="number">Without my stir.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>New horrors come upon him,</li>
+  <li>Like our strange garments, cleave not to their mould</li>
+  <li>But with the aid of use.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li><span class="stage-direction">Aside</span>                Come what come may,</li>
+  <li class="number">Time and the hour runs through the roughest day.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Worthy Macbeth, we stay upon your leisure.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Give me your favour: my dull brain was wrought</li>
+  <li>With things forgotten. Kind gentlemen, your pains</li>
+  <li>Are register’d where every day I turn</li>
+  <li class="number">The leaf to read them. Let us toward the king.</li>
+  <li>Think upon what hath chanced, and, at more time,</li>
+  <li>The interim having weigh’d it, let us speak</li>
+  <li>Our free hearts each to other.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Very gladly.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Till then, enough. Come, friends.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE IV.  Forres. The palace.</h3>
+
+<div class="stage-direction">Flourish. Enter DUNCAN, MALCOLM, DONALBAIN, LENNOX,
+and Attendants</div>
+
+<ol data-speaker="DUNCAN">
+  <li>Is execution done on Cawdor? Are not</li>
+  <li>Those in commission yet return’d?</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>My liege,</li>
+  <li>They are not yet come back. But I have spoke</li>
+  <li class="number">With one that saw him die: who did report</li>
+  <li>That very frankly he confess’d his treasons,</li>
+  <li>Implored your highness’ pardon and set forth</li>
+  <li>A deep repentance: nothing in his life</li>
+  <li>Became him like the leaving it; he died</li>
+  <li class="number">As one that had been studied in his death</li>
+  <li>To throw away the dearest thing he owed,</li>
+  <li>As ’twere a careless trifle.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>There’s no art</li>
+  <li>To find the mind’s construction in the face:</li>
+  <li class="number">He was a gentleman on whom I built</li>
+  <li>An absolute trust.</li>
+  <li class="stage-direction">Enter MACBETH, BANQUO, ROSS, and ANGUS</li>
+  <li>O worthiest cousin!</li>
+  <li>The sin of my ingratitude even now</li>
+  <li>Was heavy on me: thou art so far before</li>
+  <li class="number">That swiftest wing of recompense is slow</li>
+  <li>To overtake thee. Would thou hadst less deserved,</li>
+  <li>That the proportion both of thanks and payment</li>
+  <li>Might have been mine! only I have left to say,</li>
+  <li>More is thy due than more than all can pay.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">The service and the loyalty I owe,</li>
+  <li>In doing it, pays itself. Your highness’ part</li>
+  <li>Is to receive our duties; and our duties</li>
+  <li>Are to your throne and state children and servants,</li>
+  <li>Which do but what they should, by doing every thing</li>
+  <li class="number">Safe toward your love and honour.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Welcome hither:</li>
+  <li>I have begun to plant thee, and will labour</li>
+  <li>To make thee full of growing. Noble Banquo,</li>
+  <li>That hast no less deserved, nor must be known</li>
+  <li class="number">No less to have done so, let me enfold thee</li>
+  <li>And hold thee to my heart.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>There if I grow,</li>
+  <li>The harvest is your own.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>My plenteous joys,</li>
+  <li class="number">Wanton in fulness, seek to hide themselves</li>
+  <li>In drops of sorrow. Sons, kinsmen, thanes,</li>
+  <li>And you whose places are the nearest, know</li>
+  <li>We will establish our estate upon</li>
+  <li>Our eldest, Malcolm, whom we name hereafter</li>
+  <li class="number">The Prince of Cumberland; which honour must</li>
+  <li>Not unaccompanied invest him only,</li>
+  <li>But signs of nobleness, like stars, shall shine</li>
+  <li>On all deservers. From hence to Inverness,</li>
+  <li>And bind us further to you.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">The rest is labour, which is not used for you:</li>
+  <li>I’ll be myself the harbinger and make joyful</li>
+  <li>The hearing of my wife with your approach;</li>
+  <li>So humbly take my leave.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>My worthy Cawdor!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number"><span class="stage-direction">Aside</span>  The Prince of Cumberland! that is a step</li>
+  <li>On which I must fall down, or else o’erleap,</li>
+  <li>For in my way it lies. Stars, hide your fires;</li>
+  <li>Let not light see my black and deep desires:</li>
+  <li>The eye wink at the hand; yet let that be,</li>
+  <li class="number">Which the eye fears, when it is done, to see.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="DUNCAN">
+  <li>True, worthy Banquo; he is full so valiant,</li>
+  <li>And in his commendations I am fed;</li>
+  <li>It is a banquet to me. Let’s after him,</li>
+  <li>Whose care is gone before to bid us welcome:</li>
+  <li class="number">It is a peerless kinsman.</li>
+</ol>
+
+<div class="stage-direction">Flourish. Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE V.  Inverness. Macbeth’s castle.</h3>
+
+<div class="stage-direction">Enter LADY MACBETH, reading a letter</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>’They met me in the day of success: and I have</li>
+  <li>learned by the perfectest report, they have more in</li>
+  <li>them than mortal knowledge. When I burned in desire</li>
+  <li>to question them further, they made themselves air,</li>
+  <li class="number">into which they vanished. Whiles I stood rapt in</li>
+  <li>the wonder of it, came missives from the king, who</li>
+  <li>all-hailed me ’Thane of Cawdor;’ by which title,</li>
+  <li>before, these weird sisters saluted me, and referred</li>
+  <li>me to the coming on of time, with ’Hail, king that</li>
+  <li class="number">shalt be!’ This have I thought good to deliver</li>
+  <li>thee, my dearest partner of greatness, that thou</li>
+  <li>mightst not lose the dues of rejoicing, by being</li>
+  <li>ignorant of what greatness is promised thee. Lay it</li>
+  <li>to thy heart, and farewell.’</li>
+  <li class="number">Glamis thou art, and Cawdor; and shalt be</li>
+  <li>What thou art promised: yet do I fear thy nature;</li>
+  <li>It is too full o’ the milk of human kindness</li>
+  <li>To catch the nearest way: thou wouldst be great;</li>
+  <li>Art not without ambition, but without</li>
+  <li class="number">The illness should attend it: what thou wouldst highly,</li>
+  <li>That wouldst thou holily; wouldst not play false,</li>
+  <li>And yet wouldst wrongly win: thou’ldst have, great Glamis,</li>
+  <li>That which cries ’Thus thou must do, if thou have it;</li>
+  <li>And that which rather thou dost fear to do</li>
+  <li class="number">Than wishest should be undone.’ Hie thee hither,</li>
+  <li>That I may pour my spirits in thine ear;</li>
+  <li>And chastise with the valour of my tongue</li>
+  <li>All that impedes thee from the golden round,</li>
+  <li>Which fate and metaphysical aid doth seem</li>
+  <li class="number">To have thee crown’d withal.</li>
+  <li class="stage-direction">Enter a Messenger</li>
+  <li>What is your tidings?</li>
+</ol>
+
+<ol data-speaker="Messenger">
+  <li>The king comes here to-night.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Thou’rt mad to say it:</li>
+  <li>Is not thy master with him? who, were’t so,</li>
+  <li class="number">Would have inform’d for preparation.</li>
+</ol>
+
+<ol data-speaker="Messenger">
+  <li>So please you, it is true: our thane is coming:</li>
+  <li>One of my fellows had the speed of him,</li>
+  <li>Who, almost dead for breath, had scarcely more</li>
+  <li>Than would make up his message.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Give him tending;</li>
+  <li>He brings great news.</li>
+  <li class="stage-direction">Exit Messenger</li>
+  <li>The raven himself is hoarse</li>
+  <li>That croaks the fatal entrance of Duncan</li>
+  <li>Under my battlements. Come, you spirits</li>
+  <li class="number">That tend on mortal thoughts, unsex me here,</li>
+  <li>And fill me from the crown to the toe top-full</li>
+  <li>Of direst cruelty! make thick my blood;</li>
+  <li>Stop up the access and passage to remorse,</li>
+  <li>That no compunctious visitings of nature</li>
+  <li class="number">Shake my fell purpose, nor keep peace between</li>
+  <li>The effect and it! Come to my woman’s breasts,</li>
+  <li>And take my milk for gall, you murdering ministers,</li>
+  <li>Wherever in your sightless substances</li>
+  <li>You wait on nature’s mischief! Come, thick night,</li>
+  <li class="number">And pall thee in the dunnest smoke of hell,</li>
+  <li>That my keen knife see not the wound it makes,</li>
+  <li>Nor heaven peep through the blanket of the dark,</li>
+  <li>To cry ’Hold, hold!’</li>
+  <li class="stage-direction">Enter MACBETH</li>
+  <li>Great Glamis! worthy Cawdor!</li>
+  <li class="number">Greater than both, by the all-hail hereafter!</li>
+  <li>Thy letters have transported me beyond</li>
+  <li>This ignorant present, and I feel now</li>
+  <li>The future in the instant.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>My dearest love,</li>
+  <li class="number">Duncan comes here to-night.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>And when goes hence?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>To-morrow, as he purposes.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>O, never</li>
+  <li>Shall sun that morrow see!</li>
+  <li class="number">Your face, my thane, is as a book where men</li>
+  <li>May read strange matters. To beguile the time,</li>
+  <li>Look like the time; bear welcome in your eye,</li>
+  <li>Your hand, your tongue: look like the innocent flower,</li>
+  <li>But be the serpent under’t. He that’s coming</li>
+  <li class="number">Must be provided for: and you shall put</li>
+  <li>This night’s great business into my dispatch;</li>
+  <li>Which shall to all our nights and days to come</li>
+  <li>Give solely sovereign sway and masterdom.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>We will speak further.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Only look up clear;</li>
+  <li>To alter favour ever is to fear:</li>
+  <li>Leave all the rest to me.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VI.  Before Macbeth’s castle.</h3>
+
+<div class="stage-direction">Hautboys and torches. Enter DUNCAN, MALCOLM,
+DONALBAIN, BANQUO, LENNOX, MACDUFF, ROSS, ANGUS,
+and Attendants</div>
+
+<ol data-speaker="DUNCAN">
+  <li>This castle hath a pleasant seat; the air</li>
+  <li>Nimbly and sweetly recommends itself</li>
+  <li>Unto our gentle senses.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>This guest of summer,</li>
+  <li class="number">The temple-haunting martlet, does approve,</li>
+  <li>By his loved mansionry, that the heaven’s breath</li>
+  <li>Smells wooingly here: no jutty, frieze,</li>
+  <li>Buttress, nor coign of vantage, but this bird</li>
+  <li>Hath made his pendent bed and procreant cradle:</li>
+  <li class="number">Where they most breed and haunt, I have observed,</li>
+  <li>The air is delicate.</li>
+</ol>
+
+<div class="stage-direction">Enter LADY MACBETH</div>
+
+<ol data-speaker="DUNCAN">
+  <li>See, see, our honour’d hostess!</li>
+  <li>The love that follows us sometime is our trouble,</li>
+  <li>Which still we thank as love. Herein I teach you</li>
+  <li class="number">How you shall bid God ’ild us for your pains,</li>
+  <li>And thank us for your trouble.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>All our service</li>
+  <li>In every point twice done and then done double</li>
+  <li>Were poor and single business to contend</li>
+  <li class="number">Against those honours deep and broad wherewith</li>
+  <li>Your majesty loads our house: for those of old,</li>
+  <li>And the late dignities heap’d up to them,</li>
+  <li>We rest your hermits.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Where’s the thane of Cawdor?</li>
+  <li class="number">We coursed him at the heels, and had a purpose</li>
+  <li>To be his purveyor: but he rides well;</li>
+  <li>And his great love, sharp as his spur, hath holp him</li>
+  <li>To his home before us. Fair and noble hostess,</li>
+  <li>We are your guest to-night.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Your servants ever</li>
+  <li>Have theirs, themselves and what is theirs, in compt,</li>
+  <li>To make their audit at your highness’ pleasure,</li>
+  <li>Still to return your own.</li>
+</ol>
+
+<ol data-speaker="DUNCAN">
+  <li>Give me your hand;</li>
+  <li class="number">Conduct me to mine host: we love him highly,</li>
+  <li>And shall continue our graces towards him.</li>
+  <li>By your leave, hostess.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VII.  Macbeth’s castle.</h3>
+
+<div class="stage-direction">Hautboys and torches. Enter a Sewer, and divers
+Servants with dishes and service, and pass over the
+stage. Then enter MACBETH</div>
+
+<ol data-speaker="MACBETH">
+  <li>If it were done when ’tis done, then ’twere well</li>
+  <li>It were done quickly: if the assassination</li>
+  <li>Could trammel up the consequence, and catch</li>
+  <li>With his surcease success; that but this blow</li>
+  <li class="number">Might be the be-all and the end-all here,</li>
+  <li>But here, upon this bank and shoal of time,</li>
+  <li>We’ld jump the life to come. But in these cases</li>
+  <li>We still have judgment here; that we but teach</li>
+  <li>Bloody instructions, which, being taught, return</li>
+  <li class="number">To plague the inventor: this even-handed justice</li>
+  <li>Commends the ingredients of our poison’d chalice</li>
+  <li>To our own lips. He’s here in double trust;</li>
+  <li>First, as I am his kinsman and his subject,</li>
+  <li>Strong both against the deed; then, as his host,</li>
+  <li class="number">Who should against his murderer shut the door,</li>
+  <li>Not bear the knife myself. Besides, this Duncan</li>
+  <li>Hath borne his faculties so meek, hath been</li>
+  <li>So clear in his great office, that his virtues</li>
+  <li>Will plead like angels, trumpet-tongued, against</li>
+  <li class="number">The deep damnation of his taking-off;</li>
+  <li>And pity, like a naked new-born babe,</li>
+  <li>Striding the blast, or heaven’s cherubim, horsed</li>
+  <li>Upon the sightless couriers of the air,</li>
+  <li>Shall blow the horrid deed in every eye,</li>
+  <li class="number">That tears shall drown the wind. I have no spur</li>
+  <li>To prick the sides of my intent, but only</li>
+  <li>Vaulting ambition, which o’erleaps itself</li>
+  <li>And falls on the other.</li>
+  <li class="stage-direction">Enter LADY MACBETH</li>
+  <li>How now! what news?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">He has almost supp’d: why have you left the chamber?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Hath he ask’d for me?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Know you not he has?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>We will proceed no further in this business:</li>
+  <li>He hath honour’d me of late; and I have bought</li>
+  <li class="number">Golden opinions from all sorts of people,</li>
+  <li>Which would be worn now in their newest gloss,</li>
+  <li>Not cast aside so soon.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Was the hope drunk</li>
+  <li>Wherein you dress’d yourself? hath it slept since?</li>
+  <li class="number">And wakes it now, to look so green and pale</li>
+  <li>At what it did so freely? From this time</li>
+  <li>Such I account thy love. Art thou afeard</li>
+  <li>To be the same in thine own act and valour</li>
+  <li>As thou art in desire? Wouldst thou have that</li>
+  <li class="number">Which thou esteem’st the ornament of life,</li>
+  <li>And live a coward in thine own esteem,</li>
+  <li>Letting ’I dare not’ wait upon ’I would,’</li>
+  <li>Like the poor cat i’ the adage?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Prithee, peace:</li>
+  <li class="number">I dare do all that may become a man;</li>
+  <li>Who dares do more is none.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>What beast was’t, then,</li>
+  <li>That made you break this enterprise to me?</li>
+  <li>When you durst do it, then you were a man;</li>
+  <li class="number">And, to be more than what you were, you would</li>
+  <li>Be so much more the man. Nor time nor place</li>
+  <li>Did then adhere, and yet you would make both:</li>
+  <li>They have made themselves, and that their fitness now</li>
+  <li>Does unmake you. I have given suck, and know</li>
+  <li class="number">How tender ’tis to love the babe that milks me:</li>
+  <li>I would, while it was smiling in my face,</li>
+  <li>Have pluck’d my nipple from his boneless gums,</li>
+  <li>And dash’d the brains out, had I so sworn as you</li>
+  <li>Have done to this.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">If we should fail?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>We fail!</li>
+  <li>But screw your courage to the sticking-place,</li>
+  <li>And we’ll not fail. When Duncan is asleep — </li>
+  <li>Whereto the rather shall his day’s hard journey</li>
+  <li class="number">Soundly invite him — his two chamberlains</li>
+  <li>Will I with wine and wassail so convince</li>
+  <li>That memory, the warder of the brain,</li>
+  <li>Shall be a fume, and the receipt of reason</li>
+  <li>A limbeck only: when in swinish sleep</li>
+  <li class="number">Their drenched natures lie as in a death,</li>
+  <li>What cannot you and I perform upon</li>
+  <li>The unguarded Duncan? what not put upon</li>
+  <li>His spongy officers, who shall bear the guilt</li>
+  <li>Of our great quell?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Bring forth men-children only;</li>
+  <li>For thy undaunted mettle should compose</li>
+  <li>Nothing but males. Will it not be received,</li>
+  <li>When we have mark’d with blood those sleepy two</li>
+  <li>Of his own chamber and used their very daggers,</li>
+  <li class="number">That they have done’t?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Who dares receive it other,</li>
+  <li>As we shall make our griefs and clamour roar</li>
+  <li>Upon his death?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I am settled, and bend up</li>
+  <li class="number">Each corporal agent to this terrible feat.</li>
+  <li>Away, and mock the time with fairest show:</li>
+  <li>False face must hide what the false heart doth know.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+</section>
+
+<section class="act">
+
+<h2>ACT II</h2>
+
+<section class="scene">
+
+<h3>SCENE I.  Court of Macbeth’s castle.</h3>
+
+<div class="stage-direction">Enter BANQUO, and FLEANCE bearing a torch before him</div>
+
+<ol data-speaker="BANQUO">
+  <li>How goes the night, boy?</li>
+</ol>
+
+<ol data-speaker="FLEANCE">
+  <li>The moon is down; I have not heard the clock.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>And she goes down at twelve.</li>
+</ol>
+
+<ol data-speaker="FLEANCE">
+  <li>I take’t, ’tis later, sir.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">Hold, take my sword. There’s husbandry in heaven;</li>
+  <li>Their candles are all out. Take thee that too.</li>
+  <li>A heavy summons lies like lead upon me,</li>
+  <li>And yet I would not sleep: merciful powers,</li>
+  <li>Restrain in me the cursed thoughts that nature</li>
+  <li class="number">Gives way to in repose!</li>
+  <li class="stage-direction">Enter MACBETH, and a Servant with a torch</li>
+  <li>Give me my sword.</li>
+  <li>Who’s there?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>A friend.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>What, sir, not yet at rest? The king’s a-bed:</li>
+  <li class="number">He hath been in unusual pleasure, and</li>
+  <li>Sent forth great largess to your offices.</li>
+  <li>This diamond he greets your wife withal,</li>
+  <li>By the name of most kind hostess; and shut up</li>
+  <li>In measureless content.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Being unprepared,</li>
+  <li>Our will became the servant to defect;</li>
+  <li>Which else should free have wrought.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>All’s well.</li>
+  <li>I dreamt last night of the three weird sisters:</li>
+  <li class="number">To you they have show’d some truth.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I think not of them:</li>
+  <li>Yet, when we can entreat an hour to serve,</li>
+  <li>We would spend it in some words upon that business,</li>
+  <li>If you would grant the time.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">At your kind’st leisure.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>If you shall cleave to my consent, when ’tis,</li>
+  <li>It shall make honour for you.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>So I lose none</li>
+  <li>In seeking to augment it, but still keep</li>
+  <li class="number">My bosom franchised and allegiance clear,</li>
+  <li>I shall be counsell’d.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Good repose the while!</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Thanks, sir: the like to you!</li>
+</ol>
+
+<div class="stage-direction">Exeunt BANQUO and FLEANCE</div>
+
+<ol data-speaker="MACBETH">
+  <li>Go bid thy mistress, when my drink is ready,</li>
+  <li class="number">She strike upon the bell. Get thee to bed.</li>
+  <li class="stage-direction">Exit Servant</li>
+  <li>Is this a dagger which I see before me,</li>
+  <li>The handle toward my hand? Come, let me clutch thee.</li>
+  <li>I have thee not, and yet I see thee still.</li>
+  <li>Art thou not, fatal vision, sensible</li>
+  <li class="number">To feeling as to sight? or art thou but</li>
+  <li>A dagger of the mind, a false creation,</li>
+  <li>Proceeding from the heat-oppressed brain?</li>
+  <li>I see thee yet, in form as palpable</li>
+  <li>As this which now I draw.</li>
+  <li class="number">Thou marshall’st me the way that I was going;</li>
+  <li>And such an instrument I was to use.</li>
+  <li>Mine eyes are made the fools o’ the other senses,</li>
+  <li>Or else worth all the rest; I see thee still,</li>
+  <li>And on thy blade and dudgeon gouts of blood,</li>
+  <li class="number">Which was not so before. There’s no such thing:</li>
+  <li>It is the bloody business which informs</li>
+  <li>Thus to mine eyes. Now o’er the one halfworld</li>
+  <li>Nature seems dead, and wicked dreams abuse</li>
+  <li>The curtain’d sleep; witchcraft celebrates</li>
+  <li class="number">Pale Hecate’s offerings, and wither’d murder,</li>
+  <li>Alarum’d by his sentinel, the wolf,</li>
+  <li>Whose howl’s his watch, thus with his stealthy pace.</li>
+  <li>With Tarquin’s ravishing strides, towards his design</li>
+  <li>Moves like a ghost. Thou sure and firm-set earth,</li>
+  <li class="number">Hear not my steps, which way they walk, for fear</li>
+  <li>Thy very stones prate of my whereabout,</li>
+  <li>And take the present horror from the time,</li>
+  <li>Which now suits with it. Whiles I threat, he lives:</li>
+  <li>Words to the heat of deeds too cold breath gives.</li>
+  <li class="stage-direction">A bell rings</li>
+  <li class="number">I go, and it is done; the bell invites me.</li>
+  <li>Hear it not, Duncan; for it is a knell</li>
+  <li>That summons thee to heaven or to hell.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE II.  The same.</h3>
+
+<div class="stage-direction">Enter LADY MACBETH</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>That which hath made them drunk hath made me bold;</li>
+  <li>What hath quench’d them hath given me fire.</li>
+  <li>Hark! Peace!</li>
+  <li>It was the owl that shriek’d, the fatal bellman,</li>
+  <li class="number">Which gives the stern’st good-night. He is about it:</li>
+  <li>The doors are open; and the surfeited grooms</li>
+  <li>Do mock their charge with snores: I have drugg’d</li>
+  <li>their possets,</li>
+  <li>That death and nature do contend about them,</li>
+  <li class="number">Whether they live or die.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li><span class="stage-direction">Within</span>  Who’s there? what, ho!</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Alack, I am afraid they have awaked,</li>
+  <li>And ’tis not done. The attempt and not the deed</li>
+  <li>Confounds us. Hark! I laid their daggers ready;</li>
+  <li class="number">He could not miss ’em. Had he not resembled</li>
+  <li>My father as he slept, I had done’t.</li>
+  <li class="stage-direction">Enter MACBETH</li>
+  <li>My husband!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I have done the deed. Didst thou not hear a noise?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>I heard the owl scream and the crickets cry.</li>
+  <li class="number">Did not you speak?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>When?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Now.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>As I descended?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Ay.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Hark!</li>
+  <li>Who lies i’ the second chamber?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Donalbain.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>This is a sorry sight.</li>
+</ol>
+
+<div class="stage-direction">Looking on his hands</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>A foolish thought, to say a sorry sight.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">There’s one did laugh in’s sleep, and one cried</li>
+  <li>’Murder!’</li>
+  <li>That they did wake each other: I stood and heard them:</li>
+  <li>But they did say their prayers, and address’d them</li>
+  <li>Again to sleep.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">There are two lodged together.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>One cried ’God bless us!’ and ’Amen’ the other;</li>
+  <li>As they had seen me with these hangman’s hands.</li>
+  <li>Listening their fear, I could not say ’Amen,’</li>
+  <li>When they did say ’God bless us!’</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Consider it not so deeply.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>But wherefore could not I pronounce ’Amen’?</li>
+  <li>I had most need of blessing, and ’Amen’</li>
+  <li>Stuck in my throat.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>These deeds must not be thought</li>
+  <li class="number">After these ways; so, it will make us mad.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Methought I heard a voice cry ’Sleep no more!</li>
+  <li>Macbeth does murder sleep’, the innocent sleep,</li>
+  <li>Sleep that knits up the ravell’d sleeve of care,</li>
+  <li>The death of each day’s life, sore labour’s bath,</li>
+  <li class="number">Balm of hurt minds, great nature’s second course,</li>
+  <li>Chief nourisher in life’s feast — </li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>What do you mean?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Still it cried ’Sleep no more!’ to all the house:</li>
+  <li>’Glamis hath murder’d sleep, and therefore Cawdor</li>
+  <li class="number">Shall sleep no more; Macbeth shall sleep no more.’</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Who was it that thus cried? Why, worthy thane,</li>
+  <li>You do unbend your noble strength, to think</li>
+  <li>So brainsickly of things. Go get some water,</li>
+  <li>And wash this filthy witness from your hand.</li>
+  <li class="number">Why did you bring these daggers from the place?</li>
+  <li>They must lie there: go carry them; and smear</li>
+  <li>The sleepy grooms with blood.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I’ll go no more:</li>
+  <li>I am afraid to think what I have done;</li>
+  <li class="number">Look on’t again I dare not.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Infirm of purpose!</li>
+  <li>Give me the daggers: the sleeping and the dead</li>
+  <li>Are but as pictures: ’tis the eye of childhood</li>
+  <li>That fears a painted devil. If he do bleed,</li>
+  <li class="number">I’ll gild the faces of the grooms withal;</li>
+  <li>For it must seem their guilt.</li>
+</ol>
+
+<div class="stage-direction">Exit. Knocking within</div>
+
+<ol data-speaker="MACBETH">
+  <li>Whence is that knocking?</li>
+  <li>How is’t with me, when every noise appals me?</li>
+  <li>What hands are here? ha! they pluck out mine eyes.</li>
+  <li class="number">Will all great Neptune’s ocean wash this blood</li>
+  <li>Clean from my hand? No, this my hand will rather</li>
+  <li>The multitudinous seas in incarnadine,</li>
+  <li>Making the green one red.</li>
+</ol>
+
+<div class="stage-direction">Re-enter LADY MACBETH</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>My hands are of your colour; but I shame</li>
+  <li class="number">To wear a heart so white.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>I hear a knocking</li>
+  <li>At the south entry: retire we to our chamber;</li>
+  <li>A little water clears us of this deed:</li>
+  <li>How easy is it, then! Your constancy</li>
+  <li class="number">Hath left you unattended.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Hark! more knocking.</li>
+  <li>Get on your nightgown, lest occasion call us,</li>
+  <li>And show us to be watchers. Be not lost</li>
+  <li>So poorly in your thoughts.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">To know my deed, ’twere best not know myself.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Wake Duncan with thy knocking! I would thou couldst!</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE III.  The same.</h3>
+
+<div class="stage-direction">Knocking within. Enter a Porter</div>
+
+<ol data-speaker="Porter">
+  <li>Here’s a knocking indeed! If a</li>
+  <li>man were porter of hell-gate, he should have</li>
+  <li>old turning the key.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Knock,</li>
+  <li class="number">knock, knock! Who’s there, i’ the name of</li>
+  <li>Beelzebub? Here’s a farmer, that hanged</li>
+  <li>himself on the expectation of plenty: come in</li>
+  <li>time; have napkins enow about you; here</li>
+  <li>you’ll sweat for’t.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li class="number">Knock,</li>
+  <li>knock! Who’s there, in the other devil’s</li>
+  <li>name? Faith, here’s an equivocator, that could</li>
+  <li>swear in both the scales against either scale;</li>
+  <li>who committed treason enough for God’s sake,</li>
+  <li class="number">yet could not equivocate to heaven: O, come</li>
+  <li>in, equivocator.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Knock,</li>
+  <li>knock, knock! Who’s there? Faith, here’s an</li>
+  <li>English tailor come hither, for stealing out of</li>
+  <li class="number">a French hose: come in, tailor; here you may</li>
+  <li>roast your goose.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Knock,</li>
+  <li>knock; never at quiet! What are you? But</li>
+  <li>this place is too cold for hell. I’ll devil-porter</li>
+  <li class="number">it no further: I had thought to have let in</li>
+  <li>some of all professions that go the primrose</li>
+  <li>way to the everlasting bonfire.</li>
+  <li class="stage-direction">Knocking within</li>
+  <li>Anon, anon! I pray you, remember the porter.</li>
+</ol>
+
+<div class="stage-direction">Opens the gate</div>
+
+<div class="stage-direction">Enter MACDUFF and LENNOX</div>
+
+<ol data-speaker="MACDUFF">
+  <li>Was it so late, friend, ere you went to bed,</li>
+  <li class="number">That you do lie so late?</li>
+</ol>
+
+<ol data-speaker="Porter">
+  <li>’Faith sir, we were carousing till the</li>
+  <li>second cock: and drink, sir, is a great</li>
+  <li>provoker of three things.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>What three things does drink especially provoke?</li>
+</ol>
+
+<ol data-speaker="Porter">
+  <li class="number">Marry, sir, nose-painting, sleep, and</li>
+  <li>urine. Lechery, sir, it provokes, and unprovokes;</li>
+  <li>it provokes the desire, but it takes</li>
+  <li>away the performance: therefore, much drink</li>
+  <li>may be said to be an equivocator with lechery:</li>
+  <li class="number">it makes him, and it mars him; it sets</li>
+  <li>him on, and it takes him off; it persuades him,</li>
+  <li>and disheartens him; makes him stand to, and</li>
+  <li>not stand to; in conclusion, equivocates him</li>
+  <li>in a sleep, and, giving him the lie, leaves him.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">I believe drink gave thee the lie last night.</li>
+</ol>
+
+<ol data-speaker="Porter">
+  <li>That it did, sir, i’ the very throat on</li>
+  <li>me: but I requited him for his lie; and, I</li>
+  <li>think, being too strong for him, though he took</li>
+  <li>up my legs sometime, yet I made a shift to cast</li>
+  <li class="number">him.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Is thy master stirring?</li>
+  <li class="stage-direction">Enter MACBETH</li>
+  <li>Our knocking has awaked him; here he comes.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>Good morrow, noble sir.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Good morrow, both.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">Is the king stirring, worthy thane?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Not yet.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>He did command me to call timely on him:</li>
+  <li>I have almost slipp’d the hour.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I’ll bring you to him.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">I know this is a joyful trouble to you;</li>
+  <li>But yet ’tis one.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>The labour we delight in physics pain.</li>
+  <li>This is the door.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>I’ll make so bold to call,</li>
+  <li class="number">For ’tis my limited service.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="LENNOX">
+  <li>Goes the king hence to-day?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>He does: he did appoint so.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>The night has been unruly: where we lay,</li>
+  <li>Our chimneys were blown down; and, as they say,</li>
+  <li class="number">Lamentings heard i’ the air; strange screams of death,</li>
+  <li>And prophesying with accents terrible</li>
+  <li>Of dire combustion and confused events</li>
+  <li>New hatch’d to the woeful time: the obscure bird</li>
+  <li>Clamour’d the livelong night: some say, the earth</li>
+  <li class="number">Was feverous and did shake.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>’Twas a rough night.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>My young remembrance cannot parallel</li>
+  <li>A fellow to it.</li>
+</ol>
+
+<div class="stage-direction">Re-enter MACDUFF</div>
+
+<ol data-speaker="MACDUFF">
+  <li>O horror, horror, horror! Tongue nor heart</li>
+  <li class="number">Cannot conceive nor name thee!</li>
+</ol>
+
+<ol data-speaker="MACBETH, LENNOX">
+  <li>What’s the matter.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Confusion now hath made his masterpiece!</li>
+  <li>Most sacrilegious murder hath broke ope</li>
+  <li>The Lord’s anointed temple, and stole thence</li>
+  <li class="number">The life o’ the building!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>What is ’t you say? the life?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>Mean you his majesty?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Approach the chamber, and destroy your sight</li>
+  <li>With a new Gorgon: do not bid me speak;</li>
+  <li class="number">See, and then speak yourselves.</li>
+  <li class="stage-direction">Exeunt MACBETH and LENNOX</li>
+  <li>Awake, awake!</li>
+  <li>Ring the alarum-bell. Murder and treason!</li>
+  <li>Banquo and Donalbain! Malcolm! awake!</li>
+  <li>Shake off this downy sleep, death’s counterfeit,</li>
+  <li class="number">And look on death itself! up, up, and see</li>
+  <li>The great doom’s image! Malcolm! Banquo!</li>
+  <li>As from your graves rise up, and walk like sprites,</li>
+  <li>To countenance this horror! Ring the bell.</li>
+</ol>
+
+<div class="stage-direction">Bell rings</div>
+
+<div class="stage-direction">Enter LADY MACBETH</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>What’s the business,</li>
+  <li class="number">That such a hideous trumpet calls to parley</li>
+  <li>The sleepers of the house? speak, speak!</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>O gentle lady,</li>
+  <li>’Tis not for you to hear what I can speak:</li>
+  <li>The repetition, in a woman’s ear,</li>
+  <li class="number">Would murder as it fell.</li>
+  <li class="stage-direction">Enter BANQUO</li>
+  <li>O Banquo, Banquo,</li>
+  <li>Our royal master ’s murder’d!</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Woe, alas!</li>
+  <li>What, in our house?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">Too cruel any where.</li>
+  <li>Dear Duff, I prithee, contradict thyself,</li>
+  <li>And say it is not so.</li>
+</ol>
+
+<div class="stage-direction">Re-enter MACBETH and LENNOX, with ROSS</div>
+
+<ol data-speaker="MACBETH">
+  <li>Had I but died an hour before this chance,</li>
+  <li>I had lived a blessed time; for, from this instant,</li>
+  <li class="number">There ’s nothing serious in mortality:</li>
+  <li>All is but toys: renown and grace is dead;</li>
+  <li>The wine of life is drawn, and the mere lees</li>
+  <li>Is left this vault to brag of.</li>
+</ol>
+
+<div class="stage-direction">Enter MALCOLM and DONALBAIN</div>
+
+<ol data-speaker="DONALBAIN">
+  <li>What is amiss?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">You are, and do not know’t:</li>
+  <li>The spring, the head, the fountain of your blood</li>
+  <li>Is stopp’d; the very source of it is stopp’d.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Your royal father ’s murder’d.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>O, by whom?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li class="number">Those of his chamber, as it seem’d, had done ’t:</li>
+  <li>Their hands and faces were an badged with blood;</li>
+  <li>So were their daggers, which unwiped we found</li>
+  <li>Upon their pillows:</li>
+  <li>They stared, and were distracted; no man’s life</li>
+  <li class="number">Was to be trusted with them.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>O, yet I do repent me of my fury,</li>
+  <li>That I did kill them.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Wherefore did you so?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Who can be wise, amazed, temperate and furious,</li>
+  <li class="number">Loyal and neutral, in a moment? No man:</li>
+  <li>The expedition my violent love</li>
+  <li>Outrun the pauser, reason. Here lay Duncan,</li>
+  <li>His silver skin laced with his golden blood;</li>
+  <li>And his gash’d stabs look’d like a breach in nature</li>
+  <li class="number">For ruin’s wasteful entrance: there, the murderers,</li>
+  <li>Steep’d in the colours of their trade, their daggers</li>
+  <li>Unmannerly breech’d with gore: who could refrain,</li>
+  <li>That had a heart to love, and in that heart</li>
+  <li>Courage to make ’s love known?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Help me hence, ho!</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Look to the lady.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li><stagedir>Aside to DONALBAIN</stagedir>  Why do we hold our tongues,</li>
+  <li>That most may claim this argument for ours?</li>
+</ol>
+
+<ol data-speaker="DONALBAIN">
+  <li><stagedir>Aside to MALCOLM</stagedir>  What should be spoken here,</li>
+  <li class="number">where our fate,</li>
+  <li>Hid in an auger-hole, may rush, and seize us?</li>
+  <li>Let ’s away;</li>
+  <li>Our tears are not yet brew’d.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li><stagedir>Aside to DONALBAIN</stagedir>        Nor our strong sorrow</li>
+  <li class="number">Upon the foot of motion.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Look to the lady:</li>
+  <li class="stage-direction">LADY MACBETH is carried out</li>
+  <li>And when we have our naked frailties hid,</li>
+  <li>That suffer in exposure, let us meet,</li>
+  <li>And question this most bloody piece of work,</li>
+  <li class="number">To know it further. Fears and scruples shake us:</li>
+  <li>In the great hand of God I stand; and thence</li>
+  <li>Against the undivulged pretence I fight</li>
+  <li>Of treasonous malice.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>And so do I.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">So all.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Let’s briefly put on manly readiness,</li>
+  <li>And meet i’ the hall together.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>Well contented.</li>
+</ol>
+
+<div class="stage-direction">Exeunt all but Malcolm and Donalbain</div>
+
+<ol data-speaker="MALCOLM">
+  <li>What will you do? Let’s not consort with them:</li>
+  <li class="number">To show an unfelt sorrow is an office</li>
+  <li>Which the false man does easy. I’ll to England.</li>
+</ol>
+
+<ol data-speaker="DONALBAIN">
+  <li>To Ireland, I; our separated fortune</li>
+  <li>Shall keep us both the safer: where we are,</li>
+  <li>There’s daggers in men’s smiles: the near in blood,</li>
+  <li class="number">The nearer bloody.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>This murderous shaft that’s shot</li>
+  <li>Hath not yet lighted, and our safest way</li>
+  <li>Is to avoid the aim. Therefore, to horse;</li>
+  <li>And let us not be dainty of leave-taking,</li>
+  <li class="number">But shift away: there’s warrant in that theft</li>
+  <li>Which steals itself, when there’s no mercy left.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE IV.  Outside Macbeth’s castle.</h3>
+
+<div class="stage-direction">Enter ROSS and an old Man</div>
+
+<ol data-speaker="Old Man">
+  <li>Threescore and ten I can remember well:</li>
+  <li>Within the volume of which time I have seen</li>
+  <li>Hours dreadful and things strange; but this sore night</li>
+  <li>Hath trifled former knowings.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">Ah, good father,</li>
+  <li>Thou seest, the heavens, as troubled with man’s act,</li>
+  <li>Threaten his bloody stage: by the clock, ’tis day,</li>
+  <li>And yet dark night strangles the travelling lamp:</li>
+  <li>Is’t night’s predominance, or the day’s shame,</li>
+  <li class="number">That darkness does the face of earth entomb,</li>
+  <li>When living light should kiss it?</li>
+</ol>
+
+<ol data-speaker="Old Man">
+  <li>’Tis unnatural,</li>
+  <li>Even like the deed that’s done. On Tuesday last,</li>
+  <li>A falcon, towering in her pride of place,</li>
+  <li class="number">Was by a mousing owl hawk’d at and kill’d.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>And Duncan’s horses — a thing most strange and certain — </li>
+  <li>Beauteous and swift, the minions of their race,</li>
+  <li>Turn’d wild in nature, broke their stalls, flung out,</li>
+  <li>Contending ’gainst obedience, as they would make</li>
+  <li class="number">War with mankind.</li>
+</ol>
+
+<ol data-speaker="Old Man">
+  <li>’Tis said they eat each other.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>They did so, to the amazement of mine eyes</li>
+  <li>That look’d upon’t. Here comes the good Macduff.</li>
+  <li class="stage-direction">Enter MACDUFF</li>
+  <li>How goes the world, sir, now?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">Why, see you not?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Is’t known who did this more than bloody deed?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Those that Macbeth hath slain.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Alas, the day!</li>
+  <li>What good could they pretend?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">They were suborn’d:</li>
+  <li>Malcolm and Donalbain, the king’s two sons,</li>
+  <li>Are stol’n away and fled; which puts upon them</li>
+  <li>Suspicion of the deed.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>’Gainst nature still!</li>
+  <li class="number">Thriftless ambition, that wilt ravin up</li>
+  <li>Thine own life’s means! Then ’tis most like</li>
+  <li>The sovereignty will fall upon Macbeth.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>He is already named, and gone to Scone</li>
+  <li>To be invested.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">Where is Duncan’s body?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Carried to Colmekill,</li>
+  <li>The sacred storehouse of his predecessors,</li>
+  <li>And guardian of their bones.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Will you to Scone?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">No, cousin, I’ll to Fife.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Well, I will thither.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Well, may you see things well done there: adieu!</li>
+  <li>Lest our old robes sit easier than our new!</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Farewell, father.</li>
+</ol>
+
+<ol data-speaker="Old Man">
+  <li class="number">God’s benison go with you; and with those</li>
+  <li>That would make good of bad, and friends of foes!</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+</section>
+
+<section class="act">
+
+<h2>ACT III</h2>
+
+<section class="scene">
+
+<h3>SCENE I.  Forres. The palace.</h3>
+
+<div class="stage-direction">Enter BANQUO</div>
+
+<ol data-speaker="BANQUO">
+  <li>Thou hast it now: king, Cawdor, Glamis, all,</li>
+  <li>As the weird women promised, and, I fear,</li>
+  <li>Thou play’dst most foully for’t: yet it was said</li>
+  <li>It should not stand in thy posterity,</li>
+  <li class="number">But that myself should be the root and father</li>
+  <li>Of many kings. If there come truth from them — </li>
+  <li>As upon thee, Macbeth, their speeches shine — </li>
+  <li>Why, by the verities on thee made good,</li>
+  <li>May they not be my oracles as well,</li>
+  <li class="number">And set me up in hope? But hush! no more.</li>
+</ol>
+
+<div class="stage-direction">Sennet sounded. Enter MACBETH, as king, LADY
+MACBETH, as queen, LENNOX, ROSS, Lords, Ladies, and
+Attendants</div>
+
+<ol data-speaker="MACBETH">
+  <li>Here’s our chief guest.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>If he had been forgotten,</li>
+  <li>It had been as a gap in our great feast,</li>
+  <li>And all-thing unbecoming.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">To-night we hold a solemn supper sir,</li>
+  <li>And I’ll request your presence.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Let your highness</li>
+  <li>Command upon me; to the which my duties</li>
+  <li>Are with a most indissoluble tie</li>
+  <li class="number">For ever knit.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Ride you this afternoon?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>Ay, my good lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>We should have else desired your good advice,</li>
+  <li>Which still hath been both grave and prosperous,</li>
+  <li class="number">In this day’s council; but we’ll take to-morrow.</li>
+  <li>Is’t far you ride?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>As far, my lord, as will fill up the time</li>
+  <li>’Twixt this and supper: go not my horse the better,</li>
+  <li>I must become a borrower of the night</li>
+  <li class="number">For a dark hour or twain.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Fail not our feast.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>My lord, I will not.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>We hear, our bloody cousins are bestow’d</li>
+  <li>In England and in Ireland, not confessing</li>
+  <li class="number">Their cruel parricide, filling their hearers</li>
+  <li>With strange invention: but of that to-morrow,</li>
+  <li>When therewithal we shall have cause of state</li>
+  <li>Craving us jointly. Hie you to horse: adieu,</li>
+  <li>Till you return at night. Goes Fleance with you?</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li class="number">Ay, my good lord: our time does call upon ’s.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I wish your horses swift and sure of foot;</li>
+  <li>And so I do commend you to their backs. Farewell.</li>
+  <li class="stage-direction">Exit BANQUO</li>
+  <li>Let every man be master of his time</li>
+  <li>Till seven at night: to make society</li>
+  <li class="number">The sweeter welcome, we will keep ourself</li>
+  <li>Till supper-time alone: while then, God be with you!</li>
+  <li class="stage-direction">Exeunt all but MACBETH, and an attendant</li>
+  <li>Sirrah, a word with you: attend those men</li>
+  <li>Our pleasure?</li>
+</ol>
+
+<ol data-speaker="ATTENDANT">
+  <li>They are, my lord, without the palace gate.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Bring them before us.</li>
+  <li class="stage-direction">Exit Attendant</li>
+  <li>To be thus is nothing;</li>
+  <li>But to be safely thus. — Our fears in Banquo</li>
+  <li>Stick deep; and in his royalty of nature</li>
+  <li>Reigns that which would be fear’d: ’tis much he dares;</li>
+  <li class="number">And, to that dauntless temper of his mind,</li>
+  <li>He hath a wisdom that doth guide his valour</li>
+  <li>To act in safety. There is none but he</li>
+  <li>Whose being I do fear: and, under him,</li>
+  <li>My Genius is rebuked; as, it is said,</li>
+  <li class="number">Mark Antony’s was by Caesar. He chid the sisters</li>
+  <li>When first they put the name of king upon me,</li>
+  <li>And bade them speak to him: then prophet-like</li>
+  <li>They hail’d him father to a line of kings:</li>
+  <li>Upon my head they placed a fruitless crown,</li>
+  <li class="number">And put a barren sceptre in my gripe,</li>
+  <li>Thence to be wrench’d with an unlineal hand,</li>
+  <li>No son of mine succeeding. If ’t be so,</li>
+  <li>For Banquo’s issue have I filed my mind;</li>
+  <li>For them the gracious Duncan have I murder’d;</li>
+  <li class="number">Put rancours in the vessel of my peace</li>
+  <li>Only for them; and mine eternal jewel</li>
+  <li>Given to the common enemy of man,</li>
+  <li>To make them kings, the seed of Banquo kings!</li>
+  <li>Rather than so, come fate into the list.</li>
+  <li class="number">And champion me to the utterance! Who’s there!</li>
+  <li class="stage-direction">Re-enter Attendant, with two Murderers</li>
+  <li>Now go to the door, and stay there till we call.</li>
+  <li class="stage-direction">Exit Attendant</li>
+  <li>Was it not yesterday we spoke together?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>It was, so please your highness.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Well then, now</li>
+  <li class="number">Have you consider’d of my speeches? Know</li>
+  <li>That it was he in the times past which held you</li>
+  <li>So under fortune, which you thought had been</li>
+  <li>Our innocent self: this I made good to you</li>
+  <li>In our last conference, pass’d in probation with you,</li>
+  <li class="number">How you were borne in hand, how cross’d,</li>
+  <li>the instruments,</li>
+  <li>Who wrought with them, and all things else that might</li>
+  <li>To half a soul and to a notion crazed</li>
+  <li>Say ’Thus did Banquo.’</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li class="number">You made it known to us.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I did so, and went further, which is now</li>
+  <li>Our point of second meeting. Do you find</li>
+  <li>Your patience so predominant in your nature</li>
+  <li>That you can let this go? Are you so gospell’d</li>
+  <li class="number">To pray for this good man and for his issue,</li>
+  <li>Whose heavy hand hath bow’d you to the grave</li>
+  <li>And beggar’d yours for ever?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>We are men, my liege.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Ay, in the catalogue ye go for men;</li>
+  <li class="number">As hounds and greyhounds, mongrels, spaniels, curs,</li>
+  <li>Shoughs, water-rugs and demi-wolves, are clept</li>
+  <li>All by the name of dogs: the valued file</li>
+  <li>Distinguishes the swift, the slow, the subtle,</li>
+  <li>The housekeeper, the hunter, every one</li>
+  <li class="number">According to the gift which bounteous nature</li>
+  <li>Hath in him closed; whereby he does receive</li>
+  <li>Particular addition. from the bill</li>
+  <li>That writes them all alike: and so of men.</li>
+  <li>Now, if you have a station in the file,</li>
+  <li class="number">Not i’ the worst rank of manhood, say ’t;</li>
+  <li>And I will put that business in your bosoms,</li>
+  <li>Whose execution takes your enemy off,</li>
+  <li>Grapples you to the heart and love of us,</li>
+  <li>Who wear our health but sickly in his life,</li>
+  <li class="number">Which in his death were perfect.</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li>I am one, my liege,</li>
+  <li>Whom the vile blows and buffets of the world</li>
+  <li>Have so incensed that I am reckless what</li>
+  <li>I do to spite the world.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li class="number">And I another</li>
+  <li>So weary with disasters, tugg’d with fortune,</li>
+  <li>That I would set my lie on any chance,</li>
+  <li>To mend it, or be rid on’t.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Both of you</li>
+  <li class="number">Know Banquo was your enemy.</li>
+</ol>
+
+<ol data-speaker="Both Murderers">
+  <li>True, my lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>So is he mine; and in such bloody distance,</li>
+  <li>That every minute of his being thrusts</li>
+  <li>Against my near’st of life: and though I could</li>
+  <li class="number">With barefaced power sweep him from my sight</li>
+  <li>And bid my will avouch it, yet I must not,</li>
+  <li>For certain friends that are both his and mine,</li>
+  <li>Whose loves I may not drop, but wail his fall</li>
+  <li>Who I myself struck down; and thence it is,</li>
+  <li class="number">That I to your assistance do make love,</li>
+  <li>Masking the business from the common eye</li>
+  <li>For sundry weighty reasons.</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li>We shall, my lord,</li>
+  <li>Perform what you command us.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li class="number">Though our lives — </li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Your spirits shine through you. Within this hour at most</li>
+  <li>I will advise you where to plant yourselves;</li>
+  <li>Acquaint you with the perfect spy o’ the time,</li>
+  <li>The moment on’t; for’t must be done to-night,</li>
+  <li class="number">And something from the palace; always thought</li>
+  <li>That I require a clearness: and with him — </li>
+  <li>To leave no rubs nor botches in the work — </li>
+  <li>Fleance his son, that keeps him company,</li>
+  <li>Whose absence is no less material to me</li>
+  <li class="number">Than is his father’s, must embrace the fate</li>
+  <li>Of that dark hour. Resolve yourselves apart:</li>
+  <li>I’ll come to you anon.</li>
+</ol>
+
+<ol data-speaker="Both Murderers">
+  <li>We are resolved, my lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I’ll call upon you straight: abide within.</li>
+  <li class="stage-direction">Exeunt Murderers</li>
+  <li class="number">It is concluded. Banquo, thy soul’s flight,</li>
+  <li>If it find heaven, must find it out to-night.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE II.  The palace.</h3>
+
+<div class="stage-direction">Enter LADY MACBETH and a Servant</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Is Banquo gone from court?</li>
+</ol>
+
+<ol data-speaker="Servant">
+  <li>Ay, madam, but returns again to-night.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Say to the king, I would attend his leisure</li>
+  <li>For a few words.</li>
+</ol>
+
+<ol data-speaker="Servant">
+  <li class="number">Madam, I will.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Nought’s had, all’s spent,</li>
+  <li>Where our desire is got without content:</li>
+  <li>’Tis safer to be that which we destroy</li>
+  <li>Than by destruction dwell in doubtful joy.</li>
+  <li class="stage-direction">Enter MACBETH</li>
+  <li class="number">How now, my lord! why do you keep alone,</li>
+  <li>Of sorriest fancies your companions making,</li>
+  <li>Using those thoughts which should indeed have died</li>
+  <li>With them they think on? Things without all remedy</li>
+  <li>Should be without regard: what’s done is done.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">We have scotch’d the snake, not kill’d it:</li>
+  <li>She’ll close and be herself, whilst our poor malice</li>
+  <li>Remains in danger of her former tooth.</li>
+  <li>But let the frame of things disjoint, both the</li>
+  <li>worlds suffer,</li>
+  <li class="number">Ere we will eat our meal in fear and sleep</li>
+  <li>In the affliction of these terrible dreams</li>
+  <li>That shake us nightly: better be with the dead,</li>
+  <li>Whom we, to gain our peace, have sent to peace,</li>
+  <li>Than on the torture of the mind to lie</li>
+  <li class="number">In restless ecstasy. Duncan is in his grave;</li>
+  <li>After life’s fitful fever he sleeps well;</li>
+  <li>Treason has done his worst: nor steel, nor poison,</li>
+  <li>Malice domestic, foreign levy, nothing,</li>
+  <li>Can touch him further.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Come on;</li>
+  <li>Gentle my lord, sleek o’er your rugged looks;</li>
+  <li>Be bright and jovial among your guests to-night.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>So shall I, love; and so, I pray, be you:</li>
+  <li>Let your remembrance apply to Banquo;</li>
+  <li class="number">Present him eminence, both with eye and tongue:</li>
+  <li>Unsafe the while, that we</li>
+  <li>Must lave our honours in these flattering streams,</li>
+  <li>And make our faces vizards to our hearts,</li>
+  <li>Disguising what they are.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">You must leave this.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>O, full of scorpions is my mind, dear wife!</li>
+  <li>Thou know’st that Banquo, and his Fleance, lives.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>But in them nature’s copy’s not eterne.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>There’s comfort yet; they are assailable;</li>
+  <li class="number">Then be thou jocund: ere the bat hath flown</li>
+  <li>His cloister’d flight, ere to black Hecate’s summons</li>
+  <li>The shard-borne beetle with his drowsy hums</li>
+  <li>Hath rung night’s yawning peal, there shall be done</li>
+  <li>A deed of dreadful note.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">What’s to be done?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Be innocent of the knowledge, dearest chuck,</li>
+  <li>Till thou applaud the deed. Come, seeling night,</li>
+  <li>Scarf up the tender eye of pitiful day;</li>
+  <li>And with thy bloody and invisible hand</li>
+  <li class="number">Cancel and tear to pieces that great bond</li>
+  <li>Which keeps me pale! Light thickens; and the crow</li>
+  <li>Makes wing to the rooky wood:</li>
+  <li>Good things of day begin to droop and drowse;</li>
+  <li>While night’s black agents to their preys do rouse.</li>
+  <li class="number">Thou marvell’st at my words: but hold thee still;</li>
+  <li>Things bad begun make strong themselves by ill.</li>
+  <li>So, prithee, go with me.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE III.  A park near the palace.</h3>
+
+<div class="stage-direction">Enter three Murderers</div>
+
+<ol data-speaker="First Murderer">
+  <li>But who did bid thee join with us?</li>
+</ol>
+
+<ol data-speaker="Third Murderer">
+  <li>Macbeth.</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li>He needs not our mistrust, since he delivers</li>
+  <li>Our offices and what we have to do</li>
+  <li class="number">To the direction just.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Then stand with us.</li>
+  <li>The west yet glimmers with some streaks of day:</li>
+  <li>Now spurs the lated traveller apace</li>
+  <li>To gain the timely inn; and near approaches</li>
+  <li class="number">The subject of our watch.</li>
+</ol>
+
+<ol data-speaker="Third Murderer">
+  <li>Hark! I hear horses.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li><span class="stage-direction">Within</span>  Give us a light there, ho!</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li>Then ’tis he: the rest</li>
+  <li>That are within the note of expectation</li>
+  <li class="number">Already are i’ the court.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>His horses go about.</li>
+</ol>
+
+<ol data-speaker="Third Murderer">
+  <li>Almost a mile: but he does usually,</li>
+  <li>So all men do, from hence to the palace gate</li>
+  <li>Make it their walk.</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li class="number">A light, a light!</li>
+</ol>
+
+<div class="stage-direction">Enter BANQUO, and FLEANCE with a torch</div>
+
+<ol data-speaker="Third Murderer">
+  <li>’Tis he.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Stand to’t.</li>
+</ol>
+
+<ol data-speaker="BANQUO">
+  <li>It will be rain to-night.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Let it come down.</li>
+</ol>
+
+<div class="stage-direction">They set upon BANQUO</div>
+
+<ol data-speaker="BANQUO">
+  <li class="number">O, treachery! Fly, good Fleance, fly, fly, fly!</li>
+  <li>Thou mayst revenge. O slave!</li>
+</ol>
+
+<div class="stage-direction">Dies. FLEANCE escapes</div>
+
+<ol data-speaker="Third Murderer">
+  <li>Who did strike out the light?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Wast not the way?</li>
+</ol>
+
+<ol data-speaker="Third Murderer">
+  <li>There’s but one down; the son is fled.</li>
+</ol>
+
+<ol data-speaker="Second Murderer">
+  <li class="number">We have lost</li>
+  <li>Best half of our affair.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Well, let’s away, and say how much is done.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE IV.  The same. Hall in the palace.</h3>
+
+<div class="stage-direction">A banquet prepared. Enter MACBETH, LADY MACBETH,
+ROSS, LENNOX, Lords, and Attendants</div>
+
+<ol data-speaker="MACBETH">
+  <li>You know your own degrees; sit down: at first</li>
+  <li>And last the hearty welcome.</li>
+</ol>
+
+<ol data-speaker="Lords">
+  <li>Thanks to your majesty.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Ourself will mingle with society,</li>
+  <li class="number">And play the humble host.</li>
+  <li>Our hostess keeps her state, but in best time</li>
+  <li>We will require her welcome.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Pronounce it for me, sir, to all our friends;</li>
+  <li>For my heart speaks they are welcome.</li>
+</ol>
+
+<div class="stage-direction">First Murderer appears at the door</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">See, they encounter thee with their hearts’ thanks.</li>
+  <li>Both sides are even: here I’ll sit i’ the midst:</li>
+  <li>Be large in mirth; anon we’ll drink a measure</li>
+  <li>The table round.</li>
+  <li class="stage-direction">Approaching the door</li>
+  <li>There’s blood on thy face.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li class="number">’Tis Banquo’s then.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>’Tis better thee without than he within.</li>
+  <li>Is he dispatch’d?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>My lord, his throat is cut; that I did for him.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Thou art the best o’ the cut-throats: yet he’s good</li>
+  <li class="number">That did the like for Fleance: if thou didst it,</li>
+  <li>Thou art the nonpareil.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Most royal sir,</li>
+  <li>Fleance is ’scaped.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Then comes my fit again: I had else been perfect,</li>
+  <li class="number">Whole as the marble, founded as the rock,</li>
+  <li>As broad and general as the casing air:</li>
+  <li>But now I am cabin’d, cribb’d, confined, bound in</li>
+  <li>To saucy doubts and fears. But Banquo’s safe?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Ay, my good lord: safe in a ditch he bides,</li>
+  <li class="number">With twenty trenched gashes on his head;</li>
+  <li>The least a death to nature.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Thanks for that:</li>
+  <li>There the grown serpent lies; the worm that’s fled</li>
+  <li>Hath nature that in time will venom breed,</li>
+  <li class="number">No teeth for the present. Get thee gone: to-morrow</li>
+  <li>We’ll hear, ourselves, again.</li>
+</ol>
+
+<div class="stage-direction">Exit Murderer</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>My royal lord,</li>
+  <li>You do not give the cheer: the feast is sold</li>
+  <li>That is not often vouch’d, while ’tis a-making,</li>
+  <li class="number">’Tis given with welcome: to feed were best at home;</li>
+  <li>From thence the sauce to meat is ceremony;</li>
+  <li>Meeting were bare without it.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Sweet remembrancer!</li>
+  <li>Now, good digestion wait on appetite,</li>
+  <li class="number">And health on both!</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>May’t please your highness sit.</li>
+</ol>
+
+<div class="stage-direction">The GHOST OF BANQUO enters, and sits in
+MACBETH’s place</div>
+
+<ol data-speaker="MACBETH">
+  <li>Here had we now our country’s honour roof’d,</li>
+  <li>Were the graced person of our Banquo present;</li>
+  <li>Who may I rather challenge for unkindness</li>
+  <li class="number">Than pity for mischance!</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>His absence, sir,</li>
+  <li>Lays blame upon his promise. Please’t your highness</li>
+  <li>To grace us with your royal company.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>The table’s full.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li class="number">Here is a place reserved, sir.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Where?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>Here, my good lord. What is’t that moves your highness?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Which of you have done this?</li>
+</ol>
+
+<ol data-speaker="Lords">
+  <li>What, my good lord?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Thou canst not say I did it: never shake</li>
+  <li>Thy gory locks at me.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Gentlemen, rise: his highness is not well.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Sit, worthy friends: my lord is often thus,</li>
+  <li>And hath been from his youth: pray you, keep seat;</li>
+  <li class="number">The fit is momentary; upon a thought</li>
+  <li>He will again be well: if much you note him,</li>
+  <li>You shall offend him and extend his passion:</li>
+  <li>Feed, and regard him not. Are you a man?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Ay, and a bold one, that dare look on that</li>
+  <li class="number">Which might appal the devil.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>O proper stuff!</li>
+  <li>This is the very painting of your fear:</li>
+  <li>This is the air-drawn dagger which, you said,</li>
+  <li>Led you to Duncan. O, these flaws and starts,</li>
+  <li class="number">Impostors to true fear, would well become</li>
+  <li>A woman’s story at a winter’s fire,</li>
+  <li>Authorized by her grandam. Shame itself!</li>
+  <li>Why do you make such faces? When all’s done,</li>
+  <li>You look but on a stool.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Prithee, see there! behold! look! lo!</li>
+  <li>how say you?</li>
+  <li>Why, what care I? If thou canst nod, speak too.</li>
+  <li>If charnel-houses and our graves must send</li>
+  <li>Those that we bury back, our monuments</li>
+  <li class="number">Shall be the maws of kites.</li>
+</ol>
+
+<div class="stage-direction">GHOST OF BANQUO vanishes</div>
+
+<ol data-speaker="LADY MACBETH">
+  <li>What, quite unmann’d in folly?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>If I stand here, I saw him.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Fie, for shame!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Blood hath been shed ere now, i’ the olden time,</li>
+  <li class="number">Ere human statute purged the gentle weal;</li>
+  <li>Ay, and since too, murders have been perform’d</li>
+  <li>Too terrible for the ear: the times have been,</li>
+  <li>That, when the brains were out, the man would die,</li>
+  <li>And there an end; but now they rise again,</li>
+  <li class="number">With twenty mortal murders on their crowns,</li>
+  <li>And push us from our stools: this is more strange</li>
+  <li>Than such a murder is.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>My worthy lord,</li>
+  <li>Your noble friends do lack you.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">I do forget.</li>
+  <li>Do not muse at me, my most worthy friends,</li>
+  <li>I have a strange infirmity, which is nothing</li>
+  <li>To those that know me. Come, love and health to all;</li>
+  <li>Then I’ll sit down. Give me some wine; fill full.</li>
+  <li class="number">I drink to the general joy o’ the whole table,</li>
+  <li>And to our dear friend Banquo, whom we miss;</li>
+  <li>Would he were here! to all, and him, we thirst,</li>
+  <li>And all to all.</li>
+</ol>
+
+<ol data-speaker="Lords">
+  <li>Our duties, and the pledge.</li>
+</ol>
+
+<div class="stage-direction">Re-enter GHOST OF BANQUO</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Avaunt! and quit my sight! let the earth hide thee!</li>
+  <li>Thy bones are marrowless, thy blood is cold;</li>
+  <li>Thou hast no speculation in those eyes</li>
+  <li>Which thou dost glare with!</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Think of this, good peers,</li>
+  <li class="number">But as a thing of custom: ’tis no other;</li>
+  <li>Only it spoils the pleasure of the time.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>What man dare, I dare:</li>
+  <li>Approach thou like the rugged Russian bear,</li>
+  <li>The arm’d rhinoceros, or the Hyrcan tiger;</li>
+  <li class="number">Take any shape but that, and my firm nerves</li>
+  <li>Shall never tremble: or be alive again,</li>
+  <li>And dare me to the desert with thy sword;</li>
+  <li>If trembling I inhabit then, protest me</li>
+  <li>The baby of a girl. Hence, horrible shadow!</li>
+  <li class="number">Unreal mockery, hence!</li>
+  <li class="stage-direction">GHOST OF BANQUO vanishes</li>
+  <li>Why, so: being gone,</li>
+  <li>I am a man again. Pray you, sit still.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>You have displaced the mirth, broke the good meeting,</li>
+  <li>With most admired disorder.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Can such things be,</li>
+  <li>And overcome us like a summer’s cloud,</li>
+  <li>Without our special wonder? You make me strange</li>
+  <li>Even to the disposition that I owe,</li>
+  <li>When now I think you can behold such sights,</li>
+  <li class="number">And keep the natural ruby of your cheeks,</li>
+  <li>When mine is blanched with fear.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>What sights, my lord?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>I pray you, speak not; he grows worse and worse;</li>
+  <li>Question enrages him. At once, good night:</li>
+  <li class="number">Stand not upon the order of your going,</li>
+  <li>But go at once.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>Good night; and better health</li>
+  <li>Attend his majesty!</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>A kind good night to all!</li>
+</ol>
+
+<div class="stage-direction">Exeunt all but MACBETH and LADY MACBETH</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">It will have blood; they say, blood will have blood:</li>
+  <li>Stones have been known to move and trees to speak;</li>
+  <li>Augurs and understood relations have</li>
+  <li>By magot-pies and choughs and rooks brought forth</li>
+  <li>The secret’st man of blood. What is the night?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Almost at odds with morning, which is which.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>How say’st thou, that Macduff denies his person</li>
+  <li>At our great bidding?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Did you send to him, sir?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I hear it by the way; but I will send:</li>
+  <li class="number">There’s not a one of them but in his house</li>
+  <li>I keep a servant fee’d. I will to-morrow,</li>
+  <li>And betimes I will, to the weird sisters:</li>
+  <li>More shall they speak; for now I am bent to know,</li>
+  <li>By the worst means, the worst. For mine own good,</li>
+  <li class="number">All causes shall give way: I am in blood</li>
+  <li>Stepp’d in so far that, should I wade no more,</li>
+  <li>Returning were as tedious as go o’er:</li>
+  <li>Strange things I have in head, that will to hand;</li>
+  <li>Which must be acted ere they may be scann’d.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">You lack the season of all natures, sleep.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Come, we’ll to sleep. My strange and self-abuse</li>
+  <li>Is the initiate fear that wants hard use:</li>
+  <li>We are yet but young in deed.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE V.  A Heath.</h3>
+
+<div class="stage-direction">Thunder. Enter the three Witches meeting HECATE</div>
+
+<ol data-speaker="First Witch">
+  <li>Why, how now, Hecate! you look angerly.</li>
+</ol>
+
+<ol data-speaker="HECATE">
+  <li>Have I not reason, beldams as you are,</li>
+  <li>Saucy and overbold? How did you dare</li>
+  <li>To trade and traffic with Macbeth</li>
+  <li class="number">In riddles and affairs of death;</li>
+  <li>And I, the mistress of your charms,</li>
+  <li>The close contriver of all harms,</li>
+  <li>Was never call’d to bear my part,</li>
+  <li>Or show the glory of our art?</li>
+  <li class="number">And, which is worse, all you have done</li>
+  <li>Hath been but for a wayward son,</li>
+  <li>Spiteful and wrathful, who, as others do,</li>
+  <li>Loves for his own ends, not for you.</li>
+  <li>But make amends now: get you gone,</li>
+  <li class="number">And at the pit of Acheron</li>
+  <li>Meet me i’ the morning: thither he</li>
+  <li>Will come to know his destiny:</li>
+  <li>Your vessels and your spells provide,</li>
+  <li>Your charms and every thing beside.</li>
+  <li class="number">I am for the air; this night I’ll spend</li>
+  <li>Unto a dismal and a fatal end:</li>
+  <li>Great business must be wrought ere noon:</li>
+  <li>Upon the corner of the moon</li>
+  <li>There hangs a vaporous drop profound;</li>
+  <li class="number">I’ll catch it ere it come to ground:</li>
+  <li>And that distill’d by magic sleights</li>
+  <li>Shall raise such artificial sprites</li>
+  <li>As by the strength of their illusion</li>
+  <li>Shall draw him on to his confusion:</li>
+  <li class="number">He shall spurn fate, scorn death, and bear</li>
+  <li>He hopes ’bove wisdom, grace and fear:</li>
+  <li>And you all know, security</li>
+  <li>Is mortals’ chiefest enemy.</li>
+  <li class="stage-direction">Music and a song within: ’Come away, come
+away,’ etc.</li>
+  <li>Hark! I am call’d; my little spirit, see,</li>
+  <li class="number">Sits in a foggy cloud, and stays for me.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="First Witch">
+  <li>Come, let’s make haste; she’ll soon be back again.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VI.  Forres. The palace.</h3>
+
+<div class="stage-direction">Enter LENNOX and another Lord</div>
+
+<ol data-speaker="LENNOX">
+  <li>My former speeches have but hit your thoughts,</li>
+  <li>Which can interpret further: only, I say,</li>
+  <li>Things have been strangely borne. The</li>
+  <li>gracious Duncan</li>
+  <li class="number">Was pitied of Macbeth: marry, he was dead:</li>
+  <li>And the right-valiant Banquo walk’d too late;</li>
+  <li>Whom, you may say, if’t please you, Fleance kill’d,</li>
+  <li>For Fleance fled: men must not walk too late.</li>
+  <li>Who cannot want the thought how monstrous</li>
+  <li class="number">It was for Malcolm and for Donalbain</li>
+  <li>To kill their gracious father? damned fact!</li>
+  <li>How it did grieve Macbeth! did he not straight</li>
+  <li>In pious rage the two delinquents tear,</li>
+  <li>That were the slaves of drink and thralls of sleep?</li>
+  <li class="number">Was not that nobly done? Ay, and wisely too;</li>
+  <li>For ’twould have anger’d any heart alive</li>
+  <li>To hear the men deny’t. So that, I say,</li>
+  <li>He has borne all things well: and I do think</li>
+  <li>That had he Duncan’s sons under his key — </li>
+  <li class="number">As, an’t please heaven, he shall not — they</li>
+  <li>should find</li>
+  <li>What ’twere to kill a father; so should Fleance.</li>
+  <li>But, peace! for from broad words and ’cause he fail’d</li>
+  <li>His presence at the tyrant’s feast, I hear</li>
+  <li class="number">Macduff lives in disgrace: sir, can you tell</li>
+  <li>Where he bestows himself?</li>
+</ol>
+
+<ol data-speaker="Lord">
+  <li>The son of Duncan,</li>
+  <li>From whom this tyrant holds the due of birth</li>
+  <li>Lives in the English court, and is received</li>
+  <li class="number">Of the most pious Edward with such grace</li>
+  <li>That the malevolence of fortune nothing</li>
+  <li>Takes from his high respect: thither Macduff</li>
+  <li>Is gone to pray the holy king, upon his aid</li>
+  <li>To wake Northumberland and warlike Siward:</li>
+  <li class="number">That, by the help of these — with Him above</li>
+  <li>To ratify the work — we may again</li>
+  <li>Give to our tables meat, sleep to our nights,</li>
+  <li>Free from our feasts and banquets bloody knives,</li>
+  <li>Do faithful homage and receive free honours:</li>
+  <li class="number">All which we pine for now: and this report</li>
+  <li>Hath so exasperate the king that he</li>
+  <li>Prepares for some attempt of war.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>Sent he to Macduff?</li>
+</ol>
+
+<ol data-speaker="Lord">
+  <li>He did: and with an absolute ’Sir, not I,’</li>
+  <li class="number">The cloudy messenger turns me his back,</li>
+  <li>And hums, as who should say ’You’ll rue the time</li>
+  <li>That clogs me with this answer.’</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>And that well might</li>
+  <li>Advise him to a caution, to hold what distance</li>
+  <li class="number">His wisdom can provide. Some holy angel</li>
+  <li>Fly to the court of England and unfold</li>
+  <li>His message ere he come, that a swift blessing</li>
+  <li>May soon return to this our suffering country</li>
+  <li>Under a hand accursed!</li>
+</ol>
+
+<ol data-speaker="Lord">
+  <li class="number">I’ll send my prayers with him.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+</section>
+
+<section class="act">
+
+<h2>ACT IV</h2>
+
+<section class="scene">
+
+<h3>SCENE I.  A cavern. In the middle, a boiling cauldron.</h3>
+
+<div class="stage-direction">Thunder. Enter the three Witches</div>
+
+<ol data-speaker="First Witch">
+  <li>Thrice the brinded cat hath mew’d.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Thrice and once the hedge-pig whined.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Harpier cries ’Tis time, ’tis time.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Round about the cauldron go;</li>
+  <li class="number">In the poison’d entrails throw.</li>
+  <li>Toad, that under cold stone</li>
+  <li>Days and nights has thirty-one</li>
+  <li>Swelter’d venom sleeping got,</li>
+  <li>Boil thou first i’ the charmed pot.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">Double, double toil and trouble;</li>
+  <li>Fire burn, and cauldron bubble.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Fillet of a fenny snake,</li>
+  <li>In the cauldron boil and bake;</li>
+  <li>Eye of newt and toe of frog,</li>
+  <li class="number">Wool of bat and tongue of dog,</li>
+  <li>Adder’s fork and blind-worm’s sting,</li>
+  <li>Lizard’s leg and owlet’s wing,</li>
+  <li>For a charm of powerful trouble,</li>
+  <li>Like a hell-broth boil and bubble.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">Double, double toil and trouble;</li>
+  <li>Fire burn and cauldron bubble.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Scale of dragon, tooth of wolf,</li>
+  <li>Witches’ mummy, maw and gulf</li>
+  <li>Of the ravin’d salt-sea shark,</li>
+  <li class="number">Root of hemlock digg’d i’ the dark,</li>
+  <li>Liver of blaspheming Jew,</li>
+  <li>Gall of goat, and slips of yew</li>
+  <li>Silver’d in the moon’s eclipse,</li>
+  <li>Nose of Turk and Tartar’s lips,</li>
+  <li class="number">Finger of birth-strangled babe</li>
+  <li>Ditch-deliver’d by a drab,</li>
+  <li>Make the gruel thick and slab:</li>
+  <li>Add thereto a tiger’s chaudron,</li>
+  <li>For the ingredients of our cauldron.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">Double, double toil and trouble;</li>
+  <li>Fire burn and cauldron bubble.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Cool it with a baboon’s blood,</li>
+  <li>Then the charm is firm and good.</li>
+</ol>
+
+<div class="stage-direction">Enter HECATE to the other three Witches</div>
+
+<ol data-speaker="HECATE">
+  <li>O well done! I commend your pains;</li>
+  <li class="number">And every one shall share i’ the gains;</li>
+  <li>And now about the cauldron sing,</li>
+  <li>Live elves and fairies in a ring,</li>
+  <li>Enchanting all that you put in.</li>
+</ol>
+
+<div class="stage-direction">Music and a song: ’Black spirits,’ &c</div>
+
+<div class="stage-direction">HECATE retires</div>
+
+<ol data-speaker="Second Witch">
+  <li>By the pricking of my thumbs,</li>
+  <li class="number">Something wicked this way comes.</li>
+  <li>Open, locks,</li>
+  <li>Whoever knocks!</li>
+</ol>
+
+<div class="stage-direction">Enter MACBETH</div>
+
+<ol data-speaker="MACBETH">
+  <li>How now, you secret, black, and midnight hags!</li>
+  <li>What is’t you do?</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">A deed without a name.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I conjure you, by that which you profess,</li>
+  <li>Howe’er you come to know it, answer me:</li>
+  <li>Though you untie the winds and let them fight</li>
+  <li>Against the churches; though the yesty waves</li>
+  <li class="number">Confound and swallow navigation up;</li>
+  <li>Though bladed corn be lodged and trees blown down;</li>
+  <li>Though castles topple on their warders’ heads;</li>
+  <li>Though palaces and pyramids do slope</li>
+  <li>Their heads to their foundations; though the treasure</li>
+  <li class="number">Of nature’s germens tumble all together,</li>
+  <li>Even till destruction sicken; answer me</li>
+  <li>To what I ask you.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Speak.</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li>Demand.</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li class="number">We’ll answer.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Say, if thou’dst rather hear it from our mouths,</li>
+  <li>Or from our masters?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Call ’em; let me see ’em.</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Pour in sow’s blood, that hath eaten</li>
+  <li class="number">Her nine farrow; grease that’s sweaten</li>
+  <li>From the murderer’s gibbet throw</li>
+  <li>Into the flame.</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>Come, high or low;</li>
+  <li>Thyself and office deftly show!</li>
+</ol>
+
+<div class="stage-direction">Thunder. First Apparition: an armed Head</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Tell me, thou unknown power — </li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>He knows thy thought:</li>
+  <li>Hear his speech, but say thou nought.</li>
+</ol>
+
+<ol data-speaker="First Apparition">
+  <li>Macbeth! Macbeth! Macbeth! beware Macduff;</li>
+  <li>Beware the thane of Fife. Dismiss me. Enough.</li>
+</ol>
+
+<div class="stage-direction">Descends</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Whate’er thou art, for thy good caution, thanks;</li>
+  <li>Thou hast harp’d my fear aright: but one</li>
+  <li>word more — </li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>He will not be commanded: here’s another,</li>
+  <li>More potent than the first.</li>
+</ol>
+
+<div class="stage-direction">Thunder. Second Apparition: A bloody Child</div>
+
+<ol data-speaker="Second Apparition">
+  <li class="number">Macbeth! Macbeth! Macbeth!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Had I three ears, I’ld hear thee.</li>
+</ol>
+
+<ol data-speaker="Second Apparition">
+  <li>Be bloody, bold, and resolute; laugh to scorn</li>
+  <li>The power of man, for none of woman born</li>
+  <li>Shall harm Macbeth.</li>
+</ol>
+
+<div class="stage-direction">Descends</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Then live, Macduff: what need I fear of thee?</li>
+  <li>But yet I’ll make assurance double sure,</li>
+  <li>And take a bond of fate: thou shalt not live;</li>
+  <li>That I may tell pale-hearted fear it lies,</li>
+  <li>And sleep in spite of thunder.</li>
+  <li class="stage-direction">Thunder. Third Apparition: a Child crowned,
+with a tree in his hand</li>
+  <li class="number">What is this</li>
+  <li>That rises like the issue of a king,</li>
+  <li>And wears upon his baby-brow the round</li>
+  <li>And top of sovereignty?</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>Listen, but speak not to’t.</li>
+</ol>
+
+<ol data-speaker="Third Apparition">
+  <li class="number">Be lion-mettled, proud; and take no care</li>
+  <li>Who chafes, who frets, or where conspirers are:</li>
+  <li>Macbeth shall never vanquish’d be until</li>
+  <li>Great Birnam wood to high Dunsinane hill</li>
+  <li>Shall come against him.</li>
+</ol>
+
+<div class="stage-direction">Descends</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">That will never be</li>
+  <li>Who can impress the forest, bid the tree</li>
+  <li>Unfix his earth-bound root? Sweet bodements! good!</li>
+  <li>Rebellion’s head, rise never till the wood</li>
+  <li>Of Birnam rise, and our high-placed Macbeth</li>
+  <li class="number">Shall live the lease of nature, pay his breath</li>
+  <li>To time and mortal custom. Yet my heart</li>
+  <li>Throbs to know one thing: tell me, if your art</li>
+  <li>Can tell so much: shall Banquo’s issue ever</li>
+  <li>Reign in this kingdom?</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">Seek to know no more.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I will be satisfied: deny me this,</li>
+  <li>And an eternal curse fall on you! Let me know.</li>
+  <li>Why sinks that cauldron? and what noise is this?</li>
+</ol>
+
+<div class="stage-direction">Hautboys</div>
+
+<ol data-speaker="First Witch">
+  <li>Show!</li>
+</ol>
+
+<ol data-speaker="Second Witch">
+  <li class="number">Show!</li>
+</ol>
+
+<ol data-speaker="Third Witch">
+  <li>Show!</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li>Show his eyes, and grieve his heart;</li>
+  <li>Come like shadows, so depart!</li>
+</ol>
+
+<div class="stage-direction">A show of Eight Kings, the last with a glass in
+his hand; GHOST OF BANQUO following</div>
+
+<ol data-speaker="MACBETH">
+  <li>Thou art too like the spirit of Banquo: down!</li>
+  <li class="number">Thy crown does sear mine eye-balls. And thy hair,</li>
+  <li>Thou other gold-bound brow, is like the first.</li>
+  <li>A third is like the former. Filthy hags!</li>
+  <li>Why do you show me this? A fourth! Start, eyes!</li>
+  <li>What, will the line stretch out to the crack of doom?</li>
+  <li class="number">Another yet! A seventh! I’ll see no more:</li>
+  <li>And yet the eighth appears, who bears a glass</li>
+  <li>Which shows me many more; and some I see</li>
+  <li>That two-fold balls and treble scepters carry:</li>
+  <li>Horrible sight! Now, I see, ’tis true;</li>
+  <li class="number">For the blood-bolter’d Banquo smiles upon me,</li>
+  <li>And points at them for his.</li>
+  <li class="stage-direction">Apparitions vanish</li>
+  <li>What, is this so?</li>
+</ol>
+
+<ol data-speaker="First Witch">
+  <li>Ay, sir, all this is so: but why</li>
+  <li>Stands Macbeth thus amazedly?</li>
+  <li class="number">Come, sisters, cheer we up his sprites,</li>
+  <li>And show the best of our delights:</li>
+  <li>I’ll charm the air to give a sound,</li>
+  <li>While you perform your antic round:</li>
+  <li>That this great king may kindly say,</li>
+  <li class="number">Our duties did his welcome pay.</li>
+</ol>
+
+<div class="stage-direction">Music. The witches dance and then vanish,
+with HECATE</div>
+
+<ol data-speaker="MACBETH">
+  <li>Where are they? Gone? Let this pernicious hour</li>
+  <li>Stand aye accursed in the calendar!</li>
+  <li>Come in, without there!</li>
+</ol>
+
+<div class="stage-direction">Enter LENNOX</div>
+
+<ol data-speaker="LENNOX">
+  <li>What’s your grace’s will?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Saw you the weird sisters?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>No, my lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Came they not by you?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>No, indeed, my lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Infected be the air whereon they ride;</li>
+  <li class="number">And damn’d all those that trust them! I did hear</li>
+  <li>The galloping of horse: who was’t came by?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>’Tis two or three, my lord, that bring you word</li>
+  <li>Macduff is fled to England.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Fled to England!</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li class="number">Ay, my good lord.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Time, thou anticipatest my dread exploits:</li>
+  <li>The flighty purpose never is o’ertook</li>
+  <li>Unless the deed go with it; from this moment</li>
+  <li>The very firstlings of my heart shall be</li>
+  <li class="number">The firstlings of my hand. And even now,</li>
+  <li>To crown my thoughts with acts, be it thought and done:</li>
+  <li>The castle of Macduff I will surprise;</li>
+  <li>Seize upon Fife; give to the edge o’ the sword</li>
+  <li>His wife, his babes, and all unfortunate souls</li>
+  <li class="number">That trace him in his line. No boasting like a fool;</li>
+  <li>This deed I’ll do before this purpose cool.</li>
+  <li>But no more sights! — Where are these gentlemen?</li>
+  <li>Come, bring me where they are.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE II.  Fife. Macduff’s castle.</h3>
+
+<div class="stage-direction">Enter LADY MACDUFF, her Son, and ROSS</div>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>What had he done, to make him fly the land?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>You must have patience, madam.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>He had none:</li>
+  <li>His flight was madness: when our actions do not,</li>
+  <li class="number">Our fears do make us traitors.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>You know not</li>
+  <li>Whether it was his wisdom or his fear.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Wisdom! to leave his wife, to leave his babes,</li>
+  <li>His mansion and his titles in a place</li>
+  <li class="number">From whence himself does fly? He loves us not;</li>
+  <li>He wants the natural touch: for the poor wren,</li>
+  <li>The most diminutive of birds, will fight,</li>
+  <li>Her young ones in her nest, against the owl.</li>
+  <li>All is the fear and nothing is the love;</li>
+  <li class="number">As little is the wisdom, where the flight</li>
+  <li>So runs against all reason.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>My dearest coz,</li>
+  <li>I pray you, school yourself: but for your husband,</li>
+  <li>He is noble, wise, judicious, and best knows</li>
+  <li class="number">The fits o’ the season. I dare not speak</li>
+  <li>much further;</li>
+  <li>But cruel are the times, when we are traitors</li>
+  <li>And do not know ourselves, when we hold rumour</li>
+  <li>From what we fear, yet know not what we fear,</li>
+  <li class="number">But float upon a wild and violent sea</li>
+  <li>Each way and move. I take my leave of you:</li>
+  <li>Shall not be long but I’ll be here again:</li>
+  <li>Things at the worst will cease, or else climb upward</li>
+  <li>To what they were before. My pretty cousin,</li>
+  <li class="number">Blessing upon you!</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Father’d he is, and yet he’s fatherless.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>I am so much a fool, should I stay longer,</li>
+  <li>It would be my disgrace and your discomfort:</li>
+  <li>I take my leave at once.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="LADY MACDUFF">
+  <li class="number">Sirrah, your father’s dead;</li>
+  <li>And what will you do now? How will you live?</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>As birds do, mother.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>What, with worms and flies?</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>With what I get, I mean; and so do they.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li class="number">Poor bird! thou’ldst never fear the net nor lime,</li>
+  <li>The pitfall nor the gin.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>Why should I, mother? Poor birds they are not set for.</li>
+  <li>My father is not dead, for all your saying.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Yes, he is dead; how wilt thou do for a father?</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li class="number">Nay, how will you do for a husband?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Why, I can buy me twenty at any market.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>Then you’ll buy ’em to sell again.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Thou speak’st with all thy wit: and yet, i’ faith,</li>
+  <li>With wit enough for thee.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li class="number">Was my father a traitor, mother?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Ay, that he was.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>What is a traitor?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Why, one that swears and lies.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>And be all traitors that do so?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li class="number">Every one that does so is a traitor, and must be hanged.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>And must they all be hanged that swear and lie?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Every one.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>Who must hang them?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Why, the honest men.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li class="number">Then the liars and swearers are fools,</li>
+  <li>for there are liars and swearers enow to beat</li>
+  <li>the honest men and hang up them.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Now, God help thee, poor monkey!</li>
+  <li>But how wilt thou do for a father?</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li class="number">If he were dead, you’ld weep for</li>
+  <li>him: if you would not, it were a good sign</li>
+  <li>that I should quickly have a new father.</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Poor prattler, how thou talk’st!</li>
+</ol>
+
+<div class="stage-direction">Enter a Messenger</div>
+
+<ol data-speaker="Messenger">
+  <li>Bless you, fair dame! I am not to you known,</li>
+  <li class="number">Though in your state of honour I am perfect.</li>
+  <li>I doubt some danger does approach you nearly:</li>
+  <li>If you will take a homely man’s advice,</li>
+  <li>Be not found here; hence, with your little ones.</li>
+  <li>To fright you thus, methinks, I am too savage;</li>
+  <li class="number">To do worse to you were fell cruelty,</li>
+  <li>Which is too nigh your person. Heaven preserve you!</li>
+  <li>I dare abide no longer.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>Whither should I fly?</li>
+  <li>I have done no harm. But I remember now</li>
+  <li class="number">I am in this earthly world; where to do harm</li>
+  <li>Is often laudable, to do good sometime</li>
+  <li>Accounted dangerous folly: why then, alas,</li>
+  <li>Do I put up that womanly defence,</li>
+  <li>To say I have done no harm?</li>
+  <li class="stage-direction">Enter Murderers</li>
+  <li class="number">What are these faces?</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>Where is your husband?</li>
+</ol>
+
+<ol data-speaker="LADY MACDUFF">
+  <li>I hope, in no place so unsanctified</li>
+  <li>Where such as thou mayst find him.</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>He’s a traitor.</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li class="number">Thou liest, thou shag-hair’d villain!</li>
+</ol>
+
+<ol data-speaker="First Murderer">
+  <li>What, you egg!</li>
+  <li class="stage-direction">Stabbing him</li>
+  <li>Young fry of treachery!</li>
+</ol>
+
+<ol data-speaker="Son">
+  <li>He has kill’d me, mother:</li>
+  <li>Run away, I pray you!</li>
+</ol>
+
+<div class="stage-direction">Dies</div>
+
+<div class="stage-direction">Exit LADY MACDUFF, crying ’Murder!’ Exeunt
+Murderers, following her</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE III.  England. Before the King’s palace.</h3>
+
+<div class="stage-direction">Enter MALCOLM and MACDUFF</div>
+
+<ol data-speaker="MALCOLM">
+  <li>Let us seek out some desolate shade, and there</li>
+  <li>Weep our sad bosoms empty.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Let us rather</li>
+  <li>Hold fast the mortal sword, and like good men</li>
+  <li class="number">Bestride our down-fall’n birthdom: each new morn</li>
+  <li>New widows howl, new orphans cry, new sorrows</li>
+  <li>Strike heaven on the face, that it resounds</li>
+  <li>As if it felt with Scotland and yell’d out</li>
+  <li>Like syllable of dolour.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li class="number">What I believe I’ll wail,</li>
+  <li>What know believe, and what I can redress,</li>
+  <li>As I shall find the time to friend, I will.</li>
+  <li>What you have spoke, it may be so perchance.</li>
+  <li>This tyrant, whose sole name blisters our tongues,</li>
+  <li class="number">Was once thought honest: you have loved him well.</li>
+  <li>He hath not touch’d you yet. I am young;</li>
+  <li>but something</li>
+  <li>You may deserve of him through me, and wisdom</li>
+  <li>To offer up a weak poor innocent lamb</li>
+  <li class="number">To appease an angry god.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>I am not treacherous.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>But Macbeth is.</li>
+  <li>A good and virtuous nature may recoil</li>
+  <li>In an imperial charge. But I shall crave</li>
+  <li class="number">your pardon;</li>
+  <li>That which you are my thoughts cannot transpose:</li>
+  <li>Angels are bright still, though the brightest fell;</li>
+  <li>Though all things foul would wear the brows of grace,</li>
+  <li>Yet grace must still look so.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">I have lost my hopes.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Perchance even there where I did find my doubts.</li>
+  <li>Why in that rawness left you wife and child,</li>
+  <li>Those precious motives, those strong knots of love,</li>
+  <li>Without leave-taking? I pray you,</li>
+  <li class="number">Let not my jealousies be your dishonours,</li>
+  <li>But mine own safeties. You may be rightly just,</li>
+  <li>Whatever I shall think.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Bleed, bleed, poor country!</li>
+  <li>Great tyranny! lay thou thy basis sure,</li>
+  <li class="number">For goodness dare not cheque thee: wear thou</li>
+  <li>thy wrongs;</li>
+  <li>The title is affeer’d! Fare thee well, lord:</li>
+  <li>I would not be the villain that thou think’st</li>
+  <li>For the whole space that’s in the tyrant’s grasp,</li>
+  <li class="number">And the rich East to boot.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Be not offended:</li>
+  <li>I speak not as in absolute fear of you.</li>
+  <li>I think our country sinks beneath the yoke;</li>
+  <li>It weeps, it bleeds; and each new day a gash</li>
+  <li class="number">Is added to her wounds: I think withal</li>
+  <li>There would be hands uplifted in my right;</li>
+  <li>And here from gracious England have I offer</li>
+  <li>Of goodly thousands: but, for all this,</li>
+  <li>When I shall tread upon the tyrant’s head,</li>
+  <li class="number">Or wear it on my sword, yet my poor country</li>
+  <li>Shall have more vices than it had before,</li>
+  <li>More suffer and more sundry ways than ever,</li>
+  <li>By him that shall succeed.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>What should he be?</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li class="number">It is myself I mean: in whom I know</li>
+  <li>All the particulars of vice so grafted</li>
+  <li>That, when they shall be open’d, black Macbeth</li>
+  <li>Will seem as pure as snow, and the poor state</li>
+  <li>Esteem him as a lamb, being compared</li>
+  <li class="number">With my confineless harms.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Not in the legions</li>
+  <li>Of horrid hell can come a devil more damn’d</li>
+  <li>In evils to top Macbeth.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>I grant him bloody,</li>
+  <li class="number">Luxurious, avaricious, false, deceitful,</li>
+  <li>Sudden, malicious, smacking of every sin</li>
+  <li>That has a name: but there’s no bottom, none,</li>
+  <li>In my voluptuousness: your wives, your daughters,</li>
+  <li>Your matrons and your maids, could not fill up</li>
+  <li class="number">The cistern of my lust, and my desire</li>
+  <li>All continent impediments would o’erbear</li>
+  <li>That did oppose my will: better Macbeth</li>
+  <li>Than such an one to reign.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Boundless intemperance</li>
+  <li class="number">In nature is a tyranny; it hath been</li>
+  <li>The untimely emptying of the happy throne</li>
+  <li>And fall of many kings. But fear not yet</li>
+  <li>To take upon you what is yours: you may</li>
+  <li>Convey your pleasures in a spacious plenty,</li>
+  <li class="number">And yet seem cold, the time you may so hoodwink.</li>
+  <li>We have willing dames enough: there cannot be</li>
+  <li>That vulture in you, to devour so many</li>
+  <li>As will to greatness dedicate themselves,</li>
+  <li>Finding it so inclined.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li class="number">With this there grows</li>
+  <li>In my most ill-composed affection such</li>
+  <li>A stanchless avarice that, were I king,</li>
+  <li>I should cut off the nobles for their lands,</li>
+  <li>Desire his jewels and this other’s house:</li>
+  <li class="number">And my more-having would be as a sauce</li>
+  <li>To make me hunger more; that I should forge</li>
+  <li>Quarrels unjust against the good and loyal,</li>
+  <li>Destroying them for wealth.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>This avarice</li>
+  <li class="number">Sticks deeper, grows with more pernicious root</li>
+  <li>Than summer-seeming lust, and it hath been</li>
+  <li>The sword of our slain kings: yet do not fear;</li>
+  <li>Scotland hath foisons to fill up your will.</li>
+  <li>Of your mere own: all these are portable,</li>
+  <li class="number">With other graces weigh’d.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>But I have none: the king-becoming graces,</li>
+  <li>As justice, verity, temperance, stableness,</li>
+  <li>Bounty, perseverance, mercy, lowliness,</li>
+  <li>Devotion, patience, courage, fortitude,</li>
+  <li class="number">I have no relish of them, but abound</li>
+  <li>In the division of each several crime,</li>
+  <li>Acting it many ways. Nay, had I power, I should</li>
+  <li>Pour the sweet milk of concord into hell,</li>
+  <li>Uproar the universal peace, confound</li>
+  <li class="number">All unity on earth.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>O Scotland, Scotland!</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>If such a one be fit to govern, speak:</li>
+  <li>I am as I have spoken.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Fit to govern!</li>
+  <li class="number">No, not to live. O nation miserable,</li>
+  <li>With an untitled tyrant bloody-scepter’d,</li>
+  <li>When shalt thou see thy wholesome days again,</li>
+  <li>Since that the truest issue of thy throne</li>
+  <li>By his own interdiction stands accursed,</li>
+  <li class="number">And does blaspheme his breed? Thy royal father</li>
+  <li>Was a most sainted king: the queen that bore thee,</li>
+  <li>Oftener upon her knees than on her feet,</li>
+  <li>Died every day she lived. Fare thee well!</li>
+  <li>These evils thou repeat’st upon thyself</li>
+  <li class="number">Have banish’d me from Scotland. O my breast,</li>
+  <li>Thy hope ends here!</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Macduff, this noble passion,</li>
+  <li>Child of integrity, hath from my soul</li>
+  <li>Wiped the black scruples, reconciled my thoughts</li>
+  <li class="number">To thy good truth and honour. Devilish Macbeth</li>
+  <li>By many of these trains hath sought to win me</li>
+  <li>Into his power, and modest wisdom plucks me</li>
+  <li>From over-credulous haste: but God above</li>
+  <li>Deal between thee and me! for even now</li>
+  <li class="number">I put myself to thy direction, and</li>
+  <li>Unspeak mine own detraction, here abjure</li>
+  <li>The taints and blames I laid upon myself,</li>
+  <li>For strangers to my nature. I am yet</li>
+  <li>Unknown to woman, never was forsworn,</li>
+  <li class="number">Scarcely have coveted what was mine own,</li>
+  <li>At no time broke my faith, would not betray</li>
+  <li>The devil to his fellow and delight</li>
+  <li>No less in truth than life: my first false speaking</li>
+  <li>Was this upon myself: what I am truly,</li>
+  <li class="number">Is thine and my poor country’s to command:</li>
+  <li>Whither indeed, before thy here-approach,</li>
+  <li>Old Siward, with ten thousand warlike men,</li>
+  <li>Already at a point, was setting forth.</li>
+  <li>Now we’ll together; and the chance of goodness</li>
+  <li class="number">Be like our warranted quarrel! Why are you silent?</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Such welcome and unwelcome things at once</li>
+  <li>’Tis hard to reconcile.</li>
+</ol>
+
+<div class="stage-direction">Enter a Doctor</div>
+
+<ol data-speaker="MALCOLM">
+  <li>Well; more anon. — Comes the king forth, I pray you?</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Ay, sir; there are a crew of wretched souls</li>
+  <li class="number">That stay his cure: their malady convinces</li>
+  <li>The great assay of art; but at his touch — </li>
+  <li>Such sanctity hath heaven given his hand — </li>
+  <li>They presently amend.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>I thank you, doctor.</li>
+</ol>
+
+<div class="stage-direction">Exit Doctor</div>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">What’s the disease he means?</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>’Tis call’d the evil:</li>
+  <li>A most miraculous work in this good king;</li>
+  <li>Which often, since my here-remain in England,</li>
+  <li>I have seen him do. How he solicits heaven,</li>
+  <li class="number">Himself best knows: but strangely-visited people,</li>
+  <li>All swoln and ulcerous, pitiful to the eye,</li>
+  <li>The mere despair of surgery, he cures,</li>
+  <li>Hanging a golden stamp about their necks,</li>
+  <li>Put on with holy prayers: and ’tis spoken,</li>
+  <li class="number">To the succeeding royalty he leaves</li>
+  <li>The healing benediction. With this strange virtue,</li>
+  <li>He hath a heavenly gift of prophecy,</li>
+  <li>And sundry blessings hang about his throne,</li>
+  <li>That speak him full of grace.</li>
+</ol>
+
+<div class="stage-direction">Enter ROSS</div>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">See, who comes here?</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>My countryman; but yet I know him not.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>My ever-gentle cousin, welcome hither.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>I know him now. Good God, betimes remove</li>
+  <li>The means that makes us strangers!</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">Sir, amen.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Stands Scotland where it did?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Alas, poor country!</li>
+  <li>Almost afraid to know itself. It cannot</li>
+  <li>Be call’d our mother, but our grave; where nothing,</li>
+  <li class="number">But who knows nothing, is once seen to smile;</li>
+  <li>Where sighs and groans and shrieks that rend the air</li>
+  <li>Are made, not mark’d; where violent sorrow seems</li>
+  <li>A modern ecstasy; the dead man’s knell</li>
+  <li>Is there scarce ask’d for who; and good men’s lives</li>
+  <li class="number">Expire before the flowers in their caps,</li>
+  <li>Dying or ere they sicken.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>O, relation</li>
+  <li>Too nice, and yet too true!</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>What’s the newest grief?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">That of an hour’s age doth hiss the speaker:</li>
+  <li>Each minute teems a new one.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>How does my wife?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Why, well.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>And all my children?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">Well too.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>The tyrant has not batter’d at their peace?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>No; they were well at peace when I did leave ’em.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>But not a niggard of your speech: how goes’t?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>When I came hither to transport the tidings,</li>
+  <li class="number">Which I have heavily borne, there ran a rumour</li>
+  <li>Of many worthy fellows that were out;</li>
+  <li>Which was to my belief witness’d the rather,</li>
+  <li>For that I saw the tyrant’s power a-foot:</li>
+  <li>Now is the time of help; your eye in Scotland</li>
+  <li class="number">Would create soldiers, make our women fight,</li>
+  <li>To doff their dire distresses.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Be’t their comfort</li>
+  <li>We are coming thither: gracious England hath</li>
+  <li>Lent us good Siward and ten thousand men;</li>
+  <li class="number">An older and a better soldier none</li>
+  <li>That Christendom gives out.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Would I could answer</li>
+  <li>This comfort with the like! But I have words</li>
+  <li>That would be howl’d out in the desert air,</li>
+  <li class="number">Where hearing should not latch them.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>What concern they?</li>
+  <li>The general cause? or is it a fee-grief</li>
+  <li>Due to some single breast?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>No mind that’s honest</li>
+  <li class="number">But in it shares some woe; though the main part</li>
+  <li>Pertains to you alone.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>If it be mine,</li>
+  <li>Keep it not from me, quickly let me have it.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Let not your ears despise my tongue for ever,</li>
+  <li class="number">Which shall possess them with the heaviest sound</li>
+  <li>That ever yet they heard.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Hum! I guess at it.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Your castle is surprised; your wife and babes</li>
+  <li>Savagely slaughter’d: to relate the manner,</li>
+  <li class="number">Were, on the quarry of these murder’d deer,</li>
+  <li>To add the death of you.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Merciful heaven!</li>
+  <li>What, man! ne’er pull your hat upon your brows;</li>
+  <li>Give sorrow words: the grief that does not speak</li>
+  <li class="number">Whispers the o’er-fraught heart and bids it break.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>My children too?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Wife, children, servants, all</li>
+  <li>That could be found.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>And I must be from thence!</li>
+  <li class="number">My wife kill’d too?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>I have said.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Be comforted:</li>
+  <li>Let’s make us medicines of our great revenge,</li>
+  <li>To cure this deadly grief.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">He has no children. All my pretty ones?</li>
+  <li>Did you say all? O hell-kite! All?</li>
+  <li>What, all my pretty chickens and their dam</li>
+  <li>At one fell swoop?</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Dispute it like a man.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">I shall do so;</li>
+  <li>But I must also feel it as a man:</li>
+  <li>I cannot but remember such things were,</li>
+  <li>That were most precious to me. Did heaven look on,</li>
+  <li>And would not take their part? Sinful Macduff,</li>
+  <li class="number">They were all struck for thee! naught that I am,</li>
+  <li>Not for their own demerits, but for mine,</li>
+  <li>Fell slaughter on their souls. Heaven rest them now!</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Be this the whetstone of your sword: let grief</li>
+  <li>Convert to anger; blunt not the heart, enrage it.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">O, I could play the woman with mine eyes</li>
+  <li>And braggart with my tongue! But, gentle heavens,</li>
+  <li>Cut short all intermission; front to front</li>
+  <li>Bring thou this fiend of Scotland and myself;</li>
+  <li>Within my sword’s length set him; if he ’scape,</li>
+  <li class="number">Heaven forgive him too!</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>This tune goes manly.</li>
+  <li>Come, go we to the king; our power is ready;</li>
+  <li>Our lack is nothing but our leave; Macbeth</li>
+  <li>Is ripe for shaking, and the powers above</li>
+  <li class="number">Put on their instruments. Receive what cheer you may:</li>
+  <li>The night is long that never finds the day.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+</section>
+
+<section class="act">
+
+<h2>ACT V</h2>
+
+<section class="scene">
+
+<h3>SCENE I.  Dunsinane. Ante-room in the castle.</h3>
+
+<div class="stage-direction">Enter a Doctor of Physic and a Waiting-Gentlewoman</div>
+
+<ol data-speaker="Doctor">
+  <li>I have two nights watched with you, but can perceive</li>
+  <li>no truth in your report. When was it she last walked?</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>Since his majesty went into the field, I have seen</li>
+  <li>her rise from her bed, throw her night-gown upon</li>
+  <li class="number">her, unlock her closet, take forth paper, fold it,</li>
+  <li>write upon’t, read it, afterwards seal it, and again</li>
+  <li>return to bed; yet all this while in a most fast sleep.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>A great perturbation in nature, to receive at once</li>
+  <li>the benefit of sleep, and do the effects of</li>
+  <li class="number">watching! In this slumbery agitation, besides her</li>
+  <li>walking and other actual performances, what, at any</li>
+  <li>time, have you heard her say?</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>That, sir, which I will not report after her.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>You may to me: and ’tis most meet you should.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li class="number">Neither to you nor any one; having no witness to</li>
+  <li>confirm my speech.</li>
+  <li class="stage-direction">Enter LADY MACBETH, with a taper</li>
+  <li>Lo you, here she comes! This is her very guise;</li>
+  <li>and, upon my life, fast asleep. Observe her; stand close.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>How came she by that light?</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li class="number">Why, it stood by her: she has light by her</li>
+  <li>continually; ’tis her command.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>You see, her eyes are open.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>Ay, but their sense is shut.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>What is it she does now? Look, how she rubs her hands.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li class="number">It is an accustomed action with her, to seem thus</li>
+  <li>washing her hands: I have known her continue in</li>
+  <li>this a quarter of an hour.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Yet here’s a spot.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Hark! she speaks: I will set down what comes from</li>
+  <li class="number">her, to satisfy my remembrance the more strongly.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Out, damned spot! out, I say! — One: two: why,</li>
+  <li>then, ’tis time to do’t. — Hell is murky! — Fie, my</li>
+  <li>lord, fie! a soldier, and afeard? What need we</li>
+  <li>fear who knows it, when none can call our power to</li>
+  <li class="number">account? — Yet who would have thought the old man</li>
+  <li>to have had so much blood in him.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Do you mark that?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>The thane of Fife had a wife: where is she now? — </li>
+  <li>What, will these hands ne’er be clean? — No more o’</li>
+  <li class="number">that, my lord, no more o’ that: you mar all with</li>
+  <li>this starting.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Go to, go to; you have known what you should not.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>She has spoke what she should not, I am sure of</li>
+  <li>that: heaven knows what she has known.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">Here’s the smell of the blood still: all the</li>
+  <li>perfumes of Arabia will not sweeten this little</li>
+  <li>hand. Oh, oh, oh!</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>What a sigh is there! The heart is sorely charged.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>I would not have such a heart in my bosom for the</li>
+  <li class="number">dignity of the whole body.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Well, well, well — </li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>Pray God it be, sir.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>This disease is beyond my practise: yet I have known</li>
+  <li>those which have walked in their sleep who have died</li>
+  <li class="number">holily in their beds.</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li>Wash your hands, put on your nightgown; look not so</li>
+  <li>pale. — I tell you yet again, Banquo’s buried; he</li>
+  <li>cannot come out on’s grave.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Even so?</li>
+</ol>
+
+<ol data-speaker="LADY MACBETH">
+  <li class="number">To bed, to bed! there’s knocking at the gate:</li>
+  <li>come, come, come, come, give me your hand. What’s</li>
+  <li>done cannot be undone. — To bed, to bed, to bed!</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="Doctor">
+  <li>Will she go now to bed?</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>Directly.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li class="number">Foul whisperings are abroad: unnatural deeds</li>
+  <li>Do breed unnatural troubles: infected minds</li>
+  <li>To their deaf pillows will discharge their secrets:</li>
+  <li>More needs she the divine than the physician.</li>
+  <li>God, God forgive us all! Look after her;</li>
+  <li class="number">Remove from her the means of all annoyance,</li>
+  <li>And still keep eyes upon her. So, good night:</li>
+  <li>My mind she has mated, and amazed my sight.</li>
+  <li>I think, but dare not speak.</li>
+</ol>
+
+<ol data-speaker="Gentlewoman">
+  <li>Good night, good doctor.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE II.  The country near Dunsinane.</h3>
+
+<div class="stage-direction">Drum and colours. Enter MENTEITH, CAITHNESS, ANGUS,
+LENNOX, and Soldiers</div>
+
+<ol data-speaker="MENTEITH">
+  <li>The English power is near, led on by Malcolm,</li>
+  <li>His uncle Siward and the good Macduff:</li>
+  <li>Revenges burn in them; for their dear causes</li>
+  <li>Would to the bleeding and the grim alarm</li>
+  <li class="number">Excite the mortified man.</li>
+</ol>
+
+<ol data-speaker="ANGUS">
+  <li>Near Birnam wood</li>
+  <li>Shall we well meet them; that way are they coming.</li>
+</ol>
+
+<ol data-speaker="CAITHNESS">
+  <li>Who knows if Donalbain be with his brother?</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li>For certain, sir, he is not: I have a file</li>
+  <li class="number">Of all the gentry: there is Siward’s son,</li>
+  <li>And many unrough youths that even now</li>
+  <li>Protest their first of manhood.</li>
+</ol>
+
+<ol data-speaker="MENTEITH">
+  <li>What does the tyrant?</li>
+</ol>
+
+<ol data-speaker="CAITHNESS">
+  <li>Great Dunsinane he strongly fortifies:</li>
+  <li class="number">Some say he’s mad; others that lesser hate him</li>
+  <li>Do call it valiant fury: but, for certain,</li>
+  <li>He cannot buckle his distemper’d cause</li>
+  <li>Within the belt of rule.</li>
+</ol>
+
+<ol data-speaker="ANGUS">
+  <li>Now does he feel</li>
+  <li class="number">His secret murders sticking on his hands;</li>
+  <li>Now minutely revolts upbraid his faith-breach;</li>
+  <li>Those he commands move only in command,</li>
+  <li>Nothing in love: now does he feel his title</li>
+  <li>Hang loose about him, like a giant’s robe</li>
+  <li class="number">Upon a dwarfish thief.</li>
+</ol>
+
+<ol data-speaker="MENTEITH">
+  <li>Who then shall blame</li>
+  <li>His pester’d senses to recoil and start,</li>
+  <li>When all that is within him does condemn</li>
+  <li>Itself for being there?</li>
+</ol>
+
+<ol data-speaker="CAITHNESS">
+  <li class="number">Well, march we on,</li>
+  <li>To give obedience where ’tis truly owed:</li>
+  <li>Meet we the medicine of the sickly weal,</li>
+  <li>And with him pour we in our country’s purge</li>
+  <li>Each drop of us.</li>
+</ol>
+
+<ol data-speaker="LENNOX">
+  <li class="number">Or so much as it needs,</li>
+  <li>To dew the sovereign flower and drown the weeds.</li>
+  <li>Make we our march towards Birnam.</li>
+</ol>
+
+<div class="stage-direction">Exeunt, marching</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE III.  Dunsinane. A room in the castle.</h3>
+
+<div class="stage-direction">Enter MACBETH, Doctor, and Attendants</div>
+
+<ol data-speaker="MACBETH">
+  <li>Bring me no more reports; let them fly all:</li>
+  <li>Till Birnam wood remove to Dunsinane,</li>
+  <li>I cannot taint with fear. What’s the boy Malcolm?</li>
+  <li>Was he not born of woman? The spirits that know</li>
+  <li class="number">All mortal consequences have pronounced me thus:</li>
+  <li>’Fear not, Macbeth; no man that’s born of woman</li>
+  <li>Shall e’er have power upon thee.’ Then fly,</li>
+  <li>false thanes,</li>
+  <li>And mingle with the English epicures:</li>
+  <li class="number">The mind I sway by and the heart I bear</li>
+  <li>Shall never sag with doubt nor shake with fear.</li>
+  <li class="stage-direction">Enter a Servant</li>
+  <li>The devil damn thee black, thou cream-faced loon!</li>
+  <li>Where got’st thou that goose look?</li>
+</ol>
+
+<ol data-speaker="Servant">
+  <li>There is ten thousand — </li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Geese, villain!</li>
+</ol>
+
+<ol data-speaker="Servant">
+  <li>Soldiers, sir.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Go prick thy face, and over-red thy fear,</li>
+  <li>Thou lily-liver’d boy. What soldiers, patch?</li>
+  <li>Death of thy soul! those linen cheeks of thine</li>
+  <li class="number">Are counsellors to fear. What soldiers, whey-face?</li>
+</ol>
+
+<ol data-speaker="Servant">
+  <li>The English force, so please you.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Take thy face hence.</li>
+  <li class="stage-direction">Exit Servant</li>
+  <li>Seyton! — I am sick at heart,</li>
+  <li>When I behold — Seyton, I say! — This push</li>
+  <li class="number">Will cheer me ever, or disseat me now.</li>
+  <li>I have lived long enough: my way of life</li>
+  <li>Is fall’n into the sear, the yellow leaf;</li>
+  <li>And that which should accompany old age,</li>
+  <li>As honour, love, obedience, troops of friends,</li>
+  <li class="number">I must not look to have; but, in their stead,</li>
+  <li>Curses, not loud but deep, mouth-honour, breath,</li>
+  <li>Which the poor heart would fain deny, and dare not. Seyton!</li>
+</ol>
+
+<div class="stage-direction">Enter SEYTON</div>
+
+<ol data-speaker="SEYTON">
+  <li>What is your gracious pleasure?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>What news more?</li>
+</ol>
+
+<ol data-speaker="SEYTON">
+  <li class="number">All is confirm’d, my lord, which was reported.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I’ll fight till from my bones my flesh be hack’d.</li>
+  <li>Give me my armour.</li>
+</ol>
+
+<ol data-speaker="SEYTON">
+  <li>’Tis not needed yet.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I’ll put it on.</li>
+  <li class="number">Send out more horses; skirr the country round;</li>
+  <li>Hang those that talk of fear. Give me mine armour.</li>
+  <li>How does your patient, doctor?</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Not so sick, my lord,</li>
+  <li>As she is troubled with thick coming fancies,</li>
+  <li class="number">That keep her from her rest.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Cure her of that.</li>
+  <li>Canst thou not minister to a mind diseased,</li>
+  <li>Pluck from the memory a rooted sorrow,</li>
+  <li>Raze out the written troubles of the brain</li>
+  <li class="number">And with some sweet oblivious antidote</li>
+  <li>Cleanse the stuff’d bosom of that perilous stuff</li>
+  <li>Which weighs upon the heart?</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li>Therein the patient</li>
+  <li>Must minister to himself.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Throw physic to the dogs; I’ll none of it.</li>
+  <li>Come, put mine armour on; give me my staff.</li>
+  <li>Seyton, send out. Doctor, the thanes fly from me.</li>
+  <li>Come, sir, dispatch. If thou couldst, doctor, cast</li>
+  <li>The water of my land, find her disease,</li>
+  <li class="number">And purge it to a sound and pristine health,</li>
+  <li>I would applaud thee to the very echo,</li>
+  <li>That should applaud again. — Pull’t off, I say. — </li>
+  <li>What rhubarb, cyme, or what purgative drug,</li>
+  <li>Would scour these English hence? Hear’st thou of them?</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li class="number">Ay, my good lord; your royal preparation</li>
+  <li>Makes us hear something.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Bring it after me.</li>
+  <li>I will not be afraid of death and bane,</li>
+  <li>Till Birnam forest come to Dunsinane.</li>
+</ol>
+
+<ol data-speaker="Doctor">
+  <li class="number"><span class="stage-direction">Aside</span>  Were I from Dunsinane away and clear,</li>
+  <li>Profit again should hardly draw me here.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE IV.  Country near Birnam wood.</h3>
+
+<div class="stage-direction">Drum and colours. Enter MALCOLM, SIWARD and YOUNG
+SIWARD, MACDUFF, MENTEITH, CAITHNESS, ANGUS,
+LENNOX, ROSS, and Soldiers, marching</div>
+
+<ol data-speaker="MALCOLM">
+  <li>Cousins, I hope the days are near at hand</li>
+  <li>That chambers will be safe.</li>
+</ol>
+
+<ol data-speaker="MENTEITH">
+  <li>We doubt it nothing.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>What wood is this before us?</li>
+</ol>
+
+<ol data-speaker="MENTEITH">
+  <li class="number">The wood of Birnam.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Let every soldier hew him down a bough</li>
+  <li>And bear’t before him: thereby shall we shadow</li>
+  <li>The numbers of our host and make discovery</li>
+  <li>Err in report of us.</li>
+</ol>
+
+<ol data-speaker="Soldiers">
+  <li class="number">It shall be done.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>We learn no other but the confident tyrant</li>
+  <li>Keeps still in Dunsinane, and will endure</li>
+  <li>Our setting down before ’t.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>’Tis his main hope:</li>
+  <li class="number">For where there is advantage to be given,</li>
+  <li>Both more and less have given him the revolt,</li>
+  <li>And none serve with him but constrained things</li>
+  <li>Whose hearts are absent too.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Let our just censures</li>
+  <li class="number">Attend the true event, and put we on</li>
+  <li>Industrious soldiership.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>The time approaches</li>
+  <li>That will with due decision make us know</li>
+  <li>What we shall say we have and what we owe.</li>
+  <li class="number">Thoughts speculative their unsure hopes relate,</li>
+  <li>But certain issue strokes must arbitrate:</li>
+  <li>Towards which advance the war.</li>
+</ol>
+
+<div class="stage-direction">Exeunt, marching</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE V.  Dunsinane. Within the castle.</h3>
+
+<div class="stage-direction">Enter MACBETH, SEYTON, and Soldiers, with drum
+and colours</div>
+
+<ol data-speaker="MACBETH">
+  <li>Hang out our banners on the outward walls;</li>
+  <li>The cry is still ’They come:’ our castle’s strength</li>
+  <li>Will laugh a siege to scorn: here let them lie</li>
+  <li>Till famine and the ague eat them up:</li>
+  <li class="number">Were they not forced with those that should be ours,</li>
+  <li>We might have met them dareful, beard to beard,</li>
+  <li>And beat them backward home.</li>
+  <li class="stage-direction">A cry of women within</li>
+  <li>What is that noise?</li>
+</ol>
+
+<ol data-speaker="SEYTON">
+  <li>It is the cry of women, my good lord.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">I have almost forgot the taste of fears;</li>
+  <li>The time has been, my senses would have cool’d</li>
+  <li>To hear a night-shriek; and my fell of hair</li>
+  <li>Would at a dismal treatise rouse and stir</li>
+  <li>As life were in’t: I have supp’d full with horrors;</li>
+  <li class="number">Direness, familiar to my slaughterous thoughts</li>
+  <li>Cannot once start me.</li>
+  <li class="stage-direction">Re-enter SEYTON</li>
+  <li>Wherefore was that cry?</li>
+</ol>
+
+<ol data-speaker="SEYTON">
+  <li>The queen, my lord, is dead.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>She should have died hereafter;</li>
+  <li class="number">There would have been a time for such a word.</li>
+  <li>To-morrow, and to-morrow, and to-morrow,</li>
+  <li>Creeps in this petty pace from day to day</li>
+  <li>To the last syllable of recorded time,</li>
+  <li>And all our yesterdays have lighted fools</li>
+  <li class="number">The way to dusty death. Out, out, brief candle!</li>
+  <li>Life’s but a walking shadow, a poor player</li>
+  <li>That struts and frets his hour upon the stage</li>
+  <li>And then is heard no more: it is a tale</li>
+  <li>Told by an idiot, full of sound and fury,</li>
+  <li class="number">Signifying nothing.</li>
+  <li class="stage-direction">Enter a Messenger</li>
+  <li>Thou comest to use thy tongue; thy story quickly.</li>
+</ol>
+
+<ol data-speaker="Messenger">
+  <li>Gracious my lord,</li>
+  <li>I should report that which I say I saw,</li>
+  <li>But know not how to do it.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Well, say, sir.</li>
+</ol>
+
+<ol data-speaker="Messenger">
+  <li>As I did stand my watch upon the hill,</li>
+  <li>I look’d toward Birnam, and anon, methought,</li>
+  <li>The wood began to move.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Liar and slave!</li>
+</ol>
+
+<ol data-speaker="Messenger">
+  <li class="number">Let me endure your wrath, if’t be not so:</li>
+  <li>Within this three mile may you see it coming;</li>
+  <li>I say, a moving grove.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>If thou speak’st false,</li>
+  <li>Upon the next tree shalt thou hang alive,</li>
+  <li class="number">Till famine cling thee: if thy speech be sooth,</li>
+  <li>I care not if thou dost for me as much.</li>
+  <li>I pull in resolution, and begin</li>
+  <li>To doubt the equivocation of the fiend</li>
+  <li>That lies like truth: ’Fear not, till Birnam wood</li>
+  <li class="number">Do come to Dunsinane:’  and now a wood</li>
+  <li>Comes toward Dunsinane. Arm, arm, and out!</li>
+  <li>If this which he avouches does appear,</li>
+  <li>There is nor flying hence nor tarrying here.</li>
+  <li>I gin to be aweary of the sun,</li>
+  <li class="number">And wish the estate o’ the world were now undone.</li>
+  <li>Ring the alarum-bell! Blow, wind! come, wrack!</li>
+  <li>At least we’ll die with harness on our back.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VI.  Dunsinane. Before the castle.</h3>
+
+<div class="stage-direction">Drum and colours. Enter MALCOLM, SIWARD, MACDUFF,
+and their Army, with boughs</div>
+
+<ol data-speaker="MALCOLM">
+  <li>Now near enough: your leafy screens throw down.</li>
+  <li>And show like those you are. You, worthy uncle,</li>
+  <li>Shall, with my cousin, your right-noble son,</li>
+  <li>Lead our first battle: worthy Macduff and we</li>
+  <li class="number">Shall take upon ’s what else remains to do,</li>
+  <li>According to our order.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>Fare you well.</li>
+  <li>Do we but find the tyrant’s power to-night,</li>
+  <li>Let us be beaten, if we cannot fight.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li class="number">Make all our trumpets speak; give them all breath,</li>
+  <li>Those clamorous harbingers of blood and death.</li>
+</ol>
+
+<div class="stage-direction">Exeunt</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VII.  Another part of the field.</h3>
+
+<div class="stage-direction">Alarums. Enter MACBETH</div>
+
+<ol data-speaker="MACBETH">
+  <li>They have tied me to a stake; I cannot fly,</li>
+  <li>But, bear-like, I must fight the course. What’s he</li>
+  <li>That was not born of woman? Such a one</li>
+  <li>Am I to fear, or none.</li>
+</ol>
+
+<div class="stage-direction">Enter YOUNG SIWARD</div>
+
+<ol data-speaker="YOUNG SIWARD">
+  <li class="number">What is thy name?</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Thou’lt be afraid to hear it.</li>
+</ol>
+
+<ol data-speaker="YOUNG SIWARD">
+  <li>No; though thou call’st thyself a hotter name</li>
+  <li>Than any is in hell.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>My name’s Macbeth.</li>
+</ol>
+
+<ol data-speaker="YOUNG SIWARD">
+  <li class="number">The devil himself could not pronounce a title</li>
+  <li>More hateful to mine ear.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>No, nor more fearful.</li>
+</ol>
+
+<ol data-speaker="YOUNG SIWARD">
+  <li>Thou liest, abhorred tyrant; with my sword</li>
+  <li>I’ll prove the lie thou speak’st.</li>
+</ol>
+
+<div class="stage-direction">They fight and YOUNG SIWARD is slain</div>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Thou wast born of woman</li>
+  <li>But swords I smile at, weapons laugh to scorn,</li>
+  <li>Brandish’d by man that’s of a woman born.</li>
+</ol>
+
+<div class="stage-direction">Exit</div>
+
+<div class="stage-direction">Alarums. Enter MACDUFF</div>
+
+<ol data-speaker="MACDUFF">
+  <li>That way the noise is. Tyrant, show thy face!</li>
+  <li>If thou be’st slain and with no stroke of mine,</li>
+  <li class="number">My wife and children’s ghosts will haunt me still.</li>
+  <li>I cannot strike at wretched kerns, whose arms</li>
+  <li>Are hired to bear their staves: either thou, Macbeth,</li>
+  <li>Or else my sword with an unbatter’d edge</li>
+  <li>I sheathe again undeeded. There thou shouldst be;</li>
+  <li class="number">By this great clatter, one of greatest note</li>
+  <li>Seems bruited. Let me find him, fortune!</li>
+  <li>And more I beg not.</li>
+</ol>
+
+<div class="stage-direction">Exit. Alarums</div>
+
+<div class="stage-direction">Enter MALCOLM and SIWARD</div>
+
+<ol data-speaker="SIWARD">
+  <li>This way, my lord; the castle’s gently render’d:</li>
+  <li>The tyrant’s people on both sides do fight;</li>
+  <li class="number">The noble thanes do bravely in the war;</li>
+  <li>The day almost itself professes yours,</li>
+  <li>And little is to do.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>We have met with foes</li>
+  <li>That strike beside us.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li class="number">Enter, sir, the castle.</li>
+</ol>
+
+<div class="stage-direction">Exeunt. Alarums</div>
+
+</section>
+
+<section class="scene">
+
+<h3>SCENE VIII.  Another part of the field.</h3>
+
+<div class="stage-direction">Enter MACBETH</div>
+
+<ol data-speaker="MACBETH">
+  <li>Why should I play the Roman fool, and die</li>
+  <li>On mine own sword? whiles I see lives, the gashes</li>
+  <li>Do better upon them.</li>
+</ol>
+
+<div class="stage-direction">Enter MACDUFF</div>
+
+<ol data-speaker="MACDUFF">
+  <li>Turn, hell-hound, turn!</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li class="number">Of all men else I have avoided thee:</li>
+  <li>But get thee back; my soul is too much charged</li>
+  <li>With blood of thine already.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>I have no words:</li>
+  <li>My voice is in my sword: thou bloodier villain</li>
+  <li class="number">Than terms can give thee out!</li>
+</ol>
+
+<div class="stage-direction">They fight</div>
+
+<ol data-speaker="MACBETH">
+  <li>Thou losest labour:</li>
+  <li>As easy mayst thou the intrenchant air</li>
+  <li>With thy keen sword impress as make me bleed:</li>
+  <li>Let fall thy blade on vulnerable crests;</li>
+  <li class="number">I bear a charmed life, which must not yield,</li>
+  <li>To one of woman born.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Despair thy charm;</li>
+  <li>And let the angel whom thou still hast served</li>
+  <li>Tell thee, Macduff was from his mother’s womb</li>
+  <li class="number">Untimely ripp’d.</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>Accursed be that tongue that tells me so,</li>
+  <li>For it hath cow’d my better part of man!</li>
+  <li>And be these juggling fiends no more believed,</li>
+  <li>That palter with us in a double sense;</li>
+  <li class="number">That keep the word of promise to our ear,</li>
+  <li>And break it to our hope. I’ll not fight with thee.</li>
+</ol>
+
+<ol data-speaker="MACDUFF">
+  <li>Then yield thee, coward,</li>
+  <li>And live to be the show and gaze o’ the time:</li>
+  <li>We’ll have thee, as our rarer monsters are,</li>
+  <li class="number">Painted on a pole, and underwrit,</li>
+  <li>’Here may you see the tyrant.’</li>
+</ol>
+
+<ol data-speaker="MACBETH">
+  <li>I will not yield,</li>
+  <li>To kiss the ground before young Malcolm’s feet,</li>
+  <li>And to be baited with the rabble’s curse.</li>
+  <li class="number">Though Birnam wood be come to Dunsinane,</li>
+  <li>And thou opposed, being of no woman born,</li>
+  <li>Yet I will try the last. Before my body</li>
+  <li>I throw my warlike shield. Lay on, Macduff,</li>
+  <li>And damn’d be him that first cries, ’Hold, enough!’</li>
+</ol>
+
+<div class="stage-direction">Exeunt, fighting. Alarums</div>
+
+<div class="stage-direction">Retreat. Flourish. Enter, with drum and colours,
+MALCOLM, SIWARD, ROSS, the other Thanes, and Soldiers</div>
+
+<ol data-speaker="MALCOLM">
+  <li class="number">I would the friends we miss were safe arrived.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>Some must go off: and yet, by these I see,</li>
+  <li>So great a day as this is cheaply bought.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>Macduff is missing, and your noble son.</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Your son, my lord, has paid a soldier’s debt:</li>
+  <li class="number">He only lived but till he was a man;</li>
+  <li>The which no sooner had his prowess confirm’d</li>
+  <li>In the unshrinking station where he fought,</li>
+  <li>But like a man he died.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>Then he is dead?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li class="number">Ay, and brought off the field: your cause of sorrow</li>
+  <li>Must not be measured by his worth, for then</li>
+  <li>It hath no end.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>Had he his hurts before?</li>
+</ol>
+
+<ol data-speaker="ROSS">
+  <li>Ay, on the front.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li class="number">Why then, God’s soldier be he!</li>
+  <li>Had I as many sons as I have hairs,</li>
+  <li>I would not wish them to a fairer death:</li>
+  <li>And so, his knell is knoll’d.</li>
+</ol>
+
+<ol data-speaker="MALCOLM">
+  <li>He’s worth more sorrow,</li>
+  <li class="number">And that I’ll spend for him.</li>
+</ol>
+
+<ol data-speaker="SIWARD">
+  <li>He’s worth no more</li>
+  <li>They say he parted well, and paid his score:</li>
+  <li>And so, God be with him! Here comes newer comfort.</li>
+</ol>
+
+<div class="stage-direction">Re-enter MACDUFF, with MACBETH’s head</div>
+
+<ol data-speaker="MACDUFF">
+  <li>Hail, king! for so thou art: behold, where stands</li>
+  <li class="number">The usurper’s cursed head: the time is free:</li>
+  <li>I see thee compass’d with thy kingdom’s pearl,</li>
+  <li>That speak my salutation in their minds;</li>
+  <li>Whose voices I desire aloud with mine:</li>
+  <li>Hail, King of Scotland!</li>
+</ol>
+
+<ol data-speaker="ALL">
+  <li class="number">Hail, King of Scotland!</li>
+</ol>
+
+<div class="stage-direction">Flourish</div>
+
+<ol data-speaker="MALCOLM">
+  <li>We shall not spend a large expense of time</li>
+  <li>Before we reckon with your several loves,</li>
+  <li>And make us even with you. My thanes and kinsmen,</li>
+  <li>Henceforth be earls, the first that ever Scotland</li>
+  <li class="number">In such an honour named. What’s more to do,</li>
+  <li>Which would be planted newly with the time,</li>
+  <li>As calling home our exiled friends abroad</li>
+  <li>That fled the snares of watchful tyranny;</li>
+  <li>Producing forth the cruel ministers</li>
+  <li class="number">Of this dead butcher and his fiend-like queen,</li>
+  <li>Who, as ’tis thought, by self and violent hands</li>
+  <li>Took off her life; this, and what needful else</li>
+  <li>That calls upon us, by the grace of Grace,</li>
+  <li>We will perform in measure, time and place:</li>
+  <li class="number">So, thanks to all at once and to each one,</li>
+  <li>Whom we invite to see us crown’d at Scone.</li>
+</ol>
+
+<div class="stage-direction">Flourish. Exeunt</div>
+
+</section>
+
+</section>
+
+</div>
+
+</body>
+
+</html>

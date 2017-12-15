@@ -21,19 +21,26 @@ limitations under the License.
 const queryInput = document.getElementById('query');
 // Search for products whenever query input text changes
 queryInput.oninput = doSearch;
-const resultsList = document.getElementById('results');
+const matchesList = document.getElementById('matches');
+const textIframe = document.querySelector('iframe');
 
 const SEARCH_OPTIONS = {
   fields: {
     t: {}
   },
   bool: 'AND',
-  expand: true // true: do not require whole-word matches only
+  expand: true // true means matches are not whole-word-only
 };
 
 var index;
 
 const INDEX_FILE = 'data/index.json';
+const HTML_DIR = '../html/';
+
+var timeout = null;
+const DEBOUNCE_DELAY = 300;
+
+// for act numbers in formatLocation()
 
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register('sw.js').catch(function(error) {
@@ -59,54 +66,114 @@ fetch(INDEX_FILE).then(response => {
   queryInput.focus();
 });
 
-// Search for products whenever query input text changes
-queryInput.oninput = doSearch;
-var timeout = null;
-const DEBOUNCE_DELAY = 200;
 
 function doSearch() {
-  resultsList.textContent = '';
+  matchesList.textContent = '';
   const query = queryInput.value;
-  if (query.length < 2) {
+  if (query.length < 3) {
     return;
   }
   clearTimeout(timeout);
   timeout = setTimeout(function() {
     console.time(`Do search for ${query}`);
-    const results = index.search(query, SEARCH_OPTIONS);
-    if (results.length > 0) {
-      displayMatches(results, query);
+    const matches = index.search(query, SEARCH_OPTIONS);
+    if (matches.length > 0) {
+      hide(textIframe);
+      show(matchesList);
+      highlighttches(matches, query);
     }
     console.timeEnd(`Do search for ${query}`);
   }, DEBOUNCE_DELAY);
 }
 
-function displayMatches(results, query) {
+// Display a list of matched lines, stage directions and scene descriptions
+function highlighttches(matches, query) {
   const exactPhrase = new RegExp(query, 'i');
   // keep exact matches only
-  // results = results.filter(function(result) {
-  //   return exactPhrase.test(result.doc.t);
+  // matches = matches.filter(function(match) {
+  //   return exactPhrase.test(match.doc.t);
   // });
   // prefer exact matches
-  results = results.sort((a, b) => {
+  matches = matches.sort((a, b) => {
     return exactPhrase.test(a.doc.t) ? -1 : exactPhrase.test(b.doc.t) ? 1 : 0;
   });
   // sort not necessary
-  // results = results.sort((a, b) =>
+  // matches = matches.sort((a, b) =>
   // a.doc.l.localeCompare(b.doc.l, {numeric: true}));
-  for (const result of results) {
-    addResult(result.doc);
+  for (const match of matches) {
+    addMatch(match.doc);
   }
 }
 
-function addResult(match) {
-  const resultElement = document.createElement('li');
-  resultElement.classList.add('match');
-  resultElement.dataset.location = match.l;
-  const text = match.s ? match.t : `<em>${match.t}</em>`;
-  resultElement.appendChild(document.createTextNode(text));
-  resultElement.onclick = function() {
-    console.log(match.id);
+// Add an individual match element to the list of matches
+function addMatch(match) {
+  const matchElement = document.createElement('li');
+  matchElement.dataset.location = match.l; // location used to find match
+  matchElement.dataset.citation = formatCitation(match); // displayed location
+  if (match.i) { // stage direction matches have an index
+    matchElement.dataset.index = match.i;
+  }
+  // add em tags if match is a spoken line, i.e. has a speaker (match.s)
+  const html = match.s ? match.t : `<em>${match.t}</em>`;
+  matchElement.innerHTML = html;
+  matchElement.onclick = function() {
+    displayText(match);
   };
-  resultsList.appendChild(resultElement);
+  matchesList.appendChild(matchElement);
+}
+
+// Display the appropriate text and location when a user taps/clicks on a match
+function displayText(match) {
+  const location = match.l.split('.'); // l represents location, e.g. Ham.3.3.2
+  textIframe.src = HTML_DIR + location[0] + '.html';
+  textIframe.onload = function() {
+    const actIndex = location[1];
+    const sceneIndex = location[2];
+    const textIframeDoc = textIframe.contentWindow.document;
+    const act = textIframeDoc.querySelectorAll('.act')[actIndex];
+    // console.log('acts', textIframeDoc.querySelectorAll('section.act'));
+    const scene = act.querySelectorAll('section.scene')[sceneIndex];
+    // text matches are lines, scene titles or stage directions
+    if (match.s) { // if the match has a speaker (match.s) it's a line
+      const lineIndex = location[3];
+      // some list items in speeches are stage directions
+      highlightMatch(scene, 'li:not(.stage-direction)', lineIndex);
+    } else if (match.r === 's') { // match is a stage direction
+      highlightMatch(scene, '.stage-direction', match.i);
+    } else if (match.r === 't') {  // match is a scene title, only ever one
+      highlightMatch(scene, '.scene-description', 0);
+    }
+  };
+  hide(matchesList);
+  show(textIframe);
+}
+
+function highlightMatch(scene, selector, elementIndex) {
+  console.log('scene, selector, elementIndex: ', scene, selector, elementIndex);
+  const element = scene.querySelectorAll(selector)[elementIndex];
+  element.classList.add('highlight');
+  element.scrollIntoView({inline: 'center'});
+}
+
+// Format location for display to the right of each match
+function formatCitation(match) {
+  const location = match.l.split('.');
+  const play = location[0];
+  const actIndex = location[1];
+  const actNum = +actIndex + 1;
+  const sceneIndex = location[2];
+  const sceneNum = +sceneIndex + 1;
+  const lineIndex = location[3]; // undef for stage dirs and scene descriptions
+  return lineIndex ? `${play}.${actNum}.${sceneNum}.${+lineIndex + 1}` :
+    `${play}.${actNum}.${sceneNum}`;
+}
+
+// Utility functions
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function show(element) {
+  element.classList.remove('hidden');
 }

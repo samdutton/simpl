@@ -20,19 +20,17 @@ limitations under the License.
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,minimum-scale=1.0">
+<meta itemprop="image" content="images/icons/icon192.jpg">
+<meta itemprop="name" content="Full text search for Shakespeare's plays">
+<meta name="author" content="//samdutton.com">
+<meta name="description" content="Full text search for Shakespeare's plays" />
+<meta name="theme-color" content="#c83f3f">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Elasticlunr search</title>
-
-<meta id="theme-color" name="theme-color" content="#c83f3f">
 <link rel="icon" href="images/icons/icon192.jpg">
 <link rel="manifest" href="manifest.json">
 
-
-<meta name="description" content="Full text search for Shakespeare's plays" />
-<meta name="author" content="//samdutton.com">
-<meta itemprop="name" content="Full text search for Shakespeare's plays">
-<meta itemprop="image" content="images/icons/icon192.jpg">
+<title>Elasticlunr search</title>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108761558-1"></script>
 <script>
@@ -57,9 +55,11 @@ limitations under the License.
   <h1>Elasticlunr search</h1>
 
   <label for="query">Search:</label>
-  <input id="query" placeholder="" disabled>
+  <input id="query" placeholder="" autocomplete disabled>
 
-  <ol id="results"></ol>
+  <ol id="matches"></ol>
+
+  <iframe class="hidden"></iframe>
 
 </div>
 
