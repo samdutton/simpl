@@ -151,7 +151,7 @@ function displayText(match) {
       highlightMatch(scene, 'li:not(.stage-direction)', lineIndex);
     } else if (match.r === 's') { // match is a stage direction
       highlightMatch(scene, '.stage-direction', match.i);
-    } else if (match.r === 't') {  // match is a scene title, only ever one
+    } else if (match.r === 't') { // match is a scene title, only ever one
       highlightMatch(scene, '.scene-description', 0);
     }
   };
