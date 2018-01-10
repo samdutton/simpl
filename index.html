@@ -319,6 +319,14 @@ ga('send', 'pageview');
 
     <a href="https://github.com/samdutton/simpl/blob/gh-pages/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
+    <script>
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('sw.js').catch(function(error) {
+    console.error('Unable to register service worker.', error);
+  });
+}
+    </script>
+
   </div>
   <!-- container -->
 
