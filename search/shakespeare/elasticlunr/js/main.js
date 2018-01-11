@@ -135,6 +135,7 @@ function addMatch(match) {
 
 // Display the appropriate text and location when a user taps/clicks on a match
 function displayText(match) {
+  hide(matchesList);
   const location = match.l.split('.'); // l represents location, e.g. Ham.3.3.2
   textIframe.src = HTML_DIR + location[0] + '.html';
   textIframe.onload = function() {
@@ -155,7 +156,6 @@ function displayText(match) {
       highlightMatch(scene, '.scene-description', 0);
     }
   };
-  hide(matchesList);
   show(textIframe);
 }
 
@@ -163,7 +163,7 @@ function highlightMatch(scene, selector, elementIndex) {
   console.log('scene, selector, elementIndex: ', scene, selector, elementIndex);
   const element = scene.querySelectorAll(selector)[elementIndex];
   element.classList.add('highlight');
-  element.scrollIntoView({inline: 'center'});
+  element.scrollIntoView({behviour: 'smooth', inline: 'center'});
 }
 
 // Format location for display to the right of each match
@@ -179,7 +179,7 @@ function formatCitation(match) {
     `${play}.${actNum}.${sceneNum}`;
 }
 
-//window.onscroll =
+// window.onscroll =
 
 // Utility functions
 

@@ -6,7 +6,7 @@
 }
 
 .shadow-bottom {
-  box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
+  box-shadow: 0 19px 19px -8px rgba(100,100,100,0.3);
   moz-box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
 }
 
@@ -28,12 +28,12 @@ div#container {
 
 div#query-container {
   background: white;
-  margin: 0 0 24px -4px;
-  padding: 20px 0 20px 2px;
+  margin: 0 0 24px -2px;
+  padding: 10px 0 4px 2px;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  width: calc(100% + 0px);
+  width: calc(100% + 4px);
   z-index: 1;
 }
 
@@ -212,6 +212,7 @@ ol.speech {
 ol#matches {
   max-height: calc(100% - 170px);
   padding: 0;
+  width: calc(100% + 6px);
 }
 
 ol#results {
