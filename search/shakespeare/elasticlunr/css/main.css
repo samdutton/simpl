@@ -1,7 +1,13 @@
 .hidden {
   height: 0; /* to enable opacity transition: doesn't work if setting display */
+  margin: 0;
   opacity: 0;
   overflow: hidden;
+}
+
+.shadow-bottom {
+  box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
+  moz-box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
 }
 
 body {
@@ -18,6 +24,17 @@ div#container {
   height: 100%;
   margin: 0 auto 0 auto;
   max-width: 550px;
+}
+
+div#query-container {
+  background: white;
+  margin: 0 0 24px -4px;
+  padding: 20px 0 20px 2px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  width: calc(100% + 0px);
+  z-index: 1;
 }
 
 div#scene-description {
@@ -50,7 +67,7 @@ div.stage-direction + div.stage-direction {
 h1 {
   border-bottom: 1px solid #c83f3f;
   color: black;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.2em;
   margin: 0 0 1em 0;
@@ -91,11 +108,11 @@ iframe {
 input#query {
   color: black;
   font-family: Palatino, serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
-  margin: 0 0 1em 0;
   padding: 4px;
-  width: calc(100% - 80px);
+  top: 0;
+  width: calc(100% - 15px);
 }
 
 label {
@@ -194,7 +211,6 @@ ol.speech {
 
 ol#matches {
   max-height: calc(100% - 170px);
-  overflow: scroll;
   padding: 0;
 }
 
@@ -247,9 +263,6 @@ strong {
 @media (min-width: 450px) {
   div.stage-direction {
     font-size: 14px;
-  }
-  input#query {
-    width: 210px;
   }
   h1 {
     font-size: 24px;
