@@ -101,7 +101,7 @@ iframe {
   height: calc(100% - 100px);
   opacity: 1;
   overflow: scroll;
-  transition: opacity 2.5s;
+/* transition: opacity .5s;*/
   width: 100%;
 }
 
