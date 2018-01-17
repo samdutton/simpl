@@ -44,17 +44,17 @@ const DEBOUNCE_DELAY = 300;
 //   });
 // }
 
-window.addEventListener('popstate', function(event) {
-  console.log('popstate event', event);
-});
+// window.addEventListener('popstate', function(event) {
+//   console.log('popstate event', event);
+// });
 
-window.addEventListener('hashchange', function(event) {
-  console.log('hashchange event', event);
-});
+// window.addEventListener('hashchange', function(event) {
+//   console.log('hashchange event', event);
+// });
 
-window.addEventListener('beforeunload', function(event) {
-  console.log('beforeunload event', event);
-});
+// window.addEventListener('beforeunload', function(event) {
+//   console.log('beforeunload event', event);
+// });
 
 // Get and load index data
 console.log('Fetching index...');
@@ -94,7 +94,7 @@ queryInput.oninput = function() {
     }
     console.timeEnd(`Do search for ${query}`);
   }, DEBOUNCE_DELAY);
-  history.pushState(null, null, `${window.location.origin}#${query}`);
+  // history.pushState(null, null, `${window.location.origin}#${query}`);
   document.title = `Search Shakespeare: ${query}`;
 };
 
@@ -138,7 +138,7 @@ function addMatch(match) {
 function displayText(match) {
   hide(matchesList);
   // match.l is a citation for a play or poem, e.g. Ham.3.3.2
-  history.pushState(null, null, `${window.location.origin}/${match.l}`);
+  // history.pushState(null, null, `${window.location.origin}/${match.l}`);
   document.title = `Search Shakespeare: ${match.l}`;
   const location = match.l.split('.');
   const play = location[0];
