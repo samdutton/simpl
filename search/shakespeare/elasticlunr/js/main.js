@@ -88,7 +88,7 @@ queryInput.oninput = function() {
     console.time(`Do search for ${query}`);
     const matches = index.search(query, SEARCH_OPTIONS);
     if (matches.length > 0) {
-      hide(textIframe); // hide the iframe for play or poem texts
+      hide(textIframe); // hide the iframe used to display play or poem texts
       displayMatches(matches, query);
       show(matchesList);
     }
@@ -141,25 +141,25 @@ function displayText(match) {
   // history.pushState(null, null, `${window.location.origin}/${match.l}`);
   document.title = `Search Shakespeare: ${match.l}`;
   const location = match.l.split('.');
-  const play = location[0];
-  textIframe.src = `${HTML_DIR}${play}.html`;
+  const text = location[0];
+  textIframe.src = `${HTML_DIR}${text}.html`;
   textIframe.onload = function() {
-    const actIndex = location[1];
-    const sceneIndex = location[2];
-    const textIframeDoc = textIframe.contentWindow.document;
-    const act = textIframeDoc.querySelectorAll('.act')[actIndex];
-    // console.log('acts', textIframeDoc.querySelectorAll('.act'));
-    const scene = act.querySelectorAll('section.scene')[sceneIndex];
-    // text matches are lines, scene titles or stage directions
-    if (match.s) { // if the match has a speaker (match.s) it's a spoken line
-      const lineIndex = location[3];
-      // some list items in speeches are stage directions
-      highlightMatch(scene, 'li:not(.stage-direction)', lineIndex);
-    } else if (match.r === 's') { // match is a stage direction
-      highlightMatch(scene, '.stage-direction', match.i);
-    } else if (match.r === 't') { // match is a scene title, only ever one
-      highlightMatch(scene, '.scene-description', 0);
-    }
+    // const actIndex = location[1];
+    // const sceneIndex = location[2];
+    // const textIframeDoc = textIframe.contentWindow.document;
+    // const act = textIframeDoc.querySelectorAll('.act')[actIndex];
+    // // console.log('acts', textIframeDoc.querySelectorAll('.act'));
+    // const scene = act.querySelectorAll('section.scene')[sceneIndex];
+    // // text matches are lines, scene titles or stage directions
+    // if (match.s) { // if the match has a speaker (match.s) it's a spoken line
+    //   const lineIndex = location[3];
+    //   // some list items in speeches are stage directions
+    //   highlightMatch(scene, 'li:not(.stage-direction)', lineIndex);
+    // } else if (match.r === 's') { // match is a stage direction
+    //   highlightMatch(scene, '.stage-direction', match.i);
+    // } else if (match.r === 't') { // match is a scene title, only ever one
+    //   highlightMatch(scene, '.scene-description', 0);
+    // }
     show(textIframe);
   };
 }
