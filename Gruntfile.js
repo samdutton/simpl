@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 
     htmlhint: {
       default: {
-        src: ['**/*.html', '!node_modules/**/*']
+        src: ['**/*.html', '!node_modules/**/*', '!**/html/*']
       }
     }
 
