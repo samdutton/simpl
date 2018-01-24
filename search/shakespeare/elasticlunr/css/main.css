@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+.highlight {
+  color: #c83f3f !important;
+}
+
 .shadow-bottom {
   box-shadow: 0 19px 19px -8px rgba(100,100,100,0.3);
   moz-box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
@@ -29,9 +33,8 @@ div#container {
 div#query-container {
   background: white;
   margin: 0 0 24px -2px;
-  padding: 10px 0 4px 2px;
+  padding: 10px 0 10px 2px;
   position: sticky;
-  position: -webkit-sticky;
   top: 0;
   width: calc(100% + 4px);
   z-index: 1;
@@ -60,9 +63,9 @@ div.stage-direction {
   text-indent: 30px;
 }
 
-div.stage-direction + div.stage-direction {
+/*div.stage-direction + div.stage-direction {
   margin-top: -20px;
-}
+}*/
 
 h1 {
   border-bottom: 1px solid #c83f3f;
@@ -159,6 +162,13 @@ ol#matches li::after {
   line-height: 1.5em;
 }
 
+.scene li {
+  line-height: 1.4em;
+  margin: 0 0 2px 20px;
+  padding: 0 30px 0 32px;
+  text-indent: -20px;
+}
+
 .speech li {
   font-size: 14px;
   line-height: 1.4em;
@@ -180,23 +190,25 @@ ol#matches li::after {
   position: relative;
 }
 
-.speech li.speaker {
-  color: black;
-  font-size: 13px;
-  letter-spacing: 1px;
-  padding: 3px 0 0 0;
-  text-transform: uppercase;
-}
-
-.speech li.stage-direction {
+.scene li.stage-direction {
   color: black;
   counter-increment: none;
   font-style: italic;
   line-height: 1.4em;
-  list-style-type:none;
+  list-style-type: none;
   margin: 0.8em 0 0.8em 50px;
   padding: 0;
   text-indent: 20px;
+}
+
+ol[data-speaker]:before {
+  color: black;
+  content: attr(data-speaker);
+  display: block;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
 }
 
 ol.persona-group {
@@ -255,6 +267,30 @@ section#preamble {
   border-bottom: 1px solid #c83f3f;
   margin: 0 0 2.4em 0;
   padding: 0 0 1em 0;
+}
+
+li span {
+  cursor: pointer;
+}
+
+li span:hover {
+  background-color: yellow;
+}
+
+span.stage-direction {
+  color: black;
+  font-style: italic;
+  line-height: 1.4em;
+  margin: 0.8em 0 0.8em 50px;
+  padding: 0;
+  text-indent: 20px;
+}
+span.stage-direction:before {
+  content: '(';
+}
+
+span.stage-direction:after {
+  content: ')';
 }
 
 strong {
