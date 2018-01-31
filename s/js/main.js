@@ -468,7 +468,7 @@ function addClickHandler(element, videoId, start) {
     var iframe = document.getElementById('iframe_' + videoId);
     // iframe src isn't set until details.video is opened
     if (iframe.src === '') {
-      iframe.src = 'http://www.youtube.com/embed/' + videoId +
+      iframe.src = 'https://www.youtube.com/embed/' + videoId +
       '?enablejsapi=1&start=' + start + '&autoplay=1';
     } else {
       tellPlayer(iframe, 'seekTo', [start]);
