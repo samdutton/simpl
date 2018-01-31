@@ -316,7 +316,7 @@ function addVideoDetails(videoDiv, video) {
   details.appendChild(iframe);
   details.ontoggle = function() {
     if (iframe.src === '') {
-      iframe.src = 'http://www.youtube.com/embed/' + video.id +
+      iframe.src = 'https://www.youtube.com/embed/' + video.id +
       '?enablejsapi=1';
     }
     if (!this.open) {
