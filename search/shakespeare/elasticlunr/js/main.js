@@ -164,11 +164,11 @@ function displayText(match, query) {
   hide(matchesList);
   // add history entry for the query when the user has tapped/clicked a match
   history.pushState({isSearchResults: true}, null,
-    `${window.location.origin}#${query}`);
+      `${window.location.origin}#${query}`);
   // match.l is a citation for a play or poem, e.g. Ham.3.3.2, Son.4.11, Ven.140
   // scene title matches only have act and scene number, e.g. Ham.3.3
   history.pushState({isSearchResults: false}, null,
-    `${window.location.origin}/${match.l}`);
+    `${window.location.origin}#${match.l}`);
   document.title = `Search Shakespeare: ${match.l}`;
   const location = match.l.split('.');
   const text = location[0];
@@ -186,7 +186,9 @@ function displayText(match, query) {
 // so they can click on a word to search for it.
 function addWordSearch(hoverEvent) {
   const el = hoverEvent.target;
-  if (el.nodeName === 'LI') { // hover events are also fired by the parent ol
+  // hover events are also fired by the parent
+  // plays and sonnets use <li> for each line; poems use <p>
+  if (el.nodeName === 'LI' || el.nodeName === 'P') {
     el.innerHTML = el.innerText.replace(/([\w]+)/g, '<span>$1</span>');
     el.onclick = spanClickEvent => {
       const word = spanClickEvent.target.textContent;
@@ -215,16 +217,16 @@ function highlightMatch(match, location) {
     } else if (match.r === 't') { // match is a scene title, only ever one
       highlightLine(scene, '.scene-description', 0);
     }
-  } else { // match is a sonnet or other
+  } else { // match is a sonnet or other poem
     // location for sonnets has three parts, e.g. Son.4.11
     // location for other poems only has two parts, e.g. Ven.140
     // Son.html contains all the sonnets; other poems each have their own file
     const isSonnet = location.length === 3;
     const poemElement = isSonnet ?
-      textDiv.querySelectorAll('section')[location[1]] :
-      textDiv.querySelector('ol'); // poems currently only single <ol>
+      textDiv.querySelectorAll('section')[location[1]] : textDiv;
     const lineIndex = isSonnet ? location[2] : location[1];
-    highlightLine(poemElement, 'li', lineIndex);
+    // sonnets are each an <ol> with an <li> per line, whereas poems use <p>
+    highlightLine(poemElement, 'li, p', lineIndex);
   }
   show(textDiv);
 }
