@@ -19,73 +19,82 @@ limitations under the License.
 <html lang="en">
 <head>
 
-  <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-  <meta name="author" content="//samdutton.com">  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-  <meta itemprop="image" content="/images/icons/icon192.png">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#fff">
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-  <base target="_blank">
+<base target="_blank">
 
-  <title>RTCPeerConnection</title>
+<title>RTCPeerConnection</title>
 
-  <link rel="stylesheet" href="../css/main.css" />
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
 
-  <style>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<link rel="stylesheet" href="../css/main.css">
+
+<style>
+  button {
+    margin: 0 20px 0 0;
+    width: 85.9px;
+  }
+
+  button#hangupButton {
+    margin: 0;
+  }
+
+  p.borderBelow {
+    margin: 0 0 1.5em 0;
+    padding: 0 0 1.5em 0;
+  }
+
+  video {
+    height: 225px;
+    margin: 0 0 20px 0;
+    vertical-align: top;
+    width: calc(50% - 13px);
+  }
+
+  video#localVideo {
+    margin: 0 20px 20px 0;
+  }
+
+  @media (max-width: 400px) {
+
     button {
-      margin: 0 20px 0 0;
-      width: 85.9px;
+      width: 83px;
     }
 
-    button#hangupButton {
-      margin: 0;
-    }
-
-    p.borderBelow {
-      margin: 0 0 1.5em 0;
-      padding: 0 0 1.5em 0;
+    button {
+      margin: 0 11px 10px 0;
     }
 
     video {
-      height: 225px;
-      margin: 0 0 20px 0;
-      vertical-align: top;
-      width: calc(50% - 13px);
+      height: 90px;
+      margin: 0 0 10px 0;
+      width: calc(50% - 7px);
     }
 
     video#localVideo {
-      margin: 0 20px 20px 0;
+      margin: 0 10px 20px 0;
     }
 
-    @media (max-width: 400px) {
-
-      button {
-        width: 83px;
-      }
-
-      button {
-        margin: 0 11px 10px 0;
-      }
-
-      video {
-        height: 90px;
-        margin: 0 0 10px 0;
-        width: calc(50% - 7px);
-      }
-
-      video#localVideo {
-        margin: 0 10px 20px 0;
-      }
-
-    }
-  </style>
+  }
+</style>
 
 </head>
 
 <body>
-
 
   <div id="container">
 
@@ -115,8 +124,6 @@ limitations under the License.
     <a href="https://github.com/samdutton/simpl/blob/gh-pages/rtcpeerconnection" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
   </div>
-
-  <script src="../js/lib/ga.js"></script>
 
 </body>
 

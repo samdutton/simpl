@@ -19,110 +19,108 @@ limitations under the License.
 <html lang="en">
   <head>
 
-    <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-    <meta name="author" content="//samdutton.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-    <meta itemprop="image" content="/images/icons/icon192.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#fff">
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-    <base target="_blank">
+<base target="_blank">
 
-    <title>Media queries</title>
+<title>Media queries</title>
 
-    <link rel="stylesheet" href="../css/main.css" />
+<link rel="stylesheet" href="../css/main.css">
 
-    <style>
-    #mediaQueries p {
-      display: none;
-    }
+<style>
+#mediaQueries p {
+  display: none;
+}
 
-    @media (min-width: 0px) and (max-width: 299px) {
-      #mediaQueries p#gt0 {
-        display: block;
-      }
-    }
-    @media (min-width: 300px) and (max-width: 399px) {
-      #mediaQueries p#gt300 {
-        display: block;
-      }
-    }
-    @media (min-width: 400px) and (max-width: 499px) {
-      #mediaQueries p#gt400 {
-        display: block;
-      }
-    }
-    @media (min-width: 500px) and (max-width: 599px) {
-      #mediaQueries p#gt500 {
-        display: block;
-      }
-    }
-    @media (min-width: 600px) and (max-width: 699px) {
-      #mediaQueries p#gt600 {
-        display: block;
-      }
-    }
-    @media (min-width: 700px) and (max-width: 799px) {
-      #mediaQueries p#gt700 {
-        display: block;
-      }
-    }
-    @media (min-width: 800px) and (max-width: 899px) {
-      #mediaQueries p#gt800 {
-        display: block;
-      }
-    }
-    @media (min-width: 900px) and (max-width: 999px) {
-      #mediaQueries p#gt900 {
-        display: block;
-      }
-    }
-    @media (min-width: 1000px) {
-      #mediaQueries p#gt1000 {
-        display: block;
-      }
-    }
-    </style>
+@media (min-width: 0px) and (max-width: 299px) {
+  #mediaQueries p#gt0 {
+    display: block;
+  }
+}
+@media (min-width: 300px) and (max-width: 399px) {
+  #mediaQueries p#gt300 {
+    display: block;
+  }
+}
+@media (min-width: 400px) and (max-width: 499px) {
+  #mediaQueries p#gt400 {
+    display: block;
+  }
+}
+@media (min-width: 500px) and (max-width: 599px) {
+  #mediaQueries p#gt500 {
+    display: block;
+  }
+}
+@media (min-width: 600px) and (max-width: 699px) {
+  #mediaQueries p#gt600 {
+    display: block;
+  }
+}
+@media (min-width: 700px) and (max-width: 799px) {
+  #mediaQueries p#gt700 {
+    display: block;
+  }
+}
+@media (min-width: 800px) and (max-width: 899px) {
+  #mediaQueries p#gt800 {
+    display: block;
+  }
+}
+@media (min-width: 900px) and (max-width: 999px) {
+  #mediaQueries p#gt900 {
+    display: block;
+  }
+}
+@media (min-width: 1000px) {
+  #mediaQueries p#gt1000 {
+    display: block;
+  }
+}
+</style>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div id="container">
+<div id="container">
 
-      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Media queries</h1>
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Media queries</h1>
 
-      <div id="mediaQueries">
-        <p id="gt0">Viewport width: less than 300px.</p>
-        <p id="gt300">Viewport width: 300–399px.</p>
-        <p id="gt400">Viewport width: 400–499px.</p>
-        <p id="gt500">Viewport width: 500–599px.</p>
-        <p id="gt600">Viewport width: 600–699px.</p>
-        <p id="gt700">Viewport width: 700–799px.</p>
-        <p id="gt800">Viewport width: 800–899px.</p>
-        <p id="gt900">Viewport width: 900–999px.</p>
-        <p id="gt1000">Viewport width: greater than 999px.</p>
-      </div>
+  <div id="mediaQueries">
+    <p id="gt0">Viewport width: less than 300px.</p>
+    <p id="gt300">Viewport width: 300–399px.</p>
+    <p id="gt400">Viewport width: 400–499px.</p>
+    <p id="gt500">Viewport width: 500–599px.</p>
+    <p id="gt600">Viewport width: 600–699px.</p>
+    <p id="gt700">Viewport width: 700–799px.</p>
+    <p id="gt800">Viewport width: 800–899px.</p>
+    <p id="gt900">Viewport width: 900–999px.</p>
+    <p id="gt1000">Viewport width: greater than 999px.</p>
+  </div>
 
-      <p>Viewport width: <span id="viewportWidth"></span>px.</p>
+  <p>Viewport width: <span id="viewportWidth"></span>px.</p>
 
-      <script>
-        var viewportWidthEl = document.getElementById("viewportWidth");
-        function displayViewportWidth() {
-          var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-          viewportWidthEl.textContent = viewportWidth;
-        }
-        window.onresize = displayViewportWidth;
-        displayViewportWidth();
-      </script>
+<script>
+var viewportWidthEl = document.getElementById('viewportWidth');
+function displayViewportWidth() {
+  var viewportWidth = Math.max(document.documentElement.clientWidth,
+    window.innerWidth || 0);
+  viewportWidthEl.textContent = viewportWidth;
+}
+window.onresize = displayViewportWidth;
+displayViewportWidth();
+</script>
 
-      <a href="https://github.com/samdutton/simpl/blob/gh-pages/mediaqueries/" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/mediaqueries/" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-    </div>
+</div>
 
-    <script src="../js/lib/ga.js"></script>
-
-  </body>
+</body>
 </html>

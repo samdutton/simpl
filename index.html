@@ -20,28 +20,26 @@ limitations under the License.
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-  <meta name="author" content="https://samdutton.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-  <meta itemprop="image" content="images/icons/icon192.png">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#fff">
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="https://samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-  <title>simpl.info</title>
+<title>simpl.info</title>
 
-  <link rel="canonical" href="https://simpl.info">
-  <link rel="manifest" href="manifest.json">
+<link rel="canonical" href="https://simpl.info">
+<link rel="manifest" href="manifest.json">
 
-  <link rel="apple-touch-icon" href="images/icons/icon180.png">
-  <link rel="icon" sizes="32x32" href="images/icons/icon32.png">
-  <link rel="icon" sizes="192x192" href="images/icons/icon192.png">
-  <link rel="icon" sizes="256x256" href="images/icons/icon256.png">
-  <link rel="shortcut icon" href="images/icons/icon72.png">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="/favicon.ico" type="image/png" />
-
+<link rel="apple-touch-icon" href="images/icons/icon180.png">
+<link rel="icon" sizes="32x32" href="images/icons/icon32.png">
+<link rel="icon" sizes="192x192" href="images/icons/icon192.png">
+<link rel="icon" sizes="256x256" href="images/icons/icon256.png">
+<link rel="shortcut icon" href="images/icons/icon72.png">
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="/favicon.ico" type="image/png" />
 
 <script>
 window.ga = window.ga || function() {
@@ -52,125 +50,125 @@ ga('create', 'UA-33848682-1', 'auto');
 ga('send', 'pageview');
 </script>
 
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
-  <style type="text/css">
-    a {
-      color: #15c;
-      font-weight: 300;
-      text-decoration: none;
-    }
+<style type="text/css">
+  a {
+    color: #15c;
+    font-weight: 300;
+    text-decoration: none;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
+  }
 
-    a#twitter {
-      color: black;
-      display: block;
-      text-decoration: none;
-    }
+  a#twitter {
+    color: black;
+    display: block;
+    text-decoration: none;
+  }
 
-    a#viewSource {
-      border-top: 1px solid #999;
-      display: block;
-      margin: 1.3em 0 0 0;
-      padding: 1em 0 0 0;
-    }
+  a#viewSource {
+    border-top: 1px solid #999;
+    display: block;
+    margin: 1.3em 0 0 0;
+    padding: 1em 0 0 0;
+  }
 
-    a#twitter div {
-      display: inline-block;
-      font-weight: 500;
-      position: relative;
-      top: -13px;
-    }
+  a#twitter div {
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    top: -13px;
+  }
 
-    a#twitter div:hover {
-      color: #1da1f2;
-    }
+  a#twitter div:hover {
+    color: #1da1f2;
+  }
 
+  div#links a {
+    display: block;
+    line-height: 1.3em;
+    margin: 0 0 1.5em 0;
+  }
+
+  @media (min-width: 1000px) {
+    /* hack! to target non-touch devices */
     div#links a {
-      display: block;
-      line-height: 1.3em;
-      margin: 0 0 1.5em 0;
+      line-height: 0.8em;
     }
+  }
 
-    @media (min-width: 1000px) {
-      /* hack! to target non-touch devices */
-      div#links a {
-        line-height: 0.8em;
-      }
-    }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 1em;
+    word-break: break-word;
+  }
 
-    body {
-      font-family: sans-serif;
-      font-weight: 300;
-      margin: 0;
-      padding: 1em;
-      word-break: break-word;
-    }
+  div#container {
+    margin: 0 auto 0 auto;
+    max-width: 40em;
+    padding: 1em 1.5em 1.3em 1.5em;
+  }
 
-    div#container {
-      margin: 0 auto 0 auto;
-      max-width: 40em;
-      padding: 1em 1.5em 1.3em 1.5em;
-    }
+  div#highlight {
+    background-color: #eee;
+    font-size: 1.2em;
+    margin: 0 0 50px 0;
+    padding: 0.5em 2em;
+  }
 
-    div#highlight {
-      background-color: #eee;
-      font-size: 1.2em;
-      margin: 0 0 50px 0;
-      padding: 0.5em 2em;
-    }
+  div#links {
+    padding: 0.5em 0 0 0;
+  }
 
-    div#links {
-      padding: 0.5em 0 0 0;
-    }
+  h1 {
+    border-bottom: 1px solid #ccc;
+    font-family: sans-serif;
+    font-weight: 500;
+    margin: 0 0 0.8em 0;
+    padding: 0 0 0.2em 0;
+  }
 
+  p {
+    color: #444;
+    font-weight: 300;
+    line-height: 1.6em;
+  }
+
+  p.borderBelow {
+    border-bottom: 1px solid #eee;
+    padding: 0 0 20px 0;
+  }
+
+  a#twitter svg {
+    height: 40px;
+    width: 40px;
+  }
+
+  @media (max-width: 650px) {
     h1 {
-      border-bottom: 1px solid #ccc;
-      font-family: sans-serif;
-      font-weight: 500;
-      margin: 0 0 0.8em 0;
-      padding: 0 0 0.2em 0;
+      font-size: 24px;
     }
+  }
 
-    p {
-      color: #444;
-      font-weight: 300;
-      line-height: 1.6em;
+  @media (max-width: 550px) {
+    h1 {
+      font-size: 22px;
     }
+  }
 
-    p.borderBelow {
-      border-bottom: 1px solid #eee;
-      padding: 0 0 20px 0;
+  @media (max-width: 450px) {
+    h1 {
+      font-size: 20px;
     }
+  }
+</style>
 
-    a#twitter svg {
-      height: 40px;
-      width: 40px;
-    }
-
-    @media (max-width: 650px) {
-      h1 {
-        font-size: 24px;
-      }
-    }
-
-    @media (max-width: 550px) {
-      h1 {
-        font-size: 22px;
-      }
-    }
-
-    @media (max-width: 450px) {
-      h1 {
-        font-size: 20px;
-      }
-    }
-  </style>
-
-  <base target="_blank">
+<base target="_blank">
 
 </head>
 

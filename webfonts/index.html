@@ -19,42 +19,52 @@ limitations under the License.
 <html lang="en">
 <head>
 
-  <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-  <meta name="author" content="//samdutton.com">  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-  <meta itemprop="image" content="/images/icons/icon192.png">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta id="theme-color" name="theme-color" content="#fff">
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-  <base target="_blank">
+<base target="_blank">
 
-  <title>Web Fonts</title>
+<title>Web Fonts</title>
 
-  <link rel="stylesheet" href="../css/main.css" />
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
 
-  <style type="text/css">
-    div.fontExample {
-      font-size: 2em;
-      margin: 0 0 0.5em 0;
-    }
-    @font-face {
-      font-family: "GraublauWeb";
-      src: url(GraublauWeb.otf) format("opentype");
-    }
-    div#localFont {
-      font-family: GraublauWeb, serif;
-    }
-    div#remoteFont {
-      font-family: "Open Sans", serif;
-    }
-    div#remoteSubset {
-      font-family: Inconsolata, cursive;
-    }
-  </style>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
+<link rel="stylesheet" href="../css/main.css">
+
+<style type="text/css">
+  div.fontExample {
+    font-size: 2em;
+    margin: 0 0 0.5em 0;
+  }
+  @font-face {
+    font-family: "GraublauWeb";
+    src: url(GraublauWeb.otf) format("opentype");
+  }
+  div#localFont {
+    font-family: GraublauWeb, serif;
+  }
+  div#remoteFont {
+    font-family: "Open Sans", serif;
+  }
+  div#remoteSubset {
+    font-family: Inconsolata, cursive;
+  }
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata&text=font&subset=latin" rel="stylesheet" />
 
 </head>
 
@@ -72,7 +82,6 @@ limitations under the License.
 
   </div>
 
-  <script src="../js/lib/ga.js"></script>
 
 </body>
 </html>

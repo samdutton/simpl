@@ -18,20 +18,30 @@ limitations under the License.
 
 
   <!-- NB manifest attribute on html element -->
-  <html manifest="manifest.appcache">
+<html manifest="manifest.appcache">
 
 <head>
 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
 <meta name="author" content="//samdutton.com">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta itemprop="name" content="WebRTC Reference App">
 <meta itemprop="image" content="images/webrtc-icon-192x192.png">
-<meta name="mobile-web-app-capable" content="yes">
 <meta id="theme-color" name="theme-color" content="#fff">
 <title>AppCache</title>
 
-<link rel="stylesheet" href="../css/main.css" />
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<link rel="stylesheet" href="../css/main.css">
 
 </head>
 
@@ -52,9 +62,5 @@ limitations under the License.
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/appcache" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-</div>
-
-<script src="../js/lib/ga.js"></script>
-
-</body>
+</div></body>
 </html>

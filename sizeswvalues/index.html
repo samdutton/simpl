@@ -16,64 +16,73 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-  <html lang="en">
-  <head>
+<html lang="en">
+<head>
 
-    <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-    <meta name="author" content="//samdutton.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-    <meta itemprop="image" content="/images/icons/icon192.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#fff">
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-    <base target="_blank">
+<base target="_blank">
 
-    <title>img with srcset and sizes</title>
+<title>img with srcset and sizes</title>
 
-    <link rel="stylesheet" href="../css/main.css" />
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
 
-    <style>
-      img {
-        width: 50vw;
-      }
-    </style>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
-  </head>
+<link rel="stylesheet" href="../css/main.css">
 
-  <body>
+<style>
+  img {
+    width: 50vw;
+  }
+</style>
 
-    <div id="container">
+</head>
 
-      <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> &lt;img&gt; with srcset and sizes</h1>
+<body>
 
-      <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" sizes="50vw" alt="Lias and Little Puss: two ten week old grey tabby kittens" />
+  <div id="container">
 
-      <p>Try changing the viewport size.</p>
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> &lt;img&gt; with srcset and sizes</h1>
 
-      <p>The sizes attribute enables the browser to choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the screen resolution and image display width (set to be 50% of viewport width).</p>
+    <img src="small.jpg" srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" sizes="50vw" alt="Lias and Little Puss: two ten week old grey tabby kittens" />
 
-      <p>
-        Image used: <span id="imgSrc"></span><br>
-        Image natural width: <span id="imgNaturalWidth"></span>px<br>
-        Image display width: <span id="imgWidth"></span>px<br>
-        Device pixel ratio: <span id="devicePixelRatio"></span><br>
-        Minimum acceptable image width: <span id="minimumWidth"></span>px<br>
-        Viewport width: <span id="viewportWidth"></span>px<br>
-        Available screen width: <span id="availableWidth"></span>px<br>
-      </p>
+    <p>Try changing the viewport size.</p>
 
-      <p class="borderBelow"><a href="../srcsetwvalues" title="img element with srcset using w values, but no sizes attribute">Without the sizes attribute</a> the browser can only take into account <strong>viewport</strong> width, not image <strong>display</strong> width.</p>
+    <p>The sizes attribute enables the browser to choose <a href="small.jpg" title="500px wide image file">small.jpg</a>, <a href="medium.jpg" title="1000px wide image file">medium.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the screen resolution and image display width (set to be 50% of viewport width).</p>
 
-      <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction</a> and <a href="../picturetype" title="Using the picture element with alternative sources">file types</a> examples show ways to use the picture element.</p>
+    <p>
+      Image used: <span id="imgSrc"></span><br>
+      Image natural width: <span id="imgNaturalWidth"></span>px<br>
+      Image display width: <span id="imgWidth"></span>px<br>
+      Device pixel ratio: <span id="devicePixelRatio"></span><br>
+      Minimum acceptable image width: <span id="minimumWidth"></span>px<br>
+      Viewport width: <span id="viewportWidth"></span>px<br>
+      Available screen width: <span id="availableWidth"></span>px<br>
+    </p>
 
-      <a href="https://github.com/samdutton/simpl/blob/gh-pages/sizeswvalues" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+    <p class="borderBelow"><a href="../srcsetwvalues" title="img element with srcset using w values, but no sizes attribute">Without the sizes attribute</a> the browser can only take into account <strong>viewport</strong> width, not image <strong>display</strong> width.</p>
 
-    </div>
+    <p>The <a href="../pictureart" title="Using the picture element for art direction">art direction</a> and <a href="../picturetype" title="Using the picture element with alternative sources">file types</a> examples show ways to use the picture element.</p>
 
-    <script src="js/main.js"></script>
-    <script src="../js/lib/ga.js"></script>
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/sizeswvalues" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
 
   </body>
   </html>

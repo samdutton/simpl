@@ -19,66 +19,52 @@ limitations under the License.
 <html lang="en">
 <head>
 
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
 <meta name="author" content="//samdutton.com">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
 <meta itemprop="image" content="/images/icons/icon192.png">
-<meta name="mobile-web-app-capable" content="yes">
 <meta id="theme-color" name="theme-color" content="#fff">
 
 <base target="_blank">
 
 <title>CSS flexbox expand</title>
 
-<link rel="stylesheet" href="../css/main.css" />
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
 
-  <style>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
-    html {
-      height: 100%; /* expand vertically to fit window/viewport */
-    }
+<link rel="stylesheet" href="../css/main.css">
 
-    body {
-      height: calc(100% - 3em); /* minus padding */
-      height: -webkit-calc(100% - 3em); /* minus padding */
-    }
+<style>
+html {
+  height: 100%; /* expand vertically to fit window/viewport */
+}
 
-    div#container {
-      height: calc(100% - 2.3em);  /* minus padding */
-      height: -webkit-calc(100% - 2.3em);  /* minus padding */
+body {
+  height: calc(100% - 3em); /* minus padding */
+}
 
-      -webkit-box-orient: vertical;
-      display: -webkit-box;
-      display: -webkit-flexbox;
+div#container {
+  box-orient: vertical;
+  display: box;
+  display: flexbox;
+  height: calc(100% - 2.3em);  /* minus padding */
+}
 
-      -moz-box-orient: vertical;
-      display: -moz-box;
-
-      -ms-box-orient: vertical;
-      display: -ms-box;
-      display: -ms-flexbox;
-
-      box-orient: vertical;
-      display: box;
-      display: flexbox;
-    }
-
-    div#expand {
-      background-color: #666;
-
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-
-      -moz-box-flex: 1;
-
-      -ms-box-flex: 1;
-      -ms-flex: 1;
-
-      box-flex: 1;
-      flex: 1;
-    }
-  </style>
+div#expand {
+  background-color: #666;
+  box-flex: 1;
+  flex: 1;
+}
+</style>
 
 
 </head>
@@ -95,9 +81,5 @@ limitations under the License.
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/flexboxexpand" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-</div>
-
-<script src="../js/lib/ga.js"></script>
-
-</body>
+</div></body>
 </html>

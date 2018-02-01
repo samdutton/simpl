@@ -17,23 +17,38 @@ limitations under the License.
 -->
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-    <meta name="author" content="//samdutton.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-    <meta itemprop="image" content="/images/icons/icon192.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#fff">
-    <base target="_blank">
-    <title>requestAnimationFrame / cancelAnimationFrame</title>
-    <link rel="stylesheet" href="../css/main.css" />
-    <style>
-      .demo-box {}
-      .square {display:inline-block;width:50px;height:50px;background:#4183C4;-webkit-transform:translateX(0);transform:translateX(0);will-change:transform;}
-    </style>
-  </head>
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
+<base target="_blank">
+
+<title>requestAnimationFrame / cancelAnimationFrame</title>
+
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .demo-box {}
+  .square {display:inline-block;width:50px;height:50px;background:#4183C4;-webkit-transform:translateX(0);transform:translateX(0);will-change:transform;}
+</style>
+
+</head>
+
   <body>
     <div id="container">
       <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> requestAnimationFrame</h1>

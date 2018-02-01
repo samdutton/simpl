@@ -17,82 +17,91 @@ limitations under the License.
 -->
 
 <html lang="en">
+<head>
 
-  <head>
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="../images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-    <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript." />
-    <meta name="author" content="//samdutton.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-    <meta itemprop="image" content="../images/icons/icon192.png">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta id="theme-color" name="theme-color" content="#fff">
+<title>XML map track demo</title>
 
-    <title>XML map track demo</title>
+<script>
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga.l = +new Date;
+ga('create', 'UA-33848682-1', 'auto');
+ga('send', 'pageview');
+</script>
 
-    <link rel="stylesheet" href="css/mapTrack.css">
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
-  </head>
+<link rel="stylesheet" href="css/mapTrack.css">
+
+</head>
 
   <body>
-    <div id="container">
 
-      <h1>XML map track demo</h1>
+  <div id="container">
 
-      <div class="warningMessage trackNotSupported">This demo requires a browser such as Google Chrome that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
+    <h1>XML map track demo</h1>
 
-      <div id="map" class="trackSupported"></div>
+    <div class="warningMessage trackNotSupported">This demo requires a browser such as Google Chrome that supports the track element. In Chrome you must enable track element support on the chrome://flags page.</div>
 
-      <div id="videoContainer">
-        <div id="timeOfDay"></div>
-        <video id="gbikeVideo" autoplay controls>
-          <source src="video/gbike.webm" type="video/webm" />
-          </video>
-        </div>
+    <div id="map" class="trackSupported"></div>
 
-        <div id="panorama" class="trackSupported"></div>
+    <div id="videoContainer">
+      <div id="timeOfDay"></div>
+      <video id="gbikeVideo" autoplay controls>
+        <source src="video/gbike.webm" type="video/webm" />
+        </video>
+      </div>
 
-        <p class="thanks">This is an implementation using the HTML track element of a demo originally built by Jeff Faust. Thanks to Jeff for the idea and data!</p>
+      <div id="panorama" class="trackSupported"></div>
 
-        <p>This demo shows how the track element can be used to synchronise video playback with the position of a map marker, and make synchronised changes to DOM elements.</p>
+      <p class="thanks">This is an implementation using the HTML track element of a demo originally built by Jeff Faust. Thanks to Jeff for the idea and data!</p>
 
-        <p>Click anywhere on the map to move the video and StreetView to the point in the journey closest to the clicked location. Move the video slider to change the StreetView panorama and the position of the marker on the map.</p>
+      <p>This demo shows how the track element can be used to synchronise video playback with the position of a map marker, and make synchronised changes to DOM elements.</p>
 
-        <p>The position of the marker changes, corresponding to the current time of the video. Time of day is overlaid on the video. </p>
+      <p>Click anywhere on the map to move the video and StreetView to the point in the journey closest to the clicked location. Move the video slider to change the StreetView panorama and the position of the marker on the map.</p>
 
-        <p>A metadata track for the video on this page is built by parsing the original <a href="data/gbike.xml" title="bike.xml document listing points in the journey by location and time" target="_blank">Google Maps track</a>, which is in XML format:</p>
+      <p>The position of the marker changes, corresponding to the current time of the video. Time of day is overlaid on the video. </p>
 
-                    <pre>
-                          &lt;track name="track 0"&gt;
-                          &lt;p t="1331363000" a="37.4219276" b="-122.0882180"/&gt;
-                          &lt;p t="1331363001" a="37.4219297" b="-122.0882154"/&gt;
-                          ...
-                          &lt;/track&gt;
-        </pre>
+      <p>A metadata track for the video on this page is built by parsing the original <a href="data/gbike.xml" title="bike.xml document listing points in the journey by location and time" target="_blank">Google Maps track</a>, which is in XML format:</p>
 
-        <p>The text for each cue in the track is in JSON format. Each cue corresponds to a p element in the XML:</p>
+                  <pre>
+                        &lt;track name="track 0"&gt;
+                        &lt;p t="1331363000" a="37.4219276" b="-122.0882180"/&gt;
+                        &lt;p t="1331363001" a="37.4219297" b="-122.0882154"/&gt;
+                        ...
+                        &lt;/track&gt;
+      </pre>
 
-                    <pre>
-                          {"lat":37.4219276, "lng":-122.088218, "t":1331363000}
-                          {"lat":37.4219297, "lng":-122.0882154, "t":1331363001}
-                          ...
-        </pre>
+      <p>The text for each cue in the track is in JSON format. Each cue corresponds to a p element in the XML:</p>
 
-        <p>The track cuechange event handler parses the cue JSON to set the position of the map marker.</p>
+                  <pre>
+                        {"lat":37.4219276, "lng":-122.088218, "t":1331363000}
+                        {"lat":37.4219297, "lng":-122.0882154, "t":1331363001}
+                        ...
+      </pre>
 
-        <p>For more information about the track element, take a look at <a href="https://www.html5rocks.com/en/tutorials/track/basics/" title="HTML5 Rocks article: Getting started with the track element">Getting started with the track element</a> on HTML5 Rocks.</p>
+      <p>The track cuechange event handler parses the cue JSON to set the position of the map marker.</p>
 
-        <p>For a 'bare-bones' example of the track element, see <a href="http://www.simpl.info/track" title="Simple track example">simpl.info/track</a>.</p>
+      <p>For more information about the track element, take a look at <a href="https://www.html5rocks.com/en/tutorials/track/basics/" title="HTML5 Rocks article: Getting started with the track element">Getting started with the track element</a> on HTML5 Rocks.</p>
 
-        </div> <!-- container -->
+      <p>For a 'bare-bones' example of the track element, see <a href="http://www.simpl.info/track" title="Simple track example">simpl.info/track</a>.</p>
 
-        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAey8Y9zVKV0F7S3CKIUXoyCP-T-N-2NCk&amp;v=3" type="text/javascript" lang="javascript"></script>
-        <script src="js/main.js"></script>
+  </div> <!-- container -->
 
-        <script src="../../js/lib/ga.js"></script>
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAey8Y9zVKV0F7S3CKIUXoyCP-T-N-2NCk&amp;v=3" type="text/javascript" lang="javascript"></script>
+  <script src="js/main.js"></script>
 
+  <script src="../../js/lib/ga.js"></script>
 
-      </body>
+</body>
 
-    </html>
+</html>
