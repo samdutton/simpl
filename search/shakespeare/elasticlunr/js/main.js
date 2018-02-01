@@ -33,7 +33,7 @@ const SEARCH_OPTIONS = {
 var index;
 
 const INDEX_FILE = 'data/index.json';
-const HTML_DIR = '/html/';
+const HTML_DIR = 'html/';
 
 var timeout = null;
 const DEBOUNCE_DELAY = 300;
