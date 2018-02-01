@@ -32,8 +32,9 @@ const SEARCH_OPTIONS = {
 
 var index;
 
+const APP_URL = 'https://simpl.info/search/shakespeare';
 const INDEX_FILE = 'data/index.json';
-const HTML_DIR = 'html/';
+const HTML_DIR = 'https://simpl.info/search/shakespeare/html/';
 
 var timeout = null;
 const DEBOUNCE_DELAY = 300;
@@ -164,11 +165,11 @@ function displayText(match, query) {
   hide(matchesList);
   // add history entry for the query when the user has tapped/clicked a match
   history.pushState({isSearchResults: true}, null,
-      `${window.location.origin}#${query}`);
+    `${APP_URL}#${query}`);
   // match.l is a citation for a play or poem, e.g. Ham.3.3.2, Son.4.11, Ven.140
   // scene title matches only have act and scene number, e.g. Ham.3.3
   history.pushState({isSearchResults: false}, null,
-    `${window.location.origin}#${match.l}`);
+    `${APP_URL}#${match.l}`);
   document.title = `Search Shakespeare: ${match.l}`;
   const location = match.l.split('.');
   const text = location[0];
