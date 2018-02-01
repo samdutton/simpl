@@ -172,6 +172,7 @@ ol#matches li::after {
 }
 */
 
+/* csslint ignore:start */
 .scene li {
   --margin-left: 20px;
   --offset: 35px;
@@ -182,6 +183,7 @@ ol#matches li::after {
   padding: 0 30px 0 32px;
   text-indent: -20px;
 }
+/* csslint ignore:end */
 
 .scene li[data-offset = "1"] {
   margin-left: calc(var(--margin-left) + 1 * var(--offset));
