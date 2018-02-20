@@ -46,7 +46,7 @@ if (navigator.serviceWorker) {
 }
 
 window.onpopstate = function(event) {
-  console.log('popstate event', event.state);
+  // console.log('popstate event', event.state);
   if (event.state && event.state.isSearchResults) {
     hide(textDiv);
     show(matchesList);
