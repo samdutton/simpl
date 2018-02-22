@@ -18,10 +18,13 @@ body {
   color: #444;
   counter-reset: line-number;
   font-family: Palatino, serif;
-  height: 100%;
   margin: 0;
   padding: 30px 20px;
   word-break: break-word;
+}
+
+details div {
+  margin: 0 0 20px 0;
 }
 
 div#container {
@@ -30,14 +33,29 @@ div#container {
   max-width: 550px;
 }
 
+div#info {
+  color: #c83f3f;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
 div#query-container {
   background: white;
-  margin: 0 0 24px -2px;
-  padding: 10px 0 10px 2px;
+  padding: 20px 0 10px 0;
   position: sticky;
   top: 0;
   width: calc(100% + 4px);
   z-index: 1;
+}
+
+div#query-info {
+  border-bottom: 1px solid rgb(200, 63, 63);
+  border-bottom: 1px solid rgba(200, 63, 63, 0.5);
+  color: #888;
+  font-size: 14px;
+  margin: 0 0 0 0;
+  padding: 0 0 10px 0;
 }
 
 div.stage-direction {
@@ -117,22 +135,29 @@ iframe {
   width: 100%;
 }
 
-input#query {
+input {
   color: black;
   font-family: Palatino, serif;
   font-size: 16px;
   font-weight: 300;
   padding: 4px;
   top: 0;
+}
+
+details input {
+  width: calc(100% - 108px);
+}
+
+input#query {
+  margin: 0 0 24px 0;
   width: calc(100% - 15px);
 }
 
 label {
-  color: #666;
   display: inline-block;
-  font-size: 18px;
-  margin: 0 0 0 0;
-  width: 60px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 90px;
 }
 
 li {
@@ -172,7 +197,6 @@ ol#matches li::after {
 }
 */
 
-/* csslint ignore:start */
 .scene li {
   --margin-left: 20px;
   --offset: 35px;
@@ -183,7 +207,6 @@ ol#matches li::after {
   padding: 0 30px 0 32px;
   text-indent: -20px;
 }
-/* csslint ignore:end */
 
 .scene li[data-offset = "1"] {
   margin-left: calc(var(--margin-left) + 1 * var(--offset));
@@ -266,6 +289,7 @@ ol.speech {
 }
 
 ol#matches {
+  margin: 24px 0 0 0;
   max-height: calc(100% - 170px);
   padding: 0;
   width: calc(100% + 6px);
@@ -345,15 +369,11 @@ section#preamble {
   padding: 0 0 1em 0;
 }
 
-li span {
+span {
   cursor: pointer;
 }
 
-li span:hover {
-  background-color: yellow;
-}
-
-p span:hover {
+span:hover {
   background-color: yellow;
 }
 
@@ -365,6 +385,7 @@ span.stage-direction {
   padding: 0;
   text-indent: 20px;
 }
+
 span.stage-direction:before {
   content: '(';
 }
@@ -375,6 +396,16 @@ span.stage-direction:after {
 
 strong {
   font-weight: 500;
+}
+
+summary {
+  color: #666;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 16px 2px;
+  outline: none;
 }
 
 @media (min-width: 450px) {
@@ -389,6 +420,9 @@ strong {
     font-size: 20px;
   }
   h3 {
+    font-size: 16px;
+  }
+  .scene li {
     font-size: 16px;
   }
 }

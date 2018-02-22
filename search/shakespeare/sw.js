@@ -19,8 +19,6 @@ const FILES = [
   'js/lib/elasticlunr.min.js'
 ];
 
-const TEXTS = ["html/Ado.html", "html/Ant.html", "html/AWW.html", "html/AYL.html", "html/Cor.html", "html/Cym.html", "html/FE.html", "html/E3.html", "html/Err.html", "html/Ham.html", "html/1H4.html", "html/2H4.html", "html/H5.html", "html/1H6.html", "html/2H6.html", "html/3H6.html", "html/H8.html", "html/JC.html", "html/Jn.html", "html/LLL.html", "html/Lr.html", "html/Mac.html", "html/MM.html", "html/MND.html", "html/MV.html", "html/Oth.html", "html/Per.html", "html/R2.html", "html/R3.html", "html/Rom.html", "html/Shr.html", "html/TGV.html", "html/Tim.html", "html/Tit.html", "html/TM.html", "html/Tmp.html", "html/TN.html", "html/TNK.html", "html/Wiv.html", "html/WT.html", "html/DF.html", "html/LC.html", "html/PP.html", "html/PhT.html", "html/Luc.html", "html/SID.html", "html/Son.html", "html/Tro.html", "html/TTQ.html", "html/Ven.html"];
-
 self.addEventListener('install', (event) => {
   console.log('Service worker:', event);
   event.waitUntil(installHandler(event));
@@ -40,7 +38,6 @@ self.addEventListener('fetch', (event) => {
 async function installHandler(event) { // eslint-disable-line
   const cache = await caches.open('v1');
   cache.addAll(FILES);
-  cache.addAll(TEXTS);
   self.skipWaiting();
 }
 /* eslint-enable */

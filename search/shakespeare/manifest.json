@@ -1,5 +1,5 @@
 {
-  "name": "Search Shakespeare's plays and poems",
+  "name": "Search Shakespeare's plays",
   "short_name": "Search Shakespeare",
   "start_url": "./?utm_source=homescreen",
   "display": "standalone",
