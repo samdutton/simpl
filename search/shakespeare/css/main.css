@@ -27,6 +27,18 @@ details div {
   margin: 0 0 20px 0;
 }
 
+div.stage-direction {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.4em;
+  margin: 8px 0 8px 10px;
+  text-indent: -10px;
+}
+
+/*div.stage-direction + div.stage-direction {
+  margin-top: -20px;
+}*/
+
 div#container {
   height: 100%;
   margin: 0 auto 0 auto;
@@ -57,18 +69,6 @@ div#query-info {
   margin: 0 0 0 0;
   padding: 0 0 10px 0;
 }
-
-div.stage-direction {
-  font-size: 16px;
-  font-style: italic;
-  line-height: 1.4em;
-  margin: 0.8em 0 0.8em 50px;
-  text-indent: 30px;
-}
-
-/*div.stage-direction + div.stage-direction {
-  margin-top: -20px;
-}*/
 
 h1 {
   border-bottom: 1px solid #c83f3f; /* fallback */
@@ -190,22 +190,15 @@ ol#matches li::after {
   top: 0;
 }
 
-/*.persona-group li {
-  color:#666;
-  font-size: 14px;
-  line-height: 1.5em;
-}
-*/
-
 .scene li {
-  --margin-left: 20px;
-  --offset: 35px;
+  --margin-left: 10px;
+  --offset: 30px;
   font-size: 14px;
   line-height: 1.4em;
   margin-bottom: 2px;
   margin-left: var(--margin-left);
-  padding: 0 30px 0 32px;
-  text-indent: -20px;
+  padding: 0 30px 0 0;
+  text-indent: -10px;
 }
 
 .scene li[data-offset = "1"] {
@@ -278,8 +271,7 @@ ol[data-speaker]:before {
   text-transform: uppercase;
 }
 
-ol.persona-group {
-  margin: 0 0 0.8em 0;
+ol {
   padding: 0;
 }
 
@@ -411,6 +403,8 @@ summary {
 @media (min-width: 450px) {
   div.stage-direction {
     font-size: 16px;
+    margin: 8px 0 8px 50px;
+    text-indent: 30px;
   }
   h1 {
     color: #444;
@@ -423,7 +417,12 @@ summary {
     font-size: 16px;
   }
   .scene li {
+    --margin-left: 20px;
+    --offset: 35px;
     font-size: 16px;
+    margin-left: var(--margin-left);
+    padding: 0 30px 0 32px;
+    text-indent: -20px;
   }
 }
 

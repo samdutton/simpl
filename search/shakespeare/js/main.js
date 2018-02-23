@@ -168,7 +168,7 @@ function doSearch(query) {
 
   // sort by play or poem name: doc.l is location
   matches = matches.sort((a, b) => {
-    return a.doc.l.localeCompare(b.doc.l, {numeric: true});
+    return a.doc.l.localeCompare(b.doc.l);
   });
 
   displayInfo(message);
