@@ -1,0 +1,28 @@
+footer {
+ grid-column: 1 / -1;
+}
+/* span columns 1 to last inclusive */
+header {
+ grid-column: 1 / -1;
+}
+
+h2 {
+  color: white;
+  font-size: 20px;
+}
+
+p {
+  color: white;
+}
+
+section {
+  display: grid;
+  grid-gap: 10px 20px;
+  grid-template-columns: 1fr 3fr;
+}
+
+section > *  {
+ background-color: #444;
+ color: white;
+ padding: 20px;
+}
