@@ -1,13 +1,13 @@
 section {
   display: grid;
-  grid-template-columns: 100px auto 100px;
   grid-gap: 10px 20px;
+  grid-template-columns: 100px auto 100px;
 }
 
 section div {
   background-color: #444;
-  color: #fff;
   border-radius: 5px;
+  color: #fff;
   padding: 20px;
   text-align: center;
 }
