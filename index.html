@@ -17,157 +17,159 @@ limitations under the License.
 -->
 
 <html lang="en">
+
 <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-33848682-1"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-  window.dataLayer.push(arguments);
-}
-gtag('js', new Date());
-gtag('config', 'UA-33848682-1');
-</script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33848682-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-<meta charset="utf-8">
-<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
-<meta name="author" content="https://samdutton.com">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-<meta itemprop="image" content="images/icons/icon192.png">
-<meta id="theme-color" name="theme-color" content="#fff">
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-33848682-1');
+  </script>
 
-<title>simpl.info</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+  <meta name="author" content="https://samdutton.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+  <meta itemprop="image" content="images/icons/icon192.png">
+  <meta id="theme-color" name="theme-color" content="#fff">
 
-<link rel="canonical" href="https://simpl.info">
-<link rel="manifest" href="manifest.json">
+  <title>simpl.info</title>
 
-<link rel="apple-touch-icon" href="images/icons/icon180.png">
-<link rel="icon" sizes="32x32" href="images/icons/icon32.png">
-<link rel="icon" sizes="192x192" href="images/icons/icon192.png">
-<link rel="icon" sizes="256x256" href="images/icons/icon256.png">
-<link rel="shortcut icon" href="images/icons/icon72.png">
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="/favicon.ico" type="image/png" />
+  <link rel="canonical" href="https://simpl.info">
+  <link rel="manifest" href="manifest.json">
 
-<style>
-  a {
-    color: #15c;
-    font-weight: 300;
-    text-decoration: none;
-  }
+  <link rel="apple-touch-icon" href="images/icons/icon180.png">
+  <link rel="icon" sizes="32x32" href="images/icons/icon32.png">
+  <link rel="icon" sizes="192x192" href="images/icons/icon192.png">
+  <link rel="icon" sizes="256x256" href="images/icons/icon256.png">
+  <link rel="shortcut icon" href="images/icons/icon72.png">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/png" />
 
-  a:hover {
-    text-decoration: underline;
-  }
+  <style>
+    a {
+      color: #15c;
+      font-weight: 300;
+      text-decoration: none;
+    }
 
-  a#twitter {
-    color: black;
-    display: block;
-    text-decoration: none;
-  }
+    a:hover {
+      text-decoration: underline;
+    }
 
-  a#viewSource {
-    border-top: 1px solid #999;
-    display: block;
-    margin: 1.3em 0 0 0;
-    padding: 1em 0 0 0;
-  }
+    a#twitter {
+      color: black;
+      display: block;
+      text-decoration: none;
+    }
 
-  a#twitter div {
-    display: inline-block;
-    font-weight: 500;
-    position: relative;
-    top: -13px;
-  }
+    a#viewSource {
+      border-top: 1px solid #999;
+      display: block;
+      margin: 1.3em 0 0 0;
+      padding: 1em 0 0 0;
+    }
 
-  a#twitter div:hover {
-    color: #1da1f2;
-  }
+    a#twitter div {
+      display: inline-block;
+      font-weight: 500;
+      position: relative;
+      top: -13px;
+    }
 
-  div#links a {
-    display: block;
-    line-height: 1.3em;
-    margin: 0 0 1.5em 0;
-  }
+    a#twitter div:hover {
+      color: #1da1f2;
+    }
 
-  @media (min-width: 1000px) {
-    /* hack! to target non-touch devices */
     div#links a {
-      line-height: 0.8em;
+      display: block;
+      line-height: 1.3em;
+      margin: 0 0 1.5em 0;
     }
-  }
 
-  body {
-    font-family: sans-serif;
-    font-weight: 300;
-    margin: 0;
-    padding: 1em;
-    word-break: break-word;
-  }
+    @media (min-width: 1000px) {
+      /* hack! to target non-touch devices */
+      div#links a {
+        line-height: 0.8em;
+      }
+    }
 
-  div#container {
-    margin: 0 auto 0 auto;
-    max-width: 40em;
-    padding: 1em 1.5em 1.3em 1.5em;
-  }
+    body {
+      font-family: sans-serif;
+      font-weight: 300;
+      margin: 0;
+      padding: 1em;
+      word-break: break-word;
+    }
 
-  div#highlight {
-    background-color: #eee;
-    font-size: 1.2em;
-    margin: 0 0 50px 0;
-    padding: 0.5em 2em;
-  }
+    div#container {
+      margin: 0 auto 0 auto;
+      max-width: 40em;
+      padding: 1em 1.5em 1.3em 1.5em;
+    }
 
-  div#links {
-    padding: 0.5em 0 0 0;
-  }
+    div#highlight {
+      background-color: #eee;
+      font-size: 1.2em;
+      margin: 0 0 50px 0;
+      padding: 0.5em 2em;
+    }
 
-  h1 {
-    border-bottom: 1px solid #ccc;
-    font-family: sans-serif;
-    font-weight: 500;
-    margin: 0 0 0.8em 0;
-    padding: 0 0 0.2em 0;
-  }
+    div#links {
+      padding: 0.5em 0 0 0;
+    }
 
-  p {
-    color: #444;
-    font-weight: 300;
-    line-height: 1.6em;
-  }
-
-  p.borderBelow {
-    border-bottom: 1px solid #eee;
-    padding: 0 0 20px 0;
-  }
-
-  a#twitter svg {
-    height: 40px;
-    width: 40px;
-  }
-
-  @media (max-width: 650px) {
     h1 {
-      font-size: 24px;
+      border-bottom: 1px solid #ccc;
+      font-family: sans-serif;
+      font-weight: 500;
+      margin: 0 0 0.8em 0;
+      padding: 0 0 0.2em 0;
     }
-  }
 
-  @media (max-width: 550px) {
-    h1 {
-      font-size: 22px;
+    p {
+      color: #444;
+      font-weight: 300;
+      line-height: 1.6em;
     }
-  }
 
-  @media (max-width: 450px) {
-    h1 {
-      font-size: 20px;
+    p.borderBelow {
+      border-bottom: 1px solid #eee;
+      padding: 0 0 20px 0;
     }
-  }
-</style>
 
-<base target="_blank">
+    a#twitter svg {
+      height: 40px;
+      width: 40px;
+    }
+
+    @media (max-width: 650px) {
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      h1 {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  <base target="_blank">
 
 </head>
 
@@ -181,7 +183,9 @@ gtag('config', 'UA-33848682-1');
       </div> -->
 
     <div id="highlight">
-      <p>New(ish) article: <a href="https://medium.com/dev-channel/how-to-add-full-text-search-to-your-website-4e9c80ce2bf4">How to add search to your website</a></p>
+      <p>New(ish) article:
+        <a href="https://medium.com/dev-channel/how-to-add-full-text-search-to-your-website-4e9c80ce2bf4">How to add search to your website</a>
+      </p>
     </div>
 
     <h1>simpl.info</h1>
@@ -198,13 +202,16 @@ gtag('config', 'UA-33848682-1');
 
     <p>This site aims to provide simplest possible examples of HTML, CSS and JavaScript.</p>
 
-    <p>There are shortcuts for many of these pages (see <a href="shortcuts" title="Full list of redirect URL shortcuts">full list</a>).
-      For example, <a href="https://simpl.info/v" title="Video element demo">simpl.info/v</a> redirects to <a href="https://simpl.info/video"
-        title="Video element demo">simpl.info/video</a>.</p>
+    <p>There are shortcuts for many of these pages (see
+      <a href="shortcuts" title="Full list of redirect URL shortcuts">full list</a>). For example,
+      <a href="https://simpl.info/v" title="Video element demo">simpl.info/v</a> redirects to
+      <a href="https://simpl.info/video" title="Video element demo">simpl.info/video</a>.</p>
 
-    <p>A list of web development resources is available from <a href="http://bit.ly/webdevres" title="Document with links to web development resources">bit.ly/webdevres</a>.</p>
+    <p>A list of web development resources is available from
+      <a href="http://bit.ly/webdevres" title="Document with links to web development resources">bit.ly/webdevres</a>.</p>
 
-    <p class="borderBelow">Submit bug reports, requests and comments at <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
+    <p class="borderBelow">Submit bug reports, requests and comments at
+      <a href="https://github.com/samdutton/simpl" title="simpl.info github repo">github.com/samdutton/simpl</a>.</p>
 
     <div id="links">
       <a href="xhr" title="Ajax (aka XMLHttpRequest) example">Ajax (aka XMLHttpRequest)</a>
@@ -252,6 +259,7 @@ gtag('config', 'UA-33848682-1');
       <a href="inputtypes" title="Examples of input elements with different types">Input types: email, tel, url, date, time, colour</a>
       <a href="install" title="beforeinstallprompt deferral example">Install prompt handling</a>
       <a href="intersectionobserver" title="Intersection Observer example">Intersection Observer</a>
+      <a href="lazy" title="Using Intersection Observer to lazy load images">Intersection Observer: lazy load images</a>
       <a href="localstorage" title="localStorage">localStorage</a>
       <a href="mediacapture" title="Media Capture API">Media Capture (using &lt;input&gt;)</a>
       <a href="mediafragments" title="Media Fragments API">Media Fragments</a>
@@ -318,11 +326,11 @@ gtag('config', 'UA-33848682-1');
     <a href="https://github.com/samdutton/simpl/blob/gh-pages/index.html" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
     <script>
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('sw.js').catch(function(error) {
-    console.error('Unable to register service worker.', error);
-  });
-}
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('sw.js').catch(function (error) {
+          console.error('Unable to register service worker.', error);
+        });
+      }
     </script>
 
   </div>
