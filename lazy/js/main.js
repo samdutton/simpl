@@ -40,11 +40,14 @@ function callback(entries) {
   }
 }
 
+const images = document.querySelectorAll('img.lazy');
+
 // callback is invoked whenever observe() is called
 // including when the page loads
-const io = new IntersectionObserver(callback, options);
-
-const images = document.querySelectorAll('img.lazy');
+let io;
+if (window.IntersectionObserver) {
+  io = new IntersectionObserver(callback, options);
+}
 
 for (const image of images) {
   if (window.IntersectionObserver) {
