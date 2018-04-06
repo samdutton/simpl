@@ -41,7 +41,7 @@ function callback(entries) {
 
 // callback is invoked whenever observe() is called
 // including when the page loads
-const io = new IntersectionObserver(callback, options); // options
+const io = new IntersectionObserver(callback, options); 
 
 const images = document.querySelectorAll('img.lazy');
 
