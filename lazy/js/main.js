@@ -26,14 +26,15 @@ const options = {
 };
 
 function callback(entries) {
-  // console.log('entries', entries);
   for (const entry of entries) {
     if (entry.isIntersecting) {
       let lazyImage = entry.target;
-      console.log('entry', entry);
-      lazyImage.src = lazyImage.dataset.src;
-      lazyImage.srcset = lazyImage.dataset.srcset;
-      // lazyImage.classList.remove('lazy');
+      if (lazyImage.hasAttribute('data-srcset')) {
+        lazyImage.srcset = lazyImage.dataset.srcset;
+      }
+      if (lazyImage.hasAttribute('data-src')) {
+        lazyImage.src = lazyImage.dataset.src;
+      }
       io.unobserve(lazyImage);
     }
   }
@@ -41,10 +42,15 @@ function callback(entries) {
 
 // callback is invoked whenever observe() is called
 // including when the page loads
-const io = new IntersectionObserver(callback, options); 
+const io = new IntersectionObserver(callback, options);
 
 const images = document.querySelectorAll('img.lazy');
 
 for (const image of images) {
-  io.observe(image);
+  if (window.IntersectionObserver) {
+    io.observe(image);
+  } else {
+    console.log('Intersection Observer not supported');
+    image.src = image.getAttribute('data-src');
+  }
 }
