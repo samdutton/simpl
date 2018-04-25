@@ -57,3 +57,24 @@ for (const image of images) {
     image.src = image.getAttribute('data-src');
   }
 }
+
+// Catch links that need to be fetched dynamically and rendered locally.
+document.addEventListener('click', function(e) {
+  if (e.target.tagName != 'A') return;
+
+  e.preventDefault();
+
+  // stateObject can be any JavaScript object data, could contain
+  // the newly AJAX'd or Fetched content from the server.
+  var stateObject = { foo: "bar" };
+  var pageTitle = e.target.text;
+  var newUrl = e.target.href;
+
+  // Push these pages onto the history using history.pushState();
+  history.pushState(stateObject, pageTitle, newURL);
+}, false);
+
+// Listen for changes to the state (e.g. if the user navigates forward or back in the browser)
+window.addEventListener('popstate', function (event) {
+  renderState(history.state);
+});
