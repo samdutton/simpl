@@ -20,109 +20,89 @@ limitations under the License.
 
 <head>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33848682-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-33848682-1');
-  </script>
-
-  <meta charset="utf-8">
-  <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
-  <meta name="author" content="//samdutton.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
-  <meta itemprop="image" content="/images/icons/icon192.png">
-  <meta id="theme-color" name="theme-color" content="#fff">
-
-  <link rel="icon" href="/images/icons/icon192.png">
-
-  <base target="_blank">
-
-
-  <title>CSS-only menu</title>
-
-  <link rel="stylesheet" href="../css/main.css">
-
-  <style>
-  menu a {
-    display: block;
-    line-height: 2em;
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-33848682-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
   }
-  menu {
-    display: inline-block;
-    outline: 0;
-    padding: 0;
-  }
-  menu:focus {
-    /* clicking on label should toggle the menu */
-    pointer-events: none;
-  }
-  menu:focus div {
-    background-color: white;
-    /*  opacity is 1 in opened state (see below) */
-    opacity: 1;
-    padding: 20px;
-    /* don't let pointer-events affect descendant elements */
-    pointer-events: auto;
-    visibility: visible;
-  }
-  menu div {
-      position: absolute;
-      z-index: 1;
-      /* use opacity to fake immediate toggle */
-      opacity: 0;
-      visibility: hidden;
-      transition: visibility 0.5s;
-  }
+  gtag('js', new Date());
+  gtag('config', 'UA-33848682-1');
+</script>
 
-  menu svg {
-    height: 30px;
-    cursor: pointer; 
-    width: 30px;
-  }
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
 
-  </style>
+<link rel="icon" href="/images/icons/icon192.png">
+
+<base target="_blank">
+
+<title>CSS-only menu</title>
+
+<link rel="stylesheet" href="../css/main.css">
+
+<style>
+menu a {
+  display: block;
+  line-height: 2em;
+}
+.onclick-menu {
+  outline: none;
+  position: relative;
+  display: inline-block;
+}
+.onclick-menu:focus {
+  pointer-events: none;
+}
+menu {
+  background-color: white;
+  margin: 0;
+  opacity: 0;
+  padding: 20px 20px 10px 0;
+  position: absolute;
+  transition: visibility 0.5s;
+  visibility: hidden;
+  width: 60px;
+  z-index: 1;
+}
+.onclick-menu:focus menu {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.onclick-menu svg {
+  height: 25px;
+  cursor: pointer; 
+  width: 25px;
+}
+</style>
 
 </head>
-
+  
 <body>
-
+  
   <div id="container">
-
+  
     <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS-only menu</h1>
 
-    <menu tabindex="0">
+    <div tabindex="0" class="onclick-menu">
       <svg>
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
-      <div>
-        <a href="">About</a>
-        <a href="">Contact</a>
-        <a href="">FAQ</a>
-        <a href="">Terms</a>
-      </div>
-    </menu>
-
-    <!-- <label for="menu">
-      <svg>
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-      </svg>
-    </label>
-    <input type="checkbox" id="menu">
-    <menu>
-      <a href="">About</a>
-      <a href="">Contact</a>
-      <a href="">FAQ</a>
-      <a href="">Terms</a>
-    </menu> -->
-
+      </svg>      
+      <menu>
+        <a href="../index.html">About</a>
+        <a href="../index.html">Contact</a>
+        <a href="../index.html">FAQ</a>
+        <a href="../index.html">Terms</a>
+      </menu>
+    </div>
 
     <p>Morbi porttitor posuere massa, nec facilisis eros malesuada a. Vestibulum pharetra vestibulum sapien non dapibus. Nam
       eu massa sit amet dolor mattis egestas id in ante. Praesent hendrerit diam ac leo consequat facilisis non ut ipsum.
@@ -144,6 +124,7 @@ limitations under the License.
     <a href="https://github.com/samdutton/simpl/blob/gh-pages/csstransition" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
   </div>
+
 </body>
 
 </html>
