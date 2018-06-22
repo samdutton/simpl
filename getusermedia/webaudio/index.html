@@ -43,48 +43,25 @@ gtag('config', 'UA-33848682-1');
 <base target="_blank">
 
 
-<title>getUserMedia</title>
+<title>Web Audio</title>
 
-<link rel="stylesheet" href="../css/main.css">
-
-  <style>
-    video {
-      object-fit: cover;
-    }
-
-    @media (min-width: 1000px) {
-      video {
-        height: 480px;
-      }
-    }
-  </style>
+<link rel="stylesheet" href="../../css/main.css">
 
 </head>
 
 <body>
 
-  <div id="container">
+<div id="container">
 
-    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia</h1>
+<h1><a href="../index.html" title="simpl.info home page">simpl.info</a> getUserMedia as input for Web Audio</h1>
 
-    <div id="highlight">
-      <p>New(ish) article:
-        <a href="https://samdutton.wordpress.com/2018/06/04/a-manifesto-for-teaching-web-development/">A manifesto for teaching web development</a>
-      </p>
-    </div>
+<p>Audio from the microphone is passed through a highpass filter and a gain node, then played back through your speakers or headphones.</p>
 
-    <video autoplay playsinline></video>
+<p>For more information about Web Audio see <a href="https://www.html5rocks.com/en/tutorials/webaudio/intro/" title="HTML5 Rocks tutorial: Getting started with the Web Audio API">Getting started with the Web Audio API</a>.</p>
 
-    <p>The <code>MediaStream</code> object <code>stream</code> passed to the <code>getUserMedia()</code> callback in this demo is in global scope, so you can inspect it from the console.</p>
+<script src="js/main.js"></script>
 
-    <p>For more information, see <a href="https://www.html5rocks.com/en/tutorials/getusermedia/intro/" title="Media capture article by Eric Bidelman on HTML5 Rocks">Capturing Audio &amp; Video in HTML5</a> on HTML5 Rocks.</p>
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/getusermedia/webaudio" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
-    <a href="https://github.com/samdutton/simpl/blob/gh-pages/getusermedia" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
-
-  </div>
-
-  <script src="js/main.js"></script>
-
-
-</body>
+</div></body>
 </html>
