@@ -30,17 +30,74 @@ gtag('js', new Date());
 gtag('config', 'UA-33848682-1');
 </script>
 
-  <title>Redirecting...</title>
-  <link rel="canonical" href="https://simpl.info/search/shakespeare"/>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta name="description" content="Full text search for Shakespeare's plays and poems.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="Full text search for Shakespeare's plays and poems.">
+<meta itemprop="image" content="images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<link rel="icon" href="images/icons/icon192.jpg">
+<link rel="manifest" href="manifest.json">
+
+<title>Search Shakespeare</title>
+
+<link rel="stylesheet" href="css/main.css" />
 
 </head>
 
 <body>
 
-<script>
-location.href='https://simpl.info/search/shakespeare';
-</script>
+<div id="container">
+
+  <h1>Search Shakespeare</h1>
+
+<div id="query-container">
+
+    <!-- <label for="query">Search:</label> -->
+    <input id="query" placeholder="Loading..." autocomplete disabled>
+
+    <details id="searchOptions">
+
+        <summary>Search options</summary>
+
+          <div>
+            <label for="title">Play or poem: </label>
+            <input type="text" id="title" list="titles">
+            <datalist id="titles"></datalist>
+          </div>
+
+          <div>
+            <label for="speaker">Speaker: </label>
+            <input id="speaker"  title="One speaker name" type="text" list="speakers">
+            <datalist id="speakers"></datalist>
+          </div>
+
+          <div>
+            <label for="gender">Gender: </label>
+            <select id="gender">
+              <option></option>
+              <option>male</option>
+              <option>female</option>
+            </select>
+          </div>
+
+      </details>
+
+      <div id="info"></div>
+      <div id="query-info"></div>
+
+  </div>
+
+  <ol id="matches"></ol>
+
+  <div class="hidden" id="text"></div>
+
+</div>
+
+<script src="js/lib/elasticlunr.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>

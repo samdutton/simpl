@@ -1,0 +1,428 @@
+.hidden {
+  height: 0; /* to enable opacity transition: doesn't work if setting display */
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.highlight {
+  color: #c83f3f !important;
+}
+
+.shadow-bottom {
+  box-shadow: 0 19px 19px -8px rgba(100,100,100,0.3);
+  moz-box-shadow: 0 15px 16px -8px rgba(100,100,100,0.4);
+}
+
+body {
+  color: #444;
+  counter-reset: line-number;
+  font-family: Palatino, serif;
+  margin: 0;
+  padding: 30px 20px;
+  word-break: break-word;
+}
+
+details div {
+  margin: 0 0 20px 0;
+}
+
+div.stage-direction {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.4em;
+  margin: 8px 0 8px 10px;
+  text-indent: -10px;
+}
+
+/*div.stage-direction + div.stage-direction {
+  margin-top: -20px;
+}*/
+
+div#container {
+  height: 100%;
+  margin: 0 auto 0 auto;
+  max-width: 550px;
+}
+
+div#info {
+  color: #c83f3f;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+div#query-container {
+  background: white;
+  padding: 20px 0 10px 0;
+  position: sticky;
+  top: 0;
+  width: calc(100% + 4px);
+  z-index: 1;
+}
+
+div#query-info {
+  border-bottom: 1px solid rgb(200, 63, 63);
+  border-bottom: 1px solid rgba(200, 63, 63, 0.5);
+  color: #888;
+  font-size: 14px;
+  margin: 0 0 0 0;
+  padding: 0 0 10px 0;
+}
+
+h1 {
+  border-bottom: 1px solid #c83f3f; /* fallback */
+  border-bottom: 1px solid rgba(200, 63, 63, 1);
+  color: black;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2em;
+  margin: 0 0 1em 0;
+  padding: 0 0 1em 0;
+}
+
+h1#title {
+  border-bottom: 1px solid #c83f3f; /* fallback */
+  border-bottom: 1px solid rgba(200, 63, 63, 0.5);
+  font-size: 24px;
+}
+
+h2 {
+  color:#666;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2em;
+  margin: 0 0 1em 0;
+  text-transform: uppercase;
+}
+
+h3 {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2em;
+  margin: 0 0 1em 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+h4 {
+  color: black;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0 0 25px 0;
+}
+
+h4:before {
+  color: #c83f3f;
+  content: '\2619'; /*  ☙ */
+  font-size: 1.4em;
+  margin: 0 0.5em 0 0;
+  position: relative;
+  top: 0.1em;
+}
+
+html {
+    height: 100%;
+}
+
+iframe {
+  border: none;
+  height: calc(100% - 100px);
+  opacity: 1;
+  overflow: scroll;
+/* transition: opacity .5s;*/
+  width: 100%;
+}
+
+input {
+  color: black;
+  font-family: Palatino, serif;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 4px;
+  top: 0;
+}
+
+details input {
+  width: calc(100% - 108px);
+}
+
+input#query {
+  margin: 0 0 24px 0;
+  width: calc(100% - 15px);
+}
+
+label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  width: 90px;
+}
+
+li {
+  list-style-type: none;
+}
+
+ol#matches li {
+  color:#444;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.3em;
+  margin: 1px 0 0.8em 1em;
+  position: relative;
+  text-indent: -1em;
+  width: calc(100% - 100px);
+}
+
+ol#matches li::after {
+  color: #aaa;
+  content: attr(data-citation);
+  display: inline-block;
+  /* float: right; */
+  font-size: 12px;
+  height: 12px;
+  /* left: 75px; */
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: -80px;
+  top: 0;
+}
+
+.scene li {
+  --margin-left: 10px;
+  --offset: 30px;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin-bottom: 2px;
+  margin-left: var(--margin-left);
+  padding: 0 30px 0 0;
+  text-indent: -10px;
+}
+
+.scene li[data-offset = "1"] {
+  margin-left: calc(var(--margin-left) + 1 * var(--offset));
+}
+
+.scene li[data-offset = "2"] {
+  margin-left: calc(var(--margin-left) + 2 * var(--offset));
+}
+
+.scene li[data-offset = "3"] {
+  margin-left: calc(var(--margin-left) + 3 * var(--offset));
+}
+
+.scene li[data-offset = "4"] {
+  margin-left: calc(var(--margin-left) + 4 * var(--offset));
+}
+
+.scene li[data-offset = "5"] {
+  margin-left: calc(var(--margin-left) + 5 * var(--offset));
+}
+
+.scene li[data-offset = "6"] {
+  margin-left: calc(var(--margin-left) + 6 * var(--offset));
+}
+
+.scene li[data-offset = "7"] {
+  margin-left: calc(var(--margin-left) + 7 * var(--offset));
+}
+
+.scene li[data-offset = "8"] {
+  margin-left: calc(var(--margin-left) + 8 * var(--offset));
+}
+
+.scene li[data-offset = "9"] {
+  margin-left: calc(var(--margin-left) + 9 * var(--offset));
+}
+
+.scene li[data-offset = "10"] {
+  margin-left: calc(var(--margin-left) + 10 * var(--offset));
+}
+
+.scene li[data-number]::after {
+  color: #aaa;
+  content: attr(data-number);
+  float: right;
+  font-size: 12px;
+  left: 30px;
+  position: relative;
+}
+
+.scene li.stage-direction {
+  color: black;
+  counter-increment: none;
+  font-style: italic;
+  line-height: 1.4em;
+  list-style-type: none;
+  margin: 0.8em 0 0.8em 44px;
+  padding: 0;
+  text-indent: 20px;
+}
+
+ol[data-speaker]:before {
+  color: black;
+  content: attr(data-speaker);
+  display: block;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+}
+
+ol {
+  padding: 0;
+}
+
+ol.speech {
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+ol#matches {
+  margin: 24px 0 0 0;
+  max-height: calc(100% - 170px);
+  padding: 0;
+  width: calc(100% + 6px);
+}
+
+ol#results {
+  border-top: 1px solid #eee;
+  margin: 0 0 1em 0;
+  padding: 1.4em 0 0 0;
+}
+
+p {
+  cursor: pointer;
+}
+
+section#poemintro {
+  border-bottom: 1px solid #eee;
+  font-style: italic;
+  line-height: 2em;
+  margin: 0 0 2.5em 0;
+  padding: 0 0 2em 0;
+}
+
+section.act {
+  border-bottom: 1px solid #c83f3f;
+  margin: 0 0 40px 0;
+  padding: 0 0 3px 0;
+}
+
+section.couplet {
+  margin: 0 0 2em 0;
+}
+
+section.couplet {
+  margin: 0 0 2em 0;
+}
+
+section.quatrain {
+  margin: 0 0 2em 0;
+}
+
+section.scene {
+/*  border-bottom: 1px solid #eee; */
+  counter-reset: line-number;
+  margin: 0 0 1.6em 0;
+}
+
+section.scene:after {
+  color: #c83f3f;
+  content: '\2766'; /* ❦ */
+  font-size: 30px;
+}
+
+section.scene:last-of-type {
+  border-bottom: none;
+}
+
+section.scene:last-of-type:after {
+  content: '';
+}
+
+section.stanza {
+  margin: 0 0 2em 0;
+}
+
+section.tercet {
+  margin: 0 0 2em 0;
+}
+
+section#dramatis-personae {
+  margin: 0 0 1.4em 0;
+}
+
+section#preamble {
+/*  border-bottom: 1px solid #c83f3f; */
+  margin: 0 0 0 0;
+  padding: 0 0 1em 0;
+}
+
+span {
+  cursor: pointer;
+}
+
+span:hover {
+  background-color: yellow;
+}
+
+span.stage-direction {
+  color: black;
+  font-style: italic;
+  line-height: 1.4em;
+  margin: 0.8em 0 0.8em 44px;
+  padding: 0;
+  text-indent: 20px;
+}
+
+span.stage-direction:before {
+  content: '(';
+}
+
+span.stage-direction:after {
+  content: ')';
+}
+
+strong {
+  font-weight: 500;
+}
+
+summary {
+  color: #666;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 16px 2px;
+  outline: none;
+}
+
+@media (min-width: 450px) {
+  div.stage-direction {
+    font-size: 16px;
+    margin: 8px 0 8px 50px;
+    text-indent: 30px;
+  }
+  h1 {
+    color: #444;
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  .scene li {
+    --margin-left: 20px;
+    --offset: 35px;
+    font-size: 16px;
+    margin-left: var(--margin-left);
+    padding: 0 30px 0 32px;
+    text-indent: -20px;
+  }
+}
+
