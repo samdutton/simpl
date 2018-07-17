@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/samdutton/simpl",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-csslint": "^2.0.0",
-    "grunt-eslint": "^20.0.0",
-    "grunt-githooks": "^0.6.0",
-    "grunt-htmlhint": "^0.9.13"
+    "eslint": "latest",
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "grunt-contrib-csslint": "latest",
+    "grunt-eslint": "latest",
+    "grunt-githooks": "latest",
+    "grunt-htmlhint": "latest",
+    "minimatch": "^3.0.4"
   }
 }
