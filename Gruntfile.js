@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 
     githooks: {
       all: {
-        'pre-commit': 'csslint htmlhint eslint'
+        'pre-commit': 'stylelint htmlhint eslint'
       }
     },
 
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-htmlhint');
 
   // set default tasks to run when grunt is called without parameters
-  grunt.registerTask('default', ['csslint', 'eslint', 'htmlhint']);
+  grunt.registerTask('default', ['stylelint', 'eslint', 'htmlhint']);
 
   // also possible to call JavaScript directly in registerTask()
   // or to call external tasks with grunt.loadTasks()
