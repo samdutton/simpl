@@ -1,9 +1,9 @@
 footer {
- grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 header {
- grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 h2 {
@@ -14,14 +14,15 @@ h2 {
 p {
   color: white;
 }
+
 section {
   display: grid;
   grid-gap: 10px 20px;
   grid-template-columns: 1fr 3fr;
 }
 
-section > *  {
- background-color: #444;
- color: white;
- padding: 20px;
+section > * {
+  background-color: #444;
+  color: white;
+  padding: 20px;
 }

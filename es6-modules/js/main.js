@@ -18,5 +18,6 @@ import {log} from '../mjs/module.js';
 
 const el = document.getElementById('log');
 
-log(el, 'This message is logged from js/main.js using the log() function from mjs/module.js');
+log(el,
+  'Message logged from js/main.js using log() function from mjs/module.js');
 

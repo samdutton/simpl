@@ -1,21 +1,18 @@
 body {
   font-family: 'Roboto', sans-serif;
+  padding: 2em;
 }
 
 a {
-  color: #77aaff;
+  color: #7af;
 }
 
 a.video {
   border-bottom: 1px dotted #ddd;
   display: block;
-  font-family: Roboto Condensed;
-  margin:0 0 1.5em 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0 0 1.5em 0;
   padding: 0 0 2em 0;
-}
-
-body {
-  padding: 2em;
 }
 
 div#google_translate_element {
@@ -30,7 +27,7 @@ div#container {
 
 h1 {
   border-top: 1px solid #eee;
-  font-family: Roboto Condensed, sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.5em;
   margin: 1em 0 0 0;
   padding: 1em 0 0 0;
@@ -38,13 +35,13 @@ h1 {
 
 h2 {
   color: #666;
-  font-family: Roboto Condensed;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.2em;
 }
 
 p {
   color: #444;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-weight: 200;
   line-height: 1.7em;
   margin: 0;
@@ -74,14 +71,13 @@ span[data-start].current {
   color: #cf402f;
 }
 
-
 /* Google Translate */
 
 .goog-te-gadget-simple {
-    border-bottom: 1px solid #ccc !important;
-    border-left: 1px solid #ccc !important;
-    border-right: 1px solid #ccc !important;
-    border-top: 1px solid #ccc !important;
-    padding-bottom: 3px !important;
-    padding-top: 2px !important;
+  border-bottom: 1px solid #ccc !important;
+  border-left: 1px solid #ccc !important;
+  border-right: 1px solid #ccc !important;
+  border-top: 1px solid #ccc !important;
+  padding-bottom: 3px !important;
+  padding-top: 2px !important;
 }

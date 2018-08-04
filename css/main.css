@@ -127,9 +127,9 @@ h3 {
 }
 
 html {
-/* avoid annoying page width change
+  /* avoid annoying page width change
 when moving from the home page */
-overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 img {
@@ -139,11 +139,6 @@ img {
 
 input {
   font-family: sans-serif;
-}
-
-input[type=radio] {
-  position: relative;
-  top: -1px;
 }
 
 input[type=radio] {
@@ -191,6 +186,7 @@ section {
 
 section:last-of-type {
   border-bottom: none;
+  margin: 0;
   padding: 0 0 1em 0;
 }
 
@@ -212,35 +208,6 @@ ul {
   padding: 0 0 0 20px;
 }
 
-section p:last-of-type {
-  margin: 0;
-}
-
-section {
-  border-bottom: 1px solid #eee;
-  margin: 0 0 30px 0;
-  padding: 0 0 20px 0;
-}
-
-section:last-of-type {
-  border-bottom: none;
-  padding: 0 0 1em 0;
-}
-
-select {
-  margin: 0 1em 1em 0;
-  position: relative;
-  top: -1px;
-}
-
-h1 span {
-  white-space: nowrap;
-}
-
-strong {
-  font-weight: 500;
-}
-
 video {
   background: #222;
   margin: 0 0 20px 0;
@@ -257,6 +224,7 @@ video {
   button:active {
     background-color: darkRed;
   }
+
   h1 {
     font-size: 22px;
   }

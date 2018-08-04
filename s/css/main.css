@@ -1,6 +1,7 @@
 .hidden {
   display: none;
 }
+
 a.download {
   display: block;
   font-size: 0.8em;
@@ -12,44 +13,53 @@ a.download {
   width: 72px;
   z-index: 1;
 }
+
 a {
-  color: #4183C4;
+  color: #4183c4;
   font-weight: 300;
   text-decoration: none;
 }
+
 a:hover {
   color: #3d85c6;
   text-decoration: underline;
 }
+
 a#viewSource {
   border-top: 1px solid #999;
   display: block;
   margin: 1.3em 0 0 0;
   padding: 1em 0 0 0;
 }
+
 div#links a {
   display: block;
   line-height: 1.3em;
   margin: 0 0 1.5em 0;
 }
+
 @media (min-width: 1000px) {
   div#links a {
-    line-height:0.8em;
+    line-height: 0.8em;
   }
 }
+
 h1 a {
   font-weight: 300;
   white-space: nowrap;
 }
+
 audio {
   max-width: 100%;
 }
+
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 1em;
   word-break: break-word;
 }
+
 button {
   background-color: #d84a38;
   border: none;
@@ -63,57 +73,72 @@ button {
   top: -1px;
   width: 5em;
 }
+
 button:active {
   background-color: #cf402f;
 }
+
 button:hover {
   background-color: #cf402f;
 }
+
 button[disabled] {
   color: #ccc;
 }
+
 button[disabled]:hover {
   background-color: #d84a38;
 }
+
 details.matches {
   margin: 0 0 0.9em 0;
 }
+
 h2 + details {
   margin: 1em 0 0 0;
 }
+
 div#container {
   margin: 0 auto 0 auto;
   max-width: 480px;
   padding: 0.5em 1.5em 1.3em 1.5em;
 }
+
 div#info {
   color: rgb(230, 0, 0);
   font-size: 0.9em;
   font-weight: 500;
   margin: 0 0 1em 0;
 }
+
 div#nextPage {
-  color: #4183C4;
+  color: #4183c4;
   cursor: pointer;
   float: right;
 }
+
 div#nextPage:hover {
   color: #3d85c6;
 }
+
 div#orderBy {
   margin: 0 0 1em 0;
 }
+
 div#previousPage {
-  color: #4183C4;
+  color: #4183c4;
   cursor: pointer;
   float: left;
 }
+
 div#previousPage:hover {
   color: #3d85c6;
 }
+
 div#q {
   margin: 0 0 1.5em 0;
 }
+
 div#queryInfo {
   border-bottom: 1px solid #666;
   color: #888;
@@ -121,6 +146,7 @@ div#queryInfo {
   margin: 0 0 1.5em 0;
   padding: 0 0 1.5em 0;
 }
+
 div#youtubeContainer {
   height: 0;
   margin: 0 0 1.5em 0;
@@ -129,19 +155,26 @@ div#youtubeContainer {
   padding-top: 30px;
   position: relative;
 }
+
 div.noCaptions {
   font-size: 0.9em;
   margin: 0 0 1em 0;
 }
-iframe, object, embed {
+
+iframe,
+object,
+embed {
   background-color: #ccc;
   border: none;
   margin: 0 0 1.1em 0;
   max-width: 100%;
 }
-#values div, #quantities div {
+
+#values div,
+#quantities div {
   margin: 0 0 1em 0;
 }
+
 details.matches div {
   color: #666;
   cursor: pointer;
@@ -150,13 +183,16 @@ details.matches div {
   margin: 0 0 0.8em 0;
   padding: 0 0 0 4.1em;
   text-indent: -2em;
+
   /* position: relative; */
 }
+
 div.count {
   color: #666;
   font-size: 0.8em;
   margin: 0 0 0.5em 0;
 }
+
 div.description {
   border-bottom: 1px dashed #ddd;
   color: #444;
@@ -166,6 +202,7 @@ div.description {
   padding: 0 0 1.5em 0;
   word-break: normal;
 }
+
 div.publishedAt {
   border-bottom: 1px dashed #ddd;
   color: #666;
@@ -173,34 +210,41 @@ div.publishedAt {
   margin: 0 0 1.5em 0;
   padding: 0 0 1.5em 0;
 }
+
 div.speakers {
   color: #666;
   font-size: 0.8em;
   line-height: 1.5em;
   margin: 0 0 1.2em 0;
 }
+
 div.container.transcriptView {
   border-bottom: 1px solid #ccc;
   margin: 0 auto 2em auto;
   padding: 0 0 2em 0;
 }
+
 div.container.transcriptView:last-of-type {
   border-bottom: none;
 }
+
 div.video {
   border-bottom: 1px dotted #999;
   margin: 0 0 1.5em 0;
   padding: 0 0 0.7em 0;
 }
+
 em {
   font-style: normal;
 }
+
 h1 {
   font-family: sans-serif;
   font-size: 1.5em;
   font-weight: 600;
   margin: 0 0 1em 0;
 }
+
 h2 {
   color: black;
   font-size: 0.9em;
@@ -208,15 +252,19 @@ h2 {
   line-height: 1.5em;
   margin: 0 0 0.5em 0;
 }
+
 .transcriptView h2 {
   margin: 0 0 2em 0;
 }
+
 html {
   overflow-y: scroll;
 }
+
 img {
   border: none;
 }
+
 img.videoThumbnail {
   border: 1px solid #444;
   cursor: pointer;
@@ -226,47 +274,58 @@ img.videoThumbnail {
   top: 3px;
   width: 240px;
 }
+
 input {
   font-family: sans-serif;
   height: 1em;
   padding: 5px;
 }
+
 #values input[type=date] {
   width: auto;
 }
+
 #q input {
   font-size: 1em;
   margin: 0 1em 0 0;
   padding: 7px;
   width: calc(100% - 7.6em);
 }
+
 #quantities input {
   font-size: 0.9em;
   width: 10.1em;
 }
+
 #values input {
   font-size: 0.9em;
   width: 16.7em;
 }
+
 label {
   display: inline-block;
   font-size: 0.9em;
   font-weight: 500;
 }
+
 #orderBy label {
   width: 8em;
 }
+
 #quantities label {
   width: 8.1em;
 }
+
 #values label {
   width: 8.3em;
 }
+
 p {
   color: #444;
   font-weight: 300;
   line-height: 1.6em;
 }
+
 p#data {
   border-top: 1px dotted #666;
   font-family: Courier New, monospace;
@@ -275,14 +334,17 @@ p#data {
   overflow-y: auto;
   padding: 1em 0 0 0;
 }
+
 p.borderBelow {
   border-bottom: 1px solid #eee;
   padding: 0 0 20px 0;
 }
+
 details div p.speaker {
   margin: 1em 0 0 0;
   text-indent: 0;
 }
+
 .transcript p {
   cursor: pointer;
   font-size: 0.8em;
@@ -290,66 +352,85 @@ details div p.speaker {
   margin: 0;
   text-indent: 2em;
 }
+
 .transcriptView .transcript p {
   font-size: 1em;
 }
+
 .transcript p:first-of-type {
   text-indent: 0;
 }
+
 pre {
   color: #ddd;
 }
+
 #orderByField {
   margin: 0 1em 0 0;
 }
+
 #orderBy select {
   width: 10.9em;
 }
+
 #quantities select {
   margin: 0 0.3em 0 0;
   position: relative;
   top: -2px;
 }
+
 span#loading {
   display: inline-block;
   width: 70px;
 }
+
 details.matches span.start {
   color: #888;
+
   /* margin: 0 0em 0 0; */
   display: inline-block;
   width: 2em;
 }
+
 span.inputLabel {
   color: #eee;
   float: left;
   font-size: 11px;
   line-height: 1em;
 }
+
 details.matches span:hover {
   color: #cf402f;
 }
+
 .speakers span {
   cursor: pointer;
 }
+
 .speakers span:hover {
   color: #cf402f;
 }
+
 .transcript span:hover {
   color: #cf402f;
 }
+
 .transcript span.speaker {
   color: #444;
   font-weight: 600;
 }
+
 .transcript span:hover span.speaker {
   color: #444;
 }
-.count strong, .publishedAt strong {
+
+.count strong,
+.publishedAt strong {
   color: #666;
   display: inline-block;
   width: 6.3em;
 }
+
 summary {
   color: #666;
   cursor: pointer;
@@ -360,91 +441,115 @@ summary {
   margin: 0 0 1em 0;
   outline: none;
 }
+
 #searchOptions summary {
   color: #666;
   font-size: 1em;
   margin: 0 0 1em 0;
 }
+
 details.matches > summary {
   margin: 0 0 1em 0;
 }
+
 video {
   background: #222;
 }
+
 @media (max-width: 450px) {
   a.download {
-    font-size:1em;
+    font-size: 1em;
     font-weight: 600;
     left: 100px;
     top: 0;
     width: 6em;
     z-index: 1;
   }
+
   body {
     margin: 1em 0 2em 0;
     padding: 0;
   }
+
   div.description {
     font-size: 1em;
   }
+
   div#container {
     padding: 0.9em 1em 1em 1em;
   }
+
   div#q {
     margin: 0 0 1em 0;
   }
+
   div#youtubeContainer {
     margin: 0 0 1em 0;
   }
+
   details.matches div {
     font-size: 0.9em;
     margin: 0 0 1em 0;
   }
+
   h1 {
     border: none;
     font-size: 1.2em;
     margin: 0 0 1.5em 0;
     padding: 0;
   }
+
   h2 {
     color: black;
     font-size: 1em;
   }
+
   img.videoThumbnail {
     float: none;
     padding: 0 0 0 0;
   }
+
   #q input {
     margin: 0 0.5em 0.5em 0;
     width: calc(100% - 7em);
   }
+
   #quantities input {
     width: calc(100% - 15.3em);
   }
+
   #values input {
     width: calc(100% - 8.2em);
   }
+
   #values input[type=date] {
     width: 5em;
   }
+
   label {
     font-size: 0.8em;
   }
+
   #quantities label {
-    width: 7.6em
+    width: 7.6em;
   }
+
   #values label {
-    width: 8em
+    width: 8em;
   }
+
   .transcript p {
     font-size: 1em;
   }
+
   #orderBy select {
     width: 7.6em;
   }
+
   #quantities select {
     margin: 0 1em 0 0;
   }
+
   summary {
     font-size: 1em;
   }

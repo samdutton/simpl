@@ -20,7 +20,7 @@ div#splitview {
 }
 
 #splitview video {
-  /*opacity: 0.5;*/
+  /* opacity: 0.5; */
   position: absolute;
 }
 
@@ -42,6 +42,7 @@ div#splitview {
 }
 
 /* bad and wrong */
+
 /* csslint ignore:start */
 @-moz-document url-prefix() {
   #splitview audio {
@@ -49,6 +50,7 @@ div#splitview {
     padding: 0;
     width: 100%;
   }
+
   #splitview input[type=range] {
     height: var(--video-height);
     left: -1px;
@@ -56,6 +58,7 @@ div#splitview {
     top: -1px;
   }
 }
+
 /* csslint ignore:end */
 
 input[type=range]:focus {
@@ -98,7 +101,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   height: 0;
 }
 
-/*video::-webkit-media-controls-panel {
+/* video::-webkit-media-controls-panel {
   display: flex !important;
   opacity: 1 !important;
-}*/
+} */

@@ -3,18 +3,22 @@ input {
   font-size: 16px;
   margin: 0 0 2em 0;
 }
+
 input[type=color] {
   height: 25px;
   width: 50px;
 }
+
 input[type=range] {
   float: left;
   width: calc(100% - 40px);
 }
+
 input[type=text] {
   padding: 5px;
-  width: calc(100% - 15px) ;
+  width: calc(100% - 15px);
 }
+
 output {
   float: right;
   font-family: sans-serif;

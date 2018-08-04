@@ -18,7 +18,7 @@ div#scene-description {
   margin: 0 0 20px 0;
 }
 
-div#scene-description:before {
+div#scene-description::before {
   color: #c83f3f;
   content: '\2619'; /*  ☙ */
   font-size: 1.4em;
@@ -50,13 +50,12 @@ h1 {
 }
 
 h2 {
-  color:#666;
+  color: #666;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2em;
   margin: 0 0 1em 0;
 }
-
 
 h3 {
   color: black;
@@ -72,7 +71,7 @@ li {
 }
 
 .persona-group li {
-  color:#666;
+  color: #666;
   font-size: 14px;
   line-height: 1.5em;
 }
@@ -97,7 +96,6 @@ li {
   position: relative;
 }
 
-
 .speech li.speaker {
   color: black;
   font-size: 13px;
@@ -111,7 +109,7 @@ li {
   counter-increment: none;
   font-style: italic;
   line-height: 1.4em;
-  list-style-type:none;
+  list-style-type: none;
   margin: 0.8em 0 0.8em 50px;
   padding: 0;
   text-indent: 20px;
@@ -134,12 +132,12 @@ section.act {
 }
 
 section.scene {
-/*  border-bottom: 1px solid #eee; */
+  /*  border-bottom: 1px solid #eee; */
   counter-reset: line-number;
   margin: 0 0 1.6em 0;
 }
 
-section.scene:after {
+section.scene::after {
   color: #c83f3f;
   content: '\2766'; /* ❦ */
   font-size: 30px;
@@ -149,7 +147,7 @@ section.scene:last-of-type {
   border-bottom: none;
 }
 
-section.scene:last-of-type:after {
+section.scene:last-of-type::after {
   content: '';
 }
 
@@ -177,12 +175,15 @@ strong {
   h1 {
     font-size: 22px;
   }
+
   h2 {
     font-size: 18px;
   }
+
   h3 {
     font-size: 16px;
   }
+
   .speech li.speaker {
     font-size: 11px;
   }
@@ -192,20 +193,24 @@ strong {
   div.stage-direction {
     font-size: 14px;
   }
+
   h1 {
     font-size: 20px;
   }
+
   h2 {
     font-size: 18px;
   }
+
   h3 {
     font-size: 14px;
   }
+
   .speech li {
     font-size: 14px;
   }
+
   .persona-group li {
     font-size: 14px;
   }
-
 }

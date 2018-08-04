@@ -21,7 +21,7 @@ div.productDescription {
 }
 
 div#backToResults {
-  color: #4183C4;
+  color: #4183c4;
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
@@ -52,7 +52,7 @@ div#nextPage:hover {
 }
 
 div#pageNavigation {
-  color: #4183C4;
+  color: #4183c4;
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
@@ -80,7 +80,6 @@ label[for=query] {
 }
 
 @media (min-width: 350px) {
-
   div#backToResults {
     font-size: 14px;
   }
@@ -90,8 +89,8 @@ label[for=query] {
   }
 
   div#itemNavigation {
-   font-size: 14px;
- }
+    font-size: 14px;
+  }
 
   div#pageNavigation {
     font-size: 14px;
@@ -100,5 +99,4 @@ label[for=query] {
   input#query {
     width: 210px;
   }
-
 }

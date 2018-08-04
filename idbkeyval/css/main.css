@@ -1,24 +1,29 @@
 .hidden {
-visibility: hidden;
+  visibility: hidden;
 }
+
 button {
-display: block;
-float: right;
+  display: block;
+  float: right;
 }
+
 div#log {
-font-family: Roboto Mono, Courier New, monospace;
-font-size: 13px;
+  font-family: Roboto Mono, Courier New, monospace;
+  font-size: 13px;
 }
+
 div#rangeContainer {
-height: 70px;
+  height: 70px;
 }
-input[type = range] {
-float: left;
-margin: 0 0 20px 0;
-width: calc(100% - 65px);
+
+input[type=range] {
+  float: left;
+  margin: 0 0 20px 0;
+  width: calc(100% - 65px);
 }
+
 label {
-float: right;
-text-align: right;
-width: 65px;
+  float: right;
+  text-align: right;
+  width: 65px;
 }
