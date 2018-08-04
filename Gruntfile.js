@@ -24,19 +24,20 @@ module.exports = function(grunt) {
     // make node configurations available
     pkg: grunt.file.readJSON('package.json'),
 
-    csslint: {
-      options: {
-        csslintrc: '.csslintrc'
-      },
-      strict: {
-        options: {
-          import: 2
-        },
-        src: ['**/*.css', '!video/split/css/main.css',
-          '!node_modules/**/*', '!gridpage/css/main.css']
-      }
-    },
 
+    stylelint: {
+      options: {
+        configFile: '.stylelintrc',
+        formatter: 'string',
+        ignoreDisables: false,
+        failOnError: true,
+        outputFile: '',
+        reportNeedlessDisables: false,
+        syntax: ''
+      },
+      src: ['**/*.css', '!video/split/css/main.css',
+        '!node_modules/**/*', '!gridpage/css/main.css']
+    },
     eslint: {
       options: {
         configFile: '.eslintrc'
@@ -59,7 +60,7 @@ module.exports = function(grunt) {
   });
 
   // enable plugins
-  grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-stylelint');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-htmlhint');
   grunt.loadNpmTasks('grunt-githooks');

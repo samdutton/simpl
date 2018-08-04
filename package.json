@@ -26,10 +26,10 @@
     "eslint": "latest",
     "grunt": "latest",
     "grunt-cli": "latest",
-    "grunt-contrib-csslint": "latest",
     "grunt-eslint": "latest",
-    "grunt-githooks": "latest",
     "grunt-htmlhint": "latest",
-    "minimatch": "^3.0.4"
+    "grunt-stylelint": "latest",
+    "minimatch": "^3.0.4",
+    "stylelint": "latest"
   }
 }
