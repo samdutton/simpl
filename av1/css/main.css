@@ -1,0 +1,107 @@
+#splitview audio {
+  bottom: 5px;
+  height: 36px;
+  opacity: 0;
+  outline: none;
+  padding: 0 5px;
+  position: absolute;
+  transition: opacity 0.3s;
+  width: calc(100% - 10px);
+}
+
+div#splitview:hover audio {
+  opacity: 1;
+}
+
+div#splitview {
+  height: var(--video-height);
+  overflow: hidden;
+  position: relative;
+}
+
+#splitview video {
+  /* opacity: 0.5; */
+  position: absolute;
+}
+
+#splitview video:last-of-type {
+  clip: rect(0 var(--video-clip) var(--video-height) 0);
+  -webkit-clip-path: inset(0 0 0 0);
+  display: block;
+  opacity: 1;
+}
+
+#splitview input[type=range] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  margin: 0 2px 0 0;
+  position: absolute;
+  transform: translateZ(0);
+  width: 100%;
+}
+
+/* bad and wrong */
+
+/* csslint ignore:start */
+@-moz-document url-prefix() {
+  #splitview audio {
+    bottom: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  #splitview input[type=range] {
+    height: var(--video-height);
+    left: -1px;
+    position: relative;
+    top: -1px;
+  }
+}
+
+/* csslint ignore:end */
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  background: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 0;
+}
+
+input[type=range]::-moz-range-thumb {
+  background: black;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  height: var(--video-height);
+  opacity: 0.5;
+  width: var(--thumb-width);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: black;
+  cursor: pointer;
+  height: var(--video-height);
+  opacity: 0.5;
+  width: var(--thumb-width);
+}
+
+input[type=range]:focus::-moz-range-track {
+  height: 0;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  height: 0;
+}
+
+/* video::-webkit-media-controls-panel {
+  display: flex !important;
+  opacity: 1 !important;
+} */
