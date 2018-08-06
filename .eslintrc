@@ -19,7 +19,7 @@
         "afterColon": true
       }
     ],
-    "max-len": [2, 80, 2, {"ignoreUrls": true}],
+    "max-len": [0],
     "new-cap": 2,
     "no-console": 0,
     "no-else-return": 0,
@@ -89,7 +89,7 @@
     "webrtcDetectedVersion": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module"
   }
 }
