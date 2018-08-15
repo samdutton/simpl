@@ -27,6 +27,6 @@ export function log(...args) {
   } else {
     time = ((Date.now() - start) / 1000).toFixed(3);
   }
-  data.innerHTML += `<span class = "time">${time}</span> s:<br>${message}<br><br>`;
+  data.innerHTML += `<span class = "time">${time}</span>s<br>${message}<br><br>`;
 }
 

@@ -21,9 +21,10 @@ import {log} from './log.js';
 log('script in head of page began execution');
 
 document.addEventListener('load', (event) => {
-  console.log(event.target.constructor.name);
   if (event.target.src) {
-    log(event.target.constructor.name, event.target.src);
+    console.log('event', event);
+    log(`${event.type} event for ${event.target.constructor.name}`,
+      event.target.src);
   }
 }, true);
 
