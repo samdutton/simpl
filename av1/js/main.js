@@ -19,4 +19,4 @@ limitations under the License.
 /* global SplitVideo */
 
 window.sv = new SplitVideo('splitview',
-  'video/av1-2018-06_550.webm#t=2', 'video/vp9_562.webm#t=2');
+  'video/av1-2018-06_550.webm', 'video/vp9_562.webm');

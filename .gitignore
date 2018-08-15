@@ -1,7 +1,8 @@
+*~
 .DS_Store
 .swp
-*~
+.vscode/
+default.profraw
 node_modules
 validation-report.json
 validation-status.json
-.vscode/
