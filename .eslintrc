@@ -47,8 +47,7 @@
   },
   "env": {
     "es6": true,
-    "browser": true,
-    "node": true
+    "browser": true
   },
   "extends": "eslint:recommended",
   "globals": {
