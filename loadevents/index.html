@@ -30,9 +30,9 @@ gtag('js', new Date());
 gtag('config', 'UA-33848682-1');
 </script>
 
+<script src="js/head.js" type="module"></script>
 <script src="js/defer.js" type="module" defer></script>
 <script src="js/async.js" type="module" async></script>
-<script src="js/head.js" type="module"></script>
 
 <meta charset="utf-8">
 <meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
@@ -60,16 +60,25 @@ gtag('config', 'UA-33848682-1');
 
   <p id="data"></p>
 
-  <img src="../images/small.jpg">
-  <img src="../images/medium.jpg">
-  <img src="../images/large.jpg">
+<script>
+const data = document.querySelector('p#data');
+window.log = function(...args) {
+  const message = args.join('<br>');
+  const time = (window.performance.now() / 1000).toFixed(3);
+  data.innerHTML += `<span class = "time">${time}</span>s<br>${message}<br><br>`;
+};
+window.log('Inline script executed');
+</script>
+
+  <img src="../images/small.jpg" onload="log(`Image ${this.src} loaded`);">
+  <img src="../images/medium.jpg" onload="log(`Image ${this.src} loaded`);">
+  <img src="../images/large.jpg" onload="log(`Image ${this.src} loaded`);">
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/events" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 
 </div>
 
-<script src="../js/lib/ga.js"></script>
 <script src="js/end.js" type="module"></script>
-
+<script src="../js/lib/ga.js"></script>
 </body>
 </html>

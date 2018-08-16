@@ -17,16 +17,10 @@ limitations under the License.
 'use strict';
 
 const data = document.querySelector('p#data');
-const start = Date.now(); // for browsers that don't support window.performance
 
 export function log(...args) {
   const message = args.join('<br>');
-  let time;
-  if (window.performance) {
-    time = (window.performance.now() / 1000).toFixed(3);
-  } else {
-    time = ((Date.now() - start) / 1000).toFixed(3);
-  }
+  const time = (window.performance.now() / 1000).toFixed(3);
   data.innerHTML += `<span class = "time">${time}</span>s<br>${message}<br><br>`;
 }
 

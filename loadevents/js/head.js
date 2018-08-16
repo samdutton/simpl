@@ -18,22 +18,14 @@ limitations under the License.
 
 import {log} from './log.js';
 
-log('script in head of page began execution');
-
-document.addEventListener('load', (event) => {
-  if (event.target.src) {
-    console.log('event', event);
-    log(`${event.type} event for ${event.target.constructor.name}`,
-      event.target.src);
-  }
-}, true);
+log('script in head began execution');
 
 window.onload = () => {
   log('window load event');
 };
 
 document.addEventListener('loaded', function() {
-  log('window loaded event');
+  log('document loaded event');
 });
 
 document.addEventListener('DOMContentLoaded', function() {
