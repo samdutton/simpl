@@ -15,7 +15,7 @@ const FILES = [
   'index.html'
 ];
 
-const CACHE = 'v1';
+const CACHE = 'v1.2';
 
 self.addEventListener('install', (event) => {
   console.log('Service worker:', event);
@@ -24,7 +24,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('Service worker:', event);
-  clients.claim();
+  window.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
