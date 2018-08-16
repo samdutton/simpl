@@ -70,9 +70,9 @@ window.log = function(...args) {
 window.log('Inline script executed');
 </script>
 
-  <img src="../images/small.jpg" onload="log(`Image ${this.src.split('/').pop()} loaded`);">
-  <img src="../images/medium.jpg" onload="log(`Image ${this.src.split('/').pop()} loaded`);">
-  <img src="../images/large.jpg" onload="log(`Image ${this.src.split('/').pop()} loaded`);">
+  <img src="../images/small.jpg" onload="log(`Image loaded: ${this.src.split('/').pop()}`);">
+  <img src="../images/medium.jpg" onload="log(`Image loaded: ${this.src.split('/').pop()}`);">
+  <img src="../images/large.jpg" onload="log(`Image loaded: ${this.src.split('/').pop()}`);">
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/events" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

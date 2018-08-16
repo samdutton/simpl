@@ -18,4 +18,4 @@ limitations under the License.
 
 import {log} from './log.js';
 
-log('script at end of page executed');
+log('Script at end of page executed');

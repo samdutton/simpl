@@ -18,8 +18,6 @@ limitations under the License.
 
 import {log} from './log.js';
 
-log('script in head began execution');
-
 window.onload = () => {
   log('window load event');
 };
@@ -31,4 +29,6 @@ document.addEventListener('loaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   log('window DOMContentLoaded event');
 });
+
+log('Script in head executed');
 
