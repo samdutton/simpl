@@ -27,7 +27,7 @@ navigator.getUserMedia = navigator.getUserMedia ||
 
 function successCallback(stream) {
   window.stream = stream; // stream available to console
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
 }
 
 function errorCallback(error) {

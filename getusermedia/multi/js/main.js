@@ -54,11 +54,11 @@ function errorCallback(error) {
 }
 
 navigator.getUserMedia(qvgaConstraints, function(stream) {
-  qvgaVideo.src = window.URL.createObjectURL(stream);
+  qvgaVideo.srcObject = stream;
   qvgaVideo.play();
 }, errorCallback);
 
 navigator.getUserMedia(hdConstraints, function(stream) {
-  hdVideo.src = window.URL.createObjectURL(stream);
+  hdVideo.srcObject = stream;
   hdVideo.play();
 }, errorCallback);

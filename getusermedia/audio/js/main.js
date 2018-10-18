@@ -24,16 +24,7 @@ var n = navigator.getUserMedia({
 }, function(mediaStream) {
   var stream = mediaStream;
   var audioElement = document.querySelector('audio');
-  try {
-    audioElement.src = window.URL.createObjectURL(stream);
-  } catch (event0) {
-    try {
-      audioElement.mozSrcObject = stream;
-      audioElement.play();
-    } catch (event1) {
-      console.log('Error setting video src: ', event1);
-    }
-  }
+  audioElement.srcObject = stream;
 }, function(error) {
   console.log('navigator.getUserMedia error: ', error);
 });

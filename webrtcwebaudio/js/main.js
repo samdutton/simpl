@@ -120,7 +120,7 @@ function hangup() {
 }
 
 function gotRemoteStream(e) {
-  audioElement.src = URL.createObjectURL(e.stream);
+  audioElement.srcObject = e.stream;
   audioElement.addEventListener('pause', function() {
     voiceSound.stop(0);
     pauseTime += context.currentTime - voiceSound.lastStartTime;

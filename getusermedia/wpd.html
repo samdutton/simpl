@@ -73,16 +73,7 @@ var successCallback = function(localMediaStream) {
 	var kind = mediaStreamTrack.kind // "video"
 	var label = mediaStreamTrack.label // e.g. "FaceTime HD Camera (Built-in)"
   var video = document.querySelector("video");
-  try {
-    video.src = window.URL.createObjectURL(localMediaStream);
-  } catch(e) {
-    try {
-      video.src = localMediaStream;
-      video.play();
-    } catch(e){
-      console.log("Error setting video src: ", e);
-    }
-  }
+  video.srcObject = localMediaStream;
 }
 
 var errorCallback = function(error) {
