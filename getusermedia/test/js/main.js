@@ -20,9 +20,6 @@ var videoElement = document.querySelector('video');
 var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 function gotSources(sourceInfos) {
   console.log(sourceInfos);
   for (var i = 0; i !== sourceInfos.length; ++i) {
@@ -78,7 +75,12 @@ function start() {
       }]
     }
   };
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraints
+  ).then(
+    successCallback,
+    errorCallback
+  );
 }
 
 audioSelect.onchange = start;

@@ -51,27 +51,16 @@ limitations under the License.
   <video autoplay></video>
 
   <script>
-navigator.getUserMedia =
-	navigator.getUserMedia ||
-	navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia ||
-  navigator.msGetUserMedia;
-
-window.URL =
-	window.URL ||
-	window.webkitURL;
-
 var constraints = {video: true};
 
 var successCallback = function(localMediaStream) {
   window.stream = localMediaStream; // just to enable access from the console
-  // stream.stop();
-	window.mediaStreamTrackList = stream.videoTracks;
-	mediaStreamTrackList.onaddtrack = function(e){console.log(e)};
-	mediaStreamTrackList.onremovetrack = function(e){console.log(e)};
-	window.mediaStreamTrack = mediaStreamTrackList[0];
-	var kind = mediaStreamTrack.kind // "video"
-	var label = mediaStreamTrack.label // e.g. "FaceTime HD Camera (Built-in)"
+  window.mediaStreamTrackList = stream.getVideoTracks();
+  mediaStreamTrackList.onaddtrack = function(e){console.log(e)};
+  mediaStreamTrackList.onremovetrack = function(e){console.log(e)};
+  window.mediaStreamTrack = mediaStreamTrackList[0];
+  var kind = mediaStreamTrack.kind // "video"
+  var label = mediaStreamTrack.label // e.g. "FaceTime HD Camera (Built-in)"
   var video = document.querySelector("video");
   video.srcObject = localMediaStream;
 }
@@ -80,7 +69,8 @@ var errorCallback = function(error) {
   console.log("navigator.getUserMedia error: ", error);
 }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+navigator.mediaDevice.getUserMedia(constraints)
+  .then(successCallback, errorCallback);
 
 </script>
 
