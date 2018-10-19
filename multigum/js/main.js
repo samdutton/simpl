@@ -30,7 +30,7 @@ function successCallbackVideo(localMediaStream) {
   window.stream = localMediaStream; // stream available to console
   navigator.getUserMedia(constraintsAudio, successCallbackAudio, errorCallback);
   var video = document.querySelector('video');
-  video.src = window.URL.createObjectURL(localMediaStream);
+  video.srcObject = localMediaStream;
   video.play();
 }
 
