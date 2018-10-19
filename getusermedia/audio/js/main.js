@@ -16,9 +16,6 @@ limitations under the License.
 
 'use strict';
 
-navigator.getUserMedia = navigator.getUserMedia ||
-navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var n = navigator.mediaDevices.getUserMedia({
   audio: true
 }).then(

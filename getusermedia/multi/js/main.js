@@ -19,9 +19,6 @@ limitations under the License.
 var qvgaVideo = document.querySelector('video#qvga');
 var hdVideo = document.querySelector('video#hd');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var qvgaConstraints = {
   video: {
     mandatory: {

@@ -22,9 +22,6 @@ var hdButton = document.querySelector('button#hd');
 var dimensions = document.querySelector('p#dimensions');
 var video = document.querySelector('video');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 function successCallback(stream) {
   window.stream = stream; // stream available to console
   video.srcObject = stream;
