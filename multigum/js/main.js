@@ -28,7 +28,12 @@ var constraintsAudio = {
 
 function successCallbackVideo(localMediaStream) {
   window.stream = localMediaStream; // stream available to console
-  navigator.getUserMedia(constraintsAudio, successCallbackAudio, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraintsAudio
+  ).then(
+    successCallbackAudio,
+    errorCallback
+  );
   var video = document.querySelector('video');
   video.srcObject = localMediaStream;
   video.play();
@@ -42,4 +47,9 @@ function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(constraintsVideo, successCallbackVideo, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  constraintsVideo
+).then(
+  successCallbackVideo,
+  errorCallback
+);

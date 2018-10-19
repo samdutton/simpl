@@ -53,12 +53,22 @@ function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(qvgaConstraints, function(stream) {
-  qvgaVideo.srcObject = stream;
-  qvgaVideo.play();
-}, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  qvgaConstraints
+).then(
+  function(stream) {
+    qvgaVideo.srcObject = stream;
+    qvgaVideo.play();
+  },
+  errorCallback
+);
 
-navigator.getUserMedia(hdConstraints, function(stream) {
-  hdVideo.srcObject = stream;
-  hdVideo.play();
-}, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  hdConstraints
+).then(
+  function(stream) {
+    hdVideo.srcObject = stream;
+    hdVideo.play();
+  },
+  errorCallback
+);

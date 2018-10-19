@@ -87,5 +87,10 @@ function getMedia(constraints) {
     video.src = null;
     window.stream.getVideoTracks()[0].stop();
   }
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraints
+  ).then(
+    successCallback,
+    errorCallback
+  );
 }

@@ -19,14 +19,17 @@ limitations under the License.
 navigator.getUserMedia = navigator.getUserMedia ||
 navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-var n = navigator.getUserMedia({
+var n = navigator.mediaDevices.getUserMedia({
   audio: true
-}, function(mediaStream) {
-  var stream = mediaStream;
-  var audioElement = document.querySelector('audio');
-  audioElement.srcObject = stream;
-}, function(error) {
-  console.log('navigator.getUserMedia error: ', error);
-});
+}).then(
+  function(mediaStream) {
+    var stream = mediaStream;
+    var audioElement = document.querySelector('audio');
+    audioElement.srcObject = stream;
+  },
+  function(error) {
+    console.log('navigator.getUserMedia error: ', error);
+  }
+);
 
 console.log(n);

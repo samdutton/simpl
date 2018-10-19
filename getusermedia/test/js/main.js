@@ -78,7 +78,12 @@ function start() {
       }]
     }
   };
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraints
+  ).then(
+    successCallback,
+    errorCallback
+  );
 }
 
 audioSelect.onchange = start;
