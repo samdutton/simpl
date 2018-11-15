@@ -22,12 +22,9 @@ var hdButton = document.querySelector('button#hd');
 var dimensions = document.querySelector('p#dimensions');
 var video = document.querySelector('video');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 function successCallback(stream) {
   window.stream = stream; // stream available to console
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
 }
 
 function errorCallback(error) {
@@ -87,5 +84,10 @@ function getMedia(constraints) {
     video.src = null;
     window.stream.getVideoTracks()[0].stop();
   }
-  navigator.getUserMedia(constraints, successCallback, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraints
+  ).then(
+    successCallback,
+    errorCallback
+  );
 }

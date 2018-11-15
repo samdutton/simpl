@@ -69,45 +69,27 @@ if (!isSecureOrigin) {
   location.protocol = 'HTTPS';
 }
 
-// Use old-style gUM to avoid requirement to enable the
-// Enable experimental Web Platform features flag in Chrome 49
-
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var constraints = {
   audio: false,
   video: true
 };
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  constraints
+).then(
+  successCallback,
+  errorCallback
+);
 
 function successCallback(stream) {
   console.log('getUserMedia() got stream: ', stream);
   window.stream = stream;
-  if (window.URL) {
-    gumVideo.src = window.URL.createObjectURL(stream);
-  } else {
-    gumVideo.src = stream;
-  }
+  gumVideo.srcObject = stream;
 }
 
 function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
-
-// navigator.mediaDevices.getUserMedia(constraints)
-// .then(function(stream) {
-//   console.log('getUserMedia() got stream: ', stream);
-//   window.stream = stream; // make available to browser console
-//   if (window.URL) {
-//     gumVideo.src = window.URL.createObjectURL(stream);
-//   } else {
-//     gumVideo.src = stream;
-//   }
-// }).catch(function(error) {
-//   console.log('navigator.getUserMedia error: ', error);
-// });
 
 function handleSourceOpen(event) {
   console.log('MediaSource opened');

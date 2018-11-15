@@ -19,9 +19,6 @@ limitations under the License.
 var qvgaVideo = document.querySelector('video#qvga');
 var hdVideo = document.querySelector('video#hd');
 
-navigator.getUserMedia = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var qvgaConstraints = {
   video: {
     mandatory: {
@@ -53,12 +50,22 @@ function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(qvgaConstraints, function(stream) {
-  qvgaVideo.src = window.URL.createObjectURL(stream);
-  qvgaVideo.play();
-}, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  qvgaConstraints
+).then(
+  function(stream) {
+    qvgaVideo.srcObject = stream;
+    qvgaVideo.play();
+  },
+  errorCallback
+);
 
-navigator.getUserMedia(hdConstraints, function(stream) {
-  hdVideo.src = window.URL.createObjectURL(stream);
-  hdVideo.play();
-}, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  hdConstraints
+).then(
+  function(stream) {
+    hdVideo.srcObject = stream;
+    hdVideo.play();
+  },
+  errorCallback
+);

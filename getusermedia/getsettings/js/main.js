@@ -25,7 +25,7 @@ var settingsDiv = document.querySelector('div#settings');
 
 function handleSuccess(stream) {
   window.stream = stream; // stream available to console
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
   var track = stream.getTracks()[0];
   var settings = track.getSettings ? track.getSettings() : null;
   var settingsString;

@@ -16,9 +16,6 @@ limitations under the License.
 
 'use strict';
 
-navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 var constraintsVideo = {
   video: true
 };
@@ -28,9 +25,14 @@ var constraintsAudio = {
 
 function successCallbackVideo(localMediaStream) {
   window.stream = localMediaStream; // stream available to console
-  navigator.getUserMedia(constraintsAudio, successCallbackAudio, errorCallback);
+  navigator.mediaDevices.getUserMedia(
+    constraintsAudio
+  ).then(
+    successCallbackAudio,
+    errorCallback
+  );
   var video = document.querySelector('video');
-  video.src = window.URL.createObjectURL(localMediaStream);
+  video.srcObject = localMediaStream;
   video.play();
 }
 
@@ -42,4 +44,9 @@ function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(constraintsVideo, successCallbackVideo, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  constraintsVideo
+).then(
+  successCallbackVideo,
+  errorCallback
+);

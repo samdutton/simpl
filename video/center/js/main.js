@@ -34,20 +34,20 @@ var constraints = {
 
 function successCallback(stream) {
   window.stream = stream; // stream available to console
-  if (window.URL) {
-    largeVideo.src = window.URL.createObjectURL(stream);
-    smallVideo.src = window.URL.createObjectURL(stream);
-  } else {
-    largeVideo.src = stream;
-    smallVideo.src = stream;
-  }
+  largeVideo.srcObject = stream;
+  smallVideo.srcObject = stream;
 }
 
 function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+navigator.mediaDevices.getUserMedia(
+  constraints
+).then(
+  successCallback,
+  errorCallback
+);
 
 // To cope with sizing glitches
 window.onresize = window.onorientationchange = function() {

@@ -16,28 +16,27 @@ limitations under the License.
 
 'use strict';
 
-navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+// Polyfill in Firefox.
+// See https://blog.mozilla.org/webrtc/getdisplaymedia-now-available-in-adapter-js/
+/* global adapter */
+if (adapter.browserDetails.browser === 'firefox') {
+  adapter.browserShim.shimGetDisplayMedia(window, 'screen');
+}
 
 var constraints = {
   audio: false,
-  video: {
-    'mandatory': {
-      'chromeMediaSource': 'screen'
-    }
-  }
+  video: true
 };
-
 var video = document.querySelector('video');
 
 function handleSuccess(stream) {
   window.stream = stream; // stream available to console
-  video.src = window.URL.createObjectURL(stream);
+  video.srcObject = stream;
 }
 
 function handleError(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.mediaDevices.getUserMedia(constraints).
+navigator.getDisplayMedia(constraints).
   then(handleSuccess).catch(handleError);
