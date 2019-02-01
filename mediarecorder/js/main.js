@@ -121,17 +121,17 @@ function toggleRecording() {
 
 // The nested try blocks will be simplified when Chrome 47 moves to Stable
 function startRecording() {
-  var options = {mimeType: 'video/mp4', bitsPerSecond: 100000};
+  var options = {mimeType: 'video/webm;codecs=vp9', bitsPerSecond: 100000};
   recordedBlobs = [];
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
   } catch (e0) {
-    console.log('Unable to create MediaRecorder with options Object: ', e0);
+    console.log('Unable to create MediaRecorder with options Object: ', options, e0);
     try {
-      options = {mimeType: 'video/webm,codecs=vp9', bitsPerSecond: 100000};
+      options = {mimeType: 'video/mp4', bitsPerSecond: 100000};
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e1) {
-      console.log('Unable to create MediaRecorder with options Object: ', e1);
+      console.log('Unable to create MediaRecorder with options Object: ', options, e1);
       try {
         options = 'video/vp8'; // Chrome 47
         mediaRecorder = new MediaRecorder(window.stream, options);
