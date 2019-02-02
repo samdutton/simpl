@@ -128,16 +128,15 @@ function startRecording() {
   } catch (e0) {
     console.log('Unable to create MediaRecorder with options Object: ', options, e0);
     try {
-      options = {mimeType: 'video/mp4', bitsPerSecond: 100000};
+      options = {mimeType: 'video/webm;codecs=vp8', bitsPerSecond: 100000};
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e1) {
       console.log('Unable to create MediaRecorder with options Object: ', options, e1);
       try {
-        options = 'video/vp8'; // Chrome 47
+        options = 'video/mp4';
         mediaRecorder = new MediaRecorder(window.stream, options);
       } catch (e2) {
-        alert('MediaRecorder is not supported by this browser.\n\n' +
-            'Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Platform features enabled from chrome://flags.');
+        alert('MediaRecorder is not supported by this browser.');
         console.error('Exception while creating MediaRecorder:', e2);
         return;
       }
