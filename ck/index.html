@@ -19,16 +19,16 @@ limitations under the License.
 <html lang="en">
 <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-33848682-1"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-  window.dataLayer.push(arguments);
-}
-gtag('js', new Date());
-gtag('config', 'UA-33848682-1');
+//  philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga('create', 'UA-33848682-1', 'auto');
+ga('set', 'transport', 'beacon');
+ga('send', 'pageview');
 </script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 
   <title>Redirecting...</title>
   <link rel="canonical" href="https://simpl.info/eme/clearkey"/>
