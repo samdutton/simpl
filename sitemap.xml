@@ -164,9 +164,6 @@
     <loc>https://simpl.info/xhr/</loc>
   </url>
   <url>
-    <loc>https://simpl.info/appcache/manifest.appcache</loc>
-  </url>
-  <url>
     <loc>https://simpl.info/csstextindent/</loc>
   </url>
   <url>
@@ -236,9 +233,6 @@
     <loc>https://simpl.info/</loc>
   </url>
   <url>
-    <loc>https://simpl.info/track/map/data/gbike.xml</loc>
-  </url>
-  <url>
     <loc>https://simpl.info/pagevisibility/</loc>
   </url>
   <url>
@@ -299,9 +293,6 @@
     <loc>https://simpl.info/track/map/index.html</loc>
   </url>
   <url>
-    <loc>https://simpl.info/promises/data/feed.json</loc>
-  </url>
-  <url>
     <loc>https://simpl.info/pagevisibility/opened.html</loc>
   </url>
   <url>
@@ -312,12 +303,6 @@
   </url>
   <url>
     <loc>https://simpl.info/array/</loc>
-  </url>
-  <url>
-    <loc>https://simpl.info/mse/test.webm</loc>
-  </url>
-  <url>
-    <loc>https://simpl.info/xhr/data.json</loc>
   </url>
   <url>
     <loc>https://simpl.info/deviceorientation/</loc>
