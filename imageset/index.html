@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<!--
+Copyright 2017 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html lang="en">
+<head>
+
+<script>
+//  philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga('create', 'UA-33848682-1', 'auto');
+ga('set', 'transport', 'beacon');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<link rel="icon" href="/images/icons/icon192.png">
+
+<base target="_blank">
+
+
+<title>image-set()</title>
+
+<link rel="stylesheet" href="../css/main.css">
+
+<style>
+div#background{
+  background-image: -webkit-image-set(url(small.jpg) 1x, url(large.jpg) 2x);
+  background-size: cover;
+  height: calc((100vw - 32px - 3em) * .5);
+  margin: 0 0 20px 0;
+  max-width: 40em;
+  width: calc(100vw - 32px - 3em);
+}
+</style>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> CSS background image-set()</h1>
+
+    <div id="background" aria-label="Lias and Little Puss: two ten week old grey tabby kittens"></div>
+
+    <p>In your browser developer tools, change the emulated device pixel ratio and reload the page.</p>
+
+    <p>A browser that supports <code>CSS image-set()</code> will choose <a href="small.jpg" title="500px wide image file">small.jpg</a> or <a href="large.jpg" title="1500px wide image file">large.jpg</a>, depending on the device pixel ratio.</p>
+
+    <p>
+      Device pixel ratio: <span id="devicePixelRatio"></span><br>
+      Viewport width: <span id="viewportWidth"></span>px<br>
+      Available screen width: <span id="availableWidth"></span>px<br>
+    </p>
+
+    <a href="https://github.com/samdutton/simpl/blob/gh-pages/imageeset" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+  </div>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
