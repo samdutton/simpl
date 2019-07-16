@@ -16,8 +16,6 @@ limitations under the License.
 
 'use strict';
 
-/* globals speechSynthesis, SpeechSynthesisUtterance */
-
 var data = document.querySelector('p#data');
 
 function log(message) {

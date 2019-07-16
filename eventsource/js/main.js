@@ -16,8 +16,6 @@ limitations under the License.
 
 'use strict';
 
-/* globals EventSource */
-
 var dataDiv = document.querySelector('#data');
 
 function log(message) {

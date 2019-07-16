@@ -16,7 +16,7 @@ limitations under the License.
 
 'use strict';
 
-/* globals AudioContext, webkitAudioContext */
+/* globals webkitAudioContext */
 
 // create an AudioContext
 // create an audio source node

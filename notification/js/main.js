@@ -16,8 +16,6 @@ limitations under the License.
 
 'use strict';
 
-/* globals Notification */
-
 // More information at https://developer.mozilla.org/en-US/docs/WebAPI/Using_Web_Notifications
 
 // Tags are used to avoid excessive notifications:

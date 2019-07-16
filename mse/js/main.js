@@ -16,8 +16,6 @@ limitations under the License.
 
 'use strict';
 
-/* globals MediaSource */
-
 // This code adapted from Eric Bidelman's demo at
 // http://html5-demos.appspot.com/static/media-source.html
 

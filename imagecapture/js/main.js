@@ -16,8 +16,6 @@ limitations under the License.
 
 'use strict';
 
-/* globals ImageCapture */
-
 // This code is adapted from
 // https://cdn.rawgit.com/Miguelao/demos/master/imagecapture.html
 
