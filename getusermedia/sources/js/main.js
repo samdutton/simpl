@@ -44,9 +44,7 @@ function gotDevices(deviceInfos) {
 
 function getStream() {
   if (window.stream) {
-    window.stream.getTracks().forEach(function(track) {
-      track.stop();
-    });
+    window.stream.getTracks().forEach(track => track.stop());
   }
 
   var constraints = {
