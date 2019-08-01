@@ -28,7 +28,7 @@ videoSelect.onchange = getStream;
 
 function gotDevices(deviceInfos) {
   for (const deviceInfo of deviceInfos) {
-    var option = document.createElement('option');
+    let option = document.createElement('option');
     option.value = deviceInfo.deviceId;
     if (deviceInfo.kind === 'audioinput') {
       option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
@@ -43,11 +43,16 @@ function gotDevices(deviceInfos) {
 }
 
 function getStream() {
-  const audioSource = audioSelect.value;
-  const videoSource = videoSelect.value;
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  // const audioSource = audioSelect.value;
+  // const videoSource = videoSelect.value;
   const constraints = {
-    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
-    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+    audio: true,
+    video: true
   };
   navigator.mediaDevices.getUserMedia(constraints).
     then(gotStream).catch(handleError);
