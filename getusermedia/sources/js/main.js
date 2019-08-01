@@ -48,11 +48,11 @@ function getStream() {
       track.stop();
     });
   }
-  // const audioSource = audioSelect.value;
-  // const videoSource = videoSelect.value;
+  const audioSource = audioSelect.value;
+  const videoSource = videoSelect.value;
   const constraints = {
-    audio: true,
-    video: true
+    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
   navigator.mediaDevices.getUserMedia(constraints).
     then(gotStream).catch(handleError);
