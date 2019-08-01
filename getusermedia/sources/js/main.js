@@ -20,8 +20,8 @@ var videoElement = document.querySelector('video');
 var audioSelect = document.querySelector('select#audioSource');
 var videoSelect = document.querySelector('select#videoSource');
 
-navigator.mediaDevices.enumerateDevices()
-  .then(gotDevices).then(getStream).catch(handleError);
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+getStream();
 
 audioSelect.onchange = getStream;
 videoSelect.onchange = getStream;
