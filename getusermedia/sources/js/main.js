@@ -43,11 +43,6 @@ function gotDevices(deviceInfos) {
 }
 
 function getStream() {
-  if (window.stream) {
-    window.stream.getTracks().forEach(track => {
-      track.stop();
-    });
-  }
   const audioSource = audioSelect.value;
   const videoSource = videoSelect.value;
   const constraints = {

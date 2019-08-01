@@ -15,7 +15,7 @@ const FILES = [
   'index.html'
 ];
 
-const CACHE = 'v2.19';
+const CACHE = 'v2.21';
 
 self.addEventListener('install', (event) => {
   console.log('Service worker:', event);
