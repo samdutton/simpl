@@ -47,13 +47,11 @@ function getStream() {
     window.stream.getTracks().forEach(track => track.stop());
   }
 
-  var constraints = {
-    audio: {
-      deviceId: {exact: audioSelect.value}
-    },
-    video: {
-      deviceId: {exact: videoSelect.value}
-    }
+  const audioSource = audioSelect.value;
+  const videoSource = videoSelect.value;
+  const constraints = {
+    audio: {deviceId: audioSource ? {exact: audioSource} : undefined},
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
   };
 
   navigator.mediaDevices.getUserMedia(constraints).
@@ -66,6 +64,6 @@ function gotStream(stream) {
 }
 
 function handleError(error) {
-  console.log('Error: ', error);
+  console.error('Error: ', error);
 }
 
