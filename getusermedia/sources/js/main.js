@@ -27,20 +27,17 @@ audioSelect.onchange = getStream;
 videoSelect.onchange = getStream;
 
 function gotDevices(deviceInfos) {
-  for (var i = 0; i !== deviceInfos.length; ++i) {
-    var deviceInfo = deviceInfos[i];
+  for (const deviceInfo of deviceInfos) {
     var option = document.createElement('option');
     option.value = deviceInfo.deviceId;
     if (deviceInfo.kind === 'audioinput') {
-      option.text = deviceInfo.label ||
-        'microphone ' + (audioSelect.length + 1);
+      option.text = deviceInfo.label || `Microphone ${audioSelect.length + 1}`;
       audioSelect.appendChild(option);
     } else if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || 'camera ' +
-        (videoSelect.length + 1);
+      option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
       videoSelect.appendChild(option);
     } else {
-      console.log('Found one other kind of source/device: ', deviceInfo);
+      console.log('Found additional kind of device: ', deviceInfo);
     }
   }
 }
