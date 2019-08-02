@@ -55,7 +55,7 @@ ga('send', 'pageview');
 
   <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> video with type attributes</h1>
 
-  <video poster="../images/poster.jpg">
+  <video playsinline poster="../images/poster.jpg">
     <source src="../video/chrome.webm" type="video/webm" />
     <source src="../video/chrome.mp4" type="video/mp4" />
     <p>This browser does not support the video element.</p>
@@ -63,14 +63,14 @@ ga('send', 'pageview');
 
   <p id="videoSrc"></p>
 
-  <script>
+<script>
 document.querySelector('video').addEventListener('loadedmetadata', function() {
   var fileName = this.currentSrc.replace(/^.*[\\/]/, '');
   document.querySelector('#videoSrc').innerHTML = 'currentSrc: ' + fileName +
     '<br> videoWidth: ' + this.videoWidth + 'px<br> videoHeight: ' +
     this.videoHeight + 'px';
 });
-  </script>
+</script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video/notype" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

@@ -55,19 +55,20 @@ ga('send', 'pageview');
 
   <h1><a href="../../index.html" title="simpl.info home page">simpl.info</a> MP4 video</h1>
 
-  <video autoplay controls poster="images/poster.jpg" preload="metadata">
+  <video autoplay controls playsinline poster="images/poster.jpg" preload="metadata">
     <source src="../video/chrome.mp4" type="video/mp4" />
     <p>This browser does not support the video element.</p>
   </video>
 
   <p id="videoSrc"></p>
 
-  <script>
-  document.querySelector("video").addEventListener("loadedmetadata", function(){
-    var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-  	document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
+<script>
+document.querySelector('video').addEventListener('loadedmetadata',
+  function() {
+    const fileName = this.currentSrc.replace(/^.*[\\/]/, '');
+    document.querySelector('#videoSrc').innerHTML = 'Playing video: ' + fileName;
   });
-  </script>
+</script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

@@ -22,7 +22,7 @@
     "url": "https://github.com/samdutton/simpl/issues"
   },
   "homepage": "https://github.com/samdutton/simpl",
-  "devDependencies": {
+  "dependencies": {
     "eslint": "latest",
     "grunt": "latest",
     "grunt-cli": "latest",
@@ -31,6 +31,5 @@
     "minimatch": "latest",
     "stylelint": "latest",
     "stylelint-config-standard": "latest"
-  },
-  "dependencies": {}
+  }
 }

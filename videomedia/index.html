@@ -69,21 +69,21 @@ video {
 
   <p id="videoSrc"></p>
 
-  <video controls autoplay>
+  <video autoplay controls playsinline>
     <source src="video/smaller.mp4" type="video/mp4" />
     <source src="video/smaller.webm" type="video/webm" />
     <source src="video/larger.mp4" type="video/mp4" media="(min-width: 700px)" />
     <source src="video/larger.webm" type="video/webm" media="(min-width: 700px)" />
-</video>
+  </video>
 
 
 
-  <script>
-  document.querySelector("video").addEventListener("loadedmetadata", function(){
-    var fileName = this.currentSrc.replace(/^.*[\\\/]/, ''); // remove everything but the file name
-    document.querySelector("#videoSrc").innerHTML = "Playing video: " + fileName;
-  });
-  </script>
+<script>
+document.querySelector('video').addEventListener('loadedmetadata', function() {
+  var fileName = this.currentSrc.replace(/^.*[\\/]/, ''); // remove everything but the file name
+  document.querySelector('#videoSrc').innerHTML = 'Playing video: ' + fileName;
+});
+</script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/videomedia" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
 

@@ -55,7 +55,7 @@ ga('send', 'pageview');
 
   <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Video, preload none</h1>
 
-  <video controls preload="none">
+  <video controls playsinline preload="none">
     <source src="../video/chrome.webm" type="video/webm" />
     <source src="../video/chrome.mp4" type="video/mp4" />
     <p>This browser does not support the video element.</p>
@@ -63,13 +63,13 @@ ga('send', 'pageview');
 
   <p id="videoSrc"></p>
 
-  <script>
-  document.querySelector('video').addEventListener('loadedmetadata',
-    function() {
-      var fileName = this.currentSrc.replace(/^.*[\\\/]/, '');
-      document.querySelector('#videoSrc').textContent =
-        'Playing video: ' + fileName;
-    });
+<script>
+document.querySelector('video').addEventListener('loadedmetadata',
+  function() {
+    var fileName = this.currentSrc.replace(/^.*[\\/]/, '');
+    document.querySelector('#videoSrc').textContent =
+      'Playing video: ' + fileName;
+  });
 </script>
 
   <a href="https://github.com/samdutton/simpl/blob/gh-pages/video" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
