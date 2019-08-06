@@ -15,20 +15,20 @@ const FILES = [
   'index.html'
 ];
 
-const CACHE = 'v2.28';
+const CACHE = 'v2.29';
 
 self.addEventListener('install', (event) => {
-  console.log('Service worker:', event);
+  // console.log('Service worker:', event);
   event.waitUntil(installHandler(event));
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('Service worker:', event);
+  // console.log('Service worker:', event);
   window.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('Service worker:', event);
+  // console.log('Service worker:', event);
   event.respondWith(fetchHandler(event.request));
 });
 
