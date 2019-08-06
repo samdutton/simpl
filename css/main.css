@@ -141,10 +141,6 @@ input[type=radio] {
   top: -1px;
 }
 
-label {
-  font-family: sans-serif;
-}
-
 ol {
   padding: 0 0 0 20px;
 }
