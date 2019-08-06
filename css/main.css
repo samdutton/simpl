@@ -103,7 +103,7 @@ div#links {
 h1 {
   border-bottom: 1px solid #ccc;
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   margin: 0 0 0.8em 0;
   padding: 0 0 0.2em 0;
@@ -217,12 +217,12 @@ video {
 
 @media (min-width: 550px) {
   h1 {
-    font-size: 20px;
+    font-size: 28px;
   }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 750px) {
   h1 {
-    font-size: 24px;
+    font-size: 32px;
   }
 }
