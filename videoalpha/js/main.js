@@ -48,15 +48,15 @@ chromeVideo.onclick = toggleChromeVideo;
 containerDiv.onclick = toggleChromeVideo;
 
 function addEventListeners(video) {
-  video.ondblclick = handleVideoDblclick;
-  video.addEventListener('pointerdown', handlePointerDown, false);
-  video.addEventListener('pointerup', handlePointerUp, false);
-  video.addEventListener('pointermove', handlePointerMove, false);
+  video.ondblclick = handleDblclick;
+  video.onpointerdown = handlePointerDown;
+  video.onpointerup = handlePointerUp;
+  video.onpointermove = handlePointerMove;
 }
 addEventListeners(video1);
 addEventListeners(video2);
 
-function handleVideoDblclick(event) {
+function handleDblclick(event) {
   var video = event.srcElement;
   video.classList.remove('rotateOut');
   setTimeout(function() {
