@@ -44,11 +44,11 @@ function toggleChromeVideo() {
   }
 }
 
-chromeVideo.addEventListener('gesturedoubletap', toggleChromeVideo, false);
-containerDiv.addEventListener('gesturedoubletap', toggleChromeVideo, false);
+chromeVideo.onclick = toggleChromeVideo;
+containerDiv.onclick = toggleChromeVideo;
 
 function addEventListeners(video) {
-  video.addEventListener('dblclick', handleDoubleClick, false);
+  video.ondblclick = handleVideoDblclick;
   video.addEventListener('pointerdown', handlePointerDown, false);
   video.addEventListener('pointerup', handlePointerUp, false);
   video.addEventListener('pointermove', handlePointerMove, false);
@@ -56,7 +56,7 @@ function addEventListeners(video) {
 addEventListeners(video1);
 addEventListeners(video2);
 
-function handleDoubleClick(event) {
+function handleVideoDblclick(event) {
   var video = event.srcElement;
   video.classList.remove('rotateOut');
   setTimeout(function() {

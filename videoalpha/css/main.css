@@ -19,7 +19,7 @@ body {
   background-color: #141;
   background-image: url(../images/crissyField.jpg);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   position: relative;
 }
 
