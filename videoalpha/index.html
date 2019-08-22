@@ -48,6 +48,24 @@ ga('send', 'pageview');
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="css/main.css">
 
+<style>
+input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input {
+  border: none;
+  height: 18px;
+  position: relative;
+  top: 4px;
+  width: 18px;
+}
+p {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+}
+</style>
+
 </head>
 <body>
 
@@ -57,13 +75,13 @@ ga('send', 'pageview');
 
   <div id="container">
 
-    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> video alpha channel</h1>
+    <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Video alpha channel</h1>
 
     <p>Drag videos to show CSS filters; tap or double click to trigger CSS animation. Resize page to resize videos.</p>
     <p>Tap or click background to swap between image and video.</p>
     <p>Select video background colour: <input id="colorInput" type="color"> (<span id="clearSpan">clear</span>)</p>
 
-    <p class="strong">This demo works on current versions of Firefox and Chrome on desktop and (sort of) on mobile, but not Safari.</p>
+    <p class="strong">This demo works in current versions of Firefox and Chrome on desktop and (sort of) on mobile, but not Safari.</p>
 
     <script src="js/main.js"></script>
 
