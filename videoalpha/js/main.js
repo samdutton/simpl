@@ -58,9 +58,9 @@ addEventListeners(video2);
 
 function handleDblclick(event) {
   var video = event.srcElement;
-  video.classList.remove('rotateOut');
+  video.classList.remove('rotate-out');
   setTimeout(function() {
-    video.classList.add('rotateOut');
+    video.classList.add('rotate-out');
   }, 5);
   event.preventDefault();
 }
