@@ -82,15 +82,15 @@ video#video2 {
   z-index: 1;
 }
 
-.rotateOut {
-  -moz-animation-name: rotateOut;
-  -ms-animation-name: rotateOut;
-  -o-animation-name: rotateOut;
-  -webkit-animation-name: rotateOut;
-  animation-name: rotateOut;
+.rotate-out {
+  -moz-animation-name: rotate-out;
+  -ms-animation-name: rotate-out;
+  -o-animation-name: rotate-out;
+  -webkit-animation-name: rotate-out;
+  animation-name: rotate-out;
 }
 
-@-webkit-keyframes rotateOut {
+@-webkit-keyframes rotate-out {
   0% {
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
@@ -120,7 +120,7 @@ video#video2 {
   }
 }
 
-@keyframes rotateOut {
+@keyframes rotate-out {
   0% {
     animation-timing-function: ease-in;
     opacity: 1;
