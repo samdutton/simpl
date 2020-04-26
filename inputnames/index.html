@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<!--
+Copyright 2017 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html lang="en">
+<head>
+
+<script>
+//  philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build
+window.ga = window.ga || function() {
+  (ga.q = ga.q || []).push(arguments);
+};
+ga('create', 'UA-33848682-1', 'auto');
+ga('set', 'transport', 'beacon');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+<meta charset="utf-8">
+<meta name="description" content="Simplest possible examples of HTML, CSS and JavaScript.">
+<meta name="author" content="//samdutton.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta itemprop="name" content="simpl.info: simplest possible examples of HTML, CSS and JavaScript">
+<meta itemprop="image" content="/images/icons/icon192.png">
+<meta id="theme-color" name="theme-color" content="#fff">
+
+<link rel="icon" href="/images/icons/icon192.png">
+
+<base target="_blank">
+
+
+<title>Input names</title>
+
+<link rel="stylesheet" href="../css/main.css">
+
+<style>
+:root {
+  --desktop-font-size: 16px;
+  --mobile-font-size: 22px;
+}
+form div {
+  margin: 0 0 20px 0;
+
+}
+form {
+  margin: 50px auto 0 auto;
+  max-width: 500px;
+}
+label {
+  display: block;
+  font-size: 20px;
+  font-size: var(--mobile-font-size);
+  font-weight: 500;
+  margin: 0 0 3px 0;
+}
+input {
+  border: 1px solid #ccc;
+  font-size: 22px; /* fallback */
+  font-size: var(--mobile-font-size);
+  padding: 15px;
+  width: 90%; /* fallback */
+  width: calc(100% - 30px); /* full width minus padding */
+}
+label {
+  display: block;
+  font-size: 20px;
+  font-size: var(--mobile-font-size);
+  font-weight: 500;
+  margin: 0 0 3px 0;
+}
+@media (min-width: 450px) {
+  input {
+    font-size: 14px; /* fallback */
+    font-size: var(--desktop-font-size);
+  }
+  label {
+    font-size: 14px; /* fallback */
+    font-size: var(--desktop-font-size);
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+  <h1><a href="../index.html" title="simpl.info home page">simpl.info</a> Input&nbsp;names</h1>
+  <form>
+
+    <div>
+      <label for="additional-name">additional-name</label>
+      <input name="additional-name" autocomplete="additional-name">
+    </div>
+
+    <div>
+      <label for="address-level1">address-level1</label>
+      <input name="address-level1" autocomplete="address-level1">
+    </div>
+
+    <div>
+      <label for="address-level2">address-level2</label>
+      <input name="address-level2" autocomplete="address-level2">
+    </div>
+
+    <div>
+      <label for="address-level3">address-level3</label>
+      <input name="address-level3" autocomplete="address-level3">
+    </div>
+
+    <div>
+      <label for="address-level4">address-level4</label>
+      <input name="address-level4" autocomplete="address-level4">
+    </div>
+
+    <div>
+      <label for="address-line1">address-line1</label>
+      <input name="address-line1" autocomplete="address-line1">
+    </div>
+
+    <div>
+      <label for="address-line2">address-line2</label>
+      <input name="address-line2" autocomplete="address-line2">
+    </div>
+
+    <div>
+      <label for="address-line3">address-line3</label>
+      <input name="address-line3" autocomplete="address-line3">
+    </div>
+
+    <div>
+      <label for="bday">bday</label>
+      <input name="bday" autocomplete="bday">
+    </div>
+
+    <div>
+      <label for="bday-day">bday-day</label>
+      <input name="bday-day" autocomplete="bday-day">
+    </div>
+
+    <div>
+      <label for="bday-month">bday-month</label>
+      <input name="bday-month" autocomplete="bday-month">
+    </div>
+
+    <div>
+      <label for="bday-year">bday-year</label>
+      <input name="bday-year" autocomplete="bday-year">
+    </div>
+
+    <div>
+      <label for="cc-additional-name">cc-additional-name</label>
+      <input name="cc-additional-name" autocomplete="cc-additional-name">
+    </div>
+
+    <div>
+      <label for="cc-csc">cc-csc</label>
+      <input name="cc-csc" autocomplete="cc-csc">
+    </div>
+
+    <div>
+      <label for="cc-exp">cc-exp</label>
+      <input name="cc-exp" autocomplete="cc-exp">
+    </div>
+
+    <div>
+      <label for="cc-exp-month">cc-exp-month</label>
+      <input name="cc-exp-month" autocomplete="cc-exp-month">
+    </div>
+
+    <div>
+      <label for="cc-exp-year">cc-exp-year</label>
+      <input name="cc-exp-year" autocomplete="cc-exp-year">
+    </div>
+
+    <div>
+      <label for="cc-family-name">cc-family-name</label>
+      <input name="cc-family-name" autocomplete="cc-family-name">
+    </div>
+
+    <div>
+      <label for="cc-given-name">cc-given-name</label>
+      <input name="cc-given-name" autocomplete="cc-given-name">
+    </div>
+
+    <div>
+      <label for="cc-name">cc-name</label>
+      <input name="cc-name" autocomplete="cc-name">
+    </div>
+
+    <div>
+      <label for="cc-number">cc-number</label>
+      <input name="cc-number" autocomplete="cc-number">
+    </div>
+
+    <div>
+      <label for="cc-type">cc-type</label>
+      <input name="cc-type" autocomplete="cc-type">
+    </div>
+
+    <div>
+      <label for="country">country</label>
+      <input name="country" autocomplete="country">
+    </div>
+
+    <div>
+      <label for="country-name">country-name</label>
+      <input name="country-name" autocomplete="country-name">
+    </div>
+
+    <div>
+      <label for="current-password">current-password</label>
+      <input name="current-password" autocomplete="current-password">
+    </div>
+
+    <div>
+      <label for="email">email</label>
+      <input name="email" autocomplete="email">
+    </div>
+
+    <div>
+      <label for="family-name">family-name</label>
+      <input name="family-name" autocomplete="family-name">
+    </div>
+
+    <div>
+      <label for="fax">fax</label>
+      <input name="fax" autocomplete="fax">
+    </div>
+
+    <div>
+      <label for="given-name">given-name</label>
+      <input name="given-name" autocomplete="given-name">
+    </div>
+
+    <div>
+      <label for="home">home</label>
+      <input name="home" autocomplete="home">
+    </div>
+
+    <div>
+      <label for="honorific-prefix">honorific-prefix</label>
+      <input name="honorific-prefix" autocomplete="honorific-prefix">
+    </div>
+
+    <div>
+      <label for="honorific-suffix">honorific-suffix</label>
+      <input name="honorific-suffix" autocomplete="honorific-suffix">
+    </div>
+
+    <div>
+      <label for="impp">impp</label>
+      <input name="impp" autocomplete="impp">
+    </div>
+
+    <div>
+      <label for="language">language</label>
+      <input name="language" autocomplete="language">
+    </div>
+
+    <div>
+      <label for="mobile">mobile</label>
+      <input name="mobile" autocomplete="mobile">
+    </div>
+
+    <div>
+      <label for="name">name</label>
+      <input name="name" autocomplete="name">
+    </div>
+
+    <div>
+      <label for="new-password">new-password</label>
+      <input name="new-password" autocomplete="new-password">
+    </div>
+
+    <div>
+      <label for="nickname">nickname</label>
+      <input name="nickname" autocomplete="nickname">
+    </div>
+
+    <div>
+      <label for="one-time-code">one-time-code</label>
+      <input name="one-time-code" autocomplete="one-time-code">
+    </div>
+
+    <div>
+      <label for="organization">organization</label>
+      <input name="organization" autocomplete="organization">
+    </div>
+
+    <div>
+      <label for="organization-title">organization-title</label>
+      <input name="organization-title" autocomplete="organization-title">
+    </div>
+
+    <div>
+      <label for="pager">pager</label>
+      <input name="pager" autocomplete="pager">
+    </div>
+
+    <div>
+      <label for="photo">photo</label>
+      <input name="photo" autocomplete="photo">
+    </div>
+
+    <div>
+      <label for="postal-code">postal-code</label>
+      <input name="postal-code" autocomplete="postal-code">
+    </div>
+
+    <div>
+      <label for="sex">sex</label>
+      <input name="sex" autocomplete="sex">
+    </div>
+
+    <div>
+      <label for="street-address">street-address</label>
+      <input name="street-address" autocomplete="street-address">
+    </div>
+
+    <div>
+      <label for="tel">tel</label>
+      <input name="tel" autocomplete="tel">
+    </div>
+
+    <div>
+      <label for="tel-area-code">tel-area-code</label>
+      <input name="tel-area-code" autocomplete="tel-area-code">
+    </div>
+
+    <div>
+      <label for="tel-country-code">tel-country-code</label>
+      <input name="tel-country-code" autocomplete="tel-country-code">
+    </div>
+
+    <div>
+      <label for="tel-extension">tel-extension</label>
+      <input name="tel-extension" autocomplete="tel-extension">
+    </div>
+
+    <div>
+      <label for="tel-local">tel-local</label>
+      <input name="tel-local" autocomplete="tel-local">
+    </div>
+
+    <div>
+      <label for="tel-local-prefix">tel-local-prefix</label>
+      <input name="tel-local-prefix" autocomplete="tel-local-prefix">
+    </div>
+
+    <div>
+      <label for="tel-local-suffix">tel-local-suffix</label>
+      <input name="tel-local-suffix" autocomplete="tel-local-suffix">
+    </div>
+
+    <div>
+      <label for="tel-national">tel-national</label>
+      <input name="tel-national" autocomplete="tel-national">
+    </div>
+
+    <div>
+      <label for="transaction-amount">transaction-amount</label>
+      <input name="transaction-amount" autocomplete="transaction-amount">
+    </div>
+
+    <div>
+      <label for="transaction-currency">transaction-currency</label>
+      <input name="transaction-currency" autocomplete="transaction-currency">
+    </div>
+
+    <div>
+      <label for="url">url</label>
+      <input name="url" autocomplete="url">
+    </div>
+
+    <div>
+      <label for="username">username</label>
+      <input name="username" autocomplete="username">
+    </div>
+
+    <div>
+      <label for="work">work</label>
+      <input name="work" autocomplete="work">
+    </div>
+
+  </form>
+
+  <a href="https://github.com/samdutton/simpl/blob/gh-pages/inputtypes" title="View source for this page on GitHub" id="viewSource">View source on GitHub</a>
+
+</div></body>
+</html>
