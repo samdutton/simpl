@@ -122,8 +122,8 @@ ga('send', 'pageview');
     body {
       font-family: sans-serif;
       font-weight: 300;
-      margin: 0;
-      padding: 1em;
+      margin: 30px;
+      padding: 0;
       word-break: break-word;
     }
 
@@ -181,10 +181,55 @@ ga('send', 'pageview');
     }
 
     @media (max-width: 450px) {
+    body {
+      margin: 40px 5px 30px 5px;
+    }
       h1 {
         font-size: 20px;
       }
     }
+
+    section#george-floyd a {
+  color: black;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+section#george-floyd a#name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+section#george-floyd a#dates {
+  font-size: 22px;
+}
+
+section#george-floyd img {
+  display: block;
+  margin: 0 auto 40px auto;
+  max-width: 100%;
+  width: 400px;
+}
+
+section#george-floyd {
+  border-bottom: 1px solid black;
+  margin: 0 0 80px 0;
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  body {
+    margin: 140px 30px 30px 30px;
+  }
+
+  section#george-floyd {
+    margin: 0 0 300px 0;
+  }
+}
+
   </style>
 
   <base target="_blank">
@@ -193,12 +238,22 @@ ga('send', 'pageview');
 
 <body>
 
+
   <div id="container">
+
+		<section id="george-floyd">
+			<a href="https://en.wikipedia.org/wiki/George_Floyd" title="Wikipedia entry for George Floyd" id="name">
+				<img src="images/george-floyd.jpg" alt="George Floyd">
+			</a>
+			<a href="https://en.wikipedia.org/wiki/George_Floyd" title="Wikipedia entry for George Floyd" id="name">George Floyd</a>
+			<a href="https://secure.actblue.com/donate/naacp-1" id="dates">October 14, 1973 –&nbsp;May&nbsp;25,&nbsp;2020</a>	
+		</section>
+
 <!--     <div id="highlight">
       <p>Check out my new article: <a href="https://medium.com/@samdutton/website-prelaunch-checklist-14d0002b4c7c">Website prelaunch checklist</a><br>— simple techniques to find and fix glitches.</p>
     </div> -->
 
-    <div id="highlight">
+<!--     <div id="highlight">
       <p>I wrote an app!
         <br><br>
         <a href="https://medium.com/@samdutton/website-prelaunch-checklist-14d0002b4c7c">Multihouse</a> gets median scores for multiple URLs for multiple Lighthouse runs.</p>
@@ -209,11 +264,11 @@ ga('send', 'pageview');
 			  <br><br>
 			  <a href="https://bit.ly/caniuse-stuff">bit.ly/caniuse-stuff</a>
 			</p>
-		</div>
+		</div> -->
 
 <!--      -->
 
-    <h1>simpl.info</h1>
+<!--     <h1>simpl.info</h1>
 
     <a id="twitter" href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fsimpl.info%2F&ref_src=twsrc%5Etfw&region=follow_link&screen_name=sw12&tw_p=followbutton"
       rel="noopener" target="_blank" title="Follow @sw12">
@@ -223,7 +278,7 @@ ga('send', 'pageview');
           fill="#1da1f2" />
       </svg>
       <div>Follow on Twitter</div>
-    </a>
+    </a> -->
 
     <p>This site aims to provide simplest possible examples of HTML, CSS and JavaScript.</p>
 

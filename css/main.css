@@ -35,7 +35,7 @@ body {
   font-size: 18px;
   font-weight: 300;
   margin: 0;
-  padding: 0.5em;
+  padding: 40px 20px 20px 20px;
   word-break: break-word;
 }
 
@@ -226,5 +226,46 @@ video {
   /* hack! to detect non-touch devices */
   div#links a {
     line-height: 0.8em;
+  }
+}
+
+section#george-floyd a {
+  color: black;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+section#george-floyd a#name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+section#george-floyd a#dates {
+  font-size: 22px;
+}
+
+section#george-floyd img {
+  display: block;
+  margin: 0 auto 40px auto;
+  max-width: 100%;
+  width: 400px;
+}
+
+section#george-floyd {
+  border-bottom: 1px solid black;
+  margin: 0 0 80px 0;
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  body {
+    margin: 140px 30px 30px 30px;
+  }
+
+  section#george-floyd {
+    margin: 0 0 300px 0;
   }
 }
