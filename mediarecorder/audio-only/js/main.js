@@ -37,7 +37,7 @@ downloadButton.onclick = download;
 
 // window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
-location.host === 'localhost';
+  location.host.includes('localhost');
 if (!isSecureOrigin) {
   alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
     '\n\nChanging protocol to HTTPS');
@@ -45,8 +45,8 @@ if (!isSecureOrigin) {
 }
 
 var constraints = {
-  audio: false,
-  video: true
+  audio: true,
+  video: false
 };
 
 navigator.mediaDevices.getUserMedia(
@@ -95,7 +95,7 @@ function toggleRecording() {
 
 // The nested try blocks will be simplified when Chrome 47 moves to Stable
 function startRecording() {
-  var options = {mimeType: 'audio/mp3'};
+  var options = {mimeType: 'audio/webm'};
   recordedBlobs = [];
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
