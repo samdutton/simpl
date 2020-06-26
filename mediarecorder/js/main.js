@@ -81,6 +81,7 @@ function handleDataAvailable(event) {
 
 function handleStop(event) {
   console.log('Recorder stopped: ', event);
+  console.log('Recorded Blobs: ', recordedBlobs);
 }
 
 function toggleRecording() {
@@ -129,12 +130,12 @@ function startRecording() {
 
 function stopRecording() {
   mediaRecorder.stop();
-  console.log('Recorded Blobs: ', recordedBlobs);
   recordedVideo.controls = true;
 }
 
 function play() {
-  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+  var type = (recordedBlobs[0] || {}).type;
+  var superBuffer = new Blob(recordedBlobs, { type });
   recordedVideo.src = window.URL.createObjectURL(superBuffer);
 }
 
