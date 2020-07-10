@@ -135,7 +135,7 @@ function stopRecording() {
 
 function play() {
   var type = (recordedBlobs[0] || {}).type;
-  var superBuffer = new Blob(recordedBlobs, { type });
+  var superBuffer = new Blob(recordedBlobs, {type});
   recordedVideo.src = window.URL.createObjectURL(superBuffer);
 }
 
