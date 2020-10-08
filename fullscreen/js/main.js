@@ -33,18 +33,18 @@ displayFullScreenStatus(); // on load
 document.onfullscreenchange = document.onwebkitfullscreenchange =
   document.onmozfullscreenchange = displayFullScreenStatus;
 
-function isFullScreen() {
+const isFullScreen= ()=> {
   return !!(document.webkitIsFullScreen || document.mozFullScreen ||
     document.isFullScreen); // if any defined and true
 }
 
-function fullScreenElement() {
+const fullScreenElement= ()=> {
   return document.webkitFullScreenElement ||
       document.webkitCurrentFullScreenElement ||
       document.mozFullScreenElement || document.fullScreenElement;
 }
 
-var image = document.querySelector('img');
+const image = document.querySelector('img');
 
 image.requestFullScreen = image.webkitRequestFullScreen ||
   image.mozRequestFullScreen || image.requestFullScreen;
