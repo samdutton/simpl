@@ -74,6 +74,7 @@ function gotStream(stream) {
   callButton.disabled = false;
 }
 
+
 function start() {
   trace('Requesting local stream');
   startButton.disabled = true;
@@ -123,12 +124,7 @@ function call() {
   trace('Added local stream to pc1');
 
   trace('pc1 createOffer start');
-  pc1.createOffer(
-    offerOptions
-  ).then(
-    onCreateOfferSuccess,
-    onCreateSessionDescriptionError
-  );
+  pc1.createOffer(offerOptions).then(onCreateOfferSuccess,onCreateSessionDescriptionError);
 }
 
 function onCreateSessionDescriptionError(error) {
