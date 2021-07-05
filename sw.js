@@ -15,38 +15,41 @@ const FILES = [
   'index.html'
 ];
 
-const CACHE = 'v2.44';
+const CACHE = 'v2.45';
 
-self.addEventListener('install', (event) => {
-  // console.log('Service worker:', event);
-  event.waitUntil(installHandler(event));
+// From https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(caches.keys().then((keyList) => {
+    Promise.all(keyList.map((key) => {
+      if (key === CACHE) {
+        return;
+      }
+      caches.delete(key);
+    }));
+  })());
 });
 
-self.addEventListener('activate', (event) => {
-  // console.log('Service worker:', event);
-  window.clients.claim();
+self.addEventListener('install', (e) => {
+  console.log('[Service Worker] Install');
+  e.waitUntil((async() => {
+    const cache = await caches.open(CACHE);
+    console.log('[Service Worker] Caching all: app shell and content');
+    await cache.addAll(FILES);
+  })());
 });
 
-self.addEventListener('fetch', (event) => {
-  // console.log('Service worker:', event);
-  event.respondWith(fetchHandler(event.request));
+self.addEventListener('fetch', (e) => {
+  e.respondWith((async() => {
+    const r = await caches.match(e.request);
+    console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
+    if (r) {
+      return r;
+    }
+    const response = await fetch(e.request);
+    const cache = await caches.open(CACHE);
+    console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+    cache.put(e.request, response.clone());
+    return response;
+  })());
 });
-
-async function installHandler(event) {
-  const cache = await caches.open(CACHE);
-  cache.addAll(FILES);
-  self.skipWaiting();
-}
-
-async function fetchHandler(request) {
-  const cache = await caches.open(CACHE);
-  const cacheResult = await cache.match(request);
-  if (cacheResult) {
-    return cacheResult;
-  }
-  const fetchResult = await fetch(request);
-  if (fetchResult.ok) {
-    cache.put(request, fetchResult.clone());
-  }
-  return fetchResult;
-}
