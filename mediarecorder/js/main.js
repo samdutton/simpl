@@ -35,7 +35,7 @@ recordButton.onclick = toggleRecording;
 playButton.onclick = play;
 downloadButton.onclick = download;
 
-console.log(location.host);
+console.log('location.host:', location.host);
 // window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
   location.host.includes('localhost');
@@ -109,11 +109,9 @@ function startRecording() {
     } catch (e1) {
       console.log('Unable to create MediaRecorder with options Object: ', options, e1);
       try {
-        options = 'video/mp4';
-        mediaRecorder = new MediaRecorder(window.stream, options);
+        mediaRecorder = new MediaRecorder(window.stream);
       } catch (e2) {
-        alert('MediaRecorder is not supported by this browser.');
-        console.error('Exception while creating MediaRecorder:', e2);
+        alert('MediaRecorder is not supported by this browser.', e2);
         return;
       }
     }
