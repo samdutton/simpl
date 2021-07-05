@@ -111,7 +111,8 @@ function startRecording() {
       try {
         mediaRecorder = new MediaRecorder(window.stream);
       } catch (e2) {
-        alert('MediaRecorder is not supported by this browser.', e2);
+        alert('MediaRecorder is not supported by this browser.');
+        console.log('Unable to create MediaRecorder', e2);
         return;
       }
     }
