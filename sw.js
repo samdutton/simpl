@@ -15,7 +15,7 @@ const FILES = [
   'index.html'
 ];
 
-const CACHE = 'v2.45';
+const CACHE = 'v2.46';
 
 // From https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers
 
