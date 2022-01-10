@@ -11,6 +11,7 @@
   limitations under the License.
 */
 
+/*
 const FILES = [
   'index.html'
 ];
@@ -53,3 +54,4 @@ self.addEventListener('fetch', (e) => {
     return response;
   })());
 });
+*/
