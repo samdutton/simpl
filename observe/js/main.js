@@ -28,7 +28,13 @@ function observer(changes) {
   log(JSON.stringify(changes));
 }
 
-Object.observe(o, observer);
+if ('observe' in Object) {
+    Object.observe(o, observer);  
+} else {
+  log('Object.observe() is not supported by this browser.')
+}
+
+
 
 o.a = 'fred'; // new
 o.a = 'barney'; // updated
