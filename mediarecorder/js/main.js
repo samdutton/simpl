@@ -73,7 +73,12 @@ function handleSourceOpen(event) {
   console.log('Source buffer: ', sourceBuffer);
 }
 
+let previousTime = Date.now();
+
 function handleDataAvailable(event) {
+  const timeNow = Date.now();
+  console.log(`Interval: ${timeNow - previousTime}`);
+  previousTime = timeNow;
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
   }
@@ -123,7 +128,7 @@ function startRecording() {
   downloadButton.disabled = true;
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
-  mediaRecorder.start(10); // collect 10ms of data
+  mediaRecorder.start(1000); // collect 10ms of data
   console.log('MediaRecorder started', mediaRecorder);
 }
 
